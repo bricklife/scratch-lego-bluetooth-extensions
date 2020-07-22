@@ -209,7 +209,7 @@ class Scratch3LegoBleBlocks {
             return this._peripheral.motorPWM(portId, power);
         });
 
-        return Promise.all(promises).then(() => {});
+        return Promise.all(promises).then(() => { });
     }
 
     motorStop(args) {
@@ -220,7 +220,7 @@ class Scratch3LegoBleBlocks {
             return this._peripheral.motorPWM(portId, 0);
         });
 
-        return Promise.all(promises).then(() => {});
+        return Promise.all(promises).then(() => { });
     }
 
     motorRunFor(args) {

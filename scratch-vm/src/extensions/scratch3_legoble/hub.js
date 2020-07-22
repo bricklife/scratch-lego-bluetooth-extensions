@@ -359,11 +359,13 @@ class Hub {
 
     motorPWM(portId, power) {
         power = MathUtil.clamp(power, -100, 100);
+
         const device = this._devices[portId];
         if (device instanceof Motor) {
             return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x51, 0x00, power]);
+        } else {
+            return Promise.resolve();
         }
-        return Promise.resolve();
     }
 
     motorRunForDegrees(portId, direction, degrees) {
