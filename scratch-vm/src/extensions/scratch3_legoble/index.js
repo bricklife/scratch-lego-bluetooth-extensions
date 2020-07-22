@@ -246,13 +246,21 @@ class Scratch3LegoBleBlocks {
     }
 
     _motorRunForDegrees(ports, direction, degrees) {
-        console.log(`_motorRunForDegrees: ${ports}, ${direction}, ${degrees}`);
-        return Promise.resolve();
+        const promises = ports.map(port => {
+            const portId = externalPorts.indexOf(port);
+            return this._peripheral.motorRunForDegrees(portId, direction, degrees);
+        });
+
+        return Promise.all(promises).then(() => { });
     }
 
     _motorRunTimed(ports, direction, seconds) {
-        console.log(`_motorRunTimed: ${ports}, ${direction}, ${seconds}`);
-        return Promise.resolve();
+        const promises = ports.map(port => {
+            const portId = externalPorts.indexOf(port);
+            return this._peripheral.motorRunTimed(portId, direction, seconds);
+        });
+
+        return Promise.all(promises).then(() => { });
     }
 
     motorStart(args) {
@@ -260,8 +268,12 @@ class Scratch3LegoBleBlocks {
 
         const ports = this._validatePorts(Cast.toString(args.PORT));
 
-        console.log(`motorStart: ${ports}, ${direction}`);
-        return Promise.resolve();
+        const promises = ports.map(port => {
+            const portId = externalPorts.indexOf(port);
+            return this._peripheral.motorStart(portId, direction);
+        });
+
+        return Promise.all(promises).then(() => { });
     }
 
     motorSetSpeed(args) {
@@ -269,7 +281,11 @@ class Scratch3LegoBleBlocks {
 
         const ports = this._validatePorts(Cast.toString(args.PORT));
 
-        console.log(`motorSetSpeed: ${ports}, ${speed}`);
+        ports.forEach(port => {
+            const portId = externalPorts.indexOf(port);
+            this._peripheral.motorSetSpeed(portId, speed);
+        });
+
         return Promise.resolve();
     }
 

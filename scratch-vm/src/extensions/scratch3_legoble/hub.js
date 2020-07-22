@@ -142,6 +142,28 @@ class Motor extends IODevice {
     }
 }
 
+const numberToInt32Array = function (number) {
+    const buffer = new ArrayBuffer(4);
+    const dataview = new DataView(buffer);
+    dataview.setInt32(0, number);
+    return [
+        dataview.getUint8(3),
+        dataview.getUint8(2),
+        dataview.getUint8(1),
+        dataview.getUint8(0)
+    ];
+};
+
+const numberToInt16Array = function (number) {
+    const buffer = new ArrayBuffer(2);
+    const dataview = new DataView(buffer);
+    dataview.setInt16(0, number);
+    return [
+        dataview.getUint8(1),
+        dataview.getUint8(0)
+    ];
+};
+
 class Hub {
 
     constructor(runtime, extensionId) {
@@ -342,6 +364,57 @@ class Hub {
             return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x51, 0x00, power]);
         }
         return Promise.resolve();
+    }
+
+    motorRunForDegrees(portId, direction, degrees) {
+        direction = direction * Math.sign(degrees);
+        degrees = MathUtil.clamp(Math.abs(degrees), 1, 360000);
+
+        const device = this._devices[portId];
+        if (device instanceof Motor) {
+            let speed = device.speed * direction;
+            if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
+                speed = speed * -1;
+            }
+            return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x0b, ...numberToInt32Array(degrees), speed, 100, 0x7f, 0x00]);
+        } else {
+            return Promise.resolve();
+        }
+    }
+
+    motorRunTimed(portId, direction, seconds) {
+        const milliseconds = MathUtil.clamp(seconds * 1000, 0, 15000);
+
+        const device = this._devices[portId];
+        if (device instanceof Motor) {
+            let speed = device.speed * direction;
+            if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
+                speed = speed * -1;
+            }
+            return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x09, ...numberToInt16Array(milliseconds), speed, 100, 0x7f, 0x00]);
+        } else {
+            return Promise.resolve();
+        }
+    }
+
+    motorStart(portId, direction) {
+        const device = this._devices[portId];
+        if (device instanceof Motor) {
+            let speed = device.speed * direction;
+            if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
+                speed = speed * -1;
+            }
+            return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x07, speed, 100, 0x00]);
+        } else {
+            return Promise.resolve();
+        }
+    }
+
+    motorSetSpeed(portId, speed) {
+        const device = this._devices[portId];
+        if (device instanceof Motor) {
+            device.speed = speed;
+        }
     }
 
     // Util
