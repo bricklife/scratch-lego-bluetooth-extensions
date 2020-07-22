@@ -8,6 +8,34 @@ const ServiceUUID = '00001623-1212-efde-1623-785feabcd123';
 const CharacteristicUUID = '00001624-1212-efde-1623-785feabcd123';
 const SendRateMax = 20;
 
+const IOType = {
+    SIMPLE_MEDIUM_LINEAR_MOTOR: 0x01,
+    TRAIN_MOTOR: 0x02,
+    BUTTION: 0x05,
+    LIGHT: 0x08,
+    VOLTAGE: 0x14,
+    CURRENT: 0x15,
+    PIEZO_TONE: 0x16,
+    RGB_LIGHT: 0x17,
+    TILT_SENSOR: 0x22,
+    MOTION_SENSOR: 0x23,
+    COLOR_DISTANCE_SENSOR: 0x25,
+    MEDIUM_LINEAR_MOTOR: 0x26,
+    MOVE_HUB_MOTOR: 0x27,
+    MOVE_HUB_TILT_SENSOR: 0x28,
+    DUPLO_TRAIN_BASE_MOTOR: 0x29,
+    DUPLO_TRAIN_BASE_SPEAKER: 0x2a,
+    DUPLO_TRAIN_BASE_COLOR_SENSOR: 0x2b,
+    DUPLO_TRAIN_BASE_SPEEDOMETER: 0x2c,
+    TECHNIC_LARGE_MOTOR: 0x2e,
+    TECHNIC_XL_MOTOR: 0x2f,
+    TECHNIC_MEDIUM_ANGULAR_MOTOR: 0x30,
+    TECHNIC_LARGE_ANGULAR_MOTOR: 0x31,
+    REMOTE_POWER_CONTROL_BUTTON: 0x37,
+    MARIO_COLOR_BARCODE_SENSOR: 0x49,
+    MARIO_PANTS: 0x4a,
+};
+
 const MessageType = {
     HUB_PROPERTIES: 0x01,
     HUB_ATTACHED_IO: 0x04,
@@ -36,6 +64,84 @@ const HubPropertyOperation = {
     UPDATE: 0x06,
 };
 
+class IODevice {
+
+    constructor(ioType) {
+        this._ioType = ioType;
+    }
+
+    get ioType() {
+        return this._ioType;
+    }
+}
+
+class Motor extends IODevice {
+
+    constructor(ioType) {
+        super(ioType);
+
+        switch (ioType) {
+            case IOType.MEDIUM_LINEAR_MOTOR:
+            case IOType.MOVE_HUB_MOTOR:
+                this._canUseSpeed = true;
+                this._canUsePosition = false;
+                this._speed = 75;
+                break;
+
+            case IOType.TECHNIC_LARGE_MOTOR:
+            case IOType.TECHNIC_XL_MOTOR:
+            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
+            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
+                this._canUseSpeed = true;
+                this._canUsePosition = true;
+                this._speed = 75;
+                break;
+
+            default:
+                this._canUseSpeed = false;
+                this._canUsePosition = false;
+                this._speed = 0;
+        }
+    }
+
+    get canUseSpeed() {
+        return this._canUseSpeed;
+    }
+
+    get canUsePosition() {
+        return this._canUsePosition;
+    }
+
+    get speed() {
+        return this._speed;
+    }
+
+    set speed(value) {
+        if (this._canUseSpeed) {
+            this._speed = MathUtil.clamp(value, -100, 100);
+        }
+    }
+
+    static canSupportIOType(ioType) {
+        switch (ioType) {
+            case IOType.SIMPLE_MEDIUM_LINEAR_MOTOR:
+            case IOType.TRAIN_MOTOR:
+            case IOType.LIGHT:
+            case IOType.MEDIUM_LINEAR_MOTOR:
+            case IOType.MOVE_HUB_MOTOR:
+            case IOType.DUPLO_TRAIN_BASE_MOTOR:
+            case IOType.TECHNIC_LARGE_MOTOR:
+            case IOType.TECHNIC_XL_MOTOR:
+            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
+            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
+                return true;
+
+            default:
+                return false;
+        }
+    }
+}
+
 class Hub {
 
     constructor(runtime, extensionId) {
@@ -43,7 +149,7 @@ class Hub {
         this._extensionId = extensionId;
 
         this._batteryLevel = 0;
-        this._ports = [];
+        this._devices = [];
 
         this._ble = null;
         this._runtime.registerPeripheralExtension(extensionId, this);
@@ -141,13 +247,13 @@ class Hub {
             case MessageType.HUB_ATTACHED_IO: {
                 const portId = data[3];
                 const event = data[4];
-                const typeId = data[5];
+                const ioType = data[5];
                 switch (event) {
                     case 0x00: // Detached I/O
-                        this._ports[portId] = null;
+                        this._dettachDevice(portId)
                         break;
                     case 0x01: // Attached I/O
-                        this._ports[portId] = typeId;
+                        this._attachDevice(portId, ioType);
                         break;
                     case 0x02: // Attached Virtual I/O
                     default:
@@ -158,6 +264,18 @@ class Hub {
 
             default:
                 break;
+        }
+    }
+
+    _dettachDevice(portId) {
+        this._devices[portId] = null;
+    }
+
+    _attachDevice(portId, ioType) {
+        if (Motor.canSupportIOType(ioType)) {
+            this._devices[portId] = new Motor(ioType);
+        } else {
+            this._devices[portId] = new IODevice(ioType);
         }
     }
 
@@ -198,7 +316,7 @@ class Hub {
 
     reset() {
         this._batteryLevel = 0;
-        this._ports = [];
+        this._devices = [];
     }
 
     stopAll() {
@@ -208,6 +326,22 @@ class Hub {
     }
 
     stopAllMotors() {
+        for (const [portId, device] of Object.entries(this._devices)) {
+            if (device instanceof Motor) {
+                this.motorPWM(portId, 0);
+            }
+        }
+    }
+
+    // Motor
+
+    motorPWM(portId, power) {
+        power = MathUtil.clamp(power, -100, 100);
+        const device = this._devices[portId];
+        if (device instanceof Motor) {
+            return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x51, 0x00, power]);
+        }
+        return Promise.resolve();
     }
 
     // Util

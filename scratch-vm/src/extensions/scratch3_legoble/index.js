@@ -204,15 +204,23 @@ class Scratch3LegoBleBlocks {
 
         const ports = this._validatePorts(Cast.toString(args.PORT));
 
-        console.log(`motorPWM: ${ports}, ${power}`);
-        return Promise.resolve();
+        const promises = ports.map(port => {
+            const portId = externalPorts.indexOf(port);
+            return this._peripheral.motorPWM(portId, power);
+        });
+
+        return Promise.all(promises).then(() => {});
     }
 
     motorStop(args) {
         const ports = this._validatePorts(Cast.toString(args.PORT));
 
-        console.log(`motorStop: ${ports}`);
-        return Promise.resolve();
+        const promises = ports.map(port => {
+            const portId = externalPorts.indexOf(port);
+            return this._peripheral.motorPWM(portId, 0);
+        });
+
+        return Promise.all(promises).then(() => {});
     }
 
     motorRunFor(args) {
