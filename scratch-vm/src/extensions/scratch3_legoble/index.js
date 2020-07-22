@@ -290,19 +290,6 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.rotations': 'かいてん',
                 'legobluetooth.degrees': 'ど',
                 'legobluetooth.seconds': 'びょう'
-            },
-            'en': {
-                'legobluetooth.motorPWM': '[PORT] start motor at [POWER] % power',
-                'legobluetooth.motorStop': '[PORT] stop motor',
-                'legobluetooth.motorRunFor': '[PORT] run [DIRECTION] for [VALUE] [UNIT]',
-                'legobluetooth.motorStart': '[PORT] start motor [DIRECTION]',
-                'legobluetooth.motorSetSpeed': '[PORT] set speed to [SPEED] %',
-
-                'legobluetooth.clockwise': 'clockwise',
-                'legobluetooth.counterclockwise': 'counterclockwise',
-                'legobluetooth.rotations': 'rotations',
-                'legobluetooth.degrees': 'degrees',
-                'legobluetooth.seconds': 'seconds'
             }
         };
 
