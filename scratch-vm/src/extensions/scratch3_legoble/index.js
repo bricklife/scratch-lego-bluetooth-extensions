@@ -37,7 +37,7 @@ class Scratch3LegoBleBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
                         POWER: {
@@ -56,7 +56,7 @@ class Scratch3LegoBleBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         }
                     }
@@ -72,12 +72,12 @@ class Scratch3LegoBleBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
                         DIRECTION: {
                             type: ArgumentType.NUMBER,
-                            menu: 'direction',
+                            menu: 'DIRECTION',
                             defaultValue: 1
                         },
                         VALUE: {
@@ -86,7 +86,7 @@ class Scratch3LegoBleBlocks {
                         },
                         UNIT: {
                             type: ArgumentType.STRING,
-                            menu: 'motor_unit',
+                            menu: 'MOTOR_UNIT',
                             defaultValue: 'rotations'
                         }
                     }
@@ -101,12 +101,12 @@ class Scratch3LegoBleBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
                         DIRECTION: {
                             type: ArgumentType.NUMBER,
-                            menu: 'direction',
+                            menu: 'DIRECTION',
                             defaultValue: 1
                         }
                     }
@@ -121,7 +121,7 @@ class Scratch3LegoBleBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
                         SPEED: {
@@ -132,15 +132,15 @@ class Scratch3LegoBleBlocks {
                 }
             ],
             menus: {
-                port: {
+                PORT: {
                     acceptReporters: true,
                     items: externalPorts
                 },
-                multiple_port: {
+                MULTIPLE_PORT: {
                     acceptReporters: true,
                     items: multipleExternalPorts
                 },
-                motor_unit: {
+                MOTOR_UNIT: {
                     acceptReporters: false,
                     items: [
                         {
@@ -166,7 +166,7 @@ class Scratch3LegoBleBlocks {
                         }
                     ]
                 },
-                direction: {
+                DIRECTION: {
                     acceptReporters: false,
                     items: [
                         {
