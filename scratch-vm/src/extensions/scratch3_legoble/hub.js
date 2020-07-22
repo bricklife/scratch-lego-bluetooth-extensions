@@ -173,6 +173,9 @@ class Hub {
         this._batteryLevel = 0;
         this._devices = [];
 
+        this._outputCommandFeedbackCallback = [];
+        this._outputCommandCompletionCallback = [];
+
         this._ble = null;
         this._runtime.registerPeripheralExtension(extensionId, this);
         this._runtime.on('PROJECT_STOP_ALL', this.stopAll.bind(this));
@@ -284,6 +287,29 @@ class Hub {
                 break;
             }
 
+            case MessageType.PORT_OUTPUT_COMMAND_FEEDBACK: {
+                const portId = data[3];
+                const feedback = data[4];
+
+                const discarded = feedback & 0x04;
+                const completed = feedback & 0x02;
+                const inProgress = feedback & 0x01;
+
+                if (discarded) {
+                    this._clearOutputCommandCompletionCallback(portId);
+                }
+                if (completed) {
+                    this._clearOutputCommandFeedbackCallback(portId);
+                    this._clearOutputCommandCompletionCallback(portId);
+                }
+                if (inProgress) {
+                    this._outputCommandCompletionCallback[portId] = this._outputCommandFeedbackCallback[portId];
+                    this._outputCommandFeedbackCallback[portId] = null;
+                }
+
+                break;
+            }
+
             default:
                 break;
         }
@@ -298,6 +324,20 @@ class Hub {
             this._devices[portId] = new Motor(ioType);
         } else {
             this._devices[portId] = new IODevice(ioType);
+        }
+    }
+
+    _clearOutputCommandFeedbackCallback(portId) {
+        if (this._outputCommandFeedbackCallback[portId]) {
+            this._outputCommandFeedbackCallback[portId]();
+            this._outputCommandFeedbackCallback[portId] = null;
+        }
+    }
+
+    _clearOutputCommandCompletionCallback(portId) {
+        if (this._outputCommandCompletionCallback[portId]) {
+            this._outputCommandCompletionCallback[portId]();
+            this._outputCommandCompletionCallback[portId] = null;
         }
     }
 
@@ -334,11 +374,28 @@ class Hub {
         return this.send(command, useLimiter, withResponse);
     }
 
+    sendOutputCommand(portId, subCommand, payload, waitFeedback = true, useLimiter = true) {
+        const flag = waitFeedback ? 0x11 : 0x10;
+        return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, flag, subCommand, ...payload], useLimiter)
+            .then(() => {
+                if (waitFeedback) {
+                    return new Promise(resolve => {
+                        this._outputCommandFeedbackCallback[portId] = resolve;
+                    });
+                } else {
+                    return Promise.resolve();
+                }
+            });
+    }
+
     // Reset and Stop
 
     reset() {
         this._batteryLevel = 0;
         this._devices = [];
+
+        this._outputCommandFeedbackCallback = [];
+        this._outputCommandCompletionCallback = [];
     }
 
     stopAll() {
@@ -350,7 +407,9 @@ class Hub {
     stopAllMotors() {
         for (const [portId, device] of Object.entries(this._devices)) {
             if (device instanceof Motor) {
-                this.motorPWM(portId, 0);
+                this.sendOutputCommand(portId, 0x51, [0x00, 0], false, false);
+                this._outputCommandFeedbackCallback[portId] = null;
+                this._outputCommandCompletionCallback[portId] = null;
             }
         }
     }
@@ -362,7 +421,7 @@ class Hub {
 
         const device = this._devices[portId];
         if (device instanceof Motor) {
-            return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x51, 0x00, power]);
+            return this.sendOutputCommand(portId, 0x51, [0x00, power]);
         } else {
             return Promise.resolve();
         }
@@ -378,7 +437,7 @@ class Hub {
             if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
                 speed = speed * -1;
             }
-            return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x0b, ...numberToInt32Array(degrees), speed, 100, 0x7f, 0x00]);
+            return this.sendOutputCommand(portId, 0x0b, [...numberToInt32Array(degrees), speed, 100, 0x7f, 0x00]);
         } else {
             return Promise.resolve();
         }
@@ -393,7 +452,7 @@ class Hub {
             if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
                 speed = speed * -1;
             }
-            return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x09, ...numberToInt16Array(milliseconds), speed, 100, 0x7f, 0x00]);
+            return this.sendOutputCommand(portId, 0x09, [...numberToInt16Array(milliseconds), speed, 100, 0x7f, 0x00]);
         } else {
             return Promise.resolve();
         }
@@ -406,7 +465,7 @@ class Hub {
             if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
                 speed = speed * -1;
             }
-            return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, 0x11, 0x07, speed, 100, 0x00]);
+            return this.sendOutputCommand(portId, 0x07, [speed, 100, 0x00]);
         } else {
             return Promise.resolve();
         }
