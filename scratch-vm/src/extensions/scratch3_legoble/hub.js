@@ -214,7 +214,7 @@ class Hub {
 
     logBytes(byteArray, prefix) {
         bytes = byteArray.reduce((output, elem) =>
-            (output + ('0' + elem.toString(16)).slice(-2)) + ' ', '');
+            (output + ('0' + (elem & 0xff).toString(16)).slice(-2)) + ' ', '');
         log.info(`${prefix} ${bytes}`);
     }
 }
