@@ -416,11 +416,20 @@ class Hub {
 
     // Motor
 
+    getMotor(portId) {
+        const device = this._devices[portId];
+        if (device instanceof Motor) {
+            return device;
+        } else {
+            return null;
+        }
+    }
+
     motorPWM(portId, power) {
         power = MathUtil.clamp(power, -100, 100);
 
-        const device = this._devices[portId];
-        if (device instanceof Motor) {
+        const motor = this.getMotor(portId);
+        if (motor) {
             return this.sendOutputCommand(portId, 0x51, [0x00, power]);
         } else {
             return Promise.resolve();
@@ -431,10 +440,10 @@ class Hub {
         direction = direction * Math.sign(degrees);
         degrees = MathUtil.clamp(Math.abs(degrees), 1, 360000);
 
-        const device = this._devices[portId];
-        if (device instanceof Motor) {
-            let speed = device.speed * direction;
-            if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
+        const motor = this.getMotor(portId);
+        if (motor && motor.canUseSpeed) {
+            let speed = motor.speed * direction;
+            if (portId == 0x00 && motor.ioType == IOType.MOVE_HUB_MOTOR) {
                 speed = speed * -1;
             }
             return this.sendOutputCommand(portId, 0x0b, [...numberToInt32Array(degrees), speed, 100, 0x7f, 0x00]);
@@ -446,10 +455,10 @@ class Hub {
     motorRunTimed(portId, direction, seconds) {
         const milliseconds = MathUtil.clamp(seconds * 1000, 0, 15000);
 
-        const device = this._devices[portId];
-        if (device instanceof Motor) {
-            let speed = device.speed * direction;
-            if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
+        const motor = this.getMotor(portId);
+        if (motor && motor.canUseSpeed) {
+            let speed = motor.speed * direction;
+            if (portId == 0x00 && motor.ioType == IOType.MOVE_HUB_MOTOR) {
                 speed = speed * -1;
             }
             return this.sendOutputCommand(portId, 0x09, [...numberToInt16Array(milliseconds), speed, 100, 0x7f, 0x00]);
@@ -459,10 +468,10 @@ class Hub {
     }
 
     motorStart(portId, direction) {
-        const device = this._devices[portId];
-        if (device instanceof Motor) {
-            let speed = device.speed * direction;
-            if (portId == 0x00 && device.ioType == IOType.MOVE_HUB_MOTOR) {
+        const motor = this.getMotor(portId);
+        if (motor && motor.canUseSpeed) {
+            let speed = motor.speed * direction;
+            if (portId == 0x00 && motor.ioType == IOType.MOVE_HUB_MOTOR) {
                 speed = speed * -1;
             }
             return this.sendOutputCommand(portId, 0x07, [speed, 100, 0x00]);
@@ -472,9 +481,9 @@ class Hub {
     }
 
     motorSetSpeed(portId, speed) {
-        const device = this._devices[portId];
-        if (device instanceof Motor) {
-            device.speed = speed;
+        const motor = this.getMotor(portId);
+        if (motor && motor.canUseSpeed) {
+            motor.speed = speed;
         }
     }
 
