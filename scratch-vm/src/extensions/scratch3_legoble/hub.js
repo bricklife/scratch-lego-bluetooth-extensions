@@ -303,8 +303,7 @@ class Hub {
                     this._clearOutputCommandCompletionCallback(portId);
                 }
                 if (inProgress) {
-                    this._outputCommandCompletionCallback[portId] = this._outputCommandFeedbackCallback[portId];
-                    this._outputCommandFeedbackCallback[portId] = null;
+                    this._moveOutputCommandFeedbackCallbackToCompletionCallback(portId);
                 }
 
                 break;
@@ -324,20 +323,6 @@ class Hub {
             this._devices[portId] = new Motor(ioType);
         } else {
             this._devices[portId] = new IODevice(ioType);
-        }
-    }
-
-    _clearOutputCommandFeedbackCallback(portId) {
-        if (this._outputCommandFeedbackCallback[portId]) {
-            this._outputCommandFeedbackCallback[portId]();
-            this._outputCommandFeedbackCallback[portId] = null;
-        }
-    }
-
-    _clearOutputCommandCompletionCallback(portId) {
-        if (this._outputCommandCompletionCallback[portId]) {
-            this._outputCommandCompletionCallback[portId]();
-            this._outputCommandCompletionCallback[portId] = null;
         }
     }
 
@@ -374,18 +359,9 @@ class Hub {
         return this.send(command, useLimiter, withResponse);
     }
 
-    sendOutputCommand(portId, subCommand, payload, waitFeedback = true, useLimiter = true) {
-        const flag = waitFeedback ? 0x11 : 0x10;
-        return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, flag, subCommand, ...payload], useLimiter)
-            .then(() => {
-                if (waitFeedback) {
-                    return new Promise(resolve => {
-                        this._outputCommandFeedbackCallback[portId] = resolve;
-                    });
-                } else {
-                    return Promise.resolve();
-                }
-            });
+    sendOutputCommand(portId, subCommand, payload, needsFeedback = true, useLimiter = true) {
+        const flag = needsFeedback ? 0x11 : 0x10;
+        return this.sendMessage(MessageType.PORT_OUTPUT_COMMAND, [portId, flag, subCommand, ...payload], useLimiter);
     }
 
     // Reset and Stop
@@ -412,6 +388,33 @@ class Hub {
                 this._outputCommandCompletionCallback[portId] = null;
             }
         }
+    }
+
+    // Output Command Feedback
+
+    _createOutputCommandFeedbackPromise(portId) {
+        return new Promise(resolve => {
+            this._outputCommandFeedbackCallback[portId] = resolve;
+        });
+    }
+
+    _clearOutputCommandFeedbackCallback(portId) {
+        if (this._outputCommandFeedbackCallback[portId]) {
+            this._outputCommandFeedbackCallback[portId]();
+            this._outputCommandFeedbackCallback[portId] = null;
+        }
+    }
+
+    _clearOutputCommandCompletionCallback(portId) {
+        if (this._outputCommandCompletionCallback[portId]) {
+            this._outputCommandCompletionCallback[portId]();
+            this._outputCommandCompletionCallback[portId] = null;
+        }
+    }
+
+    _moveOutputCommandFeedbackCallbackToCompletionCallback(portId) {
+        this._outputCommandCompletionCallback[portId] = this._outputCommandFeedbackCallback[portId];
+        this._outputCommandFeedbackCallback[portId] = null;
     }
 
     // Motor
@@ -446,7 +449,8 @@ class Hub {
             if (portId == 0x00 && motor.ioType == IOType.MOVE_HUB_MOTOR) {
                 speed = speed * -1;
             }
-            return this.sendOutputCommand(portId, 0x0b, [...numberToInt32Array(degrees), speed, 100, 0x7f, 0x00]);
+            return this.sendOutputCommand(portId, 0x0b, [...numberToInt32Array(degrees), speed, 100, 0x7f, 0x00])
+                .then(this._createOutputCommandFeedbackPromise.bind(this, portId));
         } else {
             return Promise.resolve();
         }
@@ -461,7 +465,8 @@ class Hub {
             if (portId == 0x00 && motor.ioType == IOType.MOVE_HUB_MOTOR) {
                 speed = speed * -1;
             }
-            return this.sendOutputCommand(portId, 0x09, [...numberToInt16Array(milliseconds), speed, 100, 0x7f, 0x00]);
+            return this.sendOutputCommand(portId, 0x09, [...numberToInt16Array(milliseconds), speed, 100, 0x7f, 0x00])
+                .then(this._createOutputCommandFeedbackPromise.bind(this, portId));
         } else {
             return Promise.resolve();
         }
