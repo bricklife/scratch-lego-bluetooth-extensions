@@ -7,6 +7,7 @@ const log = require('../../util/log');
 const ServiceUUID = '00001623-1212-efde-1623-785feabcd123';
 const CharacteristicUUID = '00001624-1212-efde-1623-785feabcd123';
 const SendRateMax = 20;
+const PollingInterval = 3000;
 
 const IOType = {
     SIMPLE_MEDIUM_LINEAR_MOTOR: 0x01,
@@ -182,9 +183,15 @@ class Hub {
 
         this._rateLimiter = new RateLimiter(SendRateMax);
 
+        this._pollingId = null;
+
         this.reset = this.reset.bind(this);
         this._onConnect = this._onConnect.bind(this);
         this._onMessage = this._onMessage.bind(this);
+    }
+
+    get batteryLevel() {
+        return this._batteryLevel;
     }
 
     // BLE
@@ -235,14 +242,12 @@ class Hub {
             this._onMessage
         );
 
-        // Send a request for battery level
         setTimeout(() => {
-            this.sendMessage(
-                MessageType.HUB_PROPERTIES,
-                [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.ENABLE_UPDATES],
-                false
-            );
+            this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.ADVERTISING_NAME, HubPropertyOperation.ENABLE_UPDATES], false);
+            this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
         }, 500);
+
+        this._startPollingBatteryLevel();
     }
 
     _onMessage(base64) {
@@ -372,6 +377,8 @@ class Hub {
 
         this._outputCommandFeedbackCallback = [];
         this._outputCommandCompletionCallback = [];
+
+        this._stopPollingBatteryLevel();
     }
 
     stopAll() {
@@ -387,6 +394,19 @@ class Hub {
                 this._outputCommandFeedbackCallback[portId] = null;
                 this._outputCommandCompletionCallback[portId] = null;
             }
+        }
+    }
+
+    _startPollingBatteryLevel() {
+        this._pollingId = window.setInterval(() => {
+            this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
+        }, PollingInterval);
+    }
+
+    _stopPollingBatteryLevel() {
+        if (this._pollingId) {
+            window.clearInterval(this._pollingId);
+            this._pollingId = null;
         }
     }
 
