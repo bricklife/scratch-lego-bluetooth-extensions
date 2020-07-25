@@ -4,6 +4,13 @@ const MathUtil = require('../../util/math-util');
 const RateLimiter = require('../../util/rateLimiter.js');
 const log = require('../../util/log');
 
+let _TextDecoder;
+if (typeof TextEncoder === 'undefined') {
+    _TextDecoder = require('text-encoding').TextDecoder;
+} else {
+    _TextDecoder = TextDecoder;
+}
+
 const ServiceUUID = '00001623-1212-efde-1623-785feabcd123';
 const CharacteristicUUID = '00001624-1212-efde-1623-785feabcd123';
 const SendRateMax = 20;
@@ -171,6 +178,7 @@ class Hub {
         this._runtime = runtime;
         this._extensionId = extensionId;
 
+        this._name = null;
         this._batteryLevel = 0;
         this._devices = [];
 
@@ -188,6 +196,10 @@ class Hub {
         this.reset = this.reset.bind(this);
         this._onConnect = this._onConnect.bind(this);
         this._onMessage = this._onMessage.bind(this);
+    }
+
+    get name() {
+        return this._name;
     }
 
     get batteryLevel() {
@@ -265,6 +277,10 @@ class Hub {
             case MessageType.HUB_PROPERTIES: {
                 const property = data[3];
                 switch (property) {
+                    case HubPropertyReference.ADVERTISING_NAME:
+                        const uint8Array = new Uint8Array(data.slice(5));
+                        this._name = (new _TextDecoder()).decode(uint8Array);
+                        break;
                     case HubPropertyReference.BATTERY_VOLTAGE:
                         this._batteryLevel = data[5];
                         break;
@@ -372,6 +388,7 @@ class Hub {
     // Reset and Stop
 
     reset() {
+        this._name = null;
         this._batteryLevel = 0;
         this._devices = [];
 

@@ -135,7 +135,24 @@ class Scratch3LegoBleBlocks {
                             defaultValue: 75
                         }
                     }
-                }
+                },
+                '---',
+                {
+                    opcode: 'getName',
+                    text: formatMessage({
+                        id: 'legobluetooth.getName',
+                        default: 'name'
+                    }),
+                    blockType: BlockType.REPORTER
+                },
+                {
+                    opcode: 'getBatteryLevel',
+                    text: formatMessage({
+                        id: 'legobluetooth.getBatteryLevel',
+                        default: 'battery level'
+                    }),
+                    blockType: BlockType.REPORTER
+                },
             ],
             menus: {
                 PORT: {
@@ -292,6 +309,14 @@ class Scratch3LegoBleBlocks {
         return Promise.resolve();
     }
 
+    getName() {
+        return this._peripheral.name;
+    }
+
+    getBatteryLevel() {
+        return this._peripheral.batteryLevel;
+    }
+
     setupTranslations() {
         const localeSetup = formatMessage.setup();
         const extTranslations = {
@@ -306,7 +331,9 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.counterclockwise': '反時計回り',
                 'legobluetooth.rotations': '回転',
                 'legobluetooth.degrees': '度',
-                'legobluetooth.seconds': '秒'
+                'legobluetooth.seconds': '秒',
+                'legobluetooth.getName': '名前',
+                'legobluetooth.getBatteryLevel': '電池残量',
             },
             'ja-Hira': {
                 'legobluetooth.motorPWM': '[PORT] モーターを [POWER] % のパワーでまわす',
@@ -319,7 +346,9 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.counterclockwise': 'はんとけいまわり',
                 'legobluetooth.rotations': 'かいてん',
                 'legobluetooth.degrees': 'ど',
-                'legobluetooth.seconds': 'びょう'
+                'legobluetooth.seconds': 'びょう',
+                'legobluetooth.getName': 'なまえ',
+                'legobluetooth.getBatteryLevel': 'でんちざんりょう',
             }
         };
 
