@@ -193,17 +193,11 @@ class Scratch3LegoBleBlocks {
                     acceptReporters: false,
                     items: [
                         {
-                            text: formatMessage({
-                                id: 'legobluetooth.clockwise',
-                                default: 'clockwise'
-                            }),
+                            text: '⬆︎',
                             value: 1
                         },
                         {
-                            text: formatMessage({
-                                id: 'legobluetooth.counterclockwise',
-                                default: 'counterclockwise'
-                            }),
+                            text: '⬇',
                             value: -1
                         }
                     ]

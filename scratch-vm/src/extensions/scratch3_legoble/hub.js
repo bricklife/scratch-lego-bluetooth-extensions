@@ -483,9 +483,6 @@ class Hub {
         const motor = this.getMotor(portId);
         if (motor && motor.canUseSpeed) {
             let speed = motor.speed * direction;
-            if (portId == 0x00 && motor.ioType == IOType.MOVE_HUB_MOTOR) {
-                speed = speed * -1;
-            }
             return this.sendOutputCommand(portId, 0x0b, [...numberToInt32Array(degrees), speed, 100, 0x7f, 0x00])
                 .then(this._createOutputCommandFeedbackPromise.bind(this, portId));
         } else {
@@ -499,9 +496,6 @@ class Hub {
         const motor = this.getMotor(portId);
         if (motor && motor.canUseSpeed) {
             let speed = motor.speed * direction;
-            if (portId == 0x00 && motor.ioType == IOType.MOVE_HUB_MOTOR) {
-                speed = speed * -1;
-            }
             return this.sendOutputCommand(portId, 0x09, [...numberToInt16Array(milliseconds), speed, 100, 0x7f, 0x00])
                 .then(this._createOutputCommandFeedbackPromise.bind(this, portId));
         } else {
@@ -513,9 +507,6 @@ class Hub {
         const motor = this.getMotor(portId);
         if (motor && motor.canUseSpeed) {
             let speed = motor.speed * direction;
-            if (portId == 0x00 && motor.ioType == IOType.MOVE_HUB_MOTOR) {
-                speed = speed * -1;
-            }
             return this.sendOutputCommand(portId, 0x07, [speed, 100, 0x00]);
         } else {
             return Promise.resolve();
