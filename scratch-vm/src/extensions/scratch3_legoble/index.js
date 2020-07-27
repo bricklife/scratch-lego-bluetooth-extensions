@@ -388,6 +388,9 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] 方向に [VALUE] [UNIT] 回す',
                 'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] 方向に回す',
                 'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] % にする',
+                'legobluetooth.getDegreesCounted': '[PORT] 角度カウント',
+                'legobluetooth.getColor': '[PORT] 色',
+                'legobluetooth.getDistance': '[PORT] 距離',
 
                 'legobluetooth.clockwise': '時計回り',
                 'legobluetooth.counterclockwise': '反時計回り',
@@ -403,6 +406,9 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] ほうこうに [VALUE] [UNIT] まわす',
                 'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] ほうこうにまわす',
                 'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] % にする',
+                'legobluetooth.getDegreesCounted': '[PORT] かくどカウント',
+                'legobluetooth.getColor': '[PORT] いろ',
+                'legobluetooth.getDistance': '[PORT] きょり',
 
                 'legobluetooth.clockwise': 'とけいまわり',
                 'legobluetooth.counterclockwise': 'はんとけいまわり',
