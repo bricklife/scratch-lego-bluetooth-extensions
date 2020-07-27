@@ -2,7 +2,11 @@ const BLE = require('../../io/ble');
 const Base64Util = require('../../util/base64-util');
 const MathUtil = require('../../util/math-util');
 const RateLimiter = require('../../util/rateLimiter.js');
+
 const log = require('../../util/log');
+
+const IOType = require('./io-type');
+const Device = require('./device');
 
 let _TextDecoder;
 if (typeof TextEncoder === 'undefined') {
@@ -15,34 +19,6 @@ const ServiceUUID = '00001623-1212-efde-1623-785feabcd123';
 const CharacteristicUUID = '00001624-1212-efde-1623-785feabcd123';
 const SendRateMax = 20;
 const PollingInterval = 3000;
-
-const IOType = {
-    SIMPLE_MEDIUM_LINEAR_MOTOR: 0x01,
-    TRAIN_MOTOR: 0x02,
-    BUTTION: 0x05,
-    LIGHT: 0x08,
-    VOLTAGE: 0x14,
-    CURRENT: 0x15,
-    PIEZO_TONE: 0x16,
-    RGB_LIGHT: 0x17,
-    TILT_SENSOR: 0x22,
-    MOTION_SENSOR: 0x23,
-    COLOR_DISTANCE_SENSOR: 0x25,
-    MEDIUM_LINEAR_MOTOR: 0x26,
-    MOVE_HUB_MOTOR: 0x27,
-    MOVE_HUB_TILT_SENSOR: 0x28,
-    DUPLO_TRAIN_BASE_MOTOR: 0x29,
-    DUPLO_TRAIN_BASE_SPEAKER: 0x2a,
-    DUPLO_TRAIN_BASE_COLOR_SENSOR: 0x2b,
-    DUPLO_TRAIN_BASE_SPEEDOMETER: 0x2c,
-    TECHNIC_LARGE_MOTOR: 0x2e,
-    TECHNIC_XL_MOTOR: 0x2f,
-    TECHNIC_MEDIUM_ANGULAR_MOTOR: 0x30,
-    TECHNIC_LARGE_ANGULAR_MOTOR: 0x31,
-    REMOTE_POWER_CONTROL_BUTTON: 0x37,
-    MARIO_COLOR_BARCODE_SENSOR: 0x49,
-    MARIO_PANTS: 0x4a,
-};
 
 const MessageType = {
     HUB_PROPERTIES: 0x01,
@@ -71,145 +47,6 @@ const HubPropertyOperation = {
     REQUEST_UPDATE: 0x05,
     UPDATE: 0x06,
 };
-
-const int32ArrayToNumber = function (array) {
-    const i = Uint8Array.from(array);
-    const d = new DataView(i.buffer);
-    return d.getInt32(0, true);
-};
-
-class IODevice {
-
-    constructor(ioType) {
-        this._ioType = ioType;
-        this._inputValues = {};
-    }
-
-    get ioType() {
-        return this._ioType;
-    }
-
-    get mode() {
-        switch (this._ioType) {
-            case IOType.MEDIUM_LINEAR_MOTOR:
-            case IOType.MOVE_HUB_MOTOR:
-            case IOType.TECHNIC_LARGE_MOTOR:
-            case IOType.TECHNIC_XL_MOTOR:
-            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
-            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
-                return 2;
-            case IOType.MOTION_SENSOR:
-                return 0;
-            case IOType.COLOR_DISTANCE_SENSOR:
-                return 8;
-            default:
-                return null;
-        }
-    }
-
-    get inputValues() {
-        return this._inputValues;
-    }
-
-    updateInputValues(data) {
-        switch (this._ioType) {
-            case IOType.MEDIUM_LINEAR_MOTOR:
-            case IOType.MOVE_HUB_MOTOR:
-            case IOType.TECHNIC_LARGE_MOTOR:
-            case IOType.TECHNIC_XL_MOTOR:
-            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
-            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
-                this._inputValues = {
-                    degreesCounted: int32ArrayToNumber(data)
-                };
-                break;
-
-            case IOType.MOTION_SENSOR:
-                this._inputValues = {
-                    distance: data[0]
-                };
-                break;
-
-            case IOType.COLOR_DISTANCE_SENSOR:
-                this._inputValues = {
-                    color: data[0] > 0x0a ? -1 : data[0],
-                    distance: data[1]
-                };
-                break;
-
-            default:
-                this._inputValues = {};
-                break;
-        }
-    }
-}
-
-class Motor extends IODevice {
-
-    constructor(ioType) {
-        super(ioType);
-
-        switch (ioType) {
-            case IOType.MEDIUM_LINEAR_MOTOR:
-            case IOType.MOVE_HUB_MOTOR:
-                this._canUseSpeed = true;
-                this._canUsePosition = false;
-                this._speed = 75;
-                break;
-
-            case IOType.TECHNIC_LARGE_MOTOR:
-            case IOType.TECHNIC_XL_MOTOR:
-            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
-            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
-                this._canUseSpeed = true;
-                this._canUsePosition = true;
-                this._speed = 75;
-                break;
-
-            default:
-                this._canUseSpeed = false;
-                this._canUsePosition = false;
-                this._speed = 0;
-        }
-    }
-
-    get canUseSpeed() {
-        return this._canUseSpeed;
-    }
-
-    get canUsePosition() {
-        return this._canUsePosition;
-    }
-
-    get speed() {
-        return this._speed;
-    }
-
-    set speed(value) {
-        if (this._canUseSpeed) {
-            this._speed = MathUtil.clamp(value, -100, 100);
-        }
-    }
-
-    static canSupportIOType(ioType) {
-        switch (ioType) {
-            case IOType.SIMPLE_MEDIUM_LINEAR_MOTOR:
-            case IOType.TRAIN_MOTOR:
-            case IOType.LIGHT:
-            case IOType.MEDIUM_LINEAR_MOTOR:
-            case IOType.MOVE_HUB_MOTOR:
-            case IOType.DUPLO_TRAIN_BASE_MOTOR:
-            case IOType.TECHNIC_LARGE_MOTOR:
-            case IOType.TECHNIC_XL_MOTOR:
-            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
-            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
-                return true;
-
-            default:
-                return false;
-        }
-    }
-}
 
 const numberToInt32Array = function (number) {
     const buffer = new ArrayBuffer(4);
@@ -410,12 +247,7 @@ class Hub {
     }
 
     _attachDevice(portId, ioType) {
-        let device = null;
-        if (Motor.canSupportIOType(ioType)) {
-            device = new Motor(ioType);
-        } else {
-            device = new IODevice(ioType);
-        }
+        const device = Device.createDevice(ioType);
         this._devices[portId] = device;
 
         const mode = device.mode;
@@ -483,7 +315,7 @@ class Hub {
 
     stopAllMotors() {
         for (const [portId, device] of Object.entries(this._devices)) {
-            if (device instanceof Motor) {
+            if (device instanceof Device.Motor) {
                 this.sendOutputCommand(portId, 0x51, [0x00, 0], false, false);
                 this._outputCommandFeedbackCallback[portId] = null;
                 this._outputCommandCompletionCallback[portId] = null;
@@ -535,7 +367,7 @@ class Hub {
 
     getMotor(portId) {
         const device = this._devices[portId];
-        if (device instanceof Motor) {
+        if (device instanceof Device.Motor) {
             return device;
         } else {
             return null;
