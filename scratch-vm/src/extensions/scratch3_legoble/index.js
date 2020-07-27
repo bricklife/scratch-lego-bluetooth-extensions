@@ -317,8 +317,8 @@ class Scratch3LegoBleBlocks {
             'ja': {
                 'legobluetooth.motorPWM': '[PORT] モーターを [POWER] % のパワーで回す',
                 'legobluetooth.motorStop': '[PORT] モーターを止める',
-                'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] に [VALUE] [UNIT] 回す',
-                'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] に回す',
+                'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] 方向に [VALUE] [UNIT] 回す',
+                'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] 方向に回す',
                 'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] % にする',
 
                 'legobluetooth.clockwise': '時計回り',
@@ -332,8 +332,8 @@ class Scratch3LegoBleBlocks {
             'ja-Hira': {
                 'legobluetooth.motorPWM': '[PORT] モーターを [POWER] % のパワーでまわす',
                 'legobluetooth.motorStop': '[PORT] モーターをとめる',
-                'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] に [VALUE] [UNIT] まわす',
-                'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] にまわす',
+                'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] ほうこうに [VALUE] [UNIT] まわす',
+                'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] ほうこうにまわす',
                 'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] % にする',
 
                 'legobluetooth.clockwise': 'とけいまわり',
