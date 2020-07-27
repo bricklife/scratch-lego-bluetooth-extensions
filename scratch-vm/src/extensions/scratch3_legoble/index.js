@@ -391,14 +391,14 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.getDegreesCounted': '[PORT] 角度カウント',
                 'legobluetooth.getColor': '[PORT] 色',
                 'legobluetooth.getDistance': '[PORT] 距離',
+                'legobluetooth.getName': '名前',
+                'legobluetooth.getBatteryLevel': '電池残量',
 
                 'legobluetooth.clockwise': '時計回り',
                 'legobluetooth.counterclockwise': '反時計回り',
                 'legobluetooth.rotations': '回転',
                 'legobluetooth.degrees': '度',
                 'legobluetooth.seconds': '秒',
-                'legobluetooth.getName': '名前',
-                'legobluetooth.getBatteryLevel': '電池残量',
             },
             'ja-Hira': {
                 'legobluetooth.motorPWM': '[PORT] モーターを [POWER] % のパワーでまわす',
@@ -409,14 +409,14 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.getDegreesCounted': '[PORT] かくどカウント',
                 'legobluetooth.getColor': '[PORT] いろ',
                 'legobluetooth.getDistance': '[PORT] きょり',
+                'legobluetooth.getName': 'なまえ',
+                'legobluetooth.getBatteryLevel': 'でんちざんりょう',
 
                 'legobluetooth.clockwise': 'とけいまわり',
                 'legobluetooth.counterclockwise': 'はんとけいまわり',
                 'legobluetooth.rotations': 'かいてん',
                 'legobluetooth.degrees': 'ど',
                 'legobluetooth.seconds': 'びょう',
-                'legobluetooth.getName': 'なまえ',
-                'legobluetooth.getBatteryLevel': 'でんちざんりょう',
             }
         };
 
