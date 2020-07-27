@@ -610,8 +610,12 @@ class Hub {
     // Hub LED
 
     setLEDColor(color) {
+        if (color < 0 || color > 10) {
+            color = 0;
+        }
+
         const portId = this._devices.findIndex(device => device && device.ioType == IOType.RGB_LIGHT);
-        if (portId != -1 && color >= 0 && color <= 10) {
+        if (portId != -1) {
             return this.sendOutputCommand(portId, 0x51, [0x00, color]);
         } else {
             return Promise.resolve();

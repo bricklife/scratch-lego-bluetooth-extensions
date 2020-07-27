@@ -283,6 +283,13 @@ class Scratch3LegoBleBlocks {
                     items: [
                         {
                             text: formatMessage({
+                                id: 'legobluetooth.black',
+                                default: 'black'
+                            }),
+                            value: Color.BLACK
+                        },
+                        {
+                            text: formatMessage({
                                 id: 'legobluetooth.pink',
                                 default: 'pink'
                             }),
@@ -356,7 +363,7 @@ class Scratch3LegoBleBlocks {
                                 id: 'legobluetooth.noColor',
                                 default: 'no color'
                             }),
-                            value: Color.BLACK
+                            value: Color.NONE
                         },
                     ]
                 },
