@@ -136,6 +136,52 @@ class Scratch3LegoBleBlocks {
                         }
                     }
                 },
+                {
+                    opcode: 'getDegreesCounted',
+                    text: formatMessage({
+                        id: 'legobluetooth.getDegreesCounted',
+                        default: '[PORT] degrees counted'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        PORT: {
+                            type: ArgumentType.STRING,
+                            menu: 'PORT',
+                            defaultValue: 'A'
+                        }
+                    }
+                },
+                '---',
+                {
+                    opcode: 'getColor',
+                    text: formatMessage({
+                        id: 'legobluetooth.getColor',
+                        default: '[PORT] color'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        PORT: {
+                            type: ArgumentType.STRING,
+                            menu: 'PORT',
+                            defaultValue: 'A'
+                        }
+                    }
+                },
+                {
+                    opcode: 'getDistance',
+                    text: formatMessage({
+                        id: 'legobluetooth.getDistance',
+                        default: '[PORT] distance'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        PORT: {
+                            type: ArgumentType.STRING,
+                            menu: 'PORT',
+                            defaultValue: 'A'
+                        }
+                    }
+                },
                 '---',
                 {
                     opcode: 'getName',
@@ -301,6 +347,28 @@ class Scratch3LegoBleBlocks {
         });
 
         return Promise.resolve();
+    }
+
+    getDegreesCounted(args) {
+        return this._getSensorValue(args, 'degreesCounted', 0);
+    }
+
+    getColor(args) {
+        return this._getSensorValue(args, 'color', -1);
+    }
+
+    getDistance(args) {
+        return this._getSensorValue(args, 'distance', 0);
+    }
+
+    _getSensorValue(args, key, defaultValue) {
+        const port = this._validatePorts(Cast.toString(args.PORT)).shift();
+        if (port) {
+            const portId = externalPorts.indexOf(port);
+            const value = this._peripheral.inputValue(portId, key);
+            return value != null ? value : defaultValue;
+        }
+        return defaultValue;
     }
 
     getName() {

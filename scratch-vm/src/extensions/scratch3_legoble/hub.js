@@ -72,14 +72,75 @@ const HubPropertyOperation = {
     UPDATE: 0x06,
 };
 
+const int32ArrayToNumber = function (array) {
+    const i = Uint8Array.from(array);
+    const d = new DataView(i.buffer);
+    return d.getInt32(0, true);
+};
+
 class IODevice {
 
     constructor(ioType) {
         this._ioType = ioType;
+        this._inputValues = {};
     }
 
     get ioType() {
         return this._ioType;
+    }
+
+    get mode() {
+        switch (this._ioType) {
+            case IOType.MEDIUM_LINEAR_MOTOR:
+            case IOType.MOVE_HUB_MOTOR:
+            case IOType.TECHNIC_LARGE_MOTOR:
+            case IOType.TECHNIC_XL_MOTOR:
+            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
+            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
+                return 2;
+            case IOType.MOTION_SENSOR:
+                return 0;
+            case IOType.COLOR_DISTANCE_SENSOR:
+                return 8;
+            default:
+                return null;
+        }
+    }
+
+    get inputValues() {
+        return this._inputValues;
+    }
+
+    updateInputValues(data) {
+        switch (this._ioType) {
+            case IOType.MEDIUM_LINEAR_MOTOR:
+            case IOType.MOVE_HUB_MOTOR:
+            case IOType.TECHNIC_LARGE_MOTOR:
+            case IOType.TECHNIC_XL_MOTOR:
+            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
+            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
+                this._inputValues = {
+                    degreesCounted: int32ArrayToNumber(data)
+                };
+                break;
+
+            case IOType.MOTION_SENSOR:
+                this._inputValues = {
+                    distance: data[0]
+                };
+                break;
+
+            case IOType.COLOR_DISTANCE_SENSOR:
+                this._inputValues = {
+                    color: data[0] > 0x0a ? -1 : data[0],
+                    distance: data[1]
+                };
+                break;
+
+            default:
+                this._inputValues = {};
+                break;
+        }
     }
 }
 
@@ -308,6 +369,15 @@ class Hub {
                 break;
             }
 
+            case MessageType.PORT_VALUE: {
+                const portId = data[3];
+                const device = this._devices[portId];
+                if (device) {
+                    device.updateInputValues(data.slice(4));
+                }
+                break;
+            }
+
             case MessageType.PORT_OUTPUT_COMMAND_FEEDBACK: {
                 const portId = data[3];
                 const feedback = data[4];
@@ -340,10 +410,17 @@ class Hub {
     }
 
     _attachDevice(portId, ioType) {
+        let device = null;
         if (Motor.canSupportIOType(ioType)) {
-            this._devices[portId] = new Motor(ioType);
+            device = new Motor(ioType);
         } else {
-            this._devices[portId] = new IODevice(ioType);
+            device = new IODevice(ioType);
+        }
+        this._devices[portId] = device;
+
+        const mode = device.mode;
+        if (mode !== null) {
+            this.sendMessage(MessageType.PORT_INPUT_FORMAT_SETUP, [portId, mode, 1, 0, 0, 0, 1]);
         }
     }
 
@@ -518,6 +595,16 @@ class Hub {
         if (motor && motor.canUseSpeed) {
             motor.speed = speed;
         }
+    }
+
+    // Input Values
+
+    inputValue(portId, key) {
+        const device = this._devices[portId];
+        if (device && device.inputValues.hasOwnProperty(key)) {
+            return device.inputValues[key];
+        }
+        return null;
     }
 
     // Util
