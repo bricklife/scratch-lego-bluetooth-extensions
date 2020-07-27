@@ -516,6 +516,19 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.rotations': '回転',
                 'legobluetooth.degrees': '度',
                 'legobluetooth.seconds': '秒',
+
+                'legobluetooth.black': '黒',
+                'legobluetooth.pink': 'ピンク',
+                'legobluetooth.purple': '紫',
+                'legobluetooth.blue': '青',
+                'legobluetooth.lightBlue': '水色',
+                'legobluetooth.lightGreen': '明るい緑',
+                'legobluetooth.green': '緑',
+                'legobluetooth.yellow': '黄色',
+                'legobluetooth.orange': 'オレンジ',
+                'legobluetooth.red': '赤',
+                'legobluetooth.white': '白',
+                'legobluetooth.noColor': '色なし',
             },
             'ja-Hira': {
                 'legobluetooth.motorPWM': '[PORT] モーターを [POWER] % のパワーでまわす',
@@ -534,6 +547,19 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.rotations': 'かいてん',
                 'legobluetooth.degrees': 'ど',
                 'legobluetooth.seconds': 'びょう',
+
+                'legobluetooth.black': 'くろ',
+                'legobluetooth.pink': 'ピンク',
+                'legobluetooth.purple': 'むらさき',
+                'legobluetooth.blue': 'あお',
+                'legobluetooth.lightBlue': 'みずいろ',
+                'legobluetooth.lightGreen': 'あかるいみどり',
+                'legobluetooth.green': 'みどり',
+                'legobluetooth.yellow': 'きいろ',
+                'legobluetooth.orange': 'オレンジ',
+                'legobluetooth.red': 'あか',
+                'legobluetooth.white': 'しろ',
+                'legobluetooth.noColor': 'いろなし',
             }
         };
 
