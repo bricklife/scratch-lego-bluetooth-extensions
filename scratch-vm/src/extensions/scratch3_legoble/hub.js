@@ -607,6 +607,17 @@ class Hub {
         return null;
     }
 
+    // Hub LED
+
+    setLEDColor(color) {
+        const portId = this._devices.findIndex(device => device && device.ioType == IOType.RGB_LIGHT);
+        if (portId != -1 && color >= 0 && color <= 10) {
+            return this.sendOutputCommand(portId, 0x51, [0x00, color]);
+        } else {
+            return Promise.resolve();
+        }
+    }
+
     // Util
 
     logBytes(byteArray, prefix) {

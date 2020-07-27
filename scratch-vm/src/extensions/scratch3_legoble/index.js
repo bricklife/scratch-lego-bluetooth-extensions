@@ -12,6 +12,21 @@ const waitPromise = () => new Promise(resolve => window.setTimeout(resolve, BLES
 const externalPorts = ['A', 'B', 'C', 'D'];
 const multipleExternalPorts = ['A', 'B', 'C', 'D', 'A+B', 'C+D', 'A+B+C+D'];
 
+const Color = {
+    BLACK: 0,
+    PINK: 1,
+    PURPLE: 2,
+    BLUE: 3,
+    LIGHT_BLUE: 4,
+    LIGHT_GREEN: 5,
+    GREEN: 6,
+    YELLOW: 7,
+    ORANGE: 8,
+    RED: 9,
+    WHITE: 10,
+    NONE: -1,
+};
+
 class Scratch3LegoBleBlocks {
 
     static get EXTENSION_ID() {
@@ -184,6 +199,21 @@ class Scratch3LegoBleBlocks {
                 },
                 '---',
                 {
+                    opcode: 'setHubLEDColor',
+                    text: formatMessage({
+                        id: 'legobluetooth.setHubLEDColor',
+                        default: 'set hub LED color to [COLOR]',
+                    }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        COLOR: {
+                            type: ArgumentType.NUMBER,
+                            menu: 'LED_COLOR',
+                            defaultValue: 3
+                        }
+                    }
+                },
+                {
                     opcode: 'getName',
                     text: formatMessage({
                         id: 'legobluetooth.getName',
@@ -247,7 +277,89 @@ class Scratch3LegoBleBlocks {
                             value: -1
                         }
                     ]
-                }
+                },
+                LED_COLOR: {
+                    acceptReporters: true,
+                    items: [
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.pink',
+                                default: 'pink'
+                            }),
+                            value: Color.PINK
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.purple',
+                                default: 'purple'
+                            }),
+                            value: Color.PURPLE
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.blue',
+                                default: 'blue'
+                            }),
+                            value: Color.BLUE
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.lightBlue',
+                                default: 'light blue'
+                            }),
+                            value: Color.LIGHT_BLUE
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.lightGreen',
+                                default: 'light green'
+                            }),
+                            value: Color.LIGHT_GREEN
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.green',
+                                default: 'green'
+                            }),
+                            value: Color.GREEN
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.yellow',
+                                default: 'yellow'
+                            }),
+                            value: Color.YELLOW
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.orange',
+                                default: 'orange'
+                            }),
+                            value: Color.ORANGE
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.red',
+                                default: 'red'
+                            }),
+                            value: Color.RED
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.white',
+                                default: 'white'
+                            }),
+                            value: Color.WHITE
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.noColor',
+                                default: 'no color'
+                            }),
+                            value: Color.BLACK
+                        },
+                    ]
+                },
             }
         };
     }
@@ -369,6 +481,11 @@ class Scratch3LegoBleBlocks {
             return value != null ? value : defaultValue;
         }
         return defaultValue;
+    }
+
+    setHubLEDColor(args) {
+        const color = Cast.toNumber(args.COLOR);
+        return this._peripheral.setLEDColor(color).then(waitPromise);
     }
 
     getName() {
