@@ -304,7 +304,7 @@ class Scratch3LegoBleBlocks {
     }
 
     getName() {
-        return this._peripheral.name;
+        return this._peripheral.name ? this._peripheral.name : "";
     }
 
     getBatteryLevel() {
