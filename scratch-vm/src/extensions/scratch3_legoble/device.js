@@ -26,6 +26,10 @@ class GenericDevice {
                 return 0;
             case IOType.COLOR_DISTANCE_SENSOR:
                 return 8;
+            case IOType.DUPLO_TRAIN_BASE_SPEAKER:
+                return 1;
+            case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
+                return 0;
             default:
                 return null;
         }
@@ -58,6 +62,12 @@ class GenericDevice {
                 this._inputValues = {
                     color: data[0] > 0x0a ? -1 : data[0],
                     distance: data[1]
+                };
+                break;
+
+            case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
+                this._inputValues = {
+                    color: data[0] > 0x0a ? -1 : data[0]
                 };
                 break;
 
