@@ -211,6 +211,7 @@ class Hub {
                 const device = this._devices[portId];
                 if (device) {
                     device.updateInputValues(data.slice(4));
+                    log.debug({portId: portId}, device.inputValues);
                 }
                 break;
             }
