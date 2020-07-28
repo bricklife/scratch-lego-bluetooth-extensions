@@ -40,6 +40,11 @@ class GenericDevice {
     }
 
     updateInputValues(data) {
+        if (data.length == 0) {
+            this._inputValues = {};
+            return;
+        }
+
         switch (this._ioType) {
             case IOType.MEDIUM_LINEAR_MOTOR:
             case IOType.MOVE_HUB_MOTOR:
@@ -72,15 +77,11 @@ class GenericDevice {
                 break;
 
             default:
-                if (data.length > 0) {
-                    this._inputValues = {
-                        raw: data
-                    };
-                } else {
-                    this._inputValues = {};
-                }
+                this._inputValues = {};
                 break;
         }
+
+        this._inputValues.bytes = data;
     }
 }
 
