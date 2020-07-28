@@ -253,7 +253,7 @@ class Hub {
         const mode = device.mode;
         if (mode !== null) {
             setTimeout(() => {
-                this.sendMessage(MessageType.PORT_INPUT_FORMAT_SETUP, [portId, mode, 1, 0, 0, 0, 1]);
+                this.sendMessage(MessageType.PORT_INPUT_FORMAT_SETUP, [portId, mode, 1, 0, 0, 0, 1], false, true);
             }, 100);
         }
     }
