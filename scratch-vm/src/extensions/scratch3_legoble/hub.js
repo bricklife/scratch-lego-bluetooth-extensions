@@ -72,9 +72,10 @@ const numberToInt16Array = function (number) {
 
 class Hub {
 
-    constructor(runtime, extensionId) {
+    constructor(runtime, extensionId, hubId = null) {
         this._runtime = runtime;
         this._extensionId = extensionId;
+        this._hubId = hubId;
 
         this._name = null;
         this._batteryLevel = 0;
@@ -111,13 +112,21 @@ class Hub {
             this._ble.disconnect();
         }
 
+        let hubIdFilter = {
+            dataPrefix: []
+        };
+        if (this._hubId) {
+            hubIdFilter = {
+                dataPrefix: [0x00, this._hubId],
+                mask: [0x00, 0xff]
+            }
+        }
+
         this._ble = new BLE(this._runtime, this._extensionId, {
             filters: [{
                 services: [ServiceUUID],
                 manufacturerData: {
-                    0x0397: {
-                        dataPrefix: []
-                    }
+                    0x0397: hubIdFilter
                 }
             }],
             optionalServices: []

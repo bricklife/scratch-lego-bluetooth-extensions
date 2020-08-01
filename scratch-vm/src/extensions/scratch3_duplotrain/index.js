@@ -50,7 +50,7 @@ class Scratch3DuploTrainBlocks {
     constructor(runtime) {
         this.runtime = runtime;
 
-        this._peripheral = new Hub(this.runtime, Scratch3DuploTrainBlocks.EXTENSION_ID);
+        this._peripheral = new Hub(this.runtime, Scratch3DuploTrainBlocks.EXTENSION_ID, 0x20);
     }
 
     getInfo() {
