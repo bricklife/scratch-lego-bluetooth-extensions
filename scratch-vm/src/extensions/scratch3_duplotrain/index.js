@@ -228,84 +228,84 @@ class Scratch3DuploTrainBlocks {
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.black',
-                                default: 'black'
+                                default: '(0) Black'
                             }),
                             value: Color.BLACK
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.pink',
-                                default: 'pink'
+                                default: '(1) Pink'
                             }),
                             value: Color.PINK
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.purple',
-                                default: 'purple'
+                                default: '(2) Purple'
                             }),
                             value: Color.PURPLE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.blue',
-                                default: 'blue'
+                                default: '(3) Blue'
                             }),
                             value: Color.BLUE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.lightBlue',
-                                default: 'light blue'
+                                default: '(4) Light blue'
                             }),
                             value: Color.LIGHT_BLUE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.lightGreen',
-                                default: 'light green'
+                                default: '(5) Light green'
                             }),
                             value: Color.LIGHT_GREEN
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.green',
-                                default: 'green'
+                                default: '(6) Green'
                             }),
                             value: Color.GREEN
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.yellow',
-                                default: 'yellow'
+                                default: '(7) Yellow'
                             }),
                             value: Color.YELLOW
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.orange',
-                                default: 'orange'
+                                default: '(8) Orange'
                             }),
                             value: Color.ORANGE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.red',
-                                default: 'red'
+                                default: '(9) Red'
                             }),
                             value: Color.RED
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.white',
-                                default: 'white'
+                                default: '(10) White'
                             }),
                             value: Color.WHITE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.noColor',
-                                default: 'no color'
+                                default: '(-1) No color'
                             }),
                             value: Color.NONE
                         },
@@ -317,49 +317,49 @@ class Scratch3DuploTrainBlocks {
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.black',
-                                default: 'black'
+                                default: '(0) Black'
                             }),
                             value: Color.BLACK
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.blue',
-                                default: 'blue'
+                                default: '(3) Blue'
                             }),
                             value: Color.BLUE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.lightGreen',
-                                default: 'light green'
+                                default: '(5) Light green'
                             }),
                             value: Color.LIGHT_GREEN
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.yellow',
-                                default: 'yellow'
+                                default: '(7) Yellow'
                             }),
                             value: Color.YELLOW
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.red',
-                                default: 'red'
+                                default: '(9) Red'
                             }),
                             value: Color.RED
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.white',
-                                default: 'white'
+                                default: '(10) White'
                             }),
                             value: Color.WHITE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.noColor',
-                                default: 'no color'
+                                default: '(-1) No color'
                             }),
                             value: Color.NONE
                         },
@@ -415,32 +415,8 @@ class Scratch3DuploTrainBlocks {
         const localeSetup = formatMessage.setup();
         const extTranslations = {
             'ja': {
-                'legobluetooth.black': '黒',
-                'legobluetooth.pink': 'ピンク',
-                'legobluetooth.purple': '紫',
-                'legobluetooth.blue': '青',
-                'legobluetooth.lightBlue': '水色',
-                'legobluetooth.lightGreen': '明るい緑',
-                'legobluetooth.green': '緑',
-                'legobluetooth.yellow': '黄色',
-                'legobluetooth.orange': 'オレンジ',
-                'legobluetooth.red': '赤',
-                'legobluetooth.white': '白',
-                'legobluetooth.noColor': '色なし',
             },
             'ja-Hira': {
-                'legobluetooth.black': 'くろ',
-                'legobluetooth.pink': 'ピンク',
-                'legobluetooth.purple': 'むらさき',
-                'legobluetooth.blue': 'あお',
-                'legobluetooth.lightBlue': 'みずいろ',
-                'legobluetooth.lightGreen': 'あかるいみどり',
-                'legobluetooth.green': 'みどり',
-                'legobluetooth.yellow': 'きいろ',
-                'legobluetooth.orange': 'オレンジ',
-                'legobluetooth.red': 'あか',
-                'legobluetooth.white': 'しろ',
-                'legobluetooth.noColor': 'いろなし',
             }
         };
 

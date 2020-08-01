@@ -285,84 +285,84 @@ class Scratch3LegoBleBlocks {
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.black',
-                                default: 'black'
+                                default: '(0) Black'
                             }),
                             value: Color.BLACK
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.pink',
-                                default: 'pink'
+                                default: '(1) Pink'
                             }),
                             value: Color.PINK
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.purple',
-                                default: 'purple'
+                                default: '(2) Purple'
                             }),
                             value: Color.PURPLE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.blue',
-                                default: 'blue'
+                                default: '(3) Blue'
                             }),
                             value: Color.BLUE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.lightBlue',
-                                default: 'light blue'
+                                default: '(4) Light blue'
                             }),
                             value: Color.LIGHT_BLUE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.lightGreen',
-                                default: 'light green'
+                                default: '(5) Light green'
                             }),
                             value: Color.LIGHT_GREEN
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.green',
-                                default: 'green'
+                                default: '(6) Green'
                             }),
                             value: Color.GREEN
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.yellow',
-                                default: 'yellow'
+                                default: '(7) Yellow'
                             }),
                             value: Color.YELLOW
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.orange',
-                                default: 'orange'
+                                default: '(8) Orange'
                             }),
                             value: Color.ORANGE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.red',
-                                default: 'red'
+                                default: '(9) Red'
                             }),
                             value: Color.RED
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.white',
-                                default: 'white'
+                                default: '(10) White'
                             }),
                             value: Color.WHITE
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.noColor',
-                                default: 'no color'
+                                default: '(-1) No color'
                             }),
                             value: Color.NONE
                         },
@@ -525,18 +525,18 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.degrees': '度',
                 'legobluetooth.seconds': '秒',
 
-                'legobluetooth.black': '黒',
-                'legobluetooth.pink': 'ピンク',
-                'legobluetooth.purple': '紫',
-                'legobluetooth.blue': '青',
-                'legobluetooth.lightBlue': '水色',
-                'legobluetooth.lightGreen': '明るい緑',
-                'legobluetooth.green': '緑',
-                'legobluetooth.yellow': '黄色',
-                'legobluetooth.orange': 'オレンジ',
-                'legobluetooth.red': '赤',
-                'legobluetooth.white': '白',
-                'legobluetooth.noColor': '色なし',
+                'legobluetooth.black': '(0) 黒',
+                'legobluetooth.pink': '(1) ピンク',
+                'legobluetooth.purple': '(2) 紫',
+                'legobluetooth.blue': '(3) 青',
+                'legobluetooth.lightBlue': '(4) 水色',
+                'legobluetooth.lightGreen': '(5) 明るい緑',
+                'legobluetooth.green': '(6) 緑',
+                'legobluetooth.yellow': '(7) 黄色',
+                'legobluetooth.orange': '(8) オレンジ',
+                'legobluetooth.red': '(9) 赤',
+                'legobluetooth.white': '(10) 白',
+                'legobluetooth.noColor': '(-1) 色なし',
             },
             'ja-Hira': {
                 'legobluetooth.motorPWM': '[PORT] モーターを [POWER] % のパワーでまわす',
@@ -556,18 +556,18 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.degrees': 'ど',
                 'legobluetooth.seconds': 'びょう',
 
-                'legobluetooth.black': 'くろ',
-                'legobluetooth.pink': 'ピンク',
-                'legobluetooth.purple': 'むらさき',
-                'legobluetooth.blue': 'あお',
-                'legobluetooth.lightBlue': 'みずいろ',
-                'legobluetooth.lightGreen': 'あかるいみどり',
-                'legobluetooth.green': 'みどり',
-                'legobluetooth.yellow': 'きいろ',
-                'legobluetooth.orange': 'オレンジ',
-                'legobluetooth.red': 'あか',
-                'legobluetooth.white': 'しろ',
-                'legobluetooth.noColor': 'いろなし',
+                'legobluetooth.black': '(0) くろ',
+                'legobluetooth.pink': '(1) ピンク',
+                'legobluetooth.purple': '(2) むらさき',
+                'legobluetooth.blue': '(3) あお',
+                'legobluetooth.lightBlue': '(4) みずいろ',
+                'legobluetooth.lightGreen': '(5) あかるいみどり',
+                'legobluetooth.green': '(6) みどり',
+                'legobluetooth.yellow': '(7) きいろ',
+                'legobluetooth.orange': '(8) オレンジ',
+                'legobluetooth.red': '(9) あか',
+                'legobluetooth.white': '(10) しろ',
+                'legobluetooth.noColor': '(-1) いろなし',
             }
         };
 
