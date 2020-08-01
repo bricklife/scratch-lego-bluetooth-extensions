@@ -58,7 +58,10 @@ class Scratch3DuploTrainBlocks {
 
         return {
             id: Scratch3DuploTrainBlocks.EXTENSION_ID,
-            name: 'Duplo Train',
+            name: formatMessage({
+                id: 'duplotrain.categoryName',
+                default: 'Duplo Train'
+            }),
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [
@@ -109,7 +112,7 @@ class Scratch3DuploTrainBlocks {
                     opcode: 'setHubLEDColor',
                     text: formatMessage({
                         id: 'duplotrain.setHubLEDColor',
-                        default: 'set LED color to [COLOR]'
+                        default: 'set light color to [COLOR]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -125,7 +128,7 @@ class Scratch3DuploTrainBlocks {
                     opcode: 'whenColor',
                     text: formatMessage({
                         id: 'duplotrain.whenColor',
-                        default: 'when color is [SENSOR_COLOR]'
+                        default: 'when ground color is [SENSOR_COLOR]'
                     }),
                     blockType: BlockType.HAT,
                     arguments: {
@@ -140,7 +143,7 @@ class Scratch3DuploTrainBlocks {
                     opcode: 'isColor',
                     text: formatMessage({
                         id: 'duplotrain.isColor',
-                        default: 'color is [SENSOR_COLOR] ?'
+                        default: 'ground color is [SENSOR_COLOR] ?'
                     }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
@@ -155,7 +158,7 @@ class Scratch3DuploTrainBlocks {
                     opcode: 'getColor',
                     text: formatMessage({
                         id: 'duplotrain.getColor',
-                        default: 'color'
+                        default: 'ground color'
                     }),
                     blockType: BlockType.REPORTER
                 },
@@ -415,8 +418,40 @@ class Scratch3DuploTrainBlocks {
         const localeSetup = formatMessage.setup();
         const extTranslations = {
             'ja': {
+                'duplotrain.categoryName': 'デュプロトレイン',
+
+                'duplotrain.motorPWM': '[DIRECTION] 方向に [POWER] % のパワーで走る',
+                'duplotrain.motorStop': '止まる',
+                'duplotrain.playSound': '[SOUND] の音を鳴らす',
+                'duplotrain.setHubLEDColor': 'ライトの色を [COLOR] にする',
+                'duplotrain.whenColor': '地面の色が [SENSOR_COLOR] のとき',
+                'duplotrain.isColor': '地面の色が [SENSOR_COLOR]',
+                'duplotrain.getColor': '地面の色',
+                'duplotrain.getDrivingDistance': '走行距離',
+
+                'duplotrain.brake': 'ブレーキ',
+                'duplotrain.departure': '到着',
+                'duplotrain.refill': '給水',
+                'duplotrain.horn': '汽笛',
+                'duplotrain.steam': '蒸気',
             },
             'ja-Hira': {
+                'duplotrain.categoryName': 'デュプロトレイン',
+
+                'duplotrain.motorPWM': '[DIRECTION] ほうこうに [POWER] % のパワーではしる',
+                'duplotrain.motorStop': 'とまる',
+                'duplotrain.playSound': '[SOUND] のおとをならす',
+                'duplotrain.setHubLEDColor': 'ライトのいろを [COLOR] にする',
+                'duplotrain.whenColor': 'じめんのいろが [SENSOR_COLOR] のとき',
+                'duplotrain.isColor': 'じめんのいろが [SENSOR_COLOR]',
+                'duplotrain.getColor': 'じめんのいろ',
+                'duplotrain.getDrivingDistance': 'そうこうきょり',
+
+                'duplotrain.brake': 'ブレーキ',
+                'duplotrain.departure': 'とうちゃく',
+                'duplotrain.refill': 'きゅうすい',
+                'duplotrain.horn': 'きてき',
+                'duplotrain.steam': 'じょうき',
             }
         };
 
