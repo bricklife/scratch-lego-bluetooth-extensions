@@ -171,7 +171,7 @@ class Hub {
 
     _onMessage(base64) {
         const data = Base64Util.base64ToUint8Array(base64);
-        this.logBytes(data, '<<');
+        logByteArray('<<', data);
 
         const length = data[0];
         if (length > 127) {
@@ -220,7 +220,7 @@ class Hub {
                 const device = this._devices[portId];
                 if (device) {
                     device.updateInputValues(data.slice(4));
-                    log.debug({portId: portId}, device.inputValues);
+                    log.debug(portId, device.inputValues);
                 }
                 break;
             }
@@ -279,7 +279,7 @@ class Hub {
             }
         }
 
-        this.logBytes(data, '>>');
+        logByteArray('>>', data);
 
         return this._ble.write(
             ServiceUUID,
@@ -465,14 +465,12 @@ class Hub {
             return Promise.resolve();
         }
     }
-
-    // Util
-
-    logBytes(byteArray, prefix) {
-        bytes = byteArray.reduce((output, elem) =>
-            (output + ('0' + (elem & 0xff).toString(16)).slice(-2)) + ' ', '');
-        log.info(`${prefix} ${bytes}`);
-    }
 }
+
+const logByteArray = function (prefix, array) {
+    bytes = array.reduce((output, elem) =>
+        (output + ('0' + (elem & 0xff).toString(16)).slice(-2)) + ' ', '');
+    log.debug(`${prefix} ${bytes}`);
+};
 
 module.exports = Hub;
