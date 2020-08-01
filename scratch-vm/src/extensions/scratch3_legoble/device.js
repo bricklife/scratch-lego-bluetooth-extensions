@@ -30,6 +30,8 @@ class GenericDevice {
                 return 1;
             case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
                 return 0;
+            case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:
+                return 1;
             default:
                 return null;
         }
@@ -73,6 +75,12 @@ class GenericDevice {
             case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
                 this._inputValues = {
                     color: data[0] > 0x0a ? -1 : data[0]
+                };
+                break;
+
+            case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:
+                this._inputValues = {
+                    drivingDistance: int32ArrayToNumber(data)
                 };
                 break;
 

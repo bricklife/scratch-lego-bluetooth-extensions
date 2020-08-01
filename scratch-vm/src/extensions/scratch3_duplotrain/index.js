@@ -36,7 +36,9 @@ const Sound = {
 const PortId = {
     MOTOR: 0x00,
     SPEAKER: 0x01,
+    RGB_LIGHT: 0x11,
     COLOR_SENSOR: 0x12,
+    SPEEDOMETER: 0x13,
 };
 
 class Scratch3DuploTrainBlocks {
@@ -154,6 +156,14 @@ class Scratch3DuploTrainBlocks {
                     text: formatMessage({
                         id: 'duplotrain.getColor',
                         default: 'color'
+                    }),
+                    blockType: BlockType.REPORTER
+                },
+                {
+                    opcode: 'getDrivingDistance',
+                    text: formatMessage({
+                        id: 'duplotrain.getDrivingDistance',
+                        default: 'driving distance'
                     }),
                     blockType: BlockType.REPORTER
                 },
@@ -390,6 +400,10 @@ class Scratch3DuploTrainBlocks {
 
     getColor() {
         return this._getSensorValue(PortId.COLOR_SENSOR, 'color', -1);
+    }
+
+    getDrivingDistance() {
+        return this._getSensorValue(PortId.SPEEDOMETER, 'drivingDistance', 0);
     }
 
     _getSensorValue(portId, key, defaultValue) {
