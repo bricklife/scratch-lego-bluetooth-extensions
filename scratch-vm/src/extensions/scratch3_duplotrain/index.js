@@ -306,13 +306,6 @@ class Scratch3DuploTrainBlocks {
                             }),
                             value: Color.WHITE
                         },
-                        {
-                            text: formatMessage({
-                                id: 'legobluetooth.noColor',
-                                default: '(-1) No color'
-                            }),
-                            value: Color.NONE
-                        },
                     ]
                 },
                 SENSOR_COLOR: {
