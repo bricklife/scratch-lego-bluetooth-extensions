@@ -59,10 +59,7 @@ class Scratch3DuploTrainBlocks {
 
         return {
             id: Scratch3DuploTrainBlocks.EXTENSION_ID,
-            name: formatMessage({
-                id: 'duplotrain.categoryName',
-                default: 'Duplo Train'
-            }),
+            name: 'Duplo Train',
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [
@@ -411,8 +408,6 @@ class Scratch3DuploTrainBlocks {
     _setupTranslations() {
         setupTranslations({
             'ja': {
-                'duplotrain.categoryName': 'デュプロトレイン',
-
                 'duplotrain.motorPWM': '[DIRECTION] 方向に [POWER] %のパワーで走る',
                 'duplotrain.motorStop': '止まる',
                 'duplotrain.playSound': '[SOUND] の音を鳴らす',
@@ -429,8 +424,6 @@ class Scratch3DuploTrainBlocks {
                 'duplotrain.steam': '蒸気',
             },
             'ja-Hira': {
-                'duplotrain.categoryName': 'デュプロトレイン',
-
                 'duplotrain.motorPWM': '[DIRECTION] ほうこうに [POWER] %のパワーではしる',
                 'duplotrain.motorStop': 'とまる',
                 'duplotrain.playSound': '[SOUND] のおとをならす',
