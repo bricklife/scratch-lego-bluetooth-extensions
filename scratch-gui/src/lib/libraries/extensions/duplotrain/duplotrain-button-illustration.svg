@@ -57,7 +57,6 @@
                         <line x1="0.5" y1="3.5" x2="26.5" y2="3.5" id="Line"></line>
                     </g>
                 </g>
-                <circle id="Oval" fill="#FFFFFF" cx="91.5" cy="36.5" r="3.5"></circle>
             </g>
         </g>
         <g id="arrow">
