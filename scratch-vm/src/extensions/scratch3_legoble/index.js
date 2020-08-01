@@ -4,6 +4,7 @@ const Cast = require('../../util/cast');
 const formatMessage = require('format-message');
 
 const Hub = require('./hub');
+const setupTranslations = require('./setup-translations');
 
 const blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAABYlAAAWJQFJUiTwAAABWWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgpMwidZAAAB0UlEQVR4Ae3Yv03DQBiHYRuFjoYFWIEW0cIMFFAhShYIEkiRQCILUCIqKNiBFtGyAgswAEgmjrjIRez3ztYVsd40vvh3//zki05yUfhRQAEFFFBAAQUUUEABBRRQQAEFFFBAAQUUUEABBRRQQIG8AmXK9LP5695v9fNYFuVBVVQfk3L7YjY9+Rrr/RibrZhOoU+Nt2gfL/B26uv/92Ks98Nzd12xAq/vn6uuCcae3V2ddRolVeDYsfo83yR20O30NLZrUr+b+cuyf675kzbT6Bz21bi1thkNWI+OmTRApPRdu7MNuelfeOAPlVSBYa3D/d3QXF3fP79X7WYjpW9z3Ka0O0+Y+iE8hT2FsxZz9F/48vwoy0Yent6W8+aav++mw75ovIcICUEuIABRLCAJQS4gAFEsIAlBLiAAUSwgCUEuIABRLCAJQS4gAFEsIAlBLiAAUSwgCUEuIABRLCAJQR79PjD2/Ris1xrnnr914YGBFTgQMLoCc70xDpWXa/6+PmFfNN4KJCHIBQQgigUkIcgFBCCKBSQhyKNP4dhTCdZrjXPP37rwwMAKHAjocAUUUEABBRRQQAEFFFBAAQUUUEABBRRQQAEFFFBAAQUUyC3wB8F0/UisWMI9AAAAAElFTkSuQmCC';
 
@@ -41,7 +42,7 @@ class Scratch3LegoBleBlocks {
     }
 
     getInfo() {
-        this.setupTranslations();
+        setupTranslations();
 
         return {
             id: Scratch3LegoBleBlocks.EXTENSION_ID,
@@ -502,81 +503,6 @@ class Scratch3LegoBleBlocks {
 
     getBatteryLevel() {
         return this._peripheral.batteryLevel;
-    }
-
-    setupTranslations() {
-        const localeSetup = formatMessage.setup();
-        const extTranslations = {
-            'ja': {
-                'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーで回す',
-                'legobluetooth.motorStop': '[PORT] モーターを止める',
-                'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] 方向に [VALUE] [UNIT] 回す',
-                'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] 方向に回す',
-                'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
-                'legobluetooth.getDegreesCounted': '[PORT] 角度カウント',
-                'legobluetooth.getColor': '[PORT] 色',
-                'legobluetooth.getDistance': '[PORT] 距離',
-                'legobluetooth.getName': '名前',
-                'legobluetooth.getBatteryLevel': '電池残量',
-
-                'legobluetooth.clockwise': '時計回り',
-                'legobluetooth.counterclockwise': '反時計回り',
-                'legobluetooth.rotations': '回転',
-                'legobluetooth.degrees': '度',
-                'legobluetooth.seconds': '秒',
-
-                'legobluetooth.black': '(0) 黒',
-                'legobluetooth.pink': '(1) ピンク',
-                'legobluetooth.purple': '(2) 紫',
-                'legobluetooth.blue': '(3) 青',
-                'legobluetooth.lightBlue': '(4) 水色',
-                'legobluetooth.lightGreen': '(5) 明るい緑',
-                'legobluetooth.green': '(6) 緑',
-                'legobluetooth.yellow': '(7) 黄色',
-                'legobluetooth.orange': '(8) オレンジ',
-                'legobluetooth.red': '(9) 赤',
-                'legobluetooth.white': '(10) 白',
-                'legobluetooth.noColor': '(-1) 色なし',
-            },
-            'ja-Hira': {
-                'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーでまわす',
-                'legobluetooth.motorStop': '[PORT] モーターをとめる',
-                'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] ほうこうに [VALUE] [UNIT] まわす',
-                'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] ほうこうにまわす',
-                'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
-                'legobluetooth.getDegreesCounted': '[PORT] かくどカウント',
-                'legobluetooth.getColor': '[PORT] いろ',
-                'legobluetooth.getDistance': '[PORT] きょり',
-                'legobluetooth.getName': 'なまえ',
-                'legobluetooth.getBatteryLevel': 'でんちざんりょう',
-
-                'legobluetooth.clockwise': 'とけいまわり',
-                'legobluetooth.counterclockwise': 'はんとけいまわり',
-                'legobluetooth.rotations': 'かいてん',
-                'legobluetooth.degrees': 'ど',
-                'legobluetooth.seconds': 'びょう',
-
-                'legobluetooth.black': '(0) くろ',
-                'legobluetooth.pink': '(1) ピンク',
-                'legobluetooth.purple': '(2) むらさき',
-                'legobluetooth.blue': '(3) あお',
-                'legobluetooth.lightBlue': '(4) みずいろ',
-                'legobluetooth.lightGreen': '(5) あかるいみどり',
-                'legobluetooth.green': '(6) みどり',
-                'legobluetooth.yellow': '(7) きいろ',
-                'legobluetooth.orange': '(8) オレンジ',
-                'legobluetooth.red': '(9) あか',
-                'legobluetooth.white': '(10) しろ',
-                'legobluetooth.noColor': '(-1) いろなし',
-            }
-        };
-
-        for (const locale in extTranslations) {
-            if (!localeSetup.translations[locale]) {
-                localeSetup.translations[locale] = {};
-            }
-            Object.assign(localeSetup.translations[locale], extTranslations[locale]);
-        }
     }
 }
 

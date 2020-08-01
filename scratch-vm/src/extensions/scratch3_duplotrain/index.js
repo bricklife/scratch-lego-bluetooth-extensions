@@ -4,6 +4,7 @@ const Cast = require('../../util/cast');
 const formatMessage = require('format-message');
 
 const Hub = require('../scratch3_legoble/hub');
+const setupTranslations = require('../scratch3_legoble/setup-translations');
 
 const blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABDtJREFUeAHtm01IVFEUx88bxzIdi4xamFa4CDJIohBapOBCGTFok0RtI2jTwk0JBYJBtahtEG5zYZugcNBFkJs2RSRY0EIqzSDSvkYtG33dM+Ot8fHOu+f53jg+Ow/kzjv33HPu/b3//ZgPAeQSAkJACAgBISAEhIAQEAJCQAgIASEgBISAEBACkSFg+enpk4dgu/k3n4BsHFO9W9uo22JRH0Cx+29UIKWqteq4Vvda5fObRxTol5jDP+64J2+bjpFVBakYeVqQsKEHFQUGRMpWYFQUYeIxWOF+kmifzZ0kTO2d9aJAJxGf98ZdWMfTTy7J1qxu6a9MZXL+TkUMbYXk0iLcVQfRGreIaiCTsRI43/YdUm71qQp4ptoecavTNhXjeXIWjup7ThkZBXrBw4EiWPQhBx3zqNONOD7ad7kssJ4c2QLcauVRMwCVq33c0pSVQf/Pebhl25BoKgGoWJ57s6rRyCKAZUEafeCHW2vaFgpAPe3oNO41FAz01kuGs6UpF9Vufu5fJATmvJDnwi84rgrXJcDpr+8jM4V1hwtVLillei4BROJQFKhjz6XzHrM2upTliXIX60qTlzpXeoZzZ1oCqCyiQIoM0y4AmaAoNwFIkWHaBSATFOUmACkyTLsAZIKi3AQgRYZpF4BMUJSbAKTIMO2hvhPhvMNg9isybqLAgI8qFAWu9fvWgGMOtbkoMCDOUBQYsA+uzU2f+7k2CsGoP090fqVAhRYFUmSY9nWnwGKvp36VLwpkKo1yE4AUGaZdADJBUW4CkCLDtAtAJijKbfnrZaoa4Mr1e+qr5//3utZ91pORKDCgNtjnwNT9mwFTRat58tQlVoeNCrTASmOkkngpK+BGcNJj1WP3GhNDgfZ7FaC+cttO+Do95RUrUnWPBoc5/U30dnu7GRWofraUzVSz75B3pP+0lqFA6FPb0MXauobYx4nXMP3p3YZA1dHe6jqOHbv2QmPzafy975ISj1E1RgX2Xj4zZltwB7M1NHYAJtioF44Nx4gXjhnHbhorR4EQryvtyoxnDmzekmjBpzMx/hIm345C+ttnyGQWTDnWdT1uGLi+4xKlZlmur5b1OF4X7+J03POQmB+gZ2BgU2b8923LhgvqZG1Ubn7bqLzGaYvKQ8H0dHaylMEGqCFcvdF/UL0+B7bdqpLVqt/VVuq6KJa5o4o6aeQ2yz7OtM0fp2+A+Y3xdRaobY+iKk+2HYbd1VVOlxX3H6Zm4MHQi7+LtN8Orwi2DvIHnor5m8zwyBggIOrCOvTBi7tIU7G0vdj5WZuI7ixV6k1mbn6hBdVVv786+1e1PZFtMvMlDa/eTGX/sgYfizSVM99ezPyBp7AeCGeTWc0ireObymLlDw2gHmD+JqP++2JPzr76RVrH5ZbFzs/tp/gJASEgBISAEBACQkAICAEhIASEgBAQAkJACKyGwB8od0IZW+SbHgAAAABJRU5ErkJggg==';
 
@@ -54,7 +55,7 @@ class Scratch3DuploTrainBlocks {
     }
 
     getInfo() {
-        this.setupTranslations();
+        this._setupTranslations();
 
         return {
             id: Scratch3DuploTrainBlocks.EXTENSION_ID,
@@ -414,9 +415,8 @@ class Scratch3DuploTrainBlocks {
         return value != null ? value : defaultValue;
     }
 
-    setupTranslations() {
-        const localeSetup = formatMessage.setup();
-        const extTranslations = {
+    _setupTranslations() {
+        setupTranslations({
             'ja': {
                 'duplotrain.categoryName': 'デュプロトレイン',
 
@@ -453,14 +453,7 @@ class Scratch3DuploTrainBlocks {
                 'duplotrain.horn': 'きてき',
                 'duplotrain.steam': 'じょうき',
             }
-        };
-
-        for (const locale in extTranslations) {
-            if (!localeSetup.translations[locale]) {
-                localeSetup.translations[locale] = {};
-            }
-            Object.assign(localeSetup.translations[locale], extTranslations[locale]);
-        }
+        });
     }
 }
 
