@@ -420,7 +420,7 @@ class Scratch3DuploTrainBlocks {
             'ja': {
                 'duplotrain.categoryName': 'デュプロトレイン',
 
-                'duplotrain.motorPWM': '[DIRECTION] 方向に [POWER] % のパワーで走る',
+                'duplotrain.motorPWM': '[DIRECTION] 方向に [POWER] %のパワーで走る',
                 'duplotrain.motorStop': '止まる',
                 'duplotrain.playSound': '[SOUND] の音を鳴らす',
                 'duplotrain.setHubLEDColor': 'ライトの色を [COLOR] にする',
@@ -438,7 +438,7 @@ class Scratch3DuploTrainBlocks {
             'ja-Hira': {
                 'duplotrain.categoryName': 'デュプロトレイン',
 
-                'duplotrain.motorPWM': '[DIRECTION] ほうこうに [POWER] % のパワーではしる',
+                'duplotrain.motorPWM': '[DIRECTION] ほうこうに [POWER] %のパワーではしる',
                 'duplotrain.motorStop': 'とまる',
                 'duplotrain.playSound': '[SOUND] のおとをならす',
                 'duplotrain.setHubLEDColor': 'ライトのいろを [COLOR] にする',

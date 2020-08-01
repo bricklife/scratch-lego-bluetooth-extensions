@@ -508,11 +508,11 @@ class Scratch3LegoBleBlocks {
         const localeSetup = formatMessage.setup();
         const extTranslations = {
             'ja': {
-                'legobluetooth.motorPWM': '[PORT] モーターを [POWER] % のパワーで回す',
+                'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーで回す',
                 'legobluetooth.motorStop': '[PORT] モーターを止める',
                 'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] 方向に [VALUE] [UNIT] 回す',
                 'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] 方向に回す',
-                'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] % にする',
+                'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
                 'legobluetooth.getDegreesCounted': '[PORT] 角度カウント',
                 'legobluetooth.getColor': '[PORT] 色',
                 'legobluetooth.getDistance': '[PORT] 距離',
@@ -539,11 +539,11 @@ class Scratch3LegoBleBlocks {
                 'legobluetooth.noColor': '(-1) 色なし',
             },
             'ja-Hira': {
-                'legobluetooth.motorPWM': '[PORT] モーターを [POWER] % のパワーでまわす',
+                'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーでまわす',
                 'legobluetooth.motorStop': '[PORT] モーターをとめる',
                 'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] ほうこうに [VALUE] [UNIT] まわす',
                 'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] ほうこうにまわす',
-                'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] % にする',
+                'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
                 'legobluetooth.getDegreesCounted': '[PORT] かくどカウント',
                 'legobluetooth.getColor': '[PORT] いろ',
                 'legobluetooth.getDistance': '[PORT] きょり',
