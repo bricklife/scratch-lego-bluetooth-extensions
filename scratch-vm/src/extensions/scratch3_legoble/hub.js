@@ -441,6 +441,17 @@ class Hub {
         }
     }
 
+    motorResetDegreesCounted(portId, degreesCounted) {
+        degreesCounted = MathUtil.clamp(degreesCounted, -360000, 360000);
+
+        const motor = this.getMotor(portId);
+        if (motor && motor.canUseSpeed) {
+            return this.sendOutputCommand(portId, 0x51, [0x02, ...numberToInt32Array(degreesCounted)]);
+        } else {
+            return Promise.resolve();
+        }
+    }
+
     // Input Values
 
     inputValue(portId, key) {

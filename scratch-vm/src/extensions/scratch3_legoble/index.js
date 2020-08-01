@@ -168,6 +168,25 @@ class Scratch3LegoBleBlocks {
                         }
                     }
                 },
+                {
+                    opcode: 'motorResetDegreesCounted',
+                    text: formatMessage({
+                        id: 'legobluetooth.motorResetDegreesCounted',
+                        default: '[PORT] reset degrees counted to [DEGREES_COUNTED]'
+                    }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        PORT: {
+                            type: ArgumentType.STRING,
+                            menu: 'MULTIPLE_PORT',
+                            defaultValue: 'A'
+                        },
+                        DEGREES_COUNTED: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 0
+                        }
+                    }
+                },
                 '---',
                 {
                     opcode: 'getColor',
@@ -461,6 +480,19 @@ class Scratch3LegoBleBlocks {
         });
 
         return Promise.resolve();
+    }
+
+    motorResetDegreesCounted(args) {
+        const degreesCounted = Cast.toNumber(args.DEGREES_COUNTED);
+
+        const ports = this._validatePorts(Cast.toString(args.PORT));
+
+        const promises = ports.map(port => {
+            const portId = externalPorts.indexOf(port);
+            return this._peripheral.motorResetDegreesCounted(portId, degreesCounted);
+        });
+
+        return Promise.all(promises).then(waitPromise);
     }
 
     getDegreesCounted(args) {
