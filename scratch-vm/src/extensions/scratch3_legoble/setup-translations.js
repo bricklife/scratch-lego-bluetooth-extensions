@@ -11,8 +11,10 @@ const setupTranslations = function (extTranslations = {}) {
             'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] 方向に回す',
             'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
             'legobluetooth.getDegreesCounted': '[PORT] 角度カウント',
+            'legobluetooth.motorResetDegreesCounted': '[PORT] 角度カウントを [DEGREES_COUNTED] にリセットする',
             'legobluetooth.getColor': '[PORT] 色',
             'legobluetooth.getDistance': '[PORT] 距離',
+            'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
             'legobluetooth.getName': '名前',
             'legobluetooth.getBatteryLevel': '電池残量',
 
@@ -42,8 +44,10 @@ const setupTranslations = function (extTranslations = {}) {
             'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] ほうこうにまわす',
             'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
             'legobluetooth.getDegreesCounted': '[PORT] かくどカウント',
+            'legobluetooth.motorResetDegreesCounted': '[PORT] かくどカウントを [DEGREES_COUNTED] にリセットする',
             'legobluetooth.getColor': '[PORT] いろ',
             'legobluetooth.getDistance': '[PORT] きょり',
+            'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
             'legobluetooth.getName': 'なまえ',
             'legobluetooth.getBatteryLevel': 'でんちざんりょう',
 
