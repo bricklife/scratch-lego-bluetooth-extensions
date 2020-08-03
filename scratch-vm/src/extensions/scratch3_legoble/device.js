@@ -76,7 +76,7 @@ class GenericDevice {
 
             case IOType.MOTION_SENSOR:
                 this._inputValues = {
-                    distance: data[0]
+                    distance: buffer.readInt8(0)
                 };
                 break;
 
@@ -119,7 +119,7 @@ class GenericDevice {
                 break;
         }
 
-        this._inputValues.bytes = data;
+        this._inputValues.bytes = buffer;
     }
 }
 
