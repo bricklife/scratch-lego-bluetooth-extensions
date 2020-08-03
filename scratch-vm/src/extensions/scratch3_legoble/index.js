@@ -219,6 +219,21 @@ class Scratch3LegoBleBlocks {
                     }
                 },
                 {
+                    opcode: 'getForce',
+                    text: formatMessage({
+                        id: 'legobluetooth.getForce',
+                        default: '[PORT] force'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        PORT: {
+                            type: ArgumentType.STRING,
+                            menu: 'PORT',
+                            defaultValue: 'A'
+                        }
+                    }
+                },
+                {
                     opcode: 'getTilt',
                     text: formatMessage({
                         id: 'legobluetooth.getTilt',
@@ -548,6 +563,10 @@ class Scratch3LegoBleBlocks {
 
     getDistance(args) {
         return this._getSensorValue(args, 'distance', 0);
+    }
+
+    getForce(args) {
+        return this._getSensorValue(args, 'force', 0);
     }
 
     getTilt(args) {
