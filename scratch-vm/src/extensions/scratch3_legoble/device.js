@@ -21,29 +21,29 @@ class GenericDevice {
             case IOType.TECHNIC_XL_MOTOR:
             case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
             case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
-                return 2;
+                return 2; // Degrees Counted
             case IOType.TILT_SENSOR:
-                return 0;
+                return 0; // Tilt X, Y
             case IOType.MOTION_SENSOR:
-                return 0;
+                return 0; // Distance
             case IOType.COLOR_DISTANCE_SENSOR:
-                return 8;
+                return 8; // Color and Distance
             case IOType.MOVE_HUB_TILT_SENSOR:
-                return 0;
+                return 0; // Tilt X, Y
             case IOType.DUPLO_TRAIN_BASE_SPEAKER:
-                return 1;
+                return 1; // Sound
             case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
-                return 0;
+                return 0; // Color
             case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:
-                return 1;
+                return 1; // Driving Distance
             case IOType.TECHNIC_HUB_TILT_SENSOR:
-                return 0;
+                return 0; // Tilt X, Y, Z
             case IOType.TECHNIC_COLOR_SENSOR:
-                return 0;
+                return 0; // Color
             case IOType.TECHNIC_DISTANCE_SENSOR:
-                return 0;
+                return 0; // Distance
             case IOType.TECHNIC_FORCE_SENSOR:
-                return 0;
+                return 0; // Force
             default:
                 return null;
         }
