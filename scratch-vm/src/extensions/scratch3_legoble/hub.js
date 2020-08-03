@@ -20,6 +20,10 @@ const CharacteristicUUID = '00001624-1212-efde-1623-785feabcd123';
 const SendRateMax = 20;
 const PollingInterval = 3000;
 
+const MAX_INT32 = Math.pow(2, 31) - 1;
+const MIN_INT32 = Math.pow(2, 31) * -1;
+const MAX_INT16 = Math.pow(2, 15) - 1;
+
 const MessageType = {
     HUB_PROPERTIES: 0x01,
     HUB_ATTACHED_IO: 0x04,
@@ -399,7 +403,7 @@ class Hub {
 
     motorRunForDegrees(portId, direction, degrees) {
         direction = direction * Math.sign(degrees);
-        degrees = MathUtil.clamp(Math.abs(degrees), 1, 360000);
+        degrees = MathUtil.clamp(Math.abs(degrees), 1, MAX_INT32);
 
         const motor = this.getMotor(portId);
         if (motor && motor.canUseSpeed) {
@@ -412,7 +416,7 @@ class Hub {
     }
 
     motorRunTimed(portId, direction, seconds) {
-        const milliseconds = MathUtil.clamp(seconds * 1000, 0, 15000);
+        const milliseconds = MathUtil.clamp(seconds * 1000, 0, MAX_INT16);
 
         const motor = this.getMotor(portId);
         if (motor && motor.canUseSpeed) {
@@ -442,7 +446,7 @@ class Hub {
     }
 
     motorResetDegreesCounted(portId, degreesCounted) {
-        degreesCounted = MathUtil.clamp(degreesCounted, -360000, 360000);
+        degreesCounted = MathUtil.clamp(degreesCounted, MIN_INT32, MAX_INT32);
 
         const motor = this.getMotor(portId);
         if (motor && motor.canUseSpeed) {
