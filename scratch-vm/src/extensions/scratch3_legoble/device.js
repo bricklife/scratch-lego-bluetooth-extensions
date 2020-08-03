@@ -22,16 +22,22 @@ class GenericDevice {
             case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
             case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
                 return 2;
+            case IOType.TILT_SENSOR:
+                return 0;
             case IOType.MOTION_SENSOR:
                 return 0;
             case IOType.COLOR_DISTANCE_SENSOR:
                 return 8;
+            case IOType.MOVE_HUB_TILT_SENSOR:
+                return 0;
             case IOType.DUPLO_TRAIN_BASE_SPEAKER:
                 return 1;
             case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
                 return 0;
             case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:
                 return 1;
+            case IOType.TECHNIC_HUB_TILT_SENSOR:
+                return 0;
             default:
                 return null;
         }
@@ -61,6 +67,13 @@ class GenericDevice {
                 };
                 break;
 
+            case IOType.TILT_SENSOR:
+                this._inputValues = {
+                    tiltX: buffer.readInt8(0),
+                    tiltY: buffer.readInt8(1)
+                };
+                break;
+
             case IOType.MOTION_SENSOR:
                 this._inputValues = {
                     distance: data[0]
@@ -74,6 +87,13 @@ class GenericDevice {
                 };
                 break;
 
+            case IOType.MOVE_HUB_TILT_SENSOR:
+                this._inputValues = {
+                    tiltX: buffer.readInt8(0),
+                    tiltY: buffer.readInt8(1)
+                };
+                break;
+
             case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
                 this._inputValues = {
                     color: buffer.readInt8(0)
@@ -83,6 +103,14 @@ class GenericDevice {
             case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:
                 this._inputValues = {
                     drivingDistance: buffer.readInt32LE(0)
+                };
+                break;
+
+            case IOType.TECHNIC_HUB_TILT_SENSOR:
+                this._inputValues = {
+                    tiltX: buffer.readInt16LE(4),
+                    tiltY: buffer.readInt16LE(2),
+                    tiltZ: buffer.readInt16LE(0)
                 };
                 break;
 
