@@ -44,6 +44,10 @@ class GenericDevice {
                 return 0; // Distance
             case IOType.TECHNIC_FORCE_SENSOR:
                 return 0; // Force
+            case IOType.MARIO_COLOR_BARCODE_SENSOR:
+                return 0
+            case IOType.MARIO_PANTS:
+                return 0
             default:
                 return null;
         }
@@ -135,6 +139,19 @@ class GenericDevice {
             case IOType.TECHNIC_FORCE_SENSOR:
                 this._inputValues = {
                     force: buffer.readInt8(0)
+                };
+                break;
+
+            case IOType.MARIO_COLOR_BARCODE_SENSOR:
+                this._inputValues = {
+                    barcode: buffer.readInt16LE(0),
+                    color: buffer.readInt16LE(2)
+                };
+                break;
+
+            case IOType.MARIO_PANTS:
+                this._inputValues = {
+                    pants: buffer.readInt8(0)
                 };
                 break;
 
