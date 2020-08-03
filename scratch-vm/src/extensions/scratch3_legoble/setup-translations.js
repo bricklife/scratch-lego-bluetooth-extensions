@@ -72,7 +72,6 @@ const setupTranslations = function (extTranslations = {}) {
         }
     };
 
-    console.log(localeSetup.locale, localeSetup.translations);
     for (const locale in translations) {
         if (extTranslations[locale]) {
             Object.assign(translations[locale], extTranslations[locale]);
