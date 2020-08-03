@@ -47,6 +47,8 @@ class GenericDevice {
             return;
         }
 
+        const buffer = Buffer.from(data);
+
         switch (this._ioType) {
             case IOType.MEDIUM_LINEAR_MOTOR:
             case IOType.MOVE_HUB_MOTOR:
@@ -55,7 +57,7 @@ class GenericDevice {
             case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
             case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
                 this._inputValues = {
-                    degreesCounted: int32ArrayToNumber(data)
+                    degreesCounted: buffer.readInt32LE(0)
                 };
                 break;
 
@@ -67,20 +69,20 @@ class GenericDevice {
 
             case IOType.COLOR_DISTANCE_SENSOR:
                 this._inputValues = {
-                    color: data[0] > 0x0a ? -1 : data[0],
-                    distance: data[1]
+                    color: buffer.readInt8(0),
+                    distance: buffer.readInt8(1)
                 };
                 break;
 
             case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
                 this._inputValues = {
-                    color: data[0] > 0x0a ? -1 : data[0]
+                    color: buffer.readInt8(0)
                 };
                 break;
 
             case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:
                 this._inputValues = {
-                    drivingDistance: int32ArrayToNumber(data)
+                    drivingDistance: buffer.readInt32LE(0)
                 };
                 break;
 
@@ -140,12 +142,6 @@ class Motor extends GenericDevice {
         }
     }
 }
-
-const int32ArrayToNumber = function (array) {
-    const i = Uint8Array.from(array);
-    const d = new DataView(i.buffer);
-    return d.getInt32(0, true);
-};
 
 const createDevice = function (ioType) {
     switch (ioType) {
