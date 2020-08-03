@@ -38,6 +38,12 @@ class GenericDevice {
                 return 1;
             case IOType.TECHNIC_HUB_TILT_SENSOR:
                 return 0;
+            case IOType.TECHNIC_COLOR_SENSOR:
+                return 0;
+            case IOType.TECHNIC_DISTANCE_SENSOR:
+                return 0;
+            case IOType.TECHNIC_FORCE_SENSOR:
+                return 0;
             default:
                 return null;
         }
@@ -111,6 +117,24 @@ class GenericDevice {
                     tiltX: buffer.readInt16LE(4),
                     tiltY: buffer.readInt16LE(2),
                     tiltZ: buffer.readInt16LE(0)
+                };
+                break;
+
+            case IOType.TECHNIC_COLOR_SENSOR:
+                this._inputValues = {
+                    color: buffer.readInt8(0)
+                };
+                break;
+
+            case IOType.TECHNIC_DISTANCE_SENSOR:
+                this._inputValues = {
+                    distance: Math.max(0, buffer.readInt16LE(0))
+                };
+                break;
+
+            case IOType.TECHNIC_FORCE_SENSOR:
+                this._inputValues = {
+                    force: buffer.readInt8(0)
                 };
                 break;
 
