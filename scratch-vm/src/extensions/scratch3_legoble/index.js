@@ -218,6 +218,26 @@ class Scratch3LegoBleBlocks {
                         }
                     }
                 },
+                {
+                    opcode: 'getTilt',
+                    text: formatMessage({
+                        id: 'legobluetooth.getTilt',
+                        default: '[PORT] tilt [XY]'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        PORT: {
+                            type: ArgumentType.STRING,
+                            menu: 'PORT',
+                            defaultValue: 'A'
+                        },
+                        XY: {
+                            type: ArgumentType.STRING,
+                            menu: 'XY',
+                            defaultValue: 'x'
+                        }
+                    }
+                },
                 '---',
                 {
                     opcode: 'setHubLEDColor',
@@ -231,6 +251,21 @@ class Scratch3LegoBleBlocks {
                             type: ArgumentType.NUMBER,
                             menu: 'LED_COLOR',
                             defaultValue: 3
+                        }
+                    }
+                },
+                {
+                    opcode: 'getHubTilt',
+                    text: formatMessage({
+                        id: 'legobluetooth.getHubTilt',
+                        default: 'hub tilt [XYZ]'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        XYZ: {
+                            type: ArgumentType.STRING,
+                            menu: 'XYZ',
+                            defaultValue: 'x'
                         }
                     }
                 },
@@ -381,6 +416,14 @@ class Scratch3LegoBleBlocks {
                         },
                     ]
                 },
+                XY: {
+                    acceptReporters: false,
+                    items: ['x', 'y']
+                },
+                XYZ: {
+                    acceptReporters: false,
+                    items: ['x', 'y', 'z']
+                },
             }
         };
     }
@@ -507,6 +550,11 @@ class Scratch3LegoBleBlocks {
         return this._getSensorValue(args, 'distance', 0);
     }
 
+    getTilt(args) {
+        const key = 'tilt' + args.XY.toUpperCase();
+        return this._getSensorValue(args, key, 0);
+    }
+
     _getSensorValue(args, key, defaultValue) {
         const port = this._validatePorts(Cast.toString(args.PORT)).shift();
         if (port) {
@@ -520,6 +568,12 @@ class Scratch3LegoBleBlocks {
     setHubLEDColor(args) {
         const color = Cast.toNumber(args.COLOR);
         return this._peripheral.setLEDColor(color).then(waitPromise);
+    }
+
+    getHubTilt(args) {
+        const key = 'tilt' + args.XYZ.toUpperCase();
+        const value = this._peripheral.internalInputValue(key);
+        return value != null ? value : 0
     }
 
     getName() {

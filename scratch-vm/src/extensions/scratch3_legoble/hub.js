@@ -462,6 +462,15 @@ class Hub {
         return null;
     }
 
+    internalInputValue(key) {
+        for (const [portId, device] of Object.entries(this._devices)) {
+            if (portId >= 0x32 && device.inputValues.hasOwnProperty(key)) {
+                return device.inputValues[key];
+            }
+        }
+        return null;
+    }
+
     // Hub LED
 
     setLEDColor(color) {
