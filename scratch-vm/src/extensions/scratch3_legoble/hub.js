@@ -267,12 +267,12 @@ class Hub {
         const mode = device.mode;
         if (mode !== null) {
             setTimeout(() => {
-                this.sendMessage(MessageType.PORT_INPUT_FORMAT_SETUP, [portId, mode, 1, 0, 0, 0, 1], false, true);
+                this.sendMessage(MessageType.PORT_INPUT_FORMAT_SETUP, [portId, mode, 1, 0, 0, 0, 1], false);
             }, 100);
         }
     }
 
-    send(data, useLimiter = true, withResponse = null) {
+    send(data, useLimiter = true) {
         if (!this.isConnected()) {
             return Promise.resolve();
         }
@@ -290,11 +290,11 @@ class Hub {
             CharacteristicUUID,
             Base64Util.uint8ArrayToBase64(data),
             'base64',
-            withResponse
+            true
         );
     }
 
-    sendMessage(messageType, payload, useLimiter = true, withResponse = null) {
+    sendMessage(messageType, payload, useLimiter = true) {
         const command = [
             0x00, // Hub ID: Always set to 0x00 (zero)
             messageType,
@@ -302,7 +302,7 @@ class Hub {
         ];
         command.unshift(command.length + 1);
 
-        return this.send(command, useLimiter, withResponse);
+        return this.send(command, useLimiter);
     }
 
     sendOutputCommand(portId, subCommand, payload, needsFeedback = true, useLimiter = true) {
@@ -332,7 +332,7 @@ class Hub {
     stopAllMotors() {
         for (const [portId, device] of Object.entries(this._devices)) {
             if (device instanceof Device.Motor) {
-                this.sendOutputCommand(portId, 0x51, [0x00, 0], false, false);
+                this.sendOutputCommand(portId, 0x51, [0x00, 0], false);
                 this._outputCommandFeedbackCallback[portId] = null;
                 this._outputCommandCompletionCallback[portId] = null;
             }
