@@ -132,7 +132,7 @@ class GenericDevice {
 
             case IOType.TECHNIC_DISTANCE_SENSOR:
                 this._inputValues = {
-                    distance: Math.max(0, buffer.readInt16LE(0))
+                    distance: buffer.readInt16LE(0)
                 };
                 break;
 
