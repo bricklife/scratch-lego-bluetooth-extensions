@@ -58,7 +58,7 @@ class Scratch3LEGOMarioBlocks {
                     opcode: 'whenBarcode',
                     text: formatMessage({
                         id: 'legomario.whenBarcode',
-                        default: 'when barcode value is [BARCODE]'
+                        default: 'when barcode is [BARCODE]'
                     }),
                     blockType: BlockType.HAT,
                     arguments: {
@@ -80,7 +80,7 @@ class Scratch3LEGOMarioBlocks {
                     opcode: 'getBarcode',
                     text: formatMessage({
                         id: 'legomario.getBarcode',
-                        default: 'barcode value'
+                        default: 'barcode'
                     }),
                     blockType: BlockType.REPORTER
                 },
@@ -320,9 +320,9 @@ class Scratch3LEGOMarioBlocks {
     _setupTranslations() {
         setupTranslations({
             'ja': {
-                'legomario.whenBarcode': 'バーコード値が [BARCODE] のとき',
+                'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
                 'legomario.whenAnyBarcode': 'バーコードを見つけたとき',
-                'legomario.getBarcode': 'バーコード値',
+                'legomario.getBarcode': 'バーコード',
                 'legomario.whenColor': '色が [SENSOR_COLOR] のとき',
                 'legomario.isColor': '色が [SENSOR_COLOR]',
                 'legomario.getColor': '色',
@@ -346,9 +346,9 @@ class Scratch3LEGOMarioBlocks {
                 'legomario.pants.builder': '(34) ビルダー',
             },
             'ja-Hira': {
-                'legomario.whenBarcode': 'バーコードちが [BARCODE] のとき',
+                'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
                 'legomario.whenAnyBarcode': 'バーコードをみつけたとき',
-                'legomario.getBarcode': 'バーコードち',
+                'legomario.getBarcode': 'バーコード',
                 'legomario.whenColor': 'いろが [SENSOR_COLOR] のとき',
                 'legomario.isColor': 'いろが [SENSOR_COLOR]',
                 'legomario.getColor': 'いろ',
