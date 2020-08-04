@@ -85,6 +85,7 @@ class Hub {
         this._batteryLevel = 0;
         this._devices = [];
 
+        this._firstNotificationCallback = null;
         this._outputCommandFeedbackCallbacks = [];
         this._outputCommandCompletionCallbacks = [];
 
@@ -165,12 +166,11 @@ class Hub {
             this._onMessage
         );
 
-        setTimeout(() => {
+        this._firstNotificationCallback = () => {
             this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.ADVERTISING_NAME, HubPropertyOperation.ENABLE_UPDATES], false);
             this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
-        }, 500);
-
-        this._startPollingBatteryLevel();
+            this._startPollingBatteryLevel();
+        };
     }
 
     _onMessage(base64) {
@@ -253,6 +253,11 @@ class Hub {
 
             default:
                 break;
+        }
+
+        if (this._firstNotificationCallback) {
+            this._firstNotificationCallback();
+            this._firstNotificationCallback = null;
         }
     }
 
