@@ -321,6 +321,7 @@ class Scratch3LEGOMarioBlocks {
         setupTranslations({
             'ja': {
                 'legomario.whenBarcode': 'バーコード値が [BARCODE] のとき',
+                'legomario.whenAnyBarcode': 'バーコードを見つけたとき',
                 'legomario.getBarcode': 'バーコード値',
                 'legomario.whenColor': '色が [SENSOR_COLOR] のとき',
                 'legomario.isColor': '色が [SENSOR_COLOR]',
@@ -346,6 +347,7 @@ class Scratch3LEGOMarioBlocks {
             },
             'ja-Hira': {
                 'legomario.whenBarcode': 'バーコードちが [BARCODE] のとき',
+                'legomario.whenAnyBarcode': 'バーコードをみつけたとき',
                 'legomario.getBarcode': 'バーコードち',
                 'legomario.whenColor': 'いろが [SENSOR_COLOR] のとき',
                 'legomario.isColor': 'いろが [SENSOR_COLOR]',
