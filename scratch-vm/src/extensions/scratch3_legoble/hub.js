@@ -85,8 +85,8 @@ class Hub {
         this._batteryLevel = 0;
         this._devices = [];
 
-        this._outputCommandFeedbackCallback = [];
-        this._outputCommandCompletionCallback = [];
+        this._outputCommandFeedbackCallbacks = [];
+        this._outputCommandCompletionCallbacks = [];
 
         this._ble = null;
         this._runtime.registerPeripheralExtension(extensionId, this);
@@ -317,8 +317,8 @@ class Hub {
         this._batteryLevel = 0;
         this._devices = [];
 
-        this._outputCommandFeedbackCallback = [];
-        this._outputCommandCompletionCallback = [];
+        this._outputCommandFeedbackCallbacks = [];
+        this._outputCommandCompletionCallbacks = [];
 
         this._stopPollingBatteryLevel();
     }
@@ -333,8 +333,8 @@ class Hub {
         for (const [portId, device] of Object.entries(this._devices)) {
             if (device instanceof Device.Motor) {
                 this.sendOutputCommand(portId, 0x51, [0x00, 0], false);
-                this._outputCommandFeedbackCallback[portId] = null;
-                this._outputCommandCompletionCallback[portId] = null;
+                this._outputCommandFeedbackCallbacks[portId] = null;
+                this._outputCommandCompletionCallbacks[portId] = null;
             }
         }
     }
@@ -356,27 +356,27 @@ class Hub {
 
     _createOutputCommandFeedbackPromise(portId) {
         return new Promise(resolve => {
-            this._outputCommandFeedbackCallback[portId] = resolve;
+            this._outputCommandFeedbackCallbacks[portId] = resolve;
         });
     }
 
     _clearOutputCommandFeedbackCallback(portId) {
-        if (this._outputCommandFeedbackCallback[portId]) {
-            this._outputCommandFeedbackCallback[portId]();
-            this._outputCommandFeedbackCallback[portId] = null;
+        if (this._outputCommandFeedbackCallbacks[portId]) {
+            this._outputCommandFeedbackCallbacks[portId]();
+            this._outputCommandFeedbackCallbacks[portId] = null;
         }
     }
 
     _clearOutputCommandCompletionCallback(portId) {
-        if (this._outputCommandCompletionCallback[portId]) {
-            this._outputCommandCompletionCallback[portId]();
-            this._outputCommandCompletionCallback[portId] = null;
+        if (this._outputCommandCompletionCallbacks[portId]) {
+            this._outputCommandCompletionCallbacks[portId]();
+            this._outputCommandCompletionCallbacks[portId] = null;
         }
     }
 
     _moveOutputCommandFeedbackCallbackToCompletionCallback(portId) {
-        this._outputCommandCompletionCallback[portId] = this._outputCommandFeedbackCallback[portId];
-        this._outputCommandFeedbackCallback[portId] = null;
+        this._outputCommandCompletionCallbacks[portId] = this._outputCommandFeedbackCallbacks[portId];
+        this._outputCommandFeedbackCallbacks[portId] = null;
     }
 
     // Motor
