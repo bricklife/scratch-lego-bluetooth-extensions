@@ -69,6 +69,14 @@ class Scratch3LEGOMarioBlocks {
                     }
                 },
                 {
+                    opcode: 'whenAnyBarcode',
+                    text: formatMessage({
+                        id: 'legomario.whenAnyBarcode',
+                        default: 'when any barcode is found'
+                    }),
+                    blockType: BlockType.HAT
+                },
+                {
                     opcode: 'getBarcode',
                     text: formatMessage({
                         id: 'legomario.getBarcode',
@@ -270,6 +278,10 @@ class Scratch3LEGOMarioBlocks {
 
     whenBarcode(args) {
         return this.getBarcode() == Cast.toNumber(args.BARCODE);
+    }
+
+    whenAnyBarcode() {
+        return this.getBarcode() != -1;
     }
 
     getBarcode() {
