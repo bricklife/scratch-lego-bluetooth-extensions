@@ -6,6 +6,6 @@ Scratch 3.0 extensions for LEGO Bluetooth and BLE devices
 - [ ] LEGO Powered Up Remote
 - [ ] LEGO Technic CONTROL+ Hub
 - [x] LEGO Duplo Train
-- [ ] LEGO Mario
+- [x] LEGO Mario
 - [ ] Advanced LEGO BLE
 - [ ] LEGO Education SPIKE Prime Hub
