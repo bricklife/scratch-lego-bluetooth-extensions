@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>legomario-small</title>
+    <desc>Created with Sketch.</desc>
+    <g id="legomario-small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="20" cy="20" r="20"></circle>
+        <polyline id="Path-2" fill="#FF0000" points="20 14.4649698 12.6141633 5.89793347 3.13382056 25.3623992 9.16129032 30.3061996 14.1885081 15.5126008 20 22.6605343"></polyline>
+        <polyline id="Path-2-Copy" fill="#FF0000" transform="translate(28.433090, 18.102067) scale(-1, 1) translate(-28.433090, -18.102067) " points="36.8661794 14.4649698 29.4803427 5.89793347 20 25.3623992 26.0274698 30.3061996 31.0546875 15.5126008 36.8661794 22.6605343"></polyline>
+    </g>
+</svg>
