@@ -450,12 +450,12 @@ class Hub {
         }
     }
 
-    motorResetDegreesCounted(portId, degreesCounted) {
-        degreesCounted = MathUtil.clamp(degreesCounted, MIN_INT32, MAX_INT32);
+    motorResetRelativePosition(portId, relativePosition) {
+        relativePosition = MathUtil.clamp(relativePosition, MIN_INT32, MAX_INT32);
 
         const motor = this.getMotor(portId);
         if (motor && motor.canUseSpeed) {
-            return this.sendOutputCommand(portId, 0x51, [0x02, ...numberToInt32Array(degreesCounted)]);
+            return this.sendOutputCommand(portId, 0x51, [0x02, ...numberToInt32Array(relativePosition)]);
         } else {
             return Promise.resolve();
         }

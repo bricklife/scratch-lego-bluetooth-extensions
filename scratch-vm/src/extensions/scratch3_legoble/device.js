@@ -21,7 +21,7 @@ class GenericDevice {
             case IOType.TECHNIC_XL_MOTOR:
             case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
             case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
-                return 2; // Degrees Counted
+                return 2; // Relative Position
             case IOType.TILT_SENSOR:
                 return 0; // Tilt X, Y
             case IOType.MOTION_SENSOR:
@@ -73,7 +73,7 @@ class GenericDevice {
             case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
             case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
                 this._inputValues = {
-                    degreesCounted: buffer.readInt32LE(0)
+                    relativePosition: buffer.readInt32LE(0)
                 };
                 break;
 

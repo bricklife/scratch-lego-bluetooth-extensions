@@ -154,10 +154,10 @@ class Scratch3LegoBleBlocks {
                     }
                 },
                 {
-                    opcode: 'getDegreesCounted',
+                    opcode: 'getRelativePosition',
                     text: formatMessage({
-                        id: 'legobluetooth.getDegreesCounted',
-                        default: '[PORT] degrees counted'
+                        id: 'legobluetooth.getRelativePosition',
+                        default: '[PORT] relative position'
                     }),
                     blockType: BlockType.REPORTER,
                     arguments: {
@@ -169,10 +169,10 @@ class Scratch3LegoBleBlocks {
                     }
                 },
                 {
-                    opcode: 'motorResetDegreesCounted',
+                    opcode: 'motorResetRelativePosition',
                     text: formatMessage({
-                        id: 'legobluetooth.motorResetDegreesCounted',
-                        default: '[PORT] reset degrees counted to [DEGREES_COUNTED]'
+                        id: 'legobluetooth.motorResetRelativePosition',
+                        default: '[PORT] reset relative position to [RELATIVE_POSITION]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -181,7 +181,7 @@ class Scratch3LegoBleBlocks {
                             menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
-                        DEGREES_COUNTED: {
+                        RELATIVE_POSITION: {
                             type: ArgumentType.NUMBER,
                             defaultValue: 0
                         }
@@ -540,21 +540,21 @@ class Scratch3LegoBleBlocks {
         return Promise.resolve();
     }
 
-    motorResetDegreesCounted(args) {
-        const degreesCounted = Cast.toNumber(args.DEGREES_COUNTED);
+    motorResetRelativePosition(args) {
+        const relativePosition = Cast.toNumber(args.RELATIVE_POSITION);
 
         const ports = this._validatePorts(Cast.toString(args.PORT));
 
         const promises = ports.map(port => {
             const portId = externalPorts.indexOf(port);
-            return this._peripheral.motorResetDegreesCounted(portId, degreesCounted);
+            return this._peripheral.motorResetRelativePosition(portId, relativePosition);
         });
 
         return Promise.all(promises).then(waitPromise);
     }
 
-    getDegreesCounted(args) {
-        return this._getSensorValue(args, 'degreesCounted', 0);
+    getRelativePosition(args) {
+        return this._getSensorValue(args, 'relativePosition', 0);
     }
 
     getColor(args) {
