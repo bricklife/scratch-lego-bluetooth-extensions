@@ -46,7 +46,7 @@ class Scratch3PoweredUpBlocks {
 
         return {
             id: Scratch3PoweredUpBlocks.EXTENSION_ID,
-            name: 'Powered Up',
+            name: 'Powered UP',
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [

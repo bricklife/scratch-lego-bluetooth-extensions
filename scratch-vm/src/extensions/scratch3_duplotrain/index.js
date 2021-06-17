@@ -59,7 +59,7 @@ class Scratch3DuploTrainBlocks {
 
         return {
             id: Scratch3DuploTrainBlocks.EXTENSION_ID,
-            name: 'Duplo Train',
+            name: 'DUPLO Train',
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [

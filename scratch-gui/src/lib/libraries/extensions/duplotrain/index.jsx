@@ -8,15 +8,15 @@ import duplotrainConnectionSmallIconURL from './duplotrain-small.svg';
 import duplotrainConnectionTipIconURL from './duplotrain-button-illustration.svg';
 
 const entry = {
-    name: 'LEGO Duplo Train',
+    name: 'LEGO DUPLO Train',
     extensionId: 'duplotrain',
     collaborator: 'bricklife',
     iconURL: duplotrainIconURL,
     insetIconURL: duplotrainInsetIconURL,
     description: (
         <FormattedMessage
-            defaultMessage="Build and control your train."
-            description="Description for the 'LEGO Duplo Train' extension"
+            defaultMessage="Build and control your DUPLO train."
+            description="Description for the 'LEGO DUPLO Train' extension"
             id="gui.extension.duplotrain.description"
         />
     ),
@@ -32,7 +32,7 @@ const entry = {
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
-            description="Message to help people connect to their LEGO Duplo Train."
+            description="Message to help people connect to their DUPLO Train."
             id="gui.extension.duplotrain.connectingMessage"
         />
     ),

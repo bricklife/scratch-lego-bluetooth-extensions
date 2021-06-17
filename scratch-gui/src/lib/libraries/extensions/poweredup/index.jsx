@@ -8,7 +8,7 @@ import poweredupConnectionSmallIconURL from './poweredup-small.svg';
 import poweredupConnectionTipIconURL from './poweredup-button-illustration.svg';
 
 const entry = {
-    name: 'LEGO Powered Up',
+    name: 'LEGO Powered UP',
     extensionId: 'poweredup',
     collaborator: 'bricklife',
     iconURL: poweredupIconURL,
@@ -16,7 +16,7 @@ const entry = {
     description: (
         <FormattedMessage
             defaultMessage="Build with motors and sensors."
-            description="Description for the 'LEGO Powered Up' extension"
+            description="Description for the 'LEGO Powered UP' extension"
             id="gui.extension.poweredup.description"
         />
     ),
