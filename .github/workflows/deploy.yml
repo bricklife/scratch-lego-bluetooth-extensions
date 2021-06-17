@@ -1,0 +1,33 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "!*"
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: LLK/scratch-gui
+          ref: develop
+          path: ./scratch-gui
+      - run: npm install
+        working-directory: ./scratch-gui
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+          path: ./scratch-lego-bluetooth-extensions
+      - run: npm install
+        working-directory: ./scratch-lego-bluetooth-extensions
+      - run: npm run register
+        working-directory: ./scratch-lego-bluetooth-extensions
+      - run: npm run build
+        working-directory: ./scratch-gui
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./build
