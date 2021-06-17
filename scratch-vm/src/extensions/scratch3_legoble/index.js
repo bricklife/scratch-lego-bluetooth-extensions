@@ -3,8 +3,8 @@ const BlockType = require('../../extension-support/block-type');
 const Cast = require('../../util/cast');
 const formatMessage = require('format-message');
 
-const Hub = require('./hub');
-const setupTranslations = require('./setup-translations');
+const Hub = require('./lib/hub');
+const setupTranslations = require('./lib/setup-translations');
 
 const blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAAx4ExPAAAB6klEQVR4Ae3aQU7CQBTGcWrAA7Az8Q7uZSMbvJGH8CKcQTa4wb13MGHHAYSkdpImr21M3/SbwUj5u3pl+r3O/FokaWYy4Q8BBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBM4rUMS0326396fT8bUsy6fq/LuYzAWfsy+K4n06nb0sl8svbx0uYMA7Hr8/q0Zzr9nIxg+z2e2Dh3jjLTo8eVeIF1jm9dp7iVzA+mvb22SsgzFrdwErnLH/z+u7/+7aYwD7LnD1Y1NVYLf7UKP/MrdYPErz4gmU2CwEoFlIFYASm4UANAupAlBisxCAZiFVAEpsFgLQLKQKQInNQgCahVQBKLFZCECzkCoAJTYLAWgWUgWgxGYhAM1CqgCU2Cwkv5G2Fu1KfbPb7nK+o9xv0nkCE+8VgAAmCiTGeQIBTBRIjMu/wkN/bVerZ3cjU+JaWvHN5q1sfVAfDJ33bz2an/EVbmoIdQzgXujbjeTo0e3pHee4ptvDBQybDb2ZeuM5enjX6I7nuGZMDxcw7NSsJnfoTnDA8aHuMSCSfupfzdsFDDs0w07N6m6sq2W5j3Rj6WGr7Dpml2cjk6281HlnA6ARAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAqMR+AF9I0m/ZjTEhQAAAABJRU5ErkJggg==';
 
