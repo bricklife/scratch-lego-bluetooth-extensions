@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140px" height="90px" viewBox="0 0 140 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <style type="text/css">
+        <![CDATA[
+        @-webkit-keyframes wiggle {
+            0% { transform: translate(60px, -10px); }
+            100% { transform: translate(60px, 0); }
+        }
+        @keyframes wiggle {
+            0% { transform: translate(60px, -10px); }
+            100% { transform: translate(60px, 0); }
+        }
+        #arrow {
+            -webkit-animation: wiggle 0.5s infinite ease-in-out alternate;
+            animation: wiggle 0.5s infinite ease-in-out alternate;
+        }
+        ]]>
+    </style>
+    <title>duplotrain-button-illustration</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M36.4863865,32 C35.8359214,32 35.2288206,31.7593361 34.7778315,31.3255814 L25.7002299,22.5385506 C24.9977276,21.8165589 24.8098155,20.8035318 25.2000945,19.933224 C25.5874826,19.0629161 26.4432056,18.52562 27.4348035,18.52562 L30.877932,18.52562 L32.6327422,6.29653575 C32.8842554,4.42439448 34.5667917,3 36.5470965,3 C36.7176629,3 36.8911203,3.01119367 37.0616867,3.03078259 C38.8482975,3.30222908 40.2272834,4.65106629 40.4441051,6.31052784 L42.2451707,18.52562 L45.5379695,18.52562 C46.5411312,18.52562 47.4344366,19.0964972 47.8131518,19.9779986 C48.191867,20.865097 47.9866092,21.8473415 47.272543,22.5385506 L38.1949414,31.3255814 C37.7439523,31.7593361 37.1368516,32 36.4863865,32 Z" id="path-1"></path>
+        <filter x="-15.2%" y="-12.1%" width="130.4%" height="124.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="SourceAlpha" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.298039216   0 0 0 0 0.592156863   0 0 0 0 1  0 0 0 0.25 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g transform="translate(0, 10)">
+        <g id="duplotrain-button-illustration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Group-5" transform="translate(6.000000, 6.000000)">
+                <rect id="base" stroke="#454545" fill="#565656" fill-rule="nonzero" x="0" y="0" width="129" height="68" rx="18"></rect>
+                <g id="Group" transform="translate(86.000000, 21.000000)" fill-rule="nonzero">
+                    <g opacity="0.1" fill="#231F20">
+                        <path d="M2.5,9.375 C1.46446609,9.375 0.625,8.53553391 0.625,7.5 L0.625,2.5 C0.625,1.46446609 1.46446609,0.625 2.5,0.625 L7.5,0.625 C8.53553391,0.625 9.375,1.46446609 9.375,2.5 L9.375,7.5 C9.375,8.53553391 8.53553391,9.375 7.5,9.375 L2.5,9.375 Z" id="Path"></path>
+                        <path d="M7.5,1.25 C8.19035594,1.25 8.75,1.80964406 8.75,2.5 L8.75,7.5 C8.75,8.19035594 8.19035594,8.75 7.5,8.75 L2.5,8.75 C1.80964406,8.75 1.25,8.19035594 1.25,7.5 L1.25,2.5 C1.25,1.8125 1.8125,1.25 2.5,1.25 L7.5,1.25 Z M7.5,0 L2.5,0 C1.11928813,0 0,1.11928813 0,2.5 L0,7.5 C0,8.88071187 1.11928813,10 2.5,10 L7.5,10 C8.88071187,10 10,8.88071187 10,7.5 L10,2.5 C10,1.11928813 8.88071187,0 7.5,0 Z" id="Shape"></path>
+                    </g>
+                    <path d="M1.25,2.5 L1.25,7.5 C1.25,8.1875 1.8125,8.75 2.5,8.75 L7.5,8.75 C8.19035594,8.75 8.75,8.19035594 8.75,7.5 L8.75,2.5 C8.75,1.80964406 8.19035594,1.25 7.5,1.25 L2.5,1.25 C1.80964406,1.25 1.25,1.80964406 1.25,2.5 Z" id="Path" stroke="#389438" fill="#46B946" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+                <g id="Group-4" transform="translate(19.000000, 8.000000)" fill="#C3C3C3" fill-rule="nonzero" stroke="#7D7D7D">
+                    <g id="Group-2" transform="translate(64.000000, 0.000000)">
+                        <rect id="Rectangle" x="5.32907052e-15" y="3.5" width="26.8" height="4.5"></rect>
+                        <rect id="Rectangle-Copy" transform="translate(13.500000, 1.750000) scale(1, -1) translate(-13.500000, -1.750000) " x="3" y="0" width="21" height="3.5"></rect>
+                    </g>
+                    <g id="Group-2-Copy" transform="translate(77.500000, 48.000000) scale(1, -1) translate(-77.500000, -48.000000) translate(64.000000, 44.000000)">
+                        <rect id="Rectangle" x="5.32907052e-15" y="3.5" width="26.8" height="4.5"></rect>
+                        <rect id="Rectangle-Copy" transform="translate(13.500000, 1.750000) scale(1, -1) translate(-13.500000, -1.750000) " x="3" y="0" width="21" height="3.5"></rect>
+                    </g>
+                    <g id="Group-3">
+                        <polygon id="Path" points="3.55271368e-15 3 3.55271368e-15 8 26.8 8 26.8 3 24 0 3 0"></polygon>
+                        <line x1="0.5" y1="3.5" x2="26.5" y2="3.5" id="Line"></line>
+                    </g>
+                    <g id="Group-3-Copy" transform="translate(13.500000, 48.000000) scale(1, -1) translate(-13.500000, -48.000000) translate(0.000000, 44.000000)">
+                        <polygon id="Path" points="3.55271368e-15 3 3.55271368e-15 8 26.8 8 26.8 3 24 0 3 0"></polygon>
+                        <line x1="0.5" y1="3.5" x2="26.5" y2="3.5" id="Line"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="arrow">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use stroke="#4280D7" stroke-width="1" fill="#4C97FF" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
