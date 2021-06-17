@@ -19,7 +19,7 @@ jobs:
         working-directory: ./scratch-gui
       - uses: actions/checkout@v2
         with:
-          ref: main
+          ref: master
           path: ./scratch-lego-bluetooth-extensions
       - run: npm install
         working-directory: ./scratch-lego-bluetooth-extensions
