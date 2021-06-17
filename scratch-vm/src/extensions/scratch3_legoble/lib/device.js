@@ -1,4 +1,4 @@
-const MathUtil = require('../../util/math-util');
+const MathUtil = require('../../../util/math-util');
 
 const IOType = require('./io-type');
 

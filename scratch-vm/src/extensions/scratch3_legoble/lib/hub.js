@@ -1,9 +1,9 @@
-const BLE = require('../../io/ble');
-const Base64Util = require('../../util/base64-util');
-const MathUtil = require('../../util/math-util');
-const RateLimiter = require('../../util/rateLimiter.js');
+const BLE = require('../../../io/ble');
+const Base64Util = require('../../../util/base64-util');
+const MathUtil = require('../../../util/math-util');
+const RateLimiter = require('../../../util/rateLimiter.js');
 
-const log = require('../../util/log');
+const log = require('../../../util/log');
 
 const IOType = require('./io-type');
 const Device = require('./device');
