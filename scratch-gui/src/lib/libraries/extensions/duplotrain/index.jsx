@@ -16,7 +16,6 @@ const entry = {
     description: (
         <FormattedMessage
             defaultMessage="Build and control your DUPLO train."
-            description="Description for the 'LEGO DUPLO Train' extension"
             id="gui.extension.duplotrain.description"
         />
     ),
@@ -32,7 +31,6 @@ const entry = {
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
-            description="Message to help people connect to their DUPLO Train."
             id="gui.extension.duplotrain.connectingMessage"
         />
     ),

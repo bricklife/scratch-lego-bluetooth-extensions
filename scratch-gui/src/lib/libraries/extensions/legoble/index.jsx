@@ -16,7 +16,6 @@ const entry = {
     description: (
         <FormattedMessage
             defaultMessage="Build with motors and sensors."
-            description="Description for the 'LEGO BLE Device' extension"
             id="gui.extension.legoble.description"
         />
     ),
@@ -32,7 +31,6 @@ const entry = {
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
-            description="Message to help people connect to their BLE device."
             id="gui.extension.legoble.connectingMessage"
         />
     ),

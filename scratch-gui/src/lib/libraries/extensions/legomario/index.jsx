@@ -16,7 +16,6 @@ const entry = {
     description: (
         <FormattedMessage
             defaultMessage="Play with LEGO Mario."
-            description="Description for the 'LEGO Mario' extension"
             id="gui.extension.legomario.description"
         />
     ),
@@ -32,7 +31,6 @@ const entry = {
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
-            description="Message to help people connect to their LEGO Mario."
             id="gui.extension.legomario.connectingMessage"
         />
     ),
