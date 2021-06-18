@@ -1,6 +1,4 @@
-const formatMessage = require('format-message');
-
-const setupTranslations = function (extTranslations = {}) {
+const setupTranslations = function (formatMessage, extTranslations = {}) {
     const localeSetup = formatMessage.setup();
 
     const translations = {

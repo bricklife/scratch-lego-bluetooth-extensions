@@ -42,7 +42,7 @@ class Scratch3LegoBleBlocks {
     }
 
     getInfo() {
-        setupTranslations();
+        setupTranslations(formatMessage);
 
         return {
             id: Scratch3LegoBleBlocks.EXTENSION_ID,

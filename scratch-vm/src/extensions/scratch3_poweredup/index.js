@@ -42,7 +42,7 @@ class Scratch3PoweredUpBlocks {
     }
 
     getInfo() {
-        setupTranslations();
+        setupTranslations(formatMessage);
 
         return {
             id: Scratch3PoweredUpBlocks.EXTENSION_ID,

@@ -318,7 +318,7 @@ class Scratch3LEGOMarioBlocks {
     }
 
     _setupTranslations() {
-        setupTranslations({
+        setupTranslations(formatMessage, {
             'ja': {
                 'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
                 'legomario.whenAnyBarcode': 'バーコードを見つけたとき',

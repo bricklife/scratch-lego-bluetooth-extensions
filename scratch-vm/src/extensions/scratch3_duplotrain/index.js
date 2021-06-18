@@ -406,7 +406,7 @@ class Scratch3DuploTrainBlocks {
     }
 
     _setupTranslations() {
-        setupTranslations({
+        setupTranslations(formatMessage, {
             'ja': {
                 'duplotrain.motorPWM': '[DIRECTION] 方向に [POWER] %のパワーで走る',
                 'duplotrain.motorStop': '止まる',
