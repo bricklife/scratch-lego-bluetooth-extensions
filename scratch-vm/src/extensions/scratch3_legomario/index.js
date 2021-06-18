@@ -352,6 +352,7 @@ class Scratch3LEGOMarioBlocks {
                 'legomario.whenPants': 'ズボンが [PANTS] のとき',
                 'legomario.isPants': 'ズボンが [PANTS]',
                 'legomario.getPants': 'ズボン',
+                'legomario.setVolume': '音量を [VOLUME] %にする',
 
                 'legomario.white': '(19) 白',
                 'legomario.red': '(21) 赤',
@@ -378,6 +379,7 @@ class Scratch3LEGOMarioBlocks {
                 'legomario.whenPants': 'ズボンが [PANTS] のとき',
                 'legomario.isPants': 'ズボンが [PANTS]',
                 'legomario.getPants': 'ズボン',
+                'legomario.setVolume': 'おんりょうを [VOLUME] %にする',
 
                 'legomario.white': '(19) しろ',
                 'legomario.red': '(21) あか',
