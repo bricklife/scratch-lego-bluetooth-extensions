@@ -3,7 +3,7 @@ const Base64Util = require('../../../util/base64-util');
 const MathUtil = require('../../../util/math-util');
 const RateLimiter = require('../../../util/rateLimiter.js');
 
-const log = require('../../../util/log');
+//const log = require('../../../util/log');
 
 const IOType = require('./io-type');
 const Device = require('./device');
@@ -175,11 +175,11 @@ class Hub {
 
     _onMessage(base64) {
         const data = Base64Util.base64ToUint8Array(base64);
-        logByteArray('<<', data);
+        //logByteArray('<<', data);
 
         const length = data[0];
         if (length > 127) {
-            log.warn(`Unsupported message length: ${length}`);
+            //log.warn(`Unsupported message length: ${length}`);
             return;
         }
 
@@ -224,7 +224,7 @@ class Hub {
                 const device = this._devices[portId];
                 if (device) {
                     device.updateInputValues(data.slice(4));
-                    log.debug(portId, device.inputValues);
+                    //log.debug(portId, device.inputValues);
                 }
                 break;
             }
@@ -288,7 +288,7 @@ class Hub {
             }
         }
 
-        logByteArray('>>', data);
+        //logByteArray('>>', data);
 
         return this._ble.write(
             ServiceUUID,
@@ -499,7 +499,7 @@ class Hub {
 const logByteArray = function (prefix, array) {
     bytes = array.reduce((output, elem) =>
         (output + ('0' + (elem & 0xff).toString(16)).slice(-2)) + ' ', '');
-    log.debug(`${prefix} ${bytes}`);
+    //log.debug(`${prefix} ${bytes}`);
 };
 
 module.exports = Hub;
