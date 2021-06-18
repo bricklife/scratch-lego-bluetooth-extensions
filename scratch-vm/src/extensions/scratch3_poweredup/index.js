@@ -269,22 +269,6 @@ class Scratch3PoweredUpBlocks {
                         }
                     }
                 },
-                {
-                    opcode: 'getName',
-                    text: formatMessage({
-                        id: 'legobluetooth.getName',
-                        default: 'name'
-                    }),
-                    blockType: BlockType.REPORTER
-                },
-                {
-                    opcode: 'getBatteryLevel',
-                    text: formatMessage({
-                        id: 'legobluetooth.getBatteryLevel',
-                        default: 'battery level'
-                    }),
-                    blockType: BlockType.REPORTER
-                },
             ],
             menus: {
                 PORT: {
@@ -568,14 +552,6 @@ class Scratch3PoweredUpBlocks {
     setHubLEDColor(args) {
         const color = Cast.toNumber(args.COLOR);
         return this._peripheral.setLEDColor(color).then(waitPromise);
-    }
-
-    getName() {
-        return this._peripheral.name ? this._peripheral.name : "";
-    }
-
-    getBatteryLevel() {
-        return this._peripheral.batteryLevel;
     }
 }
 
