@@ -8,7 +8,7 @@ import legobleConnectionSmallIconURL from './legoble-small.svg';
 import legobleConnectionTipIconURL from './legoble-button-illustration.svg';
 
 const entry = {
-    name: 'LEGO BLE',
+    name: 'LEGO BLE Device',
     extensionId: 'legoble',
     collaborator: 'bricklife',
     iconURL: legobleIconURL,
@@ -16,7 +16,7 @@ const entry = {
     description: (
         <FormattedMessage
             defaultMessage="Build with motors and sensors."
-            description="Description for the 'LEGO BLE' extension"
+            description="Description for the 'LEGO BLE Device' extension"
             id="gui.extension.legoble.description"
         />
     ),
@@ -32,7 +32,7 @@ const entry = {
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
-            description="Message to help people connect to their hub."
+            description="Message to help people connect to their BLE device."
             id="gui.extension.legoble.connectingMessage"
         />
     ),
