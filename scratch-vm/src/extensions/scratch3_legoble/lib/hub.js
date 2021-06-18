@@ -41,6 +41,7 @@ const HubPropertyReference = {
     BUTTON: 0x02,
     FW_VERSION: 0x03,
     BATTERY_VOLTAGE: 0x06,
+    SPEAKER_VOLUME: 0x12,
 };
 
 const HubPropertyOperation = {
@@ -493,6 +494,11 @@ class Hub {
         } else {
             return Promise.resolve();
         }
+    }
+
+    setVolume(volume) {
+        volume = MathUtil.clamp(volume, 0, 100);
+        return this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.SPEAKER_VOLUME, HubPropertyOperation.SET, volume]);
     }
 }
 
