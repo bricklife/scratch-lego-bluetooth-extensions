@@ -5,7 +5,6 @@ import legobleIconURL from './legoble.png';
 import legobleInsetIconURL from './legoble-small.svg';
 import legobleConnectionIconURL from './legoble-illustration.svg';
 import legobleConnectionSmallIconURL from './legoble-small.svg';
-import legobleConnectionTipIconURL from './legoble-button-illustration.svg';
 
 const entry = {
     name: 'LEGO BLE Device',
@@ -24,10 +23,9 @@ const entry = {
     bluetoothRequired: true,
     internetConnectionRequired: true,
     launchPeripheralConnectionFlow: true,
-    useAutoScan: true,
+    useAutoScan: false,
     connectionIconURL: legobleConnectionIconURL,
     connectionSmallIconURL: legobleConnectionSmallIconURL,
-    connectionTipIconURL: legobleConnectionTipIconURL,
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
