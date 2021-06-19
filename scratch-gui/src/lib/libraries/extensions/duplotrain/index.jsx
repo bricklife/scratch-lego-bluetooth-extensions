@@ -15,7 +15,7 @@ const entry = {
     insetIconURL: duplotrainInsetIconURL,
     description: (
         <FormattedMessage
-            defaultMessage="Build and control your DUPLO train."
+            defaultMessage="Build and control your train."
             id="gui.extension.duplotrain.description"
         />
     ),

@@ -15,7 +15,7 @@ const entry = {
     insetIconURL: legomarioInsetIconURL,
     description: (
         <FormattedMessage
-            defaultMessage="Play with LEGO Mario."
+            defaultMessage="Know what he is doing."
             id="gui.extension.legomario.description"
         />
     ),
