@@ -36,9 +36,7 @@ class Scratch3PoweredUpBlocks {
     }
 
     constructor(runtime) {
-        this.runtime = runtime;
-
-        this._peripheral = new Hub(this.runtime, Scratch3PoweredUpBlocks.EXTENSION_ID, 0x41);
+        this._peripheral = new Hub(runtime, Scratch3PoweredUpBlocks.EXTENSION_ID, 0x41);
     }
 
     getInfo() {

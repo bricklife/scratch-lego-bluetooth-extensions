@@ -36,9 +36,7 @@ class Scratch3LegoBleBlocks {
     }
 
     constructor(runtime) {
-        this.runtime = runtime;
-
-        this._peripheral = new Hub(this.runtime, Scratch3LegoBleBlocks.EXTENSION_ID);
+        this._peripheral = new Hub(runtime, Scratch3LegoBleBlocks.EXTENSION_ID);
     }
 
     getInfo() {

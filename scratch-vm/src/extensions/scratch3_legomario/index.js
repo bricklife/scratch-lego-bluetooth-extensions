@@ -43,9 +43,7 @@ class Scratch3LEGOMarioBlocks {
     }
 
     constructor(runtime) {
-        this.runtime = runtime;
-
-        this._peripheral = new Hub(this.runtime, Scratch3LEGOMarioBlocks.EXTENSION_ID, 0x43);
+        this._peripheral = new Hub(runtime, Scratch3LEGOMarioBlocks.EXTENSION_ID, 0x43);
     }
 
     getInfo() {
