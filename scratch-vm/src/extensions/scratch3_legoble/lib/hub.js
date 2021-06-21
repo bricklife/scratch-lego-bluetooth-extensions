@@ -9,7 +9,7 @@ const IOType = require('./io-type');
 const Device = require('./device');
 
 let _TextDecoder;
-if (typeof TextEncoder === 'undefined') {
+if (typeof TextDecoder === 'undefined') {
     _TextDecoder = require('text-encoding').TextDecoder;
 } else {
     _TextDecoder = TextDecoder;
