@@ -77,10 +77,10 @@ const numberToInt16Array = function (number) {
 
 class Hub {
 
-    constructor(runtime, extensionId, hubId = null) {
+    constructor(runtime, extensionId, hubType = null) {
         this._runtime = runtime;
         this._extensionId = extensionId;
-        this._hubId = hubId;
+        this._hubType = hubType;
 
         this._name = null;
         this._batteryLevel = 0;
@@ -118,12 +118,12 @@ class Hub {
             this._ble.disconnect();
         }
 
-        let hubIdFilter = {
+        let hubTypeFilter = {
             dataPrefix: []
         };
-        if (this._hubId) {
-            hubIdFilter = {
-                dataPrefix: [0x00, this._hubId],
+        if (this._hubType) {
+            hubTypeFilter = {
+                dataPrefix: [0x00, this._hubType],
                 mask: [0x00, 0xff]
             }
         }
@@ -132,7 +132,7 @@ class Hub {
             filters: [{
                 services: [ServiceUUID],
                 manufacturerData: {
-                    0x0397: hubIdFilter
+                    0x0397: hubTypeFilter
                 }
             }],
             optionalServices: []
