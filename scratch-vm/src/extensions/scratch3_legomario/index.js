@@ -26,9 +26,11 @@ const Color = {
 
 const Pants = {
     NONE: 0x00,
+    TANOOKI: 0x0a,
     PROPELLER: 0x0c,
     CAT: 0x11,
     FIRE: 0x12,
+    PENGUIN: 0x14,
     NORMAL: 0x21,
     BUILDER: 0x22,
 };
