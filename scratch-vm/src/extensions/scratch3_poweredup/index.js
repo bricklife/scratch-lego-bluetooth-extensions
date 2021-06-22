@@ -294,11 +294,11 @@ class Scratch3PoweredUpBlocks {
                     items: [
                         {
                             text: '⬆︎',
-                            value: 1
+                            value: '1'
                         },
                         {
                             text: '⬇',
-                            value: -1
+                            value: '-1'
                         }
                     ]
                 },
@@ -310,77 +310,77 @@ class Scratch3PoweredUpBlocks {
                                 id: 'legobluetooth.black',
                                 default: '(0) Black'
                             }),
-                            value: Color.BLACK
+                            value: String(Color.BLACK)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.pink',
                                 default: '(1) Pink'
                             }),
-                            value: Color.PINK
+                            value: String(Color.PINK)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.purple',
                                 default: '(2) Purple'
                             }),
-                            value: Color.PURPLE
+                            value: String(Color.PURPLE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.blue',
                                 default: '(3) Blue'
                             }),
-                            value: Color.BLUE
+                            value: String(Color.BLUE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.lightBlue',
                                 default: '(4) Light blue'
                             }),
-                            value: Color.LIGHT_BLUE
+                            value: String(Color.LIGHT_BLUE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.lightGreen',
                                 default: '(5) Light green'
                             }),
-                            value: Color.LIGHT_GREEN
+                            value: String(Color.LIGHT_GREEN)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.green',
                                 default: '(6) Green'
                             }),
-                            value: Color.GREEN
+                            value: String(Color.GREEN)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.yellow',
                                 default: '(7) Yellow'
                             }),
-                            value: Color.YELLOW
+                            value: String(Color.YELLOW)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.orange',
                                 default: '(8) Orange'
                             }),
-                            value: Color.ORANGE
+                            value: String(Color.ORANGE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.red',
                                 default: '(9) Red'
                             }),
-                            value: Color.RED
+                            value: String(Color.RED)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.white',
                                 default: '(10) White'
                             }),
-                            value: Color.WHITE
+                            value: String(Color.WHITE)
                         },
                     ]
                 },

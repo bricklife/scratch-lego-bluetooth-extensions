@@ -190,70 +190,70 @@ class Scratch3LEGOMarioBlocks {
                                 id: 'legomario.white',
                                 default: '(19) White'
                             }),
-                            value: Color.WHITE
+                            value: String(Color.WHITE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.red',
                                 default: '(21) Red'
                             }),
-                            value: Color.RED
+                            value: String(Color.RED)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.blue',
                                 default: '(23) Blue'
                             }),
-                            value: Color.BLUE
+                            value: String(Color.BLUE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.yellow',
                                 default: '(24) Yellow'
                             }),
-                            value: Color.YELLOW
+                            value: String(Color.YELLOW)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.black',
                                 default: '(26) Black'
                             }),
-                            value: Color.BLACK
+                            value: String(Color.BLACK)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.green',
                                 default: '(37) Green'
                             }),
-                            value: Color.GREEN
+                            value: String(Color.GREEN)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.brown',
                                 default: '(106) Brown'
                             }),
-                            value: Color.BROWN
+                            value: String(Color.BROWN)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.purple',
                                 default: '(268) Purple'
                             }),
-                            value: Color.PURPLE
+                            value: String(Color.PURPLE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.cyan',
                                 default: '(322) Cyan'
                             }),
-                            value: Color.CYAN
+                            value: String(Color.CYAN)
                         },
                         {
                             text: formatMessage({
                                 id: 'legobluetooth.noColor',
                                 default: '(-1) No color'
                             }),
-                            value: Color.NONE
+                            value: String(Color.NONE)
                         },
                     ]
                 },
@@ -265,42 +265,42 @@ class Scratch3LEGOMarioBlocks {
                                 id: 'legomario.pants.none',
                                 default: '(0) None'
                             }),
-                            value: Pants.NONE
+                            value: String(Pants.NONE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.pants.propeller',
                                 default: '(6) Propeller'
                             }),
-                            value: Pants.PROPELLER
+                            value: String(Pants.PROPELLER)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.pants.cat',
                                 default: '(17) Cat'
                             }),
-                            value: Pants.CAT
+                            value: String(Pants.CAT)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.pants.fire',
                                 default: '(18) Fire'
                             }),
-                            value: Pants.FIRE
+                            value: String(Pants.FIRE)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.pants.normal',
                                 default: '(33) Normal'
                             }),
-                            value: Pants.NORMAL
+                            value: String(Pants.NORMAL)
                         },
                         {
                             text: formatMessage({
                                 id: 'legomario.pants.builder',
                                 default: '(34) Builder'
                             }),
-                            value: Pants.BUILDER
+                            value: String(Pants.BUILDER)
                         },
                     ]
                 },
