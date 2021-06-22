@@ -26,7 +26,7 @@ const Color = {
 
 const Pants = {
     NONE: 0x00,
-    PROPELLER: 0x06,
+    PROPELLER: 0x0c,
     CAT: 0x11,
     FIRE: 0x12,
     NORMAL: 0x21,
