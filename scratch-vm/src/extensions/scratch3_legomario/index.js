@@ -269,6 +269,13 @@ class Scratch3LEGOMarioBlocks {
                         },
                         {
                             text: formatMessage({
+                                id: 'legomario.pants.tanooki',
+                                default: '(10) Tanooki'
+                            }),
+                            value: String(Pants.TANOOKI)
+                        },
+                        {
+                            text: formatMessage({
                                 id: 'legomario.pants.propeller',
                                 default: '(12) Propeller'
                             }),
@@ -287,6 +294,13 @@ class Scratch3LEGOMarioBlocks {
                                 default: '(18) Fire'
                             }),
                             value: String(Pants.FIRE)
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legomario.pants.penguin',
+                                default: '(20) Penguin'
+                            }),
+                            value: String(Pants.PENGUIN)
                         },
                         {
                             text: formatMessage({
@@ -379,9 +393,11 @@ class Scratch3LEGOMarioBlocks {
                 'legomario.cyan': '(322) シアン',
 
                 'legomario.pants.none': '(0) なし',
+                'legomario.pants.tanooki': '(10) タヌキ',
                 'legomario.pants.propeller': '(12) プロペラ',
                 'legomario.pants.cat': '(17) ネコ',
                 'legomario.pants.fire': '(18) ファイア',
+                'legomario.pants.penguin': '(20) ペンギン',
                 'legomario.pants.normal': '(33) ノーマル',
                 'legomario.pants.builder': '(34) ビルダー',
             },
@@ -408,9 +424,11 @@ class Scratch3LEGOMarioBlocks {
                 'legomario.cyan': '(322) シアン',
 
                 'legomario.pants.none': '(0) なし',
+                'legomario.pants.tanooki': '(10) タヌキ',
                 'legomario.pants.propeller': '(12) プロペラ',
                 'legomario.pants.cat': '(17) ネコ',
                 'legomario.pants.fire': '(18) ファイア',
+                'legomario.pants.penguin': '(20) ペンギン',
                 'legomario.pants.normal': '(33) ノーマル',
                 'legomario.pants.builder': '(34) ビルダー',
             },
