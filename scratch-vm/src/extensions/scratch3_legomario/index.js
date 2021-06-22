@@ -19,6 +19,8 @@ const Color = {
     BLACK: 0x001a,
     GREEN: 0x0025,
     BROWN: 0x006a,
+    PURPLE: 0x010c,
+    CYAN: 0x0142,
     NONE: -1,
 };
 
@@ -234,6 +236,20 @@ class Scratch3LEGOMarioBlocks {
                         },
                         {
                             text: formatMessage({
+                                id: 'legomario.purple',
+                                default: '(268) Purple'
+                            }),
+                            value: Color.PURPLE
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legomario.cyan',
+                                default: '(322) Cyan'
+                            }),
+                            value: Color.CYAN
+                        },
+                        {
+                            text: formatMessage({
                                 id: 'legobluetooth.noColor',
                                 default: '(-1) No color'
                             }),
@@ -359,6 +375,8 @@ class Scratch3LEGOMarioBlocks {
                 'legomario.black': '(26) 黒',
                 'legomario.green': '(37) 緑',
                 'legomario.brown': '(106) 茶色',
+                'legomario.purple': '(268) 紫',
+                'legomario.cyan': '(322) シアン',
 
                 'legomario.pants.none': '(0) なし',
                 'legomario.pants.propeller': '(6) プロペラ',
@@ -386,6 +404,8 @@ class Scratch3LEGOMarioBlocks {
                 'legomario.black': '(26) くろ',
                 'legomario.green': '(37) みどり',
                 'legomario.brown': '(106) ちゃいろ',
+                'legomario.purple': '(268) むらさき',
+                'legomario.cyan': '(322) シアン',
 
                 'legomario.pants.none': '(0) なし',
                 'legomario.pants.propeller': '(6) プロペラ',
