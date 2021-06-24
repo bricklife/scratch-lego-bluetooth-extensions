@@ -10,7 +10,7 @@ const Device = require('./device');
 
 let _TextDecoder;
 if (typeof TextDecoder === 'undefined') {
-    _TextDecoder = require('text-encoding').TextDecoder;
+    _TextDecoder = null;
 } else {
     _TextDecoder = TextDecoder;
 }
@@ -190,8 +190,12 @@ class Hub {
                 const property = data[3];
                 switch (property) {
                     case HubPropertyReference.ADVERTISING_NAME:
-                        const uint8Array = new Uint8Array(data.slice(5));
-                        this._name = (new _TextDecoder()).decode(uint8Array);
+                        if (_TextDecoder) {
+                            const uint8Array = new Uint8Array(data.slice(5));
+                            this._name = (new _TextDecoder()).decode(uint8Array);
+                        } else {
+                            this._name = 'unsupported';
+                        }
                         break;
                     case HubPropertyReference.BATTERY_VOLTAGE:
                         this._batteryLevel = data[5];
