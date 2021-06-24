@@ -9,6 +9,7 @@ import legobleConnectionSmallIconURL from './legoble-small.svg';
 const entry = {
     name: 'LEGO BLE Device',
     extensionId: 'legoble',
+    extensionURL: 'https://bricklife.com/xcratch/legoble.mjs',
     collaborator: 'bricklife',
     iconURL: legobleIconURL,
     insetIconURL: legobleInsetIconURL,
