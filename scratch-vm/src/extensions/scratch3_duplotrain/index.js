@@ -1,7 +1,6 @@
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const Cast = require('../../util/cast');
-const formatMessage = require('format-message');
 
 const Hub = require('./lib/hub');
 const Color = require('./lib/color');
@@ -11,6 +10,9 @@ const blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYA
 
 const BLESendInterval = 100;
 const waitPromise = () => new Promise(resolve => window.setTimeout(resolve, BLESendInterval));
+
+let formatMessage = require('format-message');
+let extensionURL = 'https://bricklife.com/xcratch/duplotrain.mjs';
 
 const Sound = {
     BRAKE: 3,
@@ -34,8 +36,21 @@ class Scratch3DuploTrainBlocks {
         return 'duplotrain';
     }
 
+    static get extensionURL() {
+        return extensionURL;
+    }
+
+    static set extensionURL(url) {
+        extensionURL = url;
+    }
+
     constructor(runtime) {
         this._peripheral = new Hub(runtime, Scratch3DuploTrainBlocks.EXTENSION_ID, 0x20);
+
+        if (runtime.formatMessage) {
+            // Replace 'formatMessage' to a formatter which is used in the runtime.
+            formatMessage = runtime.formatMessage;
+        }
     }
 
     getInfo() {
@@ -44,6 +59,7 @@ class Scratch3DuploTrainBlocks {
         return {
             id: Scratch3DuploTrainBlocks.EXTENSION_ID,
             name: 'DUPLO Train',
+            extensionURL: Scratch3DuploTrainBlocks.extensionURL,
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [
@@ -427,4 +443,5 @@ class Scratch3DuploTrainBlocks {
     }
 }
 
+exports.blockClass = Scratch3DuploTrainBlocks;
 module.exports = Scratch3DuploTrainBlocks;
