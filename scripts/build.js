@@ -109,8 +109,7 @@ const rollupOptions = {
 
 async function build() {
     // Copy module sources
-    fs.mkdirsSync(blockWorkingDir);
-    fs.copy(extSrcFile, blockFile);
+    fs.copySync(extSrcFile, blockFile);
     fs.copySync(libSrcDir, blockLibDir);
     fs.copySync(entrySrcDir, entryWorkingDir);
     console.log('\ncopy source to working dir');
