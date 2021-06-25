@@ -12,7 +12,7 @@ const BLESendInterval = 100;
 const waitPromise = () => new Promise(resolve => window.setTimeout(resolve, BLESendInterval));
 
 let formatMessage = require('format-message');
-let extensionURL = 'https://bricklife.com/xcratch/duplotrain.mjs';
+let extensionURL = 'https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs';
 
 const Sound = {
     BRAKE: 3,

@@ -11,7 +11,7 @@ const BLESendInterval = 100;
 const waitPromise = () => new Promise(resolve => window.setTimeout(resolve, BLESendInterval));
 
 let formatMessage = require('format-message');
-let extensionURL = 'https://bricklife.com/xcratch/legomario.mjs';
+let extensionURL = 'https://bricklife.com/scratch-gui/xcratch/legomario.mjs';
 
 const Color = {
     WHITE: 0x0013,

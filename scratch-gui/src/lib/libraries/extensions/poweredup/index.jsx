@@ -10,6 +10,7 @@ import poweredupConnectionTipIconURL from './poweredup-button-illustration.svg';
 const entry = {
     name: 'LEGO Powered UP',
     extensionId: 'poweredup',
+    extensionURL: 'https://bricklife.com/scratch-gui/xcratch/poweredup.mjs',
     collaborator: 'bricklife',
     iconURL: poweredupIconURL,
     insetIconURL: poweredupInsetIconURL,
