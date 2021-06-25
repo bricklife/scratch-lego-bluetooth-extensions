@@ -8276,6 +8276,7 @@ var img = "data:image/svg+xml,%3c%3fxml version='1.0' encoding='UTF-8'%3f%3e%3cs
 var entry = {
   name: 'LEGO DUPLO Train',
   extensionId: 'duplotrain',
+  extensionURL: 'https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs',
   collaborator: 'bricklife',
   iconURL: img$3,
   insetIconURL: img$2,
@@ -15284,7 +15285,7 @@ var waitPromise = function waitPromise() {
 };
 
 var formatMessage = formatMessage$1;
-var extensionURL = 'https://bricklife.com/xcratch/duplotrain.mjs';
+var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs';
 var Sound = {
   BRAKE: 3,
   DEPARTURE: 5,

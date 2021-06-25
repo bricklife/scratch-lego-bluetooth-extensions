@@ -8276,6 +8276,7 @@ var img = "data:image/svg+xml,%3csvg width='204' height='92' viewBox='0 0 204 92
 var entry = {
   name: 'LEGO Powered UP',
   extensionId: 'poweredup',
+  extensionURL: 'https://bricklife.com/scratch-gui/xcratch/poweredup.mjs',
   collaborator: 'bricklife',
   iconURL: img$3,
   insetIconURL: img$2,
@@ -15888,7 +15889,7 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
 
 var blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAAByElEQVR4Ae3YP07DMBiG8QS4ACdBYmQtlwCmzhwAkICFSvzZmZkoCxyBlZ2TcIOEtJKrqlL6fGlqCdonS9y88WfnV0eWUhQeCiiggAIKKKCAAgoooIACCiiggAIKKKCAAgoooIACCiiQV6DsUv728W1QVfWwLIvduiw/Rhcn75P+m3o9YrMXuSndU9XVU9M+rOuiaOSPm/YUcFOvp+dedsYVeH3/2nBt7zG6OltqtLO9NOt58vArfHd5up4RF6rcPIynV3LVXxgu/DPNizqEASeFIkUTRJd7aZJ/OfcV7vnvdFqBaayjg/3UnJ2/vn9m7flGl3vn+/2X9tIdZvIQ7sLuwlkXc/gVPh8Oskzk+eVzWjdX/VUnneZF/d1ESAhyAQGIYgFJCHIBAYhiAUkIcgEBiGIBSQhyAQGIYgFJCHIBAYhiAUkIcgEBiGIBSQhyAQGIYgFJCPLw98Do9zEYrzXOXb914J6BK7AnYHgF5vpinFZervqr+qR5UX9XIAlBLiAAUSwgCUEuIABRLCAJQR7ehaO7EozXGueu3zpwz8AV2BPQ7goooIACCiiggAIKKKCAAgoooIACCiiggAIKKKCAAgookFvgF1zdypav+pVRAAAAAElFTkSuQmCC';
 var formatMessage = formatMessage$1;
-var extensionURL = 'https://bricklife.com/xcratch/poweredup.mjs';
+var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/poweredup.mjs';
 
 var Scratch3PoweredUpBlocks = /*#__PURE__*/function (_BleBaseBlocks) {
   _inherits(Scratch3PoweredUpBlocks, _BleBaseBlocks);

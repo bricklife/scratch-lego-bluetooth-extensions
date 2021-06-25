@@ -8276,6 +8276,7 @@ var img = "data:image/svg+xml,%3c%3fxml version='1.0' encoding='UTF-8'%3f%3e%3cs
 var entry = {
   name: 'LEGO Mario',
   extensionId: 'legomario',
+  extensionURL: 'https://bricklife.com/scratch-gui/xcratch/legomario.mjs',
   collaborator: 'bricklife',
   iconURL: img$3,
   insetIconURL: img$2,
@@ -15268,7 +15269,7 @@ var waitPromise = function waitPromise() {
 };
 
 var formatMessage = formatMessage$1;
-var extensionURL = 'https://bricklife.com/xcratch/legomario.mjs';
+var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/legomario.mjs';
 var Color = {
   WHITE: 0x0013,
   RED: 0x0015,
