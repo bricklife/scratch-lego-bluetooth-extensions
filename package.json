@@ -8,6 +8,7 @@
     "register:poweredup": "node ./scripts/register.js --link -C --id=\"poweredup\" --block=\"./scratch-vm/src/extensions/scratch3_poweredup\" --entry=\"./scratch-gui/src/lib/libraries/extensions/poweredup\" --gui=\"../scratch-gui\"",
     "register:duplotrain": "node ./scripts/register.js --link -C --id=\"duplotrain\" --block=\"./scratch-vm/src/extensions/scratch3_duplotrain\" --entry=\"./scratch-gui/src/lib/libraries/extensions/duplotrain\" --gui=\"../scratch-gui\"",
     "register:legomario": "node ./scripts/register.js --link -C --id=\"legomario\" --block=\"./scratch-vm/src/extensions/scratch3_legomario\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legomario\" --gui=\"../scratch-gui\"",
+    "build": "rimraf ./mjs && mkdirp ./mjs && node ./scripts/build.js --name=\"legoble\" --block=\"./scratch-vm/src/extensions/scratch3_legoble\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legoble\" --gui=\"../scratch-gui\" --output=\"./mjs\"",
     "start": "cd ../scratch-gui && npm run start"
   },
   "repository": {
@@ -26,6 +27,28 @@
     "url": "https://github.com/bricklife/scratch-lego-bluetooth-extensions/issues"
   },
   "homepage": "https://github.com/bricklife/scratch-lego-bluetooth-extensions",
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-image": "^2.0.5",
+    "@rollup/plugin-multi-entry": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "command-line-args": "^5.1.1",
+    "eslint": "^7.21.0",
+    "eslint-config-scratch": "^6.0.0",
+    "eslint-plugin-react": "^7.22.0",
+    "fs-extra": "^9.0.1",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.26.11",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0"
+  },
   "dependencies": {}
 }
