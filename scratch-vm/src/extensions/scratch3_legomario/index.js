@@ -1,7 +1,6 @@
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const Cast = require('../../util/cast');
-const formatMessage = require('format-message');
 
 const Hub = require('./lib/hub');
 const setupTranslations = require('./lib/setup-translations');
@@ -10,6 +9,9 @@ const blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYA
 
 const BLESendInterval = 100;
 const waitPromise = () => new Promise(resolve => window.setTimeout(resolve, BLESendInterval));
+
+let formatMessage = require('format-message');
+let extensionURL = 'https://bricklife.com/xcratch/legomario.mjs';
 
 const Color = {
     WHITE: 0x0013,
@@ -46,8 +48,21 @@ class Scratch3LEGOMarioBlocks {
         return 'legomario';
     }
 
+    static get extensionURL() {
+        return extensionURL;
+    }
+
+    static set extensionURL(url) {
+        extensionURL = url;
+    }
+
     constructor(runtime) {
         this._peripheral = new Hub(runtime, Scratch3LEGOMarioBlocks.EXTENSION_ID, 0x43);
+
+        if (runtime.formatMessage) {
+            // Replace 'formatMessage' to a formatter which is used in the runtime.
+            formatMessage = runtime.formatMessage;
+        }
     }
 
     getInfo() {
@@ -56,6 +71,7 @@ class Scratch3LEGOMarioBlocks {
         return {
             id: Scratch3LEGOMarioBlocks.EXTENSION_ID,
             name: 'LEGO Mario',
+            extensionURL: Scratch3LEGOMarioBlocks.extensionURL,
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [
@@ -438,4 +454,5 @@ class Scratch3LEGOMarioBlocks {
     }
 }
 
+exports.blockClass = Scratch3LEGOMarioBlocks;
 module.exports = Scratch3LEGOMarioBlocks;

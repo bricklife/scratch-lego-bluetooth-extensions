@@ -20,61 +20,50 @@ const optionDefinitions = [
         type: String
     },
     {
-        name: 'block',
-        type: String
-    },
-    {
-        name: 'entry',
-        type: String
-    },
-    {
         name: 'vm',
-        type:String
+        type: String
     },
     {
         name: 'gui',
-        type:String,
+        type: String,
         defaultValue: '../scratch-gui'
     },
     {
         name: 'output',
-        type:String,
+        type: String,
         defaultValue: './build'
     },
     {
         name: 'debug',
-        type:Boolean
+        type: Boolean
     }
 ];
 
 // Read options
 const options = commandLineArgs(optionDefinitions);
 if (!options['name']) {
-    throw('set --name <module name>');
+    throw ('set --name <module name>');
 }
 const moduleName = options['name'];
-if (!options['block']) {
-    throw('set --block <source directory>');
-}
-const extSrcDir = path.resolve(process.cwd(), options['block']);
-if (!options['entry']) {
-    throw('set --entry <entry directory>');
-}
-const entrySrcDir = path.resolve(process.cwd(), options['entry']);
+const extSrcDir = path.resolve(process.cwd(), `./scratch-vm/src/extensions/scratch3_${moduleName}`);
+const extSrcFile = path.resolve(extSrcDir, './index.js');
+const libSrcDir = path.resolve(process.cwd(), './scratch-vm/src/extensions/scratch3_legoble/lib');
+const entrySrcDir = path.resolve(process.cwd(), `./scratch-gui/src/lib/libraries/extensions/${moduleName}`);
 const GuiRoot = path.resolve(process.cwd(), options['gui']);
 console.log(`gui = ${GuiRoot}`);
 const VmRoot = options['vm'] ?
-    path.resolve(process.cwd(), options['vm']):
+    path.resolve(process.cwd(), options['vm']) :
     path.resolve(GuiRoot, './node_modules/scratch-vm');
 console.log(`vm = ${VmRoot}`);
 const outputDir = path.resolve(process.cwd(), options['output']);
 console.log(`output = ${outputDir}`);
 
-const blockWorkingDir = path.resolve(VmRoot, `src/extensions/_${moduleName}`);
-const blockFile = path.resolve(blockWorkingDir, 'index.js');
+const blockWorkingDir = path.resolve(VmRoot, `./src/extensions/_${moduleName}`);
+const blockFile = path.resolve(blockWorkingDir, './index.js');
+const blockLibDir = path.resolve(blockWorkingDir, './lib');
 
-const entryWorkingDir = path.resolve(GuiRoot, `src/lib/libraries/extensions/_${moduleName}`);
-const entryFile = path.resolve(entryWorkingDir, 'index.jsx');
+const entryWorkingDir = path.resolve(GuiRoot, `./src/lib/libraries/extensions/_${moduleName}`);
+const entryFile = path.resolve(entryWorkingDir, './index.jsx');
 
 const moduleFile = path.resolve(outputDir, `${moduleName}.mjs`);
 
@@ -84,7 +73,7 @@ const rollupOptions = {
         plugins: [
             multi(),
             importImage(),
-            nodeResolve({browser: true, preferBuiltins: true}),
+            nodeResolve({ browser: true, preferBuiltins: true }),
             commonjs({
             }),
             nodeBuiltins(),
@@ -120,7 +109,9 @@ const rollupOptions = {
 
 async function build() {
     // Copy module sources
-    fs.copySync(extSrcDir, blockWorkingDir);
+    fs.mkdirsSync(blockWorkingDir);
+    fs.copy(extSrcFile, blockFile);
+    fs.copySync(libSrcDir, blockLibDir);
     fs.copySync(entrySrcDir, entryWorkingDir);
     console.log('\ncopy source to working dir');
     console.log(blockWorkingDir);
@@ -154,7 +145,7 @@ async function build() {
         // show contents of the module
         bundle.generate(rollupOptions.outputOptions)
             .then(res => {
-                for (const chunkOrAsset of  res.output) {
+                for (const chunkOrAsset of res.output) {
                     if (chunkOrAsset.type === 'asset') {
                         console.log('Asset', chunkOrAsset);
                     } else {
