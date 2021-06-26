@@ -15,12 +15,12 @@ Bluetooth Classic (SPP)
 - [ ] LEGO MINDSTORMS Robot Inventor
 
 ## Scratch 3.0 installed LEGO Bluetooth extensions
-- https://bricklife.github.io/scratch-gui/ (Stable version)
-- https://bricklife.github.io/scratch-lego-bluetooth-extensions/ (Development version)
+- https://bricklife.com/scratch-gui/ (Stable version)
+- https://bricklife.com/scratch-lego-bluetooth-extensions/ (Development version)
 
 ## Xcratch
 [Xcratch](https://xcratch.github.io) is an extendable Scratch programming environment. You can load LEGO Bluetooth extensions into Xcratch from the following URLs:
-- LEGO Powered UP Hub https://bricklife.github.io/scratch-gui/xcratch/poweredup.mjs
-- LEGO DUPLO Train https://bricklife.github.io/scratch-gui/xcratch/duplotrain.mjs
-- LEGO Mario https://bricklife.github.io/scratch-gui/xcratch/legomario.mjs
-- General LEGO BLE Device https://bricklife.github.io/scratch-gui/xcratch/legoble.mjs
+- LEGO Powered UP Hub https://bricklife.com/scratch-gui/xcratch/poweredup.mjs
+- LEGO DUPLO Train https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs
+- LEGO Mario https://bricklife.com/scratch-gui/xcratch/legomario.mjs
+- General LEGO BLE Device https://bricklife.com/scratch-gui/xcratch/legoble.mjs
