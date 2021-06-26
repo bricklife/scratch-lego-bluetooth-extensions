@@ -1,8 +1,8 @@
 # scratch-lego-bluetooth-extensions
-Scratch 3.0 extensions for LEGO Bluetooth and BLE devices.
+Scratch 3.0 extensions for LEGO Bluetooth devices.
 
 ## Extension List
-BLE
+Bluetooth LE (BLE)
 - [x] LEGO Powered UP Hub
 - [ ] LEGO Powered UP Remote
 - [ ] LEGO Technic CONTROL+ Hub
@@ -10,15 +10,17 @@ BLE
 - [x] LEGO Mario
 - [x] General LEGO BLE Device
 
-Bluetooth
+Bluetooth Classic (SPP)
 - [ ] LEGO Education SPIKE Prime Hub
 - [ ] LEGO MINDSTORMS Robot Inventor
 
-## You can use these extensions on...
+## Scratch 3.0 installed LEGO Bluetooth extensions
 - https://bricklife.github.io/scratch-gui/ (Stable version)
 - https://bricklife.github.io/scratch-lego-bluetooth-extensions/ (Development version)
-- Xcratch https://xcratch.github.io and the following mjs files:
-  - LEGO Powered UP Hub https://bricklife.github.io/scratch-gui/xcratch/poweredup.mjs
-  - LEGO DUPLO Train https://bricklife.github.io/scratch-gui/xcratch/duplotrain.mjs
-  - LEGO Mario https://bricklife.github.io/scratch-gui/xcratch/legomario.mjs
-  - General LEGO BLE Device https://bricklife.github.io/scratch-gui/xcratch/legoble.mjs
+
+## Xcratch
+[Xcratch](https://xcratch.github.io) is an extendable Scratch programming environment. You can load LEGO Bluetooth extensions into Xcratch from the following URLs:
+- LEGO Powered UP Hub https://bricklife.github.io/scratch-gui/xcratch/poweredup.mjs
+- LEGO DUPLO Train https://bricklife.github.io/scratch-gui/xcratch/duplotrain.mjs
+- LEGO Mario https://bricklife.github.io/scratch-gui/xcratch/legomario.mjs
+- General LEGO BLE Device https://bricklife.github.io/scratch-gui/xcratch/legoble.mjs
