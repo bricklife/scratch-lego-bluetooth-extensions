@@ -32,7 +32,7 @@ const entry = {
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
-            id="gui.extension.controlplus.connectingMessage"
+            id="gui.extension.boost.connectingMessage"
         />
     ),
     helpLink: 'https://scratch.mit.edu/boost'

@@ -30,7 +30,7 @@ const entry = {
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
-            id="gui.extension.legoble.connectingMessage"
+            id="gui.extension.boost.connectingMessage"
         />
     ),
     helpLink: 'https://scratch.mit.edu/boost'
