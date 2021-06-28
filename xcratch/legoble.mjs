@@ -8292,7 +8292,7 @@ var entry = {
   connectionSmallIconURL: img$1,
   connectingMessage: /*#__PURE__*/react.createElement(FormattedMessage, {
     defaultMessage: "Connecting",
-    id: "gui.extension.legoble.connectingMessage"
+    id: "gui.extension.boost.connectingMessage"
   }),
   helpLink: 'https://scratch.mit.edu/boost'
 };

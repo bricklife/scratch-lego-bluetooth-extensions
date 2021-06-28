@@ -8295,7 +8295,7 @@ var entry = {
   connectionTipIconURL: img,
   connectingMessage: /*#__PURE__*/react.createElement(FormattedMessage, {
     defaultMessage: "Connecting",
-    id: "gui.extension.poweredup.connectingMessage"
+    id: "gui.extension.boost.connectingMessage"
   }),
   helpLink: 'https://scratch.mit.edu/boost'
 };
