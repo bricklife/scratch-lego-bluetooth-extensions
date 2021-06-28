@@ -12629,6 +12629,10 @@ var GenericDevice = /*#__PURE__*/function () {
           return 1;
         // Driving Distance
 
+        case ioType.REMOTE_POWER_CONTROL_BUTTON:
+          return 0;
+        // Button
+
         case ioType.TECHNIC_HUB_TILT_SENSOR:
           return 0;
         // Tilt X, Y, Z
@@ -12718,6 +12722,12 @@ var GenericDevice = /*#__PURE__*/function () {
         case ioType.DUPLO_TRAIN_BASE_SPEEDOMETER:
           this._inputValues = {
             drivingDistance: buffer.readInt32LE(0)
+          };
+          break;
+
+        case ioType.REMOTE_POWER_CONTROL_BUTTON:
+          this._inputValues = {
+            button: buffer.readInt8(0)
           };
           break;
 
