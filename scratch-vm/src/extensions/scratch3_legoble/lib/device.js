@@ -36,6 +36,8 @@ class GenericDevice {
                 return 0; // Color
             case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:
                 return 1; // Driving Distance
+            case IOType.REMOTE_POWER_CONTROL_BUTTON:
+                return 0; // Button
             case IOType.TECHNIC_HUB_TILT_SENSOR:
                 return 0; // Tilt X, Y, Z
             case IOType.TECHNIC_COLOR_SENSOR:
@@ -113,6 +115,12 @@ class GenericDevice {
             case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:
                 this._inputValues = {
                     drivingDistance: buffer.readInt32LE(0)
+                };
+                break;
+
+            case IOType.REMOTE_POWER_CONTROL_BUTTON:
+                this._inputValues = {
+                    button: buffer.readInt8(0)
                 };
                 break;
 
