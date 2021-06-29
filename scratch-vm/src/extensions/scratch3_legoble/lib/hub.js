@@ -169,7 +169,6 @@ class Hub {
 
         this._firstNotificationCallback = () => {
             this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.ADVERTISING_NAME, HubPropertyOperation.ENABLE_UPDATES], false);
-            this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
             this._startPollingBatteryLevel();
         };
     }
@@ -350,6 +349,7 @@ class Hub {
     }
 
     _startPollingBatteryLevel() {
+        this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
         this._pollingId = window.setInterval(() => {
             this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
         }, PollingInterval);
