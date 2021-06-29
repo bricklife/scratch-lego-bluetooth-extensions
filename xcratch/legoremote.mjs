@@ -12408,8 +12408,6 @@ var Hub = /*#__PURE__*/function () {
       this._firstNotificationCallback = function () {
         _this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.ADVERTISING_NAME, HubPropertyOperation.ENABLE_UPDATES], false);
 
-        _this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
-
         _this._startPollingBatteryLevel();
       };
     }
@@ -12612,6 +12610,7 @@ var Hub = /*#__PURE__*/function () {
     value: function _startPollingBatteryLevel() {
       var _this3 = this;
 
+      this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
       this._pollingId = window.setInterval(function () {
         _this3.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.BATTERY_VOLTAGE, HubPropertyOperation.REQUEST_UPDATE]);
       }, PollingInterval);
