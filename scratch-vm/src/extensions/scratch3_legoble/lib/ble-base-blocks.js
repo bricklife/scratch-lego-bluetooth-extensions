@@ -285,6 +285,16 @@ class BleBaseBlocks {
             );
             blocks.push(
                 {
+                    opcode: 'getFirmwareVersion',
+                    text: formatMessage({
+                        id: 'legobluetooth.getFirmwareVersion',
+                        default: 'firmware version'
+                    }),
+                    blockType: BlockType.REPORTER
+                }
+            );
+            blocks.push(
+                {
                     opcode: 'getBatteryLevel',
                     text: formatMessage({
                         id: 'legobluetooth.getBatteryLevel',
@@ -594,6 +604,10 @@ class BleBaseBlocks {
 
     getName() {
         return this._peripheral.name ? this._peripheral.name : "";
+    }
+
+    getFirmwareVersion() {
+        return this._peripheral.firmwareVersion ? this._peripheral.firmwareVersion : "";
     }
 
     getBatteryLevel() {
