@@ -83,6 +83,7 @@ class Hub {
         this._hubType = hubType;
 
         this._name = null;
+        this._firmwareVersion = null;
         this._batteryLevel = 0;
         this._devices = [];
 
@@ -105,6 +106,10 @@ class Hub {
 
     get name() {
         return this._name;
+    }
+
+    get firmwareVersion() {
+        return this._firmwareVersion;
     }
 
     get batteryLevel() {
@@ -169,6 +174,7 @@ class Hub {
 
         this._firstNotificationCallback = () => {
             this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.ADVERTISING_NAME, HubPropertyOperation.ENABLE_UPDATES], false);
+            this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.FW_VERSION, HubPropertyOperation.REQUEST_UPDATE]);
             this._startPollingBatteryLevel();
         };
     }
@@ -194,6 +200,14 @@ class Hub {
                             this._name = (new _TextDecoder()).decode(uint8Array);
                         } else {
                             this._name = 'unsupported';
+                        }
+                        break;
+                    case HubPropertyReference.FW_VERSION:
+                        const value = data.slice(5);
+                        if (value.length == 4) {
+                            const s = value.reduce((output, elem) =>
+                                (('0' + (elem & 0xff).toString(16)).slice(-2)) + output, '');
+                            this._firmwareVersion = s.slice(0, 1) + '.' + s.slice(1, 2) + '.' + s.slice(2, 4) + '.' + s.slice(4);
                         }
                         break;
                     case HubPropertyReference.BATTERY_VOLTAGE:
@@ -323,6 +337,7 @@ class Hub {
 
     reset() {
         this._name = null;
+        this._firmwareVersion = null;
         this._batteryLevel = 0;
         this._devices = [];
 
