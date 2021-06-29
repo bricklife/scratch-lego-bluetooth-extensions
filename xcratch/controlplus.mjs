@@ -9211,6 +9211,14 @@ var BleBaseBlocks = /*#__PURE__*/function () {
           blockType: blockType.REPORTER
         });
         blocks.push({
+          opcode: 'getFirmwareVersion',
+          text: formatMessage({
+            id: 'legobluetooth.getFirmwareVersion',
+            default: 'firmware version'
+          }),
+          blockType: blockType.REPORTER
+        });
+        blocks.push({
           opcode: 'getBatteryLevel',
           text: formatMessage({
             id: 'legobluetooth.getBatteryLevel',
@@ -9538,6 +9546,11 @@ var BleBaseBlocks = /*#__PURE__*/function () {
     key: "getName",
     value: function getName() {
       return this._peripheral.name ? this._peripheral.name : "";
+    }
+  }, {
+    key: "getFirmwareVersion",
+    value: function getFirmwareVersion() {
+      return this._peripheral.firmwareVersion ? this._peripheral.firmwareVersion : "";
     }
   }, {
     key: "getBatteryLevel",
@@ -12942,6 +12955,7 @@ var Hub = /*#__PURE__*/function () {
     this._extensionId = extensionId;
     this._hubType = hubType;
     this._name = null;
+    this._firmwareVersion = null;
     this._batteryLevel = 0;
     this._devices = [];
     this._firstNotificationCallback = null;
@@ -12964,6 +12978,11 @@ var Hub = /*#__PURE__*/function () {
     key: "name",
     get: function get() {
       return this._name;
+    }
+  }, {
+    key: "firmwareVersion",
+    get: function get() {
+      return this._firmwareVersion;
     }
   }, {
     key: "batteryLevel",
@@ -13036,6 +13055,8 @@ var Hub = /*#__PURE__*/function () {
       this._firstNotificationCallback = function () {
         _this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.ADVERTISING_NAME, HubPropertyOperation.ENABLE_UPDATES], false);
 
+        _this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.FW_VERSION, HubPropertyOperation.REQUEST_UPDATE]);
+
         _this._startPollingBatteryLevel();
       };
     }
@@ -13065,6 +13086,18 @@ var Hub = /*#__PURE__*/function () {
                   this._name = new _TextDecoder().decode(uint8Array);
                 } else {
                   this._name = 'unsupported';
+                }
+
+                break;
+
+              case HubPropertyReference.FW_VERSION:
+                var value = data.slice(5);
+
+                if (value.length == 4) {
+                  var s = value.reduce(function (output, elem) {
+                    return ('0' + (elem & 0xff).toString(16)).slice(-2) + output;
+                  }, '');
+                  this._firmwareVersion = s.slice(0, 1) + '.' + s.slice(1, 2) + '.' + s.slice(2, 4) + '.' + s.slice(4);
                 }
 
                 break;
@@ -13204,6 +13237,7 @@ var Hub = /*#__PURE__*/function () {
     key: "reset",
     value: function reset() {
       this._name = null;
+      this._firmwareVersion = null;
       this._batteryLevel = 0;
       this._devices = [];
       this._outputCommandFeedbackCallbacks = [];
@@ -13446,6 +13480,7 @@ var setupTranslations = function setupTranslations(formatMessage) {
       'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
       'legobluetooth.getHubTilt': 'ハブの傾き [XYZ]',
       'legobluetooth.getName': '名前',
+      'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
       'legobluetooth.getBatteryLevel': '電池残量',
       'legobluetooth.clockwise': '時計回り',
       'legobluetooth.counterclockwise': '反時計回り',
@@ -13480,6 +13515,7 @@ var setupTranslations = function setupTranslations(formatMessage) {
       'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
       'legobluetooth.getHubTilt': 'ハブのかたむき [XYZ]',
       'legobluetooth.getName': 'なまえ',
+      'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
       'legobluetooth.getBatteryLevel': 'でんちざんりょう',
       'legobluetooth.clockwise': 'とけいまわり',
       'legobluetooth.counterclockwise': 'はんとけいまわり',
