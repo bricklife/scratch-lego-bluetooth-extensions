@@ -17,6 +17,7 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
             'legobluetooth.getHubTilt': 'ハブの傾き [XYZ]',
             'legobluetooth.getName': '名前',
+            'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
             'legobluetooth.getBatteryLevel': '電池残量',
 
             'legobluetooth.clockwise': '時計回り',
@@ -53,6 +54,7 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
             'legobluetooth.getHubTilt': 'ハブのかたむき [XYZ]',
             'legobluetooth.getName': 'なまえ',
+            'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
             'legobluetooth.getBatteryLevel': 'でんちざんりょう',
 
             'legobluetooth.clockwise': 'とけいまわり',
