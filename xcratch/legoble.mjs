@@ -8279,7 +8279,7 @@ var entry = {
   iconURL: img$2,
   insetIconURL: img$1,
   description: /*#__PURE__*/react.createElement(FormattedMessage, {
-    defaultMessage: "Build with motors and sensors.",
+    defaultMessage: "General and advanced extension for LEGO Wireless Protocol.",
     id: "gui.extension.legoble.description"
   }),
   featured: true,
