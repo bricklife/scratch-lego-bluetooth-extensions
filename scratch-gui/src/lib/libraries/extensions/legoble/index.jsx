@@ -15,7 +15,7 @@ const entry = {
     insetIconURL: legobleInsetIconURL,
     description: (
         <FormattedMessage
-            defaultMessage="Build with motors and sensors."
+            defaultMessage="General and advanced extension for LEGO Wireless Protocol."
             id="gui.extension.legoble.description"
         />
     ),
