@@ -19,6 +19,13 @@ const PortId = {
     BUTTON_B: 0x01,
 };
 
+const Button = {
+    NONE: 0,
+    PLUS: 1,
+    MINUS: -1,
+    STOP: 127,
+};
+
 class Scratch3LegoRemoteBlocks {
 
     static get EXTENSION_ID() {
