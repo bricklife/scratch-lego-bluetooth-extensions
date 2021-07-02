@@ -246,7 +246,7 @@ class BleBaseBlocks {
                     COLOR: {
                         type: ArgumentType.NUMBER,
                         menu: 'LED_COLOR',
-                        defaultValue: 3
+                        defaultValue: Color.BLUE
                     }
                 }
             }
