@@ -9178,7 +9178,7 @@ var BleBaseBlocks = /*#__PURE__*/function () {
           COLOR: {
             type: argumentType.NUMBER,
             menu: 'LED_COLOR',
-            defaultValue: 3
+            defaultValue: color.BLUE
           }
         }
       }];
