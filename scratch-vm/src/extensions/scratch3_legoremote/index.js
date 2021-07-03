@@ -60,6 +60,27 @@ class Scratch3LegoRemoteBlocks {
             showStatusButton: true,
             blocks: [
                 {
+                    opcode: 'whenButton',
+                    text: formatMessage({
+                        id: 'legoremote.whenButton',
+                        default: '[PORT] when [BUTTON] button pressed'
+                    }),
+                    blockType: BlockType.HAT,
+                    arguments: {
+                        PORT: {
+                            type: ArgumentType.STRING,
+                            menu: 'PORT',
+                            defaultValue: 'A'
+                        },
+                        BUTTON: {
+                            type: ArgumentType.NUMBER,
+                            menu: 'BUTTON',
+                            defaultValue: Button.PLUS
+                        }
+                    }
+                },
+                '---',
+                {
                     opcode: 'getButtonA',
                     text: formatMessage({
                         id: 'legoremote.getButtonA',
@@ -93,6 +114,10 @@ class Scratch3LegoRemoteBlocks {
                 },
             ],
             menus: {
+                PORT: {
+                    acceptReporters: false,
+                    items: ['A', 'B'],
+                },
                 LED_COLOR: {
                     acceptReporters: true,
                     items: [
@@ -175,6 +200,32 @@ class Scratch3LegoRemoteBlocks {
                         },
                     ]
                 },
+                BUTTON: {
+                    acceptReporters: false,
+                    items: [
+                        {
+                            text: formatMessage({
+                                id: 'legoremote.button.plus',
+                                default: 'plus'
+                            }),
+                            value: String(Button.PLUS)
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legoremote.button.stop',
+                                default: 'stop'
+                            }),
+                            value: String(Button.STOP)
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legoremote.button.minus',
+                                default: 'minus'
+                            }),
+                            value: String(Button.MINUS)
+                        },
+                    ]
+                },
             }
         };
     }
@@ -182,6 +233,14 @@ class Scratch3LegoRemoteBlocks {
     setHubLEDColor(args) {
         const color = Cast.toNumber(args.COLOR);
         return this._peripheral.setLEDColor(color).then(waitPromise);
+    }
+
+    whenButton(args) {
+        const port = Cast.toString(args.PORT);
+        const portId = ['A', 'B'].indexOf(port);
+        const button = Cast.toNumber(args.BUTTON);
+
+        return this._getSensorValue(portId, 'button', 0) == button;
     }
 
     getButtonA() {
