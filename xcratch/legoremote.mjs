@@ -15322,6 +15322,12 @@ var PortId = {
   BUTTON_A: 0x00,
   BUTTON_B: 0x01
 };
+var Button = {
+  NONE: 0,
+  PLUS: 1,
+  MINUS: -1,
+  STOP: 127
+};
 
 var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
   function Scratch3LegoRemoteBlocks(runtime) {
@@ -15347,6 +15353,25 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
         blockIconURI: blockIconURI,
         showStatusButton: true,
         blocks: [{
+          opcode: 'whenButton',
+          text: formatMessage({
+            id: 'legoremote.whenButton',
+            default: '[PORT] when [BUTTON] button pressed'
+          }),
+          blockType: blockType.HAT,
+          arguments: {
+            PORT: {
+              type: argumentType.STRING,
+              menu: 'PORT',
+              defaultValue: 'A'
+            },
+            BUTTON: {
+              type: argumentType.NUMBER,
+              menu: 'BUTTON',
+              defaultValue: Button.PLUS
+            }
+          }
+        }, '---', {
           opcode: 'getButtonA',
           text: formatMessage({
             id: 'legoremote.getButtonA',
@@ -15376,6 +15401,10 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
           }
         }],
         menus: {
+          PORT: {
+            acceptReporters: false,
+            items: ['A', 'B']
+          },
           LED_COLOR: {
             acceptReporters: true,
             items: [{
@@ -15445,6 +15474,28 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
               }),
               value: String(color.WHITE)
             }]
+          },
+          BUTTON: {
+            acceptReporters: false,
+            items: [{
+              text: formatMessage({
+                id: 'legoremote.button.plus',
+                default: 'plus'
+              }),
+              value: String(Button.PLUS)
+            }, {
+              text: formatMessage({
+                id: 'legoremote.button.stop',
+                default: 'stop'
+              }),
+              value: String(Button.STOP)
+            }, {
+              text: formatMessage({
+                id: 'legoremote.button.minus',
+                default: 'minus'
+              }),
+              value: String(Button.MINUS)
+            }]
           }
         }
       };
@@ -15454,6 +15505,14 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
     value: function setHubLEDColor(args) {
       var color = cast.toNumber(args.COLOR);
       return this._peripheral.setLEDColor(color).then(waitPromise);
+    }
+  }, {
+    key: "whenButton",
+    value: function whenButton(args) {
+      var port = cast.toString(args.PORT);
+      var portId = ['A', 'B'].indexOf(port);
+      var button = cast.toNumber(args.BUTTON);
+      return this._getSensorValue(portId, 'button', 0) == button;
     }
   }, {
     key: "getButtonA",
