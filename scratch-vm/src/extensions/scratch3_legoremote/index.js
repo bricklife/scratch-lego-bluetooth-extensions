@@ -240,15 +240,15 @@ class Scratch3LegoRemoteBlocks {
         const portId = ['A', 'B'].indexOf(port);
         const button = Cast.toNumber(args.BUTTON);
 
-        return this._getSensorValue(portId, 'button', 0) == button;
+        return this._getSensorValue(portId, 'button', Button.NONE) == button;
     }
 
     getButtonA() {
-        return this._getSensorValue(PortId.BUTTON_A, 'button', 0);
+        return this._getSensorValue(PortId.BUTTON_A, 'button', Button.NONE);
     }
 
     getButtonB() {
-        return this._getSensorValue(PortId.BUTTON_B, 'button', 0);
+        return this._getSensorValue(PortId.BUTTON_B, 'button', Button.NONE);
     }
 
     _getSensorValue(portId, key, defaultValue) {
