@@ -15512,17 +15512,17 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
       var port = cast.toString(args.PORT);
       var portId = ['A', 'B'].indexOf(port);
       var button = cast.toNumber(args.BUTTON);
-      return this._getSensorValue(portId, 'button', 0) == button;
+      return this._getSensorValue(portId, 'button', Button.NONE) == button;
     }
   }, {
     key: "getButtonA",
     value: function getButtonA() {
-      return this._getSensorValue(PortId.BUTTON_A, 'button', 0);
+      return this._getSensorValue(PortId.BUTTON_A, 'button', Button.NONE);
     }
   }, {
     key: "getButtonB",
     value: function getButtonB() {
-      return this._getSensorValue(PortId.BUTTON_B, 'button', 0);
+      return this._getSensorValue(PortId.BUTTON_B, 'button', Button.NONE);
     }
   }, {
     key: "_getSensorValue",
