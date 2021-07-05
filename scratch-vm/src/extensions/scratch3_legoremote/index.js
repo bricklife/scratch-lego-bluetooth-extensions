@@ -24,6 +24,7 @@ const Button = {
     PLUS: 1,
     MINUS: -1,
     STOP: 127,
+    ANY: 255,
 };
 
 class Scratch3LegoRemoteBlocks {
@@ -224,6 +225,13 @@ class Scratch3LegoRemoteBlocks {
                             }),
                             value: String(Button.MINUS)
                         },
+                        {
+                            text: formatMessage({
+                                id: 'legoremote.button.any',
+                                default: 'any'
+                            }),
+                            value: String(Button.ANY)
+                        },
                     ]
                 },
             }
@@ -240,7 +248,12 @@ class Scratch3LegoRemoteBlocks {
         const portId = ['A', 'B'].indexOf(port);
         const button = Cast.toNumber(args.BUTTON);
 
-        return this._getSensorValue(portId, 'button', Button.NONE) == button;
+        const value = this._getSensorValue(portId, 'button', Button.NONE);
+        if (button == Button.ANY) {
+            return value != Button.NONE;
+        } else {
+            return value == button;
+        }
     }
 
     getButtonA() {
