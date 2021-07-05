@@ -23,7 +23,7 @@ const Button = {
     NONE: 0,
     PLUS: 1,
     MINUS: -1,
-    STOP: 127,
+    CENTER: 127,
     ANY: 255,
 };
 
@@ -233,17 +233,17 @@ class Scratch3LegoRemoteBlocks {
                         },
                         {
                             text: formatMessage({
-                                id: 'legoremote.button.stop',
-                                default: 'stop'
-                            }),
-                            value: String(Button.STOP)
-                        },
-                        {
-                            text: formatMessage({
                                 id: 'legoremote.button.minus',
                                 default: 'minus'
                             }),
                             value: String(Button.MINUS)
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legoremote.button.center',
+                                default: 'center'
+                            }),
+                            value: String(Button.CENTER)
                         },
                         {
                             text: formatMessage({
