@@ -83,7 +83,7 @@ class Scratch3LegoRemoteBlocks {
                 {
                     opcode: 'isButton',
                     text: formatMessage({
-                        id: 'legomario.isButton',
+                        id: 'legoremote.isButton',
                         default: '[PORT] [BUTTON] button pressed?'
                     }),
                     blockType: BlockType.BOOLEAN,
