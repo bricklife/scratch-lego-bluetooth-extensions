@@ -15326,7 +15326,7 @@ var Button = {
   NONE: 0,
   PLUS: 1,
   MINUS: -1,
-  STOP: 127,
+  CENTER: 127,
   ANY: 255
 };
 
@@ -15375,8 +15375,8 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
         }, {
           opcode: 'isButton',
           text: formatMessage({
-            id: 'legomario.isButton',
-            default: '[PORT] button [BUTTON] pressed?'
+            id: 'legoremote.isButton',
+            default: '[PORT] [BUTTON] button pressed?'
           }),
           blockType: blockType.BOOLEAN,
           arguments: {
@@ -15422,7 +15422,7 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
         }],
         menus: {
           PORT: {
-            acceptReporters: false,
+            acceptReporters: true,
             items: ['A', 'B']
           },
           LED_COLOR: {
@@ -15505,16 +15505,16 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
               value: String(Button.PLUS)
             }, {
               text: formatMessage({
-                id: 'legoremote.button.stop',
-                default: 'stop'
-              }),
-              value: String(Button.STOP)
-            }, {
-              text: formatMessage({
                 id: 'legoremote.button.minus',
                 default: 'minus'
               }),
               value: String(Button.MINUS)
+            }, {
+              text: formatMessage({
+                id: 'legoremote.button.center',
+                default: 'center'
+              }),
+              value: String(Button.CENTER)
             }, {
               text: formatMessage({
                 id: 'legoremote.button.any',
@@ -15525,6 +15525,13 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
           }
         }
       };
+    }
+  }, {
+    key: "_validatePorts",
+    value: function _validatePorts(text) {
+      return text.toUpperCase().replace(/[^AB]/g, '').split('').filter(function (x, i, self) {
+        return self.indexOf(x) === i;
+      }).sort();
     }
   }, {
     key: "setHubLEDColor",
@@ -15540,7 +15547,8 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
   }, {
     key: "isButton",
     value: function isButton(args) {
-      var port = cast.toString(args.PORT);
+      var port = this._validatePorts(cast.toString(args.PORT)).shift();
+
       var portId = ['A', 'B'].indexOf(port);
       var button = cast.toNumber(args.BUTTON);
 
@@ -15574,14 +15582,26 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
     value: function _setupTranslations() {
       setupTranslations_1(formatMessage, {
         'ja': {
-          'legoremote.getButtonA': 'ボタンA',
-          'legoremote.getButtonB': 'ボタンB',
-          'legoremote.setHubLEDColor': 'LEDの色を [COLOR] にする'
+          'legoremote.whenButton': '[PORT] [BUTTON] ボタンが押されたとき',
+          'legoremote.isButton': '[PORT] [BUTTON] ボタンが押された',
+          'legoremote.getButtonA': 'ボタン A',
+          'legoremote.getButtonB': 'ボタン B',
+          'legoremote.setHubLEDColor': 'LEDの色を [COLOR] にする',
+          'legoremote.button.plus': 'プラス',
+          'legoremote.button.minus': 'マイナス',
+          'legoremote.button.center': '真ん中の',
+          'legoremote.button.any': 'どれかの'
         },
         'ja-Hira': {
-          'legoremote.getButtonA': 'ボタンA',
-          'legoremote.getButtonB': 'ボタンB',
-          'legoremote.setHubLEDColor': 'LEDのいろを [COLOR] にする'
+          'legoremote.whenButton': '[PORT] [BUTTON] ボタンがおされたとき',
+          'legoremote.isButton': '[PORT] [BUTTON] ボタンがおされた',
+          'legoremote.getButtonA': 'ボタン A',
+          'legoremote.getButtonB': 'ボタン B',
+          'legoremote.setHubLEDColor': 'LEDのいろを [COLOR] にする',
+          'legoremote.button.plus': 'プラス',
+          'legoremote.button.minus': 'マイナス',
+          'legoremote.button.center': 'まんなかの',
+          'legoremote.button.any': 'どれかの'
         }
       });
     }
