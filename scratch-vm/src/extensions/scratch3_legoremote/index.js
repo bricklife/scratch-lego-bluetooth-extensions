@@ -84,7 +84,7 @@ class Scratch3LegoRemoteBlocks {
                     opcode: 'isButton',
                     text: formatMessage({
                         id: 'legomario.isButton',
-                        default: '[PORT] button [BUTTON] pressed?'
+                        default: '[PORT] [BUTTON] button pressed?'
                     }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
@@ -136,7 +136,7 @@ class Scratch3LegoRemoteBlocks {
             ],
             menus: {
                 PORT: {
-                    acceptReporters: false,
+                    acceptReporters: true,
                     items: ['A', 'B'],
                 },
                 LED_COLOR: {
@@ -258,6 +258,13 @@ class Scratch3LegoRemoteBlocks {
         };
     }
 
+    _validatePorts(text) {
+        return text.toUpperCase().replace(/[^AB]/g, '')
+            .split('')
+            .filter((x, i, self) => self.indexOf(x) === i)
+            .sort();
+    }
+
     setHubLEDColor(args) {
         const color = Cast.toNumber(args.COLOR);
         return this._peripheral.setLEDColor(color).then(waitPromise);
@@ -268,7 +275,7 @@ class Scratch3LegoRemoteBlocks {
     }
 
     isButton(args) {
-        const port = Cast.toString(args.PORT);
+        const port = this._validatePorts(Cast.toString(args.PORT)).shift();
         const portId = ['A', 'B'].indexOf(port);
         const button = Cast.toNumber(args.BUTTON);
 
