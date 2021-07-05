@@ -303,14 +303,28 @@ class Scratch3LegoRemoteBlocks {
     _setupTranslations() {
         setupTranslations(formatMessage, {
             'ja': {
+                'legoremote.whenButton': '[PORT] [BUTTON] ボタンが押されたとき',
+                'legoremote.isButton': '[PORT] [BUTTON] ボタンが押された',
                 'legoremote.getButtonA': 'ボタンA',
                 'legoremote.getButtonB': 'ボタンB',
                 'legoremote.setHubLEDColor': 'LEDの色を [COLOR] にする',
+
+                'legoremote.button.plus': 'プラス',
+                'legoremote.button.minus': 'マイナス',
+                'legoremote.button.center': '真ん中の',
+                'legoremote.button.any': 'どれかの',
             },
             'ja-Hira': {
+                'legoremote.whenButton': '[PORT] [BUTTON] ボタンがおされたとき',
+                'legoremote.isButton': '[PORT] [BUTTON] ボタンがおされた',
                 'legoremote.getButtonA': 'ボタンA',
                 'legoremote.getButtonB': 'ボタンB',
                 'legoremote.setHubLEDColor': 'LEDのいろを [COLOR] にする',
+
+                'legoremote.button.plus': 'プラス',
+                'legoremote.button.minus': 'マイナス',
+                'legoremote.button.center': 'まんなかの',
+                'legoremote.button.any': 'どれかの',
             }
         });
     }
