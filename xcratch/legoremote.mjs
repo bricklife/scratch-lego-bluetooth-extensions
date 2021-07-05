@@ -15326,7 +15326,8 @@ var Button = {
   NONE: 0,
   PLUS: 1,
   MINUS: -1,
-  STOP: 127
+  STOP: 127,
+  ANY: 255
 };
 
 var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
@@ -15359,6 +15360,25 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
             default: '[PORT] when [BUTTON] button pressed'
           }),
           blockType: blockType.HAT,
+          arguments: {
+            PORT: {
+              type: argumentType.STRING,
+              menu: 'PORT',
+              defaultValue: 'A'
+            },
+            BUTTON: {
+              type: argumentType.NUMBER,
+              menu: 'BUTTON',
+              defaultValue: Button.PLUS
+            }
+          }
+        }, {
+          opcode: 'isButton',
+          text: formatMessage({
+            id: 'legomario.isButton',
+            default: '[PORT] button [BUTTON] pressed?'
+          }),
+          blockType: blockType.BOOLEAN,
           arguments: {
             PORT: {
               type: argumentType.STRING,
@@ -15495,6 +15515,12 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
                 default: 'minus'
               }),
               value: String(Button.MINUS)
+            }, {
+              text: formatMessage({
+                id: 'legoremote.button.any',
+                default: 'any'
+              }),
+              value: String(Button.ANY)
             }]
           }
         }
@@ -15509,10 +15535,22 @@ var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
   }, {
     key: "whenButton",
     value: function whenButton(args) {
+      return this.isButton(args);
+    }
+  }, {
+    key: "isButton",
+    value: function isButton(args) {
       var port = cast.toString(args.PORT);
       var portId = ['A', 'B'].indexOf(port);
       var button = cast.toNumber(args.BUTTON);
-      return this._getSensorValue(portId, 'button', Button.NONE) == button;
+
+      var value = this._getSensorValue(portId, 'button', Button.NONE);
+
+      if (button == Button.ANY) {
+        return value != Button.NONE;
+      } else {
+        return value == button;
+      }
     }
   }, {
     key: "getButtonA",
