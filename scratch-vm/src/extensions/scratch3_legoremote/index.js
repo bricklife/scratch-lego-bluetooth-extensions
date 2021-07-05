@@ -80,6 +80,26 @@ class Scratch3LegoRemoteBlocks {
                         }
                     }
                 },
+                {
+                    opcode: 'isButton',
+                    text: formatMessage({
+                        id: 'legomario.isButton',
+                        default: '[PORT] button [BUTTON] pressed?'
+                    }),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        PORT: {
+                            type: ArgumentType.STRING,
+                            menu: 'PORT',
+                            defaultValue: 'A'
+                        },
+                        BUTTON: {
+                            type: ArgumentType.NUMBER,
+                            menu: 'BUTTON',
+                            defaultValue: Button.PLUS
+                        }
+                    }
+                },
                 '---',
                 {
                     opcode: 'getButtonA',
@@ -244,6 +264,10 @@ class Scratch3LegoRemoteBlocks {
     }
 
     whenButton(args) {
+        return this.isButton(args);
+    }
+
+    isButton(args) {
         const port = Cast.toString(args.PORT);
         const portId = ['A', 'B'].indexOf(port);
         const button = Cast.toNumber(args.BUTTON);
