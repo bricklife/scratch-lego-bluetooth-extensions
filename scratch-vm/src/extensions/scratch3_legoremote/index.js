@@ -23,7 +23,7 @@ const Button = {
     NONE: 0,
     PLUS: 1,
     MINUS: -1,
-    CENTER: 127,
+    STOP: 127,
     ANY: 255,
 };
 
@@ -240,10 +240,10 @@ class Scratch3LegoRemoteBlocks {
                         },
                         {
                             text: formatMessage({
-                                id: 'legoremote.button.center',
-                                default: 'center'
+                                id: 'legoremote.button.stop',
+                                default: 'red'
                             }),
-                            value: String(Button.CENTER)
+                            value: String(Button.STOP)
                         },
                         {
                             text: formatMessage({
@@ -311,7 +311,7 @@ class Scratch3LegoRemoteBlocks {
 
                 'legoremote.button.plus': 'プラス',
                 'legoremote.button.minus': 'マイナス',
-                'legoremote.button.center': '真ん中の',
+                'legoremote.button.stop': '赤い',
                 'legoremote.button.any': 'どれかの',
             },
             'ja-Hira': {
@@ -323,7 +323,7 @@ class Scratch3LegoRemoteBlocks {
 
                 'legoremote.button.plus': 'プラス',
                 'legoremote.button.minus': 'マイナス',
-                'legoremote.button.center': 'まんなかの',
+                'legoremote.button.stop': 'あかい',
                 'legoremote.button.any': 'どれかの',
             }
         });
