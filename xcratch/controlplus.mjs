@@ -8276,7 +8276,6 @@ var img = "data:image/svg+xml,%3csvg width='204' height='92' viewBox='0 0 204 92
 var entry = {
   name: 'LEGO Technic CONTROL+',
   extensionId: 'controlplus',
-  extensionURL: 'https://bricklife.com/scratch-gui/xcratch/controlplus.mjs',
   collaborator: 'bricklife',
   iconURL: img$3,
   insetIconURL: img$2,

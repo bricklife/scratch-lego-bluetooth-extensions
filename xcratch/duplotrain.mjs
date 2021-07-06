@@ -8276,7 +8276,6 @@ var img = "data:image/svg+xml,%3c%3fxml version='1.0' encoding='UTF-8'%3f%3e%3cs
 var entry = {
   name: 'LEGO DUPLO Train',
   extensionId: 'duplotrain',
-  extensionURL: 'https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs',
   collaborator: 'bricklife',
   iconURL: img$3,
   insetIconURL: img$2,

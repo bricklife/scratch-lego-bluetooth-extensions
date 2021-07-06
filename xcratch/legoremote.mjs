@@ -8276,7 +8276,6 @@ var img = "data:image/svg+xml,%3csvg width='204' height='92' viewBox='0 0 204 92
 var entry = {
   name: 'LEGO Powered UP Remote Control',
   extensionId: 'legoremote',
-  extensionURL: 'https://bricklife.com/scratch-gui/xcratch/legoremote.mjs',
   collaborator: 'bricklife',
   iconURL: img$3,
   insetIconURL: img$2,

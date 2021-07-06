@@ -8274,7 +8274,6 @@ var img = "data:image/svg+xml,%3csvg width='204' height='72' viewBox='0 0 204 72
 var entry = {
   name: 'LEGO BLE Device',
   extensionId: 'legoble',
-  extensionURL: 'https://bricklife.com/scratch-gui/xcratch/legoble.mjs',
   collaborator: 'bricklife',
   iconURL: img$2,
   insetIconURL: img$1,
