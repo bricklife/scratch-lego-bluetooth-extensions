@@ -8,6 +8,7 @@ Bluetooth LE (BLE)
 - [x] LEGO Technic CONTROL+ Hub
 - [x] LEGO DUPLO Train
 - [x] LEGO Mario
+- [ ] LEGO Luigi
 - [x] General LEGO BLE Device
 
 Bluetooth Classic (SPP)
