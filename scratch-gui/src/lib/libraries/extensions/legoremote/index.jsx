@@ -10,7 +10,6 @@ import legoremoteConnectionTipIconURL from './legoremote-button-illustration.svg
 const entry = {
     name: 'LEGO Powered UP Remote Control',
     extensionId: 'legoremote',
-    extensionURL: 'https://bricklife.com/scratch-gui/xcratch/legoremote.mjs',
     collaborator: 'bricklife',
     iconURL: legoremoteIconURL,
     insetIconURL: legoremoteInsetIconURL,

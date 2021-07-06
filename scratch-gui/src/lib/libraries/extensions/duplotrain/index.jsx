@@ -10,7 +10,6 @@ import duplotrainConnectionTipIconURL from './duplotrain-button-illustration.svg
 const entry = {
     name: 'LEGO DUPLO Train',
     extensionId: 'duplotrain',
-    extensionURL: 'https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs',
     collaborator: 'bricklife',
     iconURL: duplotrainIconURL,
     insetIconURL: duplotrainInsetIconURL,

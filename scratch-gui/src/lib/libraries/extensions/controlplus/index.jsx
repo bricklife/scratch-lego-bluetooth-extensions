@@ -10,7 +10,6 @@ import controlplusConnectionTipIconURL from './controlplus-button-illustration.s
 const entry = {
     name: 'LEGO Technic CONTROL+',
     extensionId: 'controlplus',
-    extensionURL: 'https://bricklife.com/scratch-gui/xcratch/controlplus.mjs',
     collaborator: 'bricklife',
     iconURL: controlplusIconURL,
     insetIconURL: controlplusInsetIconURL,

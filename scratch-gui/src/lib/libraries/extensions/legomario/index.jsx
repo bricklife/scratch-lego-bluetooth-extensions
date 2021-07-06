@@ -10,7 +10,6 @@ import legomarioConnectionTipIconURL from './legomario-button-illustration.svg';
 const entry = {
     name: 'LEGO Mario',
     extensionId: 'legomario',
-    extensionURL: 'https://bricklife.com/scratch-gui/xcratch/legomario.mjs',
     collaborator: 'bricklife',
     iconURL: legomarioIconURL,
     insetIconURL: legomarioInsetIconURL,
