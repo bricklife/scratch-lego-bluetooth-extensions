@@ -15310,6 +15310,7 @@ var Color = {
   GREEN: 0x0025,
   BROWN: 0x006a,
   PURPLE: 0x010c,
+  NOUGAT_BROWN: 0x0138,
   CYAN: 0x0142,
   NONE: -1
 };
@@ -15515,6 +15516,12 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
               value: String(Color.PURPLE)
             }, {
               text: formatMessage({
+                id: 'legomario.nougatBrown',
+                default: '(312) Nougat Brown'
+              }),
+              value: String(Color.NOUGAT_BROWN)
+            }, {
+              text: formatMessage({
                 id: 'legomario.cyan',
                 default: '(322) Cyan'
               }),
@@ -15663,6 +15670,7 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
           'legomario.green': '(37) 緑',
           'legomario.brown': '(106) 茶色',
           'legomario.purple': '(268) 紫',
+          'legomario.nougatBrown': '(312) 薄茶色',
           'legomario.cyan': '(322) シアン',
           'legomario.pants.none': '(0) なし',
           'legomario.pants.tanooki': '(10) タヌキ',
@@ -15692,6 +15700,7 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
           'legomario.green': '(37) みどり',
           'legomario.brown': '(106) ちゃいろ',
           'legomario.purple': '(268) むらさき',
+          'legomario.nougatBrown': '(312) うすちゃいろ',
           'legomario.cyan': '(322) シアン',
           'legomario.pants.none': '(0) なし',
           'legomario.pants.tanooki': '(10) タヌキ',
