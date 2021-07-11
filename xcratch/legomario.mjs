@@ -15393,7 +15393,7 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
             SENSOR_COLOR: {
               type: argumentType.NUMBER,
               menu: 'SENSOR_COLOR',
-              defaultValue: Color.WHITE
+              defaultValue: Color.RED
             }
           }
         }, {
@@ -15407,7 +15407,7 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
             SENSOR_COLOR: {
               type: argumentType.NUMBER,
               menu: 'SENSOR_COLOR',
-              defaultValue: Color.WHITE
+              defaultValue: Color.RED
             }
           }
         }, {
@@ -15428,7 +15428,7 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
             PANTS: {
               type: argumentType.NUMBER,
               menu: 'PANTS',
-              defaultValue: Pants.MARIO
+              defaultValue: Pants.FIRE
             }
           }
         }, {
@@ -15442,7 +15442,7 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
             PANTS: {
               type: argumentType.NUMBER,
               menu: 'PANTS',
-              defaultValue: Pants.MARIO
+              defaultValue: Pants.FIRE
             }
           }
         }, {
