@@ -15316,12 +15316,15 @@ var Color = {
 };
 var Pants = {
   NONE: 0x00,
+  BEE: 0x03,
+  LUIGI: 0x05,
+  FROG: 0x06,
   TANOOKI: 0x0a,
   PROPELLER: 0x0c,
   CAT: 0x11,
   FIRE: 0x12,
   PENGUIN: 0x14,
-  NORMAL: 0x21,
+  MARIO: 0x21,
   BUILDER: 0x22
 };
 var PortId = {
@@ -15425,7 +15428,7 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
             PANTS: {
               type: argumentType.NUMBER,
               menu: 'PANTS',
-              defaultValue: Pants.NORMAL
+              defaultValue: Pants.MARIO
             }
           }
         }, {
@@ -15439,7 +15442,7 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
             PANTS: {
               type: argumentType.NUMBER,
               menu: 'PANTS',
-              defaultValue: Pants.NORMAL
+              defaultValue: Pants.MARIO
             }
           }
         }, {
@@ -15544,6 +15547,24 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
               value: String(Pants.NONE)
             }, {
               text: formatMessage({
+                id: 'legomario.pants.bee',
+                default: '(3) Bee'
+              }),
+              value: String(Pants.BEE)
+            }, {
+              text: formatMessage({
+                id: 'legomario.pants.luigi',
+                default: '(5) Luigi'
+              }),
+              value: String(Pants.LUIGI)
+            }, {
+              text: formatMessage({
+                id: 'legomario.pants.frog',
+                default: '(6) Frog'
+              }),
+              value: String(Pants.FROG)
+            }, {
+              text: formatMessage({
                 id: 'legomario.pants.tanooki',
                 default: '(10) Tanooki'
               }),
@@ -15574,10 +15595,10 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
               value: String(Pants.PENGUIN)
             }, {
               text: formatMessage({
-                id: 'legomario.pants.normal',
-                default: '(33) Normal'
+                id: 'legomario.pants.mario',
+                default: '(33) Mario'
               }),
-              value: String(Pants.NORMAL)
+              value: String(Pants.MARIO)
             }, {
               text: formatMessage({
                 id: 'legomario.pants.builder',
@@ -15673,12 +15694,15 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
           'legomario.nougatBrown': '(312) 薄茶色',
           'legomario.cyan': '(322) シアン',
           'legomario.pants.none': '(0) なし',
+          'legomario.pants.bee': '(3) ハチ',
+          'legomario.pants.luigi': '(5) ルイージ',
+          'legomario.pants.frog': '(6) カエル',
           'legomario.pants.tanooki': '(10) タヌキ',
           'legomario.pants.propeller': '(12) プロペラ',
           'legomario.pants.cat': '(17) ネコ',
           'legomario.pants.fire': '(18) ファイア',
           'legomario.pants.penguin': '(20) ペンギン',
-          'legomario.pants.normal': '(33) ノーマル',
+          'legomario.pants.mario': '(33) マリオ',
           'legomario.pants.builder': '(34) ビルダー'
         },
         'ja-Hira': {
@@ -15703,12 +15727,15 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
           'legomario.nougatBrown': '(312) うすちゃいろ',
           'legomario.cyan': '(322) シアン',
           'legomario.pants.none': '(0) なし',
+          'legomario.pants.bee': '(3) ハチ',
+          'legomario.pants.luigi': '(5) ルイージ',
+          'legomario.pants.frog': '(6) カエル',
           'legomario.pants.tanooki': '(10) タヌキ',
           'legomario.pants.propeller': '(12) プロペラ',
           'legomario.pants.cat': '(17) ネコ',
           'legomario.pants.fire': '(18) ファイア',
           'legomario.pants.penguin': '(20) ペンギン',
-          'legomario.pants.normal': '(33) ノーマル',
+          'legomario.pants.mario': '(33) マリオ',
           'legomario.pants.builder': '(34) ビルダー'
         }
       });
