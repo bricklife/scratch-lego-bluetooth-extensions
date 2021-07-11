@@ -121,7 +121,7 @@ class Scratch3LEGOMarioBlocks {
                         SENSOR_COLOR: {
                             type: ArgumentType.NUMBER,
                             menu: 'SENSOR_COLOR',
-                            defaultValue: Color.WHITE
+                            defaultValue: Color.RED
                         }
                     }
                 },
@@ -136,7 +136,7 @@ class Scratch3LEGOMarioBlocks {
                         SENSOR_COLOR: {
                             type: ArgumentType.NUMBER,
                             menu: 'SENSOR_COLOR',
-                            defaultValue: Color.WHITE
+                            defaultValue: Color.RED
                         }
                     }
                 },
@@ -160,7 +160,7 @@ class Scratch3LEGOMarioBlocks {
                         PANTS: {
                             type: ArgumentType.NUMBER,
                             menu: 'PANTS',
-                            defaultValue: Pants.MARIO
+                            defaultValue: Pants.FIRE
                         }
                     }
                 },
@@ -175,7 +175,7 @@ class Scratch3LEGOMarioBlocks {
                         PANTS: {
                             type: ArgumentType.NUMBER,
                             menu: 'PANTS',
-                            defaultValue: Pants.MARIO
+                            defaultValue: Pants.FIRE
                         }
                     }
                 },
