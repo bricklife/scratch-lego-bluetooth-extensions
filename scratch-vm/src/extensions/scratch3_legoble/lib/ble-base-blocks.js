@@ -4,6 +4,8 @@ const Cast = require('../../../util/cast');
 
 const Color = require('./color');
 
+const setupTranslations = require('./setup-translations');
+
 const BLESendInterval = 100;
 const waitPromise = () => new Promise(resolve => window.setTimeout(resolve, BLESendInterval));
 
@@ -612,6 +614,10 @@ class BleBaseBlocks {
 
     getBatteryLevel() {
         return this._peripheral.batteryLevel;
+    }
+
+    setupTranslations(formatMessage) {
+        setupTranslations(formatMessage);
     }
 }
 
