@@ -15332,11 +15332,11 @@ var PortId = {
   PANTS: 0x02
 };
 
-var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
-  function Scratch3LEGOMarioBlocks(runtime) {
-    _classCallCheck(this, Scratch3LEGOMarioBlocks);
+var Scratch3LegoMarioBlocks = /*#__PURE__*/function () {
+  function Scratch3LegoMarioBlocks(runtime) {
+    _classCallCheck(this, Scratch3LegoMarioBlocks);
 
-    this._peripheral = new hub(runtime, Scratch3LEGOMarioBlocks.EXTENSION_ID, 0x43);
+    this._peripheral = new hub(runtime, Scratch3LegoMarioBlocks.EXTENSION_ID, 0x43);
 
     if (runtime.formatMessage) {
       // Replace 'formatMessage' to a formatter which is used in the runtime.
@@ -15344,15 +15344,15 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
     }
   }
 
-  _createClass(Scratch3LEGOMarioBlocks, [{
+  _createClass(Scratch3LegoMarioBlocks, [{
     key: "getInfo",
     value: function getInfo() {
       this._setupTranslations();
 
       return {
-        id: Scratch3LEGOMarioBlocks.EXTENSION_ID,
+        id: Scratch3LegoMarioBlocks.EXTENSION_ID,
         name: 'LEGO Mario',
-        extensionURL: Scratch3LEGOMarioBlocks.extensionURL,
+        extensionURL: Scratch3LegoMarioBlocks.extensionURL,
         blockIconURI: blockIconURI,
         showStatusButton: true,
         blocks: [{
@@ -15755,11 +15755,11 @@ var Scratch3LEGOMarioBlocks = /*#__PURE__*/function () {
     }
   }]);
 
-  return Scratch3LEGOMarioBlocks;
+  return Scratch3LegoMarioBlocks;
 }();
 
-var blockClass = Scratch3LEGOMarioBlocks;
-var _legomario = Scratch3LEGOMarioBlocks;
+var blockClass = Scratch3LegoMarioBlocks;
+var _legomario = Scratch3LegoMarioBlocks;
 _legomario.blockClass = blockClass;
 
 export { _legomario as __moduleExports, blockClass, entry };
