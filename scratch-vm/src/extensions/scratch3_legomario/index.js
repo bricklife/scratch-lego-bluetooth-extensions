@@ -46,7 +46,7 @@ const PortId = {
     PANTS: 0x02,
 };
 
-class Scratch3LEGOMarioBlocks {
+class Scratch3LegoMarioBlocks {
 
     static get EXTENSION_ID() {
         return 'legomario';
@@ -61,7 +61,7 @@ class Scratch3LEGOMarioBlocks {
     }
 
     constructor(runtime) {
-        this._peripheral = new Hub(runtime, Scratch3LEGOMarioBlocks.EXTENSION_ID, 0x43);
+        this._peripheral = new Hub(runtime, Scratch3LegoMarioBlocks.EXTENSION_ID, 0x43);
 
         if (runtime.formatMessage) {
             // Replace 'formatMessage' to a formatter which is used in the runtime.
@@ -73,9 +73,9 @@ class Scratch3LEGOMarioBlocks {
         this._setupTranslations();
 
         return {
-            id: Scratch3LEGOMarioBlocks.EXTENSION_ID,
+            id: Scratch3LegoMarioBlocks.EXTENSION_ID,
             name: 'LEGO Mario',
-            extensionURL: Scratch3LEGOMarioBlocks.extensionURL,
+            extensionURL: Scratch3LegoMarioBlocks.extensionURL,
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [
@@ -494,5 +494,5 @@ class Scratch3LEGOMarioBlocks {
     }
 }
 
-exports.blockClass = Scratch3LEGOMarioBlocks;
-module.exports = Scratch3LEGOMarioBlocks;
+exports.blockClass = Scratch3LegoMarioBlocks;
+module.exports = Scratch3LegoMarioBlocks;
