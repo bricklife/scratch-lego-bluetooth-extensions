@@ -8922,6 +8922,541 @@ var Cast = /*#__PURE__*/function () {
 
 var cast = Cast;
 
+var setupTranslations = function setupTranslations(formatMessage) {
+  var extTranslations = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var localeSetup = formatMessage.setup();
+  var translations = {
+    'ja': {
+      'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーで回す',
+      'legobluetooth.motorStop': '[PORT] モーターを止める',
+      'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] 方向に [VALUE] [UNIT] 回す',
+      'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] 方向に回す',
+      'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
+      'legobluetooth.getRelativePosition': '[PORT] 相対位置',
+      'legobluetooth.motorResetRelativePosition': '[PORT] 相対位置を [RELATIVE_POSITION] にリセットする',
+      'legobluetooth.getColor': '[PORT] 色',
+      'legobluetooth.getDistance': '[PORT] 距離',
+      'legobluetooth.getForce': '[PORT] 圧力',
+      'legobluetooth.getTilt': '[PORT] 傾き [XY]',
+      'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
+      'legobluetooth.getHubTilt': 'ハブの傾き [XYZ]',
+      'legobluetooth.getName': '名前',
+      'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
+      'legobluetooth.getBatteryLevel': '電池残量',
+      'legobluetooth.clockwise': '時計回り',
+      'legobluetooth.counterclockwise': '反時計回り',
+      'legobluetooth.rotations': '回転',
+      'legobluetooth.degrees': '度',
+      'legobluetooth.seconds': '秒',
+      'legobluetooth.black': '(0) 黒',
+      'legobluetooth.pink': '(1) ピンク',
+      'legobluetooth.purple': '(2) 紫',
+      'legobluetooth.blue': '(3) 青',
+      'legobluetooth.lightBlue': '(4) 水色',
+      'legobluetooth.lightGreen': '(5) 明るい緑',
+      'legobluetooth.green': '(6) 緑',
+      'legobluetooth.yellow': '(7) 黄色',
+      'legobluetooth.orange': '(8) オレンジ',
+      'legobluetooth.red': '(9) 赤',
+      'legobluetooth.white': '(10) 白',
+      'legobluetooth.noColor': '(-1) 色なし'
+    },
+    'ja-Hira': {
+      'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーでまわす',
+      'legobluetooth.motorStop': '[PORT] モーターをとめる',
+      'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] ほうこうに [VALUE] [UNIT] まわす',
+      'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] ほうこうにまわす',
+      'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
+      'legobluetooth.getRelativePosition': '[PORT] そうたいいち',
+      'legobluetooth.motorResetRelativePosition': '[PORT] そうたいいちを [RELATIVE_POSITION] にリセットする',
+      'legobluetooth.getColor': '[PORT] いろ',
+      'legobluetooth.getDistance': '[PORT] きょり',
+      'legobluetooth.getForce': '[PORT] あつりょく',
+      'legobluetooth.getTilt': '[PORT] かたむき [XY]',
+      'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
+      'legobluetooth.getHubTilt': 'ハブのかたむき [XYZ]',
+      'legobluetooth.getName': 'なまえ',
+      'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
+      'legobluetooth.getBatteryLevel': 'でんちざんりょう',
+      'legobluetooth.clockwise': 'とけいまわり',
+      'legobluetooth.counterclockwise': 'はんとけいまわり',
+      'legobluetooth.rotations': 'かいてん',
+      'legobluetooth.degrees': 'ど',
+      'legobluetooth.seconds': 'びょう',
+      'legobluetooth.black': '(0) くろ',
+      'legobluetooth.pink': '(1) ピンク',
+      'legobluetooth.purple': '(2) むらさき',
+      'legobluetooth.blue': '(3) あお',
+      'legobluetooth.lightBlue': '(4) みずいろ',
+      'legobluetooth.lightGreen': '(5) あかるいみどり',
+      'legobluetooth.green': '(6) みどり',
+      'legobluetooth.yellow': '(7) きいろ',
+      'legobluetooth.orange': '(8) オレンジ',
+      'legobluetooth.red': '(9) あか',
+      'legobluetooth.white': '(10) しろ',
+      'legobluetooth.noColor': '(-1) いろなし'
+    }
+  };
+
+  for (var locale in translations) {
+    if (extTranslations[locale]) {
+      Object.assign(translations[locale], extTranslations[locale]);
+    }
+
+    if (!localeSetup.translations[locale]) {
+      localeSetup.translations[locale] = {};
+    }
+
+    Object.assign(localeSetup.translations[locale], translations[locale]);
+  }
+};
+
+var setupTranslations_1 = setupTranslations;
+
+var BLESendInterval = 100;
+
+var waitPromise = function waitPromise() {
+  return new Promise(function (resolve) {
+    return window.setTimeout(resolve, BLESendInterval);
+  });
+};
+
+var Color = {
+  WHITE: 0x0013,
+  RED: 0x0015,
+  BLUE: 0x0017,
+  YELLOW: 0x0018,
+  BLACK: 0x001a,
+  GREEN: 0x0025,
+  BROWN: 0x006a,
+  PURPLE: 0x010c,
+  NOUGAT_BROWN: 0x0138,
+  CYAN: 0x0142,
+  NONE: -1
+};
+var Pants = {
+  NONE: 0x00,
+  BEE: 0x03,
+  LUIGI: 0x05,
+  FROG: 0x06,
+  TANOOKI: 0x0a,
+  PROPELLER: 0x0c,
+  CAT: 0x11,
+  FIRE: 0x12,
+  PENGUIN: 0x14,
+  MARIO: 0x21,
+  BUILDER: 0x22
+};
+var PortId = {
+  COLOR_BARCODE: 0x01,
+  PANTS: 0x02
+};
+
+var MarioBaseBlocks = /*#__PURE__*/function () {
+  function MarioBaseBlocks(peripheral) {
+    _classCallCheck(this, MarioBaseBlocks);
+
+    this._peripheral = peripheral;
+  }
+
+  _createClass(MarioBaseBlocks, [{
+    key: "getBlocks",
+    value: function getBlocks(formatMessage) {
+      return [{
+        opcode: 'whenBarcode',
+        text: formatMessage({
+          id: 'legomario.whenBarcode',
+          default: 'when barcode is [BARCODE]'
+        }),
+        blockType: blockType.HAT,
+        arguments: {
+          BARCODE: {
+            type: argumentType.NUMBER,
+            defaultValue: 2
+          }
+        }
+      }, {
+        opcode: 'whenAnyBarcode',
+        text: formatMessage({
+          id: 'legomario.whenAnyBarcode',
+          default: 'when any barcode is found'
+        }),
+        blockType: blockType.HAT
+      }, {
+        opcode: 'getBarcode',
+        text: formatMessage({
+          id: 'legomario.getBarcode',
+          default: 'barcode'
+        }),
+        blockType: blockType.REPORTER
+      }, '---', {
+        opcode: 'whenColor',
+        text: formatMessage({
+          id: 'legomario.whenColor',
+          default: 'when color is [SENSOR_COLOR]'
+        }),
+        blockType: blockType.HAT,
+        arguments: {
+          SENSOR_COLOR: {
+            type: argumentType.NUMBER,
+            menu: 'SENSOR_COLOR',
+            defaultValue: Color.RED
+          }
+        }
+      }, {
+        opcode: 'isColor',
+        text: formatMessage({
+          id: 'legomario.isColor',
+          default: 'color is [SENSOR_COLOR] ?'
+        }),
+        blockType: blockType.BOOLEAN,
+        arguments: {
+          SENSOR_COLOR: {
+            type: argumentType.NUMBER,
+            menu: 'SENSOR_COLOR',
+            defaultValue: Color.RED
+          }
+        }
+      }, {
+        opcode: 'getColor',
+        text: formatMessage({
+          id: 'legomario.getColor',
+          default: 'color'
+        }),
+        blockType: blockType.REPORTER
+      }, '---', {
+        opcode: 'whenPants',
+        text: formatMessage({
+          id: 'legomario.whenPants',
+          default: 'when pants is [PANTS]'
+        }),
+        blockType: blockType.HAT,
+        arguments: {
+          PANTS: {
+            type: argumentType.NUMBER,
+            menu: 'PANTS',
+            defaultValue: Pants.FIRE
+          }
+        }
+      }, {
+        opcode: 'isPants',
+        text: formatMessage({
+          id: 'legomario.isPants',
+          default: 'pants is [PANTS] ?'
+        }),
+        blockType: blockType.BOOLEAN,
+        arguments: {
+          PANTS: {
+            type: argumentType.NUMBER,
+            menu: 'PANTS',
+            defaultValue: Pants.FIRE
+          }
+        }
+      }, {
+        opcode: 'getPants',
+        text: formatMessage({
+          id: 'legomario.getPants',
+          default: 'pants'
+        }),
+        blockType: blockType.REPORTER
+      }, '---', {
+        opcode: 'setVolume',
+        text: formatMessage({
+          id: 'legomario.setVolume',
+          default: 'set volume to [VOLUME] %'
+        }),
+        blockType: blockType.COMMAND,
+        arguments: {
+          VOLUME: {
+            type: argumentType.NUMBER,
+            defaultValue: 0
+          }
+        }
+      }];
+    }
+  }, {
+    key: "getMenus",
+    value: function getMenus(formatMessage) {
+      return {
+        SENSOR_COLOR: {
+          acceptReporters: false,
+          items: [{
+            text: formatMessage({
+              id: 'legomario.white',
+              default: '(19) White'
+            }),
+            value: String(Color.WHITE)
+          }, {
+            text: formatMessage({
+              id: 'legomario.red',
+              default: '(21) Red'
+            }),
+            value: String(Color.RED)
+          }, {
+            text: formatMessage({
+              id: 'legomario.blue',
+              default: '(23) Blue'
+            }),
+            value: String(Color.BLUE)
+          }, {
+            text: formatMessage({
+              id: 'legomario.yellow',
+              default: '(24) Yellow'
+            }),
+            value: String(Color.YELLOW)
+          }, {
+            text: formatMessage({
+              id: 'legomario.black',
+              default: '(26) Black'
+            }),
+            value: String(Color.BLACK)
+          }, {
+            text: formatMessage({
+              id: 'legomario.green',
+              default: '(37) Green'
+            }),
+            value: String(Color.GREEN)
+          }, {
+            text: formatMessage({
+              id: 'legomario.brown',
+              default: '(106) Brown'
+            }),
+            value: String(Color.BROWN)
+          }, {
+            text: formatMessage({
+              id: 'legomario.purple',
+              default: '(268) Purple'
+            }),
+            value: String(Color.PURPLE)
+          }, {
+            text: formatMessage({
+              id: 'legomario.nougatBrown',
+              default: '(312) Nougat Brown'
+            }),
+            value: String(Color.NOUGAT_BROWN)
+          }, {
+            text: formatMessage({
+              id: 'legomario.cyan',
+              default: '(322) Cyan'
+            }),
+            value: String(Color.CYAN)
+          }, {
+            text: formatMessage({
+              id: 'legobluetooth.noColor',
+              default: '(-1) No color'
+            }),
+            value: String(Color.NONE)
+          }]
+        },
+        PANTS: {
+          acceptReporters: false,
+          items: [{
+            text: formatMessage({
+              id: 'legomario.pants.none',
+              default: '(0) None'
+            }),
+            value: String(Pants.NONE)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.bee',
+              default: '(3) Bee'
+            }),
+            value: String(Pants.BEE)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.luigi',
+              default: '(5) Luigi'
+            }),
+            value: String(Pants.LUIGI)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.frog',
+              default: '(6) Frog'
+            }),
+            value: String(Pants.FROG)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.tanooki',
+              default: '(10) Tanooki'
+            }),
+            value: String(Pants.TANOOKI)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.propeller',
+              default: '(12) Propeller'
+            }),
+            value: String(Pants.PROPELLER)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.cat',
+              default: '(17) Cat'
+            }),
+            value: String(Pants.CAT)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.fire',
+              default: '(18) Fire'
+            }),
+            value: String(Pants.FIRE)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.penguin',
+              default: '(20) Penguin'
+            }),
+            value: String(Pants.PENGUIN)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.mario',
+              default: '(33) Mario'
+            }),
+            value: String(Pants.MARIO)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.builder',
+              default: '(34) Builder'
+            }),
+            value: String(Pants.BUILDER)
+          }]
+        }
+      };
+    }
+  }, {
+    key: "whenBarcode",
+    value: function whenBarcode(args) {
+      return this.getBarcode() == cast.toNumber(args.BARCODE);
+    }
+  }, {
+    key: "whenAnyBarcode",
+    value: function whenAnyBarcode() {
+      return this.getBarcode() != -1;
+    }
+  }, {
+    key: "getBarcode",
+    value: function getBarcode() {
+      return this._getSensorValue(PortId.COLOR_BARCODE, 'barcode', -1);
+    }
+  }, {
+    key: "whenColor",
+    value: function whenColor(args) {
+      return this.getColor() == args.SENSOR_COLOR;
+    }
+  }, {
+    key: "isColor",
+    value: function isColor(args) {
+      return this.getColor() == args.SENSOR_COLOR;
+    }
+  }, {
+    key: "getColor",
+    value: function getColor() {
+      return this._getSensorValue(PortId.COLOR_BARCODE, 'color', Color.NONE);
+    }
+  }, {
+    key: "whenPants",
+    value: function whenPants(args) {
+      return this.getPants() == args.PANTS;
+    }
+  }, {
+    key: "isPants",
+    value: function isPants(args) {
+      return this.getPants() == args.PANTS;
+    }
+  }, {
+    key: "getPants",
+    value: function getPants() {
+      return this._getSensorValue(PortId.PANTS, 'pants', Pants.NONE);
+    }
+  }, {
+    key: "setVolume",
+    value: function setVolume(args) {
+      var volume = cast.toNumber(args.VOLUME);
+      return this._peripheral.setVolume(volume).then(waitPromise);
+    }
+  }, {
+    key: "_getSensorValue",
+    value: function _getSensorValue(portId, key, defaultValue) {
+      var value = this._peripheral.inputValue(portId, key);
+
+      return value != null ? value : defaultValue;
+    }
+  }, {
+    key: "setupTranslations",
+    value: function setupTranslations(formatMessage) {
+      setupTranslations_1(formatMessage, {
+        'ja': {
+          'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
+          'legomario.whenAnyBarcode': 'バーコードを見つけたとき',
+          'legomario.getBarcode': 'バーコード',
+          'legomario.whenColor': '色が [SENSOR_COLOR] のとき',
+          'legomario.isColor': '色が [SENSOR_COLOR]',
+          'legomario.getColor': '色',
+          'legomario.whenPants': 'ズボンが [PANTS] のとき',
+          'legomario.isPants': 'ズボンが [PANTS]',
+          'legomario.getPants': 'ズボン',
+          'legomario.setVolume': '音量を [VOLUME] %にする',
+          'legomario.white': '(19) 白',
+          'legomario.red': '(21) 赤',
+          'legomario.blue': '(23) 青',
+          'legomario.yellow': '(24) 黄色',
+          'legomario.black': '(26) 黒',
+          'legomario.green': '(37) 緑',
+          'legomario.brown': '(106) 茶色',
+          'legomario.purple': '(268) 紫',
+          'legomario.nougatBrown': '(312) 薄茶色',
+          'legomario.cyan': '(322) シアン',
+          'legomario.pants.none': '(0) なし',
+          'legomario.pants.bee': '(3) ハチ',
+          'legomario.pants.luigi': '(5) ルイージ',
+          'legomario.pants.frog': '(6) カエル',
+          'legomario.pants.tanooki': '(10) タヌキ',
+          'legomario.pants.propeller': '(12) プロペラ',
+          'legomario.pants.cat': '(17) ネコ',
+          'legomario.pants.fire': '(18) ファイア',
+          'legomario.pants.penguin': '(20) ペンギン',
+          'legomario.pants.mario': '(33) マリオ',
+          'legomario.pants.builder': '(34) ビルダー'
+        },
+        'ja-Hira': {
+          'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
+          'legomario.whenAnyBarcode': 'バーコードをみつけたとき',
+          'legomario.getBarcode': 'バーコード',
+          'legomario.whenColor': 'いろが [SENSOR_COLOR] のとき',
+          'legomario.isColor': 'いろが [SENSOR_COLOR]',
+          'legomario.getColor': 'いろ',
+          'legomario.whenPants': 'ズボンが [PANTS] のとき',
+          'legomario.isPants': 'ズボンが [PANTS]',
+          'legomario.getPants': 'ズボン',
+          'legomario.setVolume': 'おんりょうを [VOLUME] %にする',
+          'legomario.white': '(19) しろ',
+          'legomario.red': '(21) あか',
+          'legomario.blue': '(23) あお',
+          'legomario.yellow': '(24) きいろ',
+          'legomario.black': '(26) くろ',
+          'legomario.green': '(37) みどり',
+          'legomario.brown': '(106) ちゃいろ',
+          'legomario.purple': '(268) むらさき',
+          'legomario.nougatBrown': '(312) うすちゃいろ',
+          'legomario.cyan': '(322) シアン',
+          'legomario.pants.none': '(0) なし',
+          'legomario.pants.bee': '(3) ハチ',
+          'legomario.pants.luigi': '(5) ルイージ',
+          'legomario.pants.frog': '(6) カエル',
+          'legomario.pants.tanooki': '(10) タヌキ',
+          'legomario.pants.propeller': '(12) プロペラ',
+          'legomario.pants.cat': '(17) ネコ',
+          'legomario.pants.fire': '(18) ファイア',
+          'legomario.pants.penguin': '(20) ペンギン',
+          'legomario.pants.mario': '(33) マリオ',
+          'legomario.pants.builder': '(34) ビルダー'
+        }
+      });
+    }
+  }]);
+
+  return MarioBaseBlocks;
+}();
+
+var marioBaseBlocks = MarioBaseBlocks;
+
 var JSONRPC = /*#__PURE__*/function () {
   function JSONRPC() {
     _classCallCheck(this, JSONRPC);
@@ -12819,97 +13354,6 @@ var Hub = /*#__PURE__*/function () {
 
 var hub = Hub;
 
-var setupTranslations = function setupTranslations(formatMessage) {
-  var extTranslations = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var localeSetup = formatMessage.setup();
-  var translations = {
-    'ja': {
-      'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーで回す',
-      'legobluetooth.motorStop': '[PORT] モーターを止める',
-      'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] 方向に [VALUE] [UNIT] 回す',
-      'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] 方向に回す',
-      'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
-      'legobluetooth.getRelativePosition': '[PORT] 相対位置',
-      'legobluetooth.motorResetRelativePosition': '[PORT] 相対位置を [RELATIVE_POSITION] にリセットする',
-      'legobluetooth.getColor': '[PORT] 色',
-      'legobluetooth.getDistance': '[PORT] 距離',
-      'legobluetooth.getForce': '[PORT] 圧力',
-      'legobluetooth.getTilt': '[PORT] 傾き [XY]',
-      'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
-      'legobluetooth.getHubTilt': 'ハブの傾き [XYZ]',
-      'legobluetooth.getName': '名前',
-      'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
-      'legobluetooth.getBatteryLevel': '電池残量',
-      'legobluetooth.clockwise': '時計回り',
-      'legobluetooth.counterclockwise': '反時計回り',
-      'legobluetooth.rotations': '回転',
-      'legobluetooth.degrees': '度',
-      'legobluetooth.seconds': '秒',
-      'legobluetooth.black': '(0) 黒',
-      'legobluetooth.pink': '(1) ピンク',
-      'legobluetooth.purple': '(2) 紫',
-      'legobluetooth.blue': '(3) 青',
-      'legobluetooth.lightBlue': '(4) 水色',
-      'legobluetooth.lightGreen': '(5) 明るい緑',
-      'legobluetooth.green': '(6) 緑',
-      'legobluetooth.yellow': '(7) 黄色',
-      'legobluetooth.orange': '(8) オレンジ',
-      'legobluetooth.red': '(9) 赤',
-      'legobluetooth.white': '(10) 白',
-      'legobluetooth.noColor': '(-1) 色なし'
-    },
-    'ja-Hira': {
-      'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーでまわす',
-      'legobluetooth.motorStop': '[PORT] モーターをとめる',
-      'legobluetooth.motorRunFor': '[PORT] モーターを [DIRECTION] ほうこうに [VALUE] [UNIT] まわす',
-      'legobluetooth.motorStart': '[PORT] モーターを [DIRECTION] ほうこうにまわす',
-      'legobluetooth.motorSetSpeed': '[PORT] スピードを [SPEED] %にする',
-      'legobluetooth.getRelativePosition': '[PORT] そうたいいち',
-      'legobluetooth.motorResetRelativePosition': '[PORT] そうたいいちを [RELATIVE_POSITION] にリセットする',
-      'legobluetooth.getColor': '[PORT] いろ',
-      'legobluetooth.getDistance': '[PORT] きょり',
-      'legobluetooth.getForce': '[PORT] あつりょく',
-      'legobluetooth.getTilt': '[PORT] かたむき [XY]',
-      'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
-      'legobluetooth.getHubTilt': 'ハブのかたむき [XYZ]',
-      'legobluetooth.getName': 'なまえ',
-      'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
-      'legobluetooth.getBatteryLevel': 'でんちざんりょう',
-      'legobluetooth.clockwise': 'とけいまわり',
-      'legobluetooth.counterclockwise': 'はんとけいまわり',
-      'legobluetooth.rotations': 'かいてん',
-      'legobluetooth.degrees': 'ど',
-      'legobluetooth.seconds': 'びょう',
-      'legobluetooth.black': '(0) くろ',
-      'legobluetooth.pink': '(1) ピンク',
-      'legobluetooth.purple': '(2) むらさき',
-      'legobluetooth.blue': '(3) あお',
-      'legobluetooth.lightBlue': '(4) みずいろ',
-      'legobluetooth.lightGreen': '(5) あかるいみどり',
-      'legobluetooth.green': '(6) みどり',
-      'legobluetooth.yellow': '(7) きいろ',
-      'legobluetooth.orange': '(8) オレンジ',
-      'legobluetooth.red': '(9) あか',
-      'legobluetooth.white': '(10) しろ',
-      'legobluetooth.noColor': '(-1) いろなし'
-    }
-  };
-
-  for (var locale in translations) {
-    if (extTranslations[locale]) {
-      Object.assign(translations[locale], extTranslations[locale]);
-    }
-
-    if (!localeSetup.translations[locale]) {
-      localeSetup.translations[locale] = {};
-    }
-
-    Object.assign(localeSetup.translations[locale], translations[locale]);
-  }
-};
-
-var setupTranslations_1 = setupTranslations;
-
 var formatMessageParse = createCommonjsModule(function (module, exports) {
   /*::
   export type AST = Element[]
@@ -15291,454 +15735,42 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
 });
 
 var blockIconURI = 'data:image/png;base64,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';
-var BLESendInterval = 100;
-
-var waitPromise = function waitPromise() {
-  return new Promise(function (resolve) {
-    return window.setTimeout(resolve, BLESendInterval);
-  });
-};
-
 var formatMessage = formatMessage$1;
 var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/legomario.mjs';
-var Color = {
-  WHITE: 0x0013,
-  RED: 0x0015,
-  BLUE: 0x0017,
-  YELLOW: 0x0018,
-  BLACK: 0x001a,
-  GREEN: 0x0025,
-  BROWN: 0x006a,
-  PURPLE: 0x010c,
-  NOUGAT_BROWN: 0x0138,
-  CYAN: 0x0142,
-  NONE: -1
-};
-var Pants = {
-  NONE: 0x00,
-  BEE: 0x03,
-  LUIGI: 0x05,
-  FROG: 0x06,
-  TANOOKI: 0x0a,
-  PROPELLER: 0x0c,
-  CAT: 0x11,
-  FIRE: 0x12,
-  PENGUIN: 0x14,
-  MARIO: 0x21,
-  BUILDER: 0x22
-};
-var PortId = {
-  COLOR_BARCODE: 0x01,
-  PANTS: 0x02
-};
 
-var Scratch3LegoMarioBlocks = /*#__PURE__*/function () {
+var Scratch3LegoMarioBlocks = /*#__PURE__*/function (_MarioBaseBlocks) {
+  _inherits(Scratch3LegoMarioBlocks, _MarioBaseBlocks);
+
+  var _super = _createSuper(Scratch3LegoMarioBlocks);
+
   function Scratch3LegoMarioBlocks(runtime) {
+    var _this;
+
     _classCallCheck(this, Scratch3LegoMarioBlocks);
 
-    this._peripheral = new hub(runtime, Scratch3LegoMarioBlocks.EXTENSION_ID, 0x43);
+    _this = _super.call(this, new hub(runtime, Scratch3LegoMarioBlocks.EXTENSION_ID, 0x43));
 
     if (runtime.formatMessage) {
       // Replace 'formatMessage' to a formatter which is used in the runtime.
       formatMessage = runtime.formatMessage;
     }
+
+    return _this;
   }
 
   _createClass(Scratch3LegoMarioBlocks, [{
     key: "getInfo",
     value: function getInfo() {
-      this._setupTranslations();
-
+      this.setupTranslations(formatMessage);
       return {
         id: Scratch3LegoMarioBlocks.EXTENSION_ID,
         name: 'LEGO Mario',
         extensionURL: Scratch3LegoMarioBlocks.extensionURL,
         blockIconURI: blockIconURI,
         showStatusButton: true,
-        blocks: [{
-          opcode: 'whenBarcode',
-          text: formatMessage({
-            id: 'legomario.whenBarcode',
-            default: 'when barcode is [BARCODE]'
-          }),
-          blockType: blockType.HAT,
-          arguments: {
-            BARCODE: {
-              type: argumentType.NUMBER,
-              defaultValue: 2
-            }
-          }
-        }, {
-          opcode: 'whenAnyBarcode',
-          text: formatMessage({
-            id: 'legomario.whenAnyBarcode',
-            default: 'when any barcode is found'
-          }),
-          blockType: blockType.HAT
-        }, {
-          opcode: 'getBarcode',
-          text: formatMessage({
-            id: 'legomario.getBarcode',
-            default: 'barcode'
-          }),
-          blockType: blockType.REPORTER
-        }, '---', {
-          opcode: 'whenColor',
-          text: formatMessage({
-            id: 'legomario.whenColor',
-            default: 'when color is [SENSOR_COLOR]'
-          }),
-          blockType: blockType.HAT,
-          arguments: {
-            SENSOR_COLOR: {
-              type: argumentType.NUMBER,
-              menu: 'SENSOR_COLOR',
-              defaultValue: Color.RED
-            }
-          }
-        }, {
-          opcode: 'isColor',
-          text: formatMessage({
-            id: 'legomario.isColor',
-            default: 'color is [SENSOR_COLOR] ?'
-          }),
-          blockType: blockType.BOOLEAN,
-          arguments: {
-            SENSOR_COLOR: {
-              type: argumentType.NUMBER,
-              menu: 'SENSOR_COLOR',
-              defaultValue: Color.RED
-            }
-          }
-        }, {
-          opcode: 'getColor',
-          text: formatMessage({
-            id: 'legomario.getColor',
-            default: 'color'
-          }),
-          blockType: blockType.REPORTER
-        }, '---', {
-          opcode: 'whenPants',
-          text: formatMessage({
-            id: 'legomario.whenPants',
-            default: 'when pants is [PANTS]'
-          }),
-          blockType: blockType.HAT,
-          arguments: {
-            PANTS: {
-              type: argumentType.NUMBER,
-              menu: 'PANTS',
-              defaultValue: Pants.FIRE
-            }
-          }
-        }, {
-          opcode: 'isPants',
-          text: formatMessage({
-            id: 'legomario.isPants',
-            default: 'pants is [PANTS] ?'
-          }),
-          blockType: blockType.BOOLEAN,
-          arguments: {
-            PANTS: {
-              type: argumentType.NUMBER,
-              menu: 'PANTS',
-              defaultValue: Pants.FIRE
-            }
-          }
-        }, {
-          opcode: 'getPants',
-          text: formatMessage({
-            id: 'legomario.getPants',
-            default: 'pants'
-          }),
-          blockType: blockType.REPORTER
-        }, '---', {
-          opcode: 'setVolume',
-          text: formatMessage({
-            id: 'legomario.setVolume',
-            default: 'set volume to [VOLUME] %'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            VOLUME: {
-              type: argumentType.NUMBER,
-              defaultValue: 0
-            }
-          }
-        }],
-        menus: {
-          SENSOR_COLOR: {
-            acceptReporters: false,
-            items: [{
-              text: formatMessage({
-                id: 'legomario.white',
-                default: '(19) White'
-              }),
-              value: String(Color.WHITE)
-            }, {
-              text: formatMessage({
-                id: 'legomario.red',
-                default: '(21) Red'
-              }),
-              value: String(Color.RED)
-            }, {
-              text: formatMessage({
-                id: 'legomario.blue',
-                default: '(23) Blue'
-              }),
-              value: String(Color.BLUE)
-            }, {
-              text: formatMessage({
-                id: 'legomario.yellow',
-                default: '(24) Yellow'
-              }),
-              value: String(Color.YELLOW)
-            }, {
-              text: formatMessage({
-                id: 'legomario.black',
-                default: '(26) Black'
-              }),
-              value: String(Color.BLACK)
-            }, {
-              text: formatMessage({
-                id: 'legomario.green',
-                default: '(37) Green'
-              }),
-              value: String(Color.GREEN)
-            }, {
-              text: formatMessage({
-                id: 'legomario.brown',
-                default: '(106) Brown'
-              }),
-              value: String(Color.BROWN)
-            }, {
-              text: formatMessage({
-                id: 'legomario.purple',
-                default: '(268) Purple'
-              }),
-              value: String(Color.PURPLE)
-            }, {
-              text: formatMessage({
-                id: 'legomario.nougatBrown',
-                default: '(312) Nougat Brown'
-              }),
-              value: String(Color.NOUGAT_BROWN)
-            }, {
-              text: formatMessage({
-                id: 'legomario.cyan',
-                default: '(322) Cyan'
-              }),
-              value: String(Color.CYAN)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.noColor',
-                default: '(-1) No color'
-              }),
-              value: String(Color.NONE)
-            }]
-          },
-          PANTS: {
-            acceptReporters: false,
-            items: [{
-              text: formatMessage({
-                id: 'legomario.pants.none',
-                default: '(0) None'
-              }),
-              value: String(Pants.NONE)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.bee',
-                default: '(3) Bee'
-              }),
-              value: String(Pants.BEE)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.luigi',
-                default: '(5) Luigi'
-              }),
-              value: String(Pants.LUIGI)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.frog',
-                default: '(6) Frog'
-              }),
-              value: String(Pants.FROG)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.tanooki',
-                default: '(10) Tanooki'
-              }),
-              value: String(Pants.TANOOKI)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.propeller',
-                default: '(12) Propeller'
-              }),
-              value: String(Pants.PROPELLER)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.cat',
-                default: '(17) Cat'
-              }),
-              value: String(Pants.CAT)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.fire',
-                default: '(18) Fire'
-              }),
-              value: String(Pants.FIRE)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.penguin',
-                default: '(20) Penguin'
-              }),
-              value: String(Pants.PENGUIN)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.mario',
-                default: '(33) Mario'
-              }),
-              value: String(Pants.MARIO)
-            }, {
-              text: formatMessage({
-                id: 'legomario.pants.builder',
-                default: '(34) Builder'
-              }),
-              value: String(Pants.BUILDER)
-            }]
-          }
-        }
+        blocks: this.getBlocks(formatMessage),
+        menus: this.getMenus(formatMessage)
       };
-    }
-  }, {
-    key: "whenBarcode",
-    value: function whenBarcode(args) {
-      return this.getBarcode() == cast.toNumber(args.BARCODE);
-    }
-  }, {
-    key: "whenAnyBarcode",
-    value: function whenAnyBarcode() {
-      return this.getBarcode() != -1;
-    }
-  }, {
-    key: "getBarcode",
-    value: function getBarcode() {
-      return this._getSensorValue(PortId.COLOR_BARCODE, 'barcode', -1);
-    }
-  }, {
-    key: "whenColor",
-    value: function whenColor(args) {
-      return this.getColor() == args.SENSOR_COLOR;
-    }
-  }, {
-    key: "isColor",
-    value: function isColor(args) {
-      return this.getColor() == args.SENSOR_COLOR;
-    }
-  }, {
-    key: "getColor",
-    value: function getColor() {
-      return this._getSensorValue(PortId.COLOR_BARCODE, 'color', Color.NONE);
-    }
-  }, {
-    key: "whenPants",
-    value: function whenPants(args) {
-      return this.getPants() == args.PANTS;
-    }
-  }, {
-    key: "isPants",
-    value: function isPants(args) {
-      return this.getPants() == args.PANTS;
-    }
-  }, {
-    key: "getPants",
-    value: function getPants() {
-      return this._getSensorValue(PortId.PANTS, 'pants', Pants.NONE);
-    }
-  }, {
-    key: "setVolume",
-    value: function setVolume(args) {
-      var volume = cast.toNumber(args.VOLUME);
-      return this._peripheral.setVolume(volume).then(waitPromise);
-    }
-  }, {
-    key: "_getSensorValue",
-    value: function _getSensorValue(portId, key, defaultValue) {
-      var value = this._peripheral.inputValue(portId, key);
-
-      return value != null ? value : defaultValue;
-    }
-  }, {
-    key: "_setupTranslations",
-    value: function _setupTranslations() {
-      setupTranslations_1(formatMessage, {
-        'ja': {
-          'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
-          'legomario.whenAnyBarcode': 'バーコードを見つけたとき',
-          'legomario.getBarcode': 'バーコード',
-          'legomario.whenColor': '色が [SENSOR_COLOR] のとき',
-          'legomario.isColor': '色が [SENSOR_COLOR]',
-          'legomario.getColor': '色',
-          'legomario.whenPants': 'ズボンが [PANTS] のとき',
-          'legomario.isPants': 'ズボンが [PANTS]',
-          'legomario.getPants': 'ズボン',
-          'legomario.setVolume': '音量を [VOLUME] %にする',
-          'legomario.white': '(19) 白',
-          'legomario.red': '(21) 赤',
-          'legomario.blue': '(23) 青',
-          'legomario.yellow': '(24) 黄色',
-          'legomario.black': '(26) 黒',
-          'legomario.green': '(37) 緑',
-          'legomario.brown': '(106) 茶色',
-          'legomario.purple': '(268) 紫',
-          'legomario.nougatBrown': '(312) 薄茶色',
-          'legomario.cyan': '(322) シアン',
-          'legomario.pants.none': '(0) なし',
-          'legomario.pants.bee': '(3) ハチ',
-          'legomario.pants.luigi': '(5) ルイージ',
-          'legomario.pants.frog': '(6) カエル',
-          'legomario.pants.tanooki': '(10) タヌキ',
-          'legomario.pants.propeller': '(12) プロペラ',
-          'legomario.pants.cat': '(17) ネコ',
-          'legomario.pants.fire': '(18) ファイア',
-          'legomario.pants.penguin': '(20) ペンギン',
-          'legomario.pants.mario': '(33) マリオ',
-          'legomario.pants.builder': '(34) ビルダー'
-        },
-        'ja-Hira': {
-          'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
-          'legomario.whenAnyBarcode': 'バーコードをみつけたとき',
-          'legomario.getBarcode': 'バーコード',
-          'legomario.whenColor': 'いろが [SENSOR_COLOR] のとき',
-          'legomario.isColor': 'いろが [SENSOR_COLOR]',
-          'legomario.getColor': 'いろ',
-          'legomario.whenPants': 'ズボンが [PANTS] のとき',
-          'legomario.isPants': 'ズボンが [PANTS]',
-          'legomario.getPants': 'ズボン',
-          'legomario.setVolume': 'おんりょうを [VOLUME] %にする',
-          'legomario.white': '(19) しろ',
-          'legomario.red': '(21) あか',
-          'legomario.blue': '(23) あお',
-          'legomario.yellow': '(24) きいろ',
-          'legomario.black': '(26) くろ',
-          'legomario.green': '(37) みどり',
-          'legomario.brown': '(106) ちゃいろ',
-          'legomario.purple': '(268) むらさき',
-          'legomario.nougatBrown': '(312) うすちゃいろ',
-          'legomario.cyan': '(322) シアン',
-          'legomario.pants.none': '(0) なし',
-          'legomario.pants.bee': '(3) ハチ',
-          'legomario.pants.luigi': '(5) ルイージ',
-          'legomario.pants.frog': '(6) カエル',
-          'legomario.pants.tanooki': '(10) タヌキ',
-          'legomario.pants.propeller': '(12) プロペラ',
-          'legomario.pants.cat': '(17) ネコ',
-          'legomario.pants.fire': '(18) ファイア',
-          'legomario.pants.penguin': '(20) ペンギン',
-          'legomario.pants.mario': '(33) マリオ',
-          'legomario.pants.builder': '(34) ビルダー'
-        }
-      });
     }
   }], [{
     key: "EXTENSION_ID",
@@ -15756,7 +15788,7 @@ var Scratch3LegoMarioBlocks = /*#__PURE__*/function () {
   }]);
 
   return Scratch3LegoMarioBlocks;
-}();
+}(marioBaseBlocks);
 
 var blockClass = Scratch3LegoMarioBlocks;
 var _legomario = Scratch3LegoMarioBlocks;
