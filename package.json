@@ -10,6 +10,7 @@
     "register:poweredup": "node ./scripts/register.js --link -C --id=\"poweredup\" --block=\"./scratch-vm/src/extensions/scratch3_poweredup\" --entry=\"./scratch-gui/src/lib/libraries/extensions/poweredup\" --gui=\"../scratch-gui\"",
     "register:duplotrain": "node ./scripts/register.js --link -C --id=\"duplotrain\" --block=\"./scratch-vm/src/extensions/scratch3_duplotrain\" --entry=\"./scratch-gui/src/lib/libraries/extensions/duplotrain\" --gui=\"../scratch-gui\"",
     "register:legomario": "node ./scripts/register.js --link -C --id=\"legomario\" --block=\"./scratch-vm/src/extensions/scratch3_legomario\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legomario\" --gui=\"../scratch-gui\"",
+    "register:legoluigi": "node ./scripts/register.js --link -C --id=\"legoluigi\" --block=\"./scratch-vm/src/extensions/scratch3_legoluigi\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legoluigi\" --gui=\"../scratch-gui\"",
     "build": "npm run build:legoble && npm run build:legoremote && npm run build:controlplus && npm run build:poweredup && npm run build:duplotrain && npm run build:legomario",
     "build:legoble": "node ./scripts/build.js --name=\"legoble\" --gui=\"../scratch-gui\"",
     "build:legoremote": "node ./scripts/build.js --name=\"legoremote\" --gui=\"../scratch-gui\"",
@@ -17,6 +18,7 @@
     "build:poweredup": "node ./scripts/build.js --name=\"poweredup\" --gui=\"../scratch-gui\"",
     "build:duplotrain": "node ./scripts/build.js --name=\"duplotrain\" --gui=\"../scratch-gui\"",
     "build:legomario": "node ./scripts/build.js --name=\"legomario\" --gui=\"../scratch-gui\"",
+    "build:legoluigi": "node ./scripts/build.js --name=\"legoluigi\" --gui=\"../scratch-gui\"",
     "start": "cd ../scratch-gui && npm run start"
   },
   "repository": {
