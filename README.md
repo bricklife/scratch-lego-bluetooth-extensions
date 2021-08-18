@@ -27,4 +27,5 @@ Bluetooth Classic (SPP)
 - LEGO Technic CONTROL+ Hub https://bricklife.com/scratch-gui/xcratch/controlplus.mjs
 - LEGO DUPLO Train https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs
 - LEGO Mario https://bricklife.com/scratch-gui/xcratch/legomario.mjs
+- LEGO Luigi https://bricklife.com/scratch-gui/xcratch/legoluigi.mjs
 - General LEGO BLE Device https://bricklife.com/scratch-gui/xcratch/legoble.mjs
