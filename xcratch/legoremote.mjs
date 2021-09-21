@@ -11944,8 +11944,11 @@ var IOType = {
   TECHNIC_COLOR_SENSOR: 0x3d,
   TECHNIC_DISTANCE_SENSOR: 0x3e,
   TECHNIC_FORCE_SENSOR: 0x3f,
+  TECHNIC_SMALL_ANGULAR_MOTOR: 0x41,
   MARIO_COLOR_BARCODE_SENSOR: 0x49,
-  MARIO_PANTS: 0x4a
+  MARIO_PANTS: 0x4a,
+  TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY: 0x4b,
+  TECHNIC_LARGE_ANGULAR_MOTOR_GRAY: 0x4c
 };
 var ioType = IOType;
 
@@ -11972,6 +11975,9 @@ var GenericDevice = /*#__PURE__*/function () {
         case ioType.TECHNIC_XL_MOTOR:
         case ioType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
         case ioType.TECHNIC_LARGE_ANGULAR_MOTOR:
+        case ioType.TECHNIC_SMALL_ANGULAR_MOTOR:
+        case ioType.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
+        case ioType.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
           return 2;
         // Relative Position
 
@@ -12055,6 +12061,9 @@ var GenericDevice = /*#__PURE__*/function () {
         case ioType.TECHNIC_XL_MOTOR:
         case ioType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
         case ioType.TECHNIC_LARGE_ANGULAR_MOTOR:
+        case ioType.TECHNIC_SMALL_ANGULAR_MOTOR:
+        case ioType.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
+        case ioType.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
           this._inputValues = {
             relativePosition: buffer.readInt32LE(0)
           };
@@ -12180,6 +12189,9 @@ var Motor = /*#__PURE__*/function (_GenericDevice) {
       case ioType.TECHNIC_XL_MOTOR:
       case ioType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
       case ioType.TECHNIC_LARGE_ANGULAR_MOTOR:
+      case ioType.TECHNIC_SMALL_ANGULAR_MOTOR:
+      case ioType.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
+      case ioType.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
         _this._canUseSpeed = true;
         _this._canUsePosition = true;
         _this._speed = 75;
@@ -12231,6 +12243,9 @@ var createDevice = function createDevice(ioType$1) {
     case ioType.TECHNIC_XL_MOTOR:
     case ioType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
     case ioType.TECHNIC_LARGE_ANGULAR_MOTOR:
+    case ioType.TECHNIC_SMALL_ANGULAR_MOTOR:
+    case ioType.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
+    case ioType.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
       return new Motor(ioType$1);
 
     default:
