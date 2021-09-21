@@ -50,6 +50,11 @@ class Scratch3SpikeEssentialBlocks extends BleBaseBlocks {
             menus: this.getMenus(formatMessage)
         };
     }
+
+    getHubTilt(args) {
+        const value = super.getHubTilt(args);
+        return value != null ? value / 10 : 0;
+    }
 }
 
 exports.blockClass = Scratch3SpikeEssentialBlocks;
