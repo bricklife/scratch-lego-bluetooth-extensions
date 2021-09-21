@@ -21,6 +21,9 @@ class GenericDevice {
             case IOType.TECHNIC_XL_MOTOR:
             case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
             case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
+            case IOType.TECHNIC_SMALL_ANGULAR_MOTOR:
+            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
+            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
                 return 2; // Relative Position
             case IOType.TILT_SENSOR:
                 return 0; // Tilt X, Y
@@ -74,6 +77,9 @@ class GenericDevice {
             case IOType.TECHNIC_XL_MOTOR:
             case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
             case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
+            case IOType.TECHNIC_SMALL_ANGULAR_MOTOR:
+            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
+            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
                 this._inputValues = {
                     relativePosition: buffer.readInt32LE(0)
                 };
@@ -189,6 +195,9 @@ class Motor extends GenericDevice {
             case IOType.TECHNIC_XL_MOTOR:
             case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
             case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
+            case IOType.TECHNIC_SMALL_ANGULAR_MOTOR:
+            case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
+            case IOType.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
                 this._canUseSpeed = true;
                 this._canUsePosition = true;
                 this._speed = 75;
@@ -232,6 +241,9 @@ const createDevice = function (ioType) {
         case IOType.TECHNIC_XL_MOTOR:
         case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR:
         case IOType.TECHNIC_LARGE_ANGULAR_MOTOR:
+        case IOType.TECHNIC_SMALL_ANGULAR_MOTOR:
+        case IOType.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
+        case IOType.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
             return new Motor(ioType);
 
         default:
