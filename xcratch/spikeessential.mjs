@@ -373,6 +373,36 @@ function _createSuper(Derived) {
   };
 }
 
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = _getPrototypeOf(object);
+    if (object === null) break;
+  }
+
+  return object;
+}
+
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    _get = Reflect.get;
+  } else {
+    _get = function _get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+
+      return desc.value;
+    };
+  }
+
+  return _get(target, property, receiver || target);
+}
+
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -15998,6 +16028,13 @@ var Scratch3SpikeEssentialBlocks = /*#__PURE__*/function (_BleBaseBlocks) {
         blocks: this.getBlocks(formatMessage),
         menus: this.getMenus(formatMessage)
       };
+    }
+  }, {
+    key: "getHubTilt",
+    value: function getHubTilt(args) {
+      var value = _get(_getPrototypeOf(Scratch3SpikeEssentialBlocks.prototype), "getHubTilt", this).call(this, args);
+
+      return value != null ? value / 10 : 0;
     }
   }], [{
     key: "EXTENSION_ID",
