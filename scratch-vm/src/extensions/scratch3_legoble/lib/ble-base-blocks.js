@@ -601,7 +601,7 @@ class BleBaseBlocks {
     getHubTilt(args) {
         const key = 'tilt' + args.XYZ.toUpperCase();
         const value = this._peripheral.internalInputValue(key);
-        return value != null ? value : 0
+        return value != null ? value : 0;
     }
 
     getName() {
