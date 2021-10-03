@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Scratch 3.0 extensions for LEGO Bluetooth and BLE devices",
   "scripts": {
-    "register": "npm run register:legoble && npm run register:spikeessential && npm run register:legoremote && npm run register:controlplus && npm run register:poweredup && npm run register:duplotrain && npm run register:legoluigi && npm run register:legomario",
+    "register": "npm run register:spikeprime && npm run register:legoble && npm run register:spikeessential && npm run register:legoremote && npm run register:controlplus && npm run register:poweredup && npm run register:duplotrain && npm run register:legoluigi && npm run register:legomario",
+    "register:spikeprime": "node ./scripts/register.js --link -C --id=\"spikeprime\" --block=\"./scratch-vm/src/extensions/scratch3_spikeprime\" --entry=\"./scratch-gui/src/lib/libraries/extensions/spikeprime\" --gui=\"../scratch-gui\"",
     "register:legoble": "node ./scripts/register.js --link -C --id=\"legoble\" --block=\"./scratch-vm/src/extensions/scratch3_legoble\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legoble\" --gui=\"../scratch-gui\"",
     "register:spikeessential": "node ./scripts/register.js --link -C --id=\"spikeessential\" --block=\"./scratch-vm/src/extensions/scratch3_spikeessential\" --entry=\"./scratch-gui/src/lib/libraries/extensions/spikeessential\" --gui=\"../scratch-gui\"",
     "register:legoremote": "node ./scripts/register.js --link -C --id=\"legoremote\" --block=\"./scratch-vm/src/extensions/scratch3_legoremote\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legoremote\" --gui=\"../scratch-gui\"",

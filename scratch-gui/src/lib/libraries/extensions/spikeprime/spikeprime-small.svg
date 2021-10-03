@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>spike-small</title>
+    <desc>Created with Sketch.</desc>
+    <g id="spike-small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFD500" x="0" y="0" width="40" height="40"></rect>
+        <g id="Group-Copy" transform="translate(1.000000, 1.000000)" fill="#FFFFFF">
+            <polygon id="Rectangle" points="8 8 14 8 14 14 8 14"></polygon>
+            <polygon id="Rectangle-Copy" points="8 4.99600361e-16 14 2.49800181e-16 14 6 8 6"></polygon>
+            <polygon id="Rectangle-Copy-3" points="16 16 22 16 22 22 16 22"></polygon>
+            <polygon id="Rectangle-Copy-4" points="16 24 22 24 22 30 16 30"></polygon>
+            <polygon id="Rectangle-Copy-13" points="24 24 30 24 30 30 24 30"></polygon>
+            <polygon id="Rectangle-Copy-12" points="16 32 22 32 22 38 16 38"></polygon>
+            <polygon id="Rectangle-Copy-11" points="8 16 14 16 14 22 8 22"></polygon>
+            <polygon id="Rectangle-Copy-10" points="8 24 14 24 14 30 8 30"></polygon>
+            <polygon id="Rectangle-Copy-2" points="16 8 22 8 22 14 16 14"></polygon>
+            <polygon id="Rectangle-Copy-9" points="0 16 6 16 6 22 0 22"></polygon>
+            <polygon id="Rectangle-Copy-8" points="0 8 6 8 6 14 0 14"></polygon>
+            <polygon id="Rectangle-Copy-7" points="24 8 30 8 30 14 24 14"></polygon>
+            <polygon id="Rectangle-Copy-6" points="24 16 30 16 30 22 24 22"></polygon>
+            <polygon id="Rectangle-Copy-15" points="32 8 38 8 38 14 32 14"></polygon>
+            <polygon id="Rectangle-Copy-14" points="32 16 38 16 38 22 32 22"></polygon>
+            <polygon id="Rectangle-Copy-5" points="24 4.99600361e-16 30 2.49800181e-16 30 6 24 6"></polygon>
+        </g>
+    </g>
+</svg>
