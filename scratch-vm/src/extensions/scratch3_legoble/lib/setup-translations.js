@@ -34,8 +34,6 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
             'legobluetooth.getBatteryLevel': '電池残量',
 
-            'legobluetooth.clockwise': '時計回り',
-            'legobluetooth.counterclockwise': '反時計回り',
             'legobluetooth.rotations': '回転',
             'legobluetooth.degrees': '度',
             'legobluetooth.seconds': '秒',
@@ -92,8 +90,6 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
             'legobluetooth.getBatteryLevel': 'でんちざんりょう',
 
-            'legobluetooth.clockwise': 'とけいまわり',
-            'legobluetooth.counterclockwise': 'はんとけいまわり',
             'legobluetooth.rotations': 'かいてん',
             'legobluetooth.degrees': 'ど',
             'legobluetooth.seconds': 'びょう',
