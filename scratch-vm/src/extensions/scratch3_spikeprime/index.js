@@ -681,15 +681,24 @@ class Scratch3SpikePrimeBlocks {
                     acceptReporters: false,
                     items: [
                         {
-                            text: 'shortest path',
+                            text: formatMessage({
+                                id: 'legobluetooth.shortestPath',
+                                default: 'shortest path'
+                            }),
                             value: 'shortest'
                         },
                         {
-                            text: 'clockwise',
+                            text: formatMessage({
+                                id: 'legobluetooth.clockwise',
+                                default: 'clockwise'
+                            }),
                             value: 'clockwise'
                         },
                         {
-                            text: 'counterclockwise',
+                            text: formatMessage({
+                                id: 'legobluetooth.counterclockwise',
+                                default: 'counterclockwise'
+                            }),
                             value: 'counterclockwise'
                         }
                     ]
