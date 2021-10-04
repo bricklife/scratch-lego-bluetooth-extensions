@@ -366,12 +366,12 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
                         DIRECTION: {
                             type: ArgumentType.NUMBER,
-                            menu: 'direction',
+                            menu: 'DIRECTION',
                             defaultValue: 1
                         },
                         VALUE: {
@@ -380,7 +380,7 @@ class Scratch3SpikePrimeBlocks {
                         },
                         UNIT: {
                             type: ArgumentType.STRING,
-                            menu: 'motor_unit',
+                            menu: 'MOTOR_UNIT',
                             defaultValue: 'rotations'
                         }
                     }
@@ -395,12 +395,12 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
                         DIRECTION: {
                             type: ArgumentType.STRING,
-                            menu: 'position_direction',
+                            menu: 'POSITION_DIRECTION',
                             defaultValue: 'shortest'
                         },
                         POSITION: {
@@ -419,12 +419,12 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
                         DIRECTION: {
                             type: ArgumentType.NUMBER,
-                            menu: 'direction',
+                            menu: 'DIRECTION',
                             defaultValue: 1
                         }
                     }
@@ -439,7 +439,7 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         }
                     }
@@ -454,7 +454,7 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'multiple_port',
+                            menu: 'MULTIPLE_PORT',
                             defaultValue: 'A'
                         },
                         SPEED: {
@@ -473,7 +473,7 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'port',
+                            menu: 'PORT',
                             defaultValue: 'A'
                         }
                     }
@@ -557,12 +557,12 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         X: {
                             type: ArgumentType.STRING,
-                            menu: 'coordinate',
+                            menu: 'COORDINATE',
                             defaultValue: '1'
                         },
                         Y: {
                             type: ArgumentType.STRING,
-                            menu: 'coordinate',
+                            menu: 'COORDINATE',
                             defaultValue: '1'
                         },
                         BRIGHTNESS: {
@@ -596,7 +596,7 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         PORT: {
                             type: ArgumentType.STRING,
-                            menu: 'port',
+                            menu: 'PORT',
                             defaultValue: 'A'
                         },
                         LIGHT0: {
@@ -636,22 +636,22 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         AXIS: {
                             type: ArgumentType.STRING,
-                            menu: 'axis',
+                            menu: 'AXIS',
                             defaultValue: 'pitch'
                         }
                     }
                 }
             ],
             menus: {
-                port: {
+                PORT: {
                     acceptReporters: true,
                     items: SpikePorts
                 },
-                multiple_port: {
+                MULTIPLE_PORT: {
                     acceptReporters: true,
                     items: ['A', 'B', 'C', 'D', 'E', 'F', 'A+B', 'C+D', 'E+F', 'A+B+C+D+E+F']
                 },
-                motor_unit: {
+                MOTOR_UNIT: {
                     acceptReporters: false,
                     items: [
                         {
@@ -677,7 +677,7 @@ class Scratch3SpikePrimeBlocks {
                         }
                     ]
                 },
-                position_direction: {
+                POSITION_DIRECTION: {
                     acceptReporters: false,
                     items: [
                         {
@@ -694,7 +694,7 @@ class Scratch3SpikePrimeBlocks {
                         }
                     ]
                 },
-                coordinate: {
+                COORDINATE: {
                     acceptReporters: true,
                     items: ['1', '2', '3', '4', '5']
                 },
@@ -780,11 +780,11 @@ class Scratch3SpikePrimeBlocks {
                         },
                     ]
                 },
-                axis: {
+                AXIS: {
                     acceptReporters: false,
                     items: ['pitch', 'roll', 'yaw']
                 },
-                direction: {
+                DIRECTION: {
                     acceptReporters: false,
                     items: [
                         {
