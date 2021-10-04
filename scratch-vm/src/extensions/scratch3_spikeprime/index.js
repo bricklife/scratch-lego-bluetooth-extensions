@@ -791,7 +791,29 @@ class Scratch3SpikePrimeBlocks {
                 },
                 AXIS: {
                     acceptReporters: false,
-                    items: ['pitch', 'roll', 'yaw']
+                    items: [
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.pitch',
+                                default: 'pitch'
+                            }),
+                            value: 'pitch'
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.roll',
+                                default: 'roll'
+                            }),
+                            value: 'roll'
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.yaw',
+                                default: 'yaw'
+                            }),
+                            value: 'yaw'
+                        }
+                    ]
                 },
                 DIRECTION: {
                     acceptReporters: false,
