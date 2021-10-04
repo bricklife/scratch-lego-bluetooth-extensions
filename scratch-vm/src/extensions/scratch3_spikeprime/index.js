@@ -7,6 +7,8 @@ const Base64Util = require('../../util/base64-util');
 const MathUtil = require('../../util/math-util');
 const RateLimiter = require('../../util/rateLimiter.js');
 
+const Color = require('./lib/color');
+
 const setupTranslations = require('./lib/setup-translations');
 
 const blockIconURI = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU5LjEgKDg2MTQ0KSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5zcGlrZS1zbWFsbDwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJzcGlrZS1zbWFsbCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3QgZmlsbD0iI0ZGRDUwMCIgeD0iMCIgeT0iMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIj48L3JlY3Q+CiAgICAgICAgPGcgaWQ9Ikdyb3VwLUNvcHkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuMDAwMDAwLCAxLjAwMDAwMCkiIGZpbGw9IiNGRkZGRkYiPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUmVjdGFuZ2xlIiBwb2ludHM9IjggOCAxNCA4IDE0IDE0IDggMTQiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5IiBwb2ludHM9IjggNC45OTYwMDM2MWUtMTYgMTQgMi40OTgwMDE4MWUtMTYgMTQgNiA4IDYiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTMiIHBvaW50cz0iMTYgMTYgMjIgMTYgMjIgMjIgMTYgMjIiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTQiIHBvaW50cz0iMTYgMjQgMjIgMjQgMjIgMzAgMTYgMzAiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTEzIiBwb2ludHM9IjI0IDI0IDMwIDI0IDMwIDMwIDI0IDMwIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS0xMiIgcG9pbnRzPSIxNiAzMiAyMiAzMiAyMiAzOCAxNiAzOCI+PC9wb2x5Z29uPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUmVjdGFuZ2xlLUNvcHktMTEiIHBvaW50cz0iOCAxNiAxNCAxNiAxNCAyMiA4IDIyIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS0xMCIgcG9pbnRzPSI4IDI0IDE0IDI0IDE0IDMwIDggMzAiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTIiIHBvaW50cz0iMTYgOCAyMiA4IDIyIDE0IDE2IDE0Ij48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS05IiBwb2ludHM9IjAgMTYgNiAxNiA2IDIyIDAgMjIiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTgiIHBvaW50cz0iMCA4IDYgOCA2IDE0IDAgMTQiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTciIHBvaW50cz0iMjQgOCAzMCA4IDMwIDE0IDI0IDE0Ij48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS02IiBwb2ludHM9IjI0IDE2IDMwIDE2IDMwIDIyIDI0IDIyIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS0xNSIgcG9pbnRzPSIzMiA4IDM4IDggMzggMTQgMzIgMTQiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTE0IiBwb2ludHM9IjMyIDE2IDM4IDE2IDM4IDIyIDMyIDIyIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS01IiBwb2ludHM9IjI0IDQuOTk2MDAzNjFlLTE2IDMwIDIuNDk4MDAxODFlLTE2IDMwIDYgMjQgNiI+PC9wb2x5Z29uPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+';
@@ -579,7 +581,7 @@ class Scratch3SpikePrimeBlocks {
                     arguments: {
                         COLOR: {
                             type: ArgumentType.STRING,
-                            menu: 'center_button_colors',
+                            menu: 'LED_COLOR',
                             defaultValue: 9
                         }
                     }
@@ -696,41 +698,86 @@ class Scratch3SpikePrimeBlocks {
                     acceptReporters: true,
                     items: ['1', '2', '3', '4', '5']
                 },
-                center_button_colors: {
+                LED_COLOR: {
                     acceptReporters: true,
                     items: [
                         {
-                            text: 'violet',
-                            value: '1'
+                            text: formatMessage({
+                                id: 'legobluetooth.black',
+                                default: '(0) Black'
+                            }),
+                            value: String(Color.BLACK)
                         },
                         {
-                            text: 'blue',
-                            value: '3'
+                            text: formatMessage({
+                                id: 'legobluetooth.pink',
+                                default: '(1) Pink'
+                            }),
+                            value: String(Color.PINK)
                         },
                         {
-                            text: 'azure',
-                            value: '4'
+                            text: formatMessage({
+                                id: 'legobluetooth.purple',
+                                default: '(2) Purple'
+                            }),
+                            value: String(Color.PURPLE)
                         },
                         {
-                            text: 'green',
-                            value: '5'
+                            text: formatMessage({
+                                id: 'legobluetooth.blue',
+                                default: '(3) Blue'
+                            }),
+                            value: String(Color.BLUE)
                         },
                         {
-                            text: 'yellow',
-                            value: '7'
+                            text: formatMessage({
+                                id: 'legobluetooth.lightBlue',
+                                default: '(4) Light blue'
+                            }),
+                            value: String(Color.LIGHT_BLUE)
                         },
                         {
-                            text: 'red',
-                            value: '9'
+                            text: formatMessage({
+                                id: 'legobluetooth.lightGreen',
+                                default: '(5) Light green'
+                            }),
+                            value: String(Color.LIGHT_GREEN)
                         },
                         {
-                            text: 'white',
-                            value: '10'
+                            text: formatMessage({
+                                id: 'legobluetooth.green',
+                                default: '(6) Green'
+                            }),
+                            value: String(Color.GREEN)
                         },
                         {
-                            text: 'no color',
-                            value: '-1'
-                        }
+                            text: formatMessage({
+                                id: 'legobluetooth.yellow',
+                                default: '(7) Yellow'
+                            }),
+                            value: String(Color.YELLOW)
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.orange',
+                                default: '(8) Orange'
+                            }),
+                            value: String(Color.ORANGE)
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.red',
+                                default: '(9) Red'
+                            }),
+                            value: String(Color.RED)
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.white',
+                                default: '(10) White'
+                            }),
+                            value: String(Color.WHITE)
+                        },
                     ]
                 },
                 axis: {
