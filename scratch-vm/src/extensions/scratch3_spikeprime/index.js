@@ -7,6 +7,8 @@ const Base64Util = require('../../util/base64-util');
 const MathUtil = require('../../util/math-util');
 const RateLimiter = require('../../util/rateLimiter.js');
 
+const setupTranslations = require('./lib/setup-translations');
+
 const blockIconURI = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDBweCIgaGVpZ2h0PSI0MHB4IiB2aWV3Qm94PSIwIDAgNDAgNDAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU5LjEgKDg2MTQ0KSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5zcGlrZS1zbWFsbDwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJzcGlrZS1zbWFsbCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3QgZmlsbD0iI0ZGRDUwMCIgeD0iMCIgeT0iMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIj48L3JlY3Q+CiAgICAgICAgPGcgaWQ9Ikdyb3VwLUNvcHkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuMDAwMDAwLCAxLjAwMDAwMCkiIGZpbGw9IiNGRkZGRkYiPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUmVjdGFuZ2xlIiBwb2ludHM9IjggOCAxNCA4IDE0IDE0IDggMTQiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5IiBwb2ludHM9IjggNC45OTYwMDM2MWUtMTYgMTQgMi40OTgwMDE4MWUtMTYgMTQgNiA4IDYiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTMiIHBvaW50cz0iMTYgMTYgMjIgMTYgMjIgMjIgMTYgMjIiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTQiIHBvaW50cz0iMTYgMjQgMjIgMjQgMjIgMzAgMTYgMzAiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTEzIiBwb2ludHM9IjI0IDI0IDMwIDI0IDMwIDMwIDI0IDMwIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS0xMiIgcG9pbnRzPSIxNiAzMiAyMiAzMiAyMiAzOCAxNiAzOCI+PC9wb2x5Z29uPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUmVjdGFuZ2xlLUNvcHktMTEiIHBvaW50cz0iOCAxNiAxNCAxNiAxNCAyMiA4IDIyIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS0xMCIgcG9pbnRzPSI4IDI0IDE0IDI0IDE0IDMwIDggMzAiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTIiIHBvaW50cz0iMTYgOCAyMiA4IDIyIDE0IDE2IDE0Ij48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS05IiBwb2ludHM9IjAgMTYgNiAxNiA2IDIyIDAgMjIiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTgiIHBvaW50cz0iMCA4IDYgOCA2IDE0IDAgMTQiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTciIHBvaW50cz0iMjQgOCAzMCA4IDMwIDE0IDI0IDE0Ij48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS02IiBwb2ludHM9IjI0IDE2IDMwIDE2IDMwIDIyIDI0IDIyIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS0xNSIgcG9pbnRzPSIzMiA4IDM4IDggMzggMTQgMzIgMTQiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTE0IiBwb2ludHM9IjMyIDE2IDM4IDE2IDM4IDIyIDMyIDIyIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJSZWN0YW5nbGUtQ29weS01IiBwb2ludHM9IjI0IDQuOTk2MDAzNjFlLTE2IDMwIDIuNDk4MDAxODFlLTE2IDMwIDYgMjQgNiI+PC9wb2x5Z29uPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+';
 
 const BTSendRateMax = 40;
@@ -344,6 +346,8 @@ class Scratch3SpikePrimeBlocks {
     }
 
     getInfo() {
+        setupTranslations(formatMessage);
+
         return {
             id: Scratch3SpikePrimeBlocks.EXTENSION_ID,
             name: 'SPIKE Prime',
@@ -353,9 +357,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'motorRunFor',
                     text: formatMessage({
-                        id: 'spike.motorRunFor',
-                        default: '[PORT] run [DIRECTION] for [VALUE] [UNIT]',
-                        description: 'NEEDS DESCRIPTION'
+                        id: 'legobluetooth.motorRunFor',
+                        default: '[PORT] run [DIRECTION] for [VALUE] [UNIT]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -383,9 +386,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'motorGoDirectionToPosition',
                     text: formatMessage({
-                        id: 'spike.motorGoDirectionToPosition',
-                        default: '[PORT] go [DIRECTION] to position [POSITION]',
-                        description: 'NEEDS DESCRIPTION'
+                        id: 'legobluetooth.motorGoDirectionToPosition',
+                        default: '[PORT] go [DIRECTION] to position [POSITION]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -408,9 +410,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'motorStart',
                     text: formatMessage({
-                        id: 'spike.motorStart',
-                        default: '[PORT] start motor [DIRECTION]',
-                        description: 'NEEDS DESCRIPTION'
+                        id: 'legobluetooth.motorStart',
+                        default: '[PORT] start motor [DIRECTION]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -429,9 +430,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'motorStop',
                     text: formatMessage({
-                        id: 'spike.motorStop',
-                        default: '[PORT] stop motor',
-                        description: 'NEEDS DESCRIPTION'
+                        id: 'legobluetooth.motorStop',
+                        default: '[PORT] stop motor'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -445,9 +445,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'motorSetSpeed',
                     text: formatMessage({
-                        id: 'spike.motorSetSpeed',
-                        default: '[PORT] set speed to [SPEED] %',
-                        description: 'NEEDS DESCRIPTION'
+                        id: 'legobluetooth.motorSetSpeed',
+                        default: '[PORT] set speed to [SPEED] %'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -465,9 +464,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'getPosition',
                     text: formatMessage({
-                        id: 'spike.getPosition',
-                        default: '[PORT] position',
-                        description: 'NEEDS DESCRIPTION'
+                        id: 'legobluetooth.getPosition',
+                        default: '[PORT] position'
                     }),
                     blockType: BlockType.REPORTER,
                     arguments: {
@@ -482,9 +480,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'displayImageFor',
                     text: formatMessage({
-                        id: 'spike.displayImageFor',
-                        default: 'turn on [MATRIX] for [DURATION] seconds',
-                        description: 'display a pattern on the SPIKE Hub display'
+                        id: 'legobluetooth.displayImageFor',
+                        default: 'turn on [MATRIX] for [DURATION] seconds'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -501,9 +498,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'displayImage',
                     text: formatMessage({
-                        id: 'spike.displayImage',
-                        default: 'turn on [MATRIX]',
-                        description: 'display a pattern on the SPIKE Hub display'
+                        id: 'legobluetooth.displayImage',
+                        default: 'turn on [MATRIX]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -516,9 +512,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'displayText',
                     text: formatMessage({
-                        id: 'spike.displayText',
-                        default: 'write [TEXT]',
-                        description: 'display text on the SPIKE Hub display'
+                        id: 'legobluetooth.displayText',
+                        default: 'write [TEXT]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -531,18 +526,16 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'displayClear',
                     text: formatMessage({
-                        id: 'spike.displayClear',
-                        default: 'turn off pixels',
-                        description: 'display nothing on the SPIKE Hub display'
+                        id: 'legobluetooth.displayClear',
+                        default: 'turn off pixels'
                     }),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: 'displaySetBrightness',
                     text: formatMessage({
-                        id: 'spike.displaySetBrightness',
-                        default: 'set pixel brightness to [BRIGHTNESS] %',
-                        description: 'set the pixel brightness for the SPIKE Hub display'
+                        id: 'legobluetooth.displaySetBrightness',
+                        default: 'set pixel brightness to [BRIGHTNESS] %'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -555,9 +548,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'displaySetPixel',
                     text: formatMessage({
-                        id: 'spike.displaySetPixel',
-                        default: 'set pixel at [X] , [Y] to [BRIGHTNESS] %',
-                        description: 'set a pixel brightness for the SPIKE Hub display'
+                        id: 'legobluetooth.displaySetPixel',
+                        default: 'set pixel at [X] , [Y] to [BRIGHTNESS] %'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -580,9 +572,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'centerButtonLights',
                     text: formatMessage({
-                        id: 'spike.centerButtonLights',
-                        default: 'set center button light to [COLOR]',
-                        description: 'set the center button light'
+                        id: 'legobluetooth.centerButtonLights',
+                        default: 'set center button light to [COLOR]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -596,9 +587,8 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'ultrasonicLightUp',
                     text: formatMessage({
-                        id: 'spike.ultrasonicLightUp',
-                        default: '[PORT] light up [LIGHT0] [LIGHT1] [LIGHT2] [LIGHT3]',
-                        description: 'set the ultrasonic sensor light'
+                        id: 'legobluetooth.ultrasonicLightUp',
+                        default: '[PORT] light up [LIGHT0] [LIGHT1] [LIGHT2] [LIGHT3]'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -629,18 +619,16 @@ class Scratch3SpikePrimeBlocks {
                 {
                     opcode: 'getOrientation',
                     text: formatMessage({
-                        id: 'spike.getOrientation',
-                        default: 'orientation',
-                        description: 'the orientation returned by the tilt sensor'
+                        id: 'legobluetooth.getOrientation',
+                        default: 'orientation'
                     }),
                     blockType: BlockType.REPORTER
                 },
                 {
                     opcode: 'getAngle',
                     text: formatMessage({
-                        id: 'spike.getAngle',
-                        default: '[AXIS] angle',
-                        description: 'the angles returned by the tilt sensor'
+                        id: 'legobluetooth.getAngle',
+                        default: '[AXIS] angle'
                     }),
                     blockType: BlockType.REPORTER,
                     arguments: {
@@ -663,7 +651,29 @@ class Scratch3SpikePrimeBlocks {
                 },
                 motor_unit: {
                     acceptReporters: false,
-                    items: ['rotations', 'degrees', 'seconds']
+                    items: [
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.rotations',
+                                default: 'rotations'
+                            }),
+                            value: 'rotations'
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.degrees',
+                                default: 'degrees'
+                            }),
+                            value: 'degrees'
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'legobluetooth.seconds',
+                                default: 'seconds'
+                            }),
+                            value: 'seconds'
+                        }
+                    ]
                 },
                 position_direction: {
                     acceptReporters: false,
