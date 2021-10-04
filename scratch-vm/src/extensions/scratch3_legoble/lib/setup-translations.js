@@ -12,12 +12,24 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.getRelativePosition': '[PORT] 相対位置',
             'legobluetooth.getPosition': '[PORT] 位置',
             'legobluetooth.motorResetRelativePosition': '[PORT] 相対位置を [RELATIVE_POSITION] にリセットする',
+
+            'legobluetooth.displayImageFor': '[MATRIX] を [DURATION] 秒間オンにする',
+            'legobluetooth.displayImage': '[MATRIX] をオンにする',
+            'legobluetooth.displayText': '[TEXT] を表示する',
+            'legobluetooth.displayClear': 'すべてのピクセルをオフにする',
+            'legobluetooth.displaySetBrightness': 'ピクセルの明るさを [BRIGHTNESS] %にする',
+            'legobluetooth.displaySetPixel': '[X] , [Y] のピクセルの明るさを [BRIGHTNESS] %にする',
+            'legobluetooth.centerButtonLights': 'センターボタンのライトを [COLOR] にする',
+            'legobluetooth.ultrasonicLightUp': '[PORT] を [LIGHT0] [LIGHT1] [LIGHT2] [LIGHT3] でライトアップする',
+
             'legobluetooth.getColor': '[PORT] 色',
             'legobluetooth.getDistance': '[PORT] 距離',
             'legobluetooth.getForce': '[PORT] 圧力',
             'legobluetooth.getTilt': '[PORT] 傾き [XY]',
             'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
             'legobluetooth.getHubTilt': 'ハブの傾き [XYZ]',
+            'legobluetooth.getAngle': '[AXIS] 角',
+
             'legobluetooth.getName': '名前',
             'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
             'legobluetooth.getBatteryLevel': '電池残量',
@@ -43,6 +55,10 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.red': '(9) 赤',
             'legobluetooth.white': '(10) 白',
             'legobluetooth.noColor': '(-1) 色なし',
+
+            'legobluetooth.pitch': 'ピッチ',
+            'legobluetooth.roll': 'ロール',
+            'legobluetooth.yaw': 'ヨー',
         },
         'ja-Hira': {
             'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーでまわす',
@@ -54,12 +70,24 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.getRelativePosition': '[PORT] そうたいいち',
             'legobluetooth.getPosition': '[PORT] いち',
             'legobluetooth.motorResetRelativePosition': '[PORT] そうたいいちを [RELATIVE_POSITION] にリセットする',
+
+            'legobluetooth.displayImageFor': '[MATRIX] を [DURATION] びょうかんオンにする',
+            'legobluetooth.displayImage': '[MATRIX] をオンにする',
+            'legobluetooth.displayText': '[TEXT] をひょうじする',
+            'legobluetooth.displayClear': 'すべてのピクセルをオフにする',
+            'legobluetooth.displaySetBrightness': 'ピクセルのあかるさを [BRIGHTNESS] %にする',
+            'legobluetooth.displaySetPixel': '[X] , [Y] のピクセルのあかるさを [BRIGHTNESS] %にする',
+            'legobluetooth.centerButtonLights': 'センターボタンのライトを [COLOR] にする',
+            'legobluetooth.ultrasonicLightUp': '[PORT] を [LIGHT0] [LIGHT1] [LIGHT2] [LIGHT3] でライトアップする',
+
             'legobluetooth.getColor': '[PORT] いろ',
             'legobluetooth.getDistance': '[PORT] きょり',
             'legobluetooth.getForce': '[PORT] あつりょく',
             'legobluetooth.getTilt': '[PORT] かたむき [XY]',
             'legobluetooth.setHubLEDColor': 'ハブのLEDを [COLOR] にする',
             'legobluetooth.getHubTilt': 'ハブのかたむき [XYZ]',
+            'legobluetooth.getAngle': '[AXIS] かく',
+
             'legobluetooth.getName': 'なまえ',
             'legobluetooth.getFirmwareVersion': 'ファームウェアバージョン',
             'legobluetooth.getBatteryLevel': 'でんちざんりょう',
@@ -85,6 +113,10 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.red': '(9) あか',
             'legobluetooth.white': '(10) しろ',
             'legobluetooth.noColor': '(-1) いろなし',
+
+            'legobluetooth.pitch': 'ピッチ',
+            'legobluetooth.roll': 'ロール',
+            'legobluetooth.yaw': 'ヨー',
         }
     };
 
