@@ -9,12 +9,12 @@ Bluetooth LE (BLE)
 - [x] LEGO DUPLO Train
 - [x] LEGO Mario
 - [x] LEGO Luigi
+- [x] LEGO Education SPIKE Essential Hub
 - [x] General LEGO BLE Device
-- [ ] LEGO Education SPIKE Essential Hub
 
 Bluetooth Classic (SPP)
-- [ ] LEGO Education SPIKE Prime Hub
-- [ ] LEGO MINDSTORMS Robot Inventor
+- [x] LEGO Education SPIKE Prime Hub
+- [ ] LEGO MINDSTORMS Robot Inventor Hub
 
 ## Scratch 3.0 installed LEGO Bluetooth extensions
 - https://bricklife.com/scratch-gui/ (Stable version)
@@ -28,4 +28,6 @@ Bluetooth Classic (SPP)
 - LEGO DUPLO Train https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs
 - LEGO Mario https://bricklife.com/scratch-gui/xcratch/legomario.mjs
 - LEGO Luigi https://bricklife.com/scratch-gui/xcratch/legoluigi.mjs
+- LEGO Education SPIKE Essential Hub https://bricklife.com/scratch-gui/xcratch/spikeessential.mjs
 - General LEGO BLE Device https://bricklife.com/scratch-gui/xcratch/legoble.mjs
+- LEGO Education SPIKE Prime Hub https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs
