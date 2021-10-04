@@ -1,7 +1,6 @@
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const Cast = require('../../util/cast');
-const formatMessage = require('format-message');
 const BT = require('../../io/bt');
 const Base64Util = require('../../util/base64-util');
 const MathUtil = require('../../util/math-util');
@@ -12,6 +11,9 @@ const Color = require('./lib/color');
 const setupTranslations = require('./lib/setup-translations');
 
 const blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAACJUlEQVR4Ae3cQU7DMBCF4QkCDtAdEls2sOAKnIpDcBGuwRVYwIYtEjsOAIsQt0hRVNsz1mtLSf5ISE08Y+JPkzZuI5uxIYAAAggggAACCCxRoIsMun+zS/u2hyH2znq7iOT825jOPoZzf7Izu++u7N0bhwu4xvuy56GjldfZzNo/7dxuPcQTd9CbylsaXmJZ/V51VSIfMF22y93csfuAc3/PqxVHYOw+YO0f0GYAikUAoAh4KubH06/7euyre0c1zd91f9Pew3tUYJgqHwhg3iV8FMAwVT4QwLxL+CiAYap8IIB5l/BRAMNU+cDD3Qe23uflz3c8uuv+xp6bXlGBTVzbwXoFRmcExx63bRM6QgWGmMpBAJZtQi0AhpjKQQCWbUItAIaYykEAlm1CLQCGmMpB7tfA/cvwLMKCt+7GqkZUoFgczETEOTUVKFYggACKAmI6FQigKCCmU4EAigJievUuO/XNTISZiFhj9XR9JlLvf2z9q99ExjPYyys+RERWAAEUBcR0KhBAUUBMpwIBFAXEdGYiDiC/iThAavPhZiLRM43OWKL97TmODxERGEAARQExnQoEUBQQ06lAAEUBMf347gPFZ1VEj+Z0LuFmsmkCgFOP5j0Am8mmCT7gZi2padZS9gJj9wHTQlzL3dyx+98HppXbWHysWEJuBa5XLxtWMRsecHgc/tLScPPe0hjTWAMrt80bgtEhgAACCCCAAAII1AR+AFR+TtogrgqBAAAAAElFTkSuQmCC';
+
+let formatMessage = require('format-message');
+let extensionURL = 'https://bricklife.com/scratch-gui/xcratch/spikeessential.mjs';
 
 const BTSendRateMax = 40;
 
@@ -338,6 +340,14 @@ class Scratch3SpikePrimeBlocks {
         return 'spikeprime';
     }
 
+    static get extensionURL() {
+        return extensionURL;
+    }
+
+    static set extensionURL(url) {
+        extensionURL = url;
+    }
+
     constructor(runtime) {
         this.runtime = runtime;
 
@@ -345,6 +355,11 @@ class Scratch3SpikePrimeBlocks {
 
         this._playNoteForPicker = this._playNoteForPicker.bind(this);
         this.runtime.on('PLAY_NOTE', this._playNoteForPicker);
+
+        if (runtime.formatMessage) {
+            // Replace 'formatMessage' to a formatter which is used in the runtime.
+            formatMessage = runtime.formatMessage;
+        }
     }
 
     getInfo() {
@@ -1096,4 +1111,5 @@ class Scratch3SpikePrimeBlocks {
     }
 }
 
+exports.blockClass = Scratch3SpikePrimeBlocks;
 module.exports = Scratch3SpikePrimeBlocks;
