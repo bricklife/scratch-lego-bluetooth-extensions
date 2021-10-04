@@ -14286,7 +14286,7 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
 
 var blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAACJUlEQVR4Ae3cQU7DMBCF4QkCDtAdEls2sOAKnIpDcBGuwRVYwIYtEjsOAIsQt0hRVNsz1mtLSf5ISE08Y+JPkzZuI5uxIYAAAggggAACCCxRoIsMun+zS/u2hyH2znq7iOT825jOPoZzf7Izu++u7N0bhwu4xvuy56GjldfZzNo/7dxuPcQTd9CbylsaXmJZ/V51VSIfMF22y93csfuAc3/PqxVHYOw+YO0f0GYAikUAoAh4KubH06/7euyre0c1zd91f9Pew3tUYJgqHwhg3iV8FMAwVT4QwLxL+CiAYap8IIB5l/BRAMNU+cDD3Qe23uflz3c8uuv+xp6bXlGBTVzbwXoFRmcExx63bRM6QgWGmMpBAJZtQi0AhpjKQQCWbUItAIaYykEAlm1CLQCGmMpB7tfA/cvwLMKCt+7GqkZUoFgczETEOTUVKFYggACKAmI6FQigKCCmU4EAigJievUuO/XNTISZiFhj9XR9JlLvf2z9q99ExjPYyys+RERWAAEUBcR0KhBAUUBMpwIBFAXEdGYiDiC/iThAavPhZiLRM43OWKL97TmODxERGEAARQExnQoEUBQQ06lAAEUBMf347gPFZ1VEj+Z0LuFmsmkCgFOP5j0Am8mmCT7gZi2padZS9gJj9wHTQlzL3dyx+98HppXbWHysWEJuBa5XLxtWMRsecHgc/tLScPPe0hjTWAMrt80bgtEhgAACCCCAAAII1AR+AFR+TtogrgqBAAAAAElFTkSuQmCC';
 var formatMessage = formatMessage$1;
-var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/spikeessential.mjs';
+var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs';
 var BTSendRateMax = 40;
 var SpikePorts = ['A', 'B', 'C', 'D', 'E', 'F'];
 var SpikeMotorStopMode = {
