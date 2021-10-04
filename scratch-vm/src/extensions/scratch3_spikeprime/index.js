@@ -618,14 +618,14 @@ class Scratch3SpikePrimeBlocks {
                     }
                 },
                 '---',
-                {
-                    opcode: 'getOrientation',
-                    text: formatMessage({
-                        id: 'legobluetooth.getOrientation',
-                        default: 'orientation'
-                    }),
-                    blockType: BlockType.REPORTER
-                },
+                // {
+                //     opcode: 'getOrientation',
+                //     text: formatMessage({
+                //         id: 'legobluetooth.getOrientation',
+                //         default: 'orientation'
+                //     }),
+                //     blockType: BlockType.REPORTER
+                // },
                 {
                     opcode: 'getAngle',
                     text: formatMessage({
