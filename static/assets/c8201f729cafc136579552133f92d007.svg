@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>spikeessential-small</title>
+    <g id="spikeessential-small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#7C87A5" fill="#FFFFFF" x="4.5" y="12.5" width="31" height="16"></rect>
+        <rect id="Rectangle-Copy-2" stroke="#7C87A5" fill="#FCD84E" x="4.5" y="15.5" width="31" height="13"></rect>
+        <rect id="Rectangle-Copy-3" stroke="#7C87A5" fill="#B6B6B6" transform="translate(20.750000, 14.750000) scale(1, -1) translate(-20.750000, -14.750000) " x="19" y="14" width="3.5" height="1.5"></rect>
+        <rect id="Rectangle-Copy-4" stroke="#7C87A5" fill="#B6B6B6" transform="translate(31.250000, 14.750000) scale(1, -1) translate(-31.250000, -14.750000) " x="29.5" y="14" width="3.5" height="1.5"></rect>
+        <rect id="Rectangle-Copy" stroke="#7C87A5" x="4.5" y="12.5" width="12" height="16"></rect>
+    </g>
+</svg>
