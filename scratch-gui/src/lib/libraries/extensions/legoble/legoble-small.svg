@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
     <title>legoble-small</title>
-    <desc>Created with Sketch.</desc>
     <g id="legoble-small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group" transform="translate(4.000000, 11.000000)">
-            <path d="M30,0 C31.1045695,-2.02906125e-16 32,0.8954305 32,2 L32,16 C32,17.1045695 31.1045695,18 30,18 L25,18 C23.8954305,18 23,17.1045695 23,16 L23,15 L9,15 L9,16 C9,17.1045695 8.1045695,18 7,18 L2,18 C0.8954305,18 1.3527075e-16,17.1045695 0,16 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 L30,0 Z" id="Combined-Shape" stroke="#7F7F7F" fill="#BABAB9"></path>
-            <path d="M29,15 L26,15 L26,12 L6,12 L6,15 L3,15 L3,3 L29,3 L29,15 Z" id="Combined-Shape" fill="#7F7F7F"></path>
+        <g id="Group" transform="translate(4.500000, 11.500000)">
+            <path d="M28.5,0 C29.8807119,0 31,1.11928813 31,2.5 L31,14.5 C31,15.8807119 29.8807119,17 28.5,17 L25.5,17 C24.1192881,17 23,15.8807119 23,14.5 L23,14 L8,14 L8,14.5 C8,15.8807119 6.88071187,17 5.5,17 L2.5,17 C1.11928813,17 0,15.8807119 0,14.5 L0,2.5 C0,1.11928813 1.11928813,0 2.5,0 L28.5,0 Z" id="Path" stroke="#7F7F7F" fill="#E6E7E8"></path>
+            <polygon id="Path" fill="#7F7F7F" points="28.5 2.5 28.5 14.5 25.5 14.5 25.5 11.5 5.5 11.5 5.5 14.5 2.5 14.5 2.5 2.5"></polygon>
         </g>
     </g>
 </svg>
