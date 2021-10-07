@@ -2,24 +2,26 @@
 <svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>spikeprime-small</title>
     <g id="spikeprime-small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#FFD500" x="4" y="4" width="32" height="32" rx="2"></rect>
-        <g id="Group-Copy" transform="translate(8.000000, 8.000000)" fill="#FFFFFF">
-            <polygon id="Rectangle" points="5 5 9 5 9 9 5 9"></polygon>
-            <polygon id="Rectangle-Copy" points="5 3.33066907e-16 9 1.66533454e-16 9 4 5 4"></polygon>
-            <polygon id="Rectangle-Copy-3" points="10 10 14 10 14 14 10 14"></polygon>
-            <polygon id="Rectangle-Copy-4" points="10 15 14 15 14 19 10 19"></polygon>
-            <polygon id="Rectangle-Copy-13" points="15 15 19 15 19 19 15 19"></polygon>
-            <polygon id="Rectangle-Copy-12" points="10 20 14 20 14 24 10 24"></polygon>
-            <polygon id="Rectangle-Copy-11" points="5 10 9 10 9 14 5 14"></polygon>
-            <polygon id="Rectangle-Copy-10" points="5 15 9 15 9 19 5 19"></polygon>
-            <polygon id="Rectangle-Copy-2" points="10 5 14 5 14 9 10 9"></polygon>
-            <polygon id="Rectangle-Copy-9" points="0 10 4 10 4 14 0 14"></polygon>
-            <polygon id="Rectangle-Copy-8" points="0 5 4 5 4 9 0 9"></polygon>
-            <polygon id="Rectangle-Copy-7" points="15 5 19 5 19 9 15 9"></polygon>
-            <polygon id="Rectangle-Copy-6" points="15 10 19 10 19 14 15 14"></polygon>
-            <polygon id="Rectangle-Copy-15" points="20 5 24 5 24 9 20 9"></polygon>
-            <polygon id="Rectangle-Copy-14" points="20 10 24 10 24 14 20 14"></polygon>
-            <polygon id="Rectangle-Copy-5" points="15 3.33066907e-16 19 1.66533454e-16 19 4 15 4"></polygon>
+        <rect id="body" stroke="#7C87A5" fill="#FFFFFF" x="9.5" y="4.5" width="21" height="31" rx="1.5"></rect>
+        <g id="matrix" transform="translate(13.000000, 13.000000)" fill="#FCD84E">
+            <rect id="d" x="6" y="3" width="2" height="2"></rect>
+            <rect id="d-copy" x="9" y="3" width="2" height="2"></rect>
+            <rect id="d-copy-3" x="6" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-2" x="9" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-11" x="0" y="3" width="2" height="2"></rect>
+            <rect id="d-copy-10" x="3" y="3" width="2" height="2"></rect>
+            <rect id="d-copy-9" x="0" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-8" x="3" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-15" x="12" y="3" width="2" height="2"></rect>
+            <rect id="d-copy-14" x="3" y="9" width="2" height="2"></rect>
+            <rect id="d-copy-13" x="12" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-12" x="6" y="12" width="2" height="2"></rect>
+            <rect id="d-copy-16" x="3" y="0" width="2" height="2"></rect>
+            <rect id="d-copy-17" x="9" y="0" width="2" height="2"></rect>
+            <rect id="d-copy-5" x="6" y="9" width="2" height="2"></rect>
+            <rect id="d-copy-4" x="9" y="9" width="2" height="2"></rect>
         </g>
+        <circle id="Oval" stroke="#4C97FF" cx="26.5" cy="8.5" r="1.5"></circle>
+        <circle id="Oval-Copy" stroke="#7C87A5" cx="20" cy="31" r="2.5"></circle>
     </g>
 </svg>
