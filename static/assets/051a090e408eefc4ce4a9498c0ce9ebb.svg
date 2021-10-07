@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>controlplus-small</title>
+    <g id="controlplus-small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M1.5,19.5 L1.5,16 C1.5,15.1715729 2.17157288,14.5 3,14.5 L3.5,14.5 C3.5,13.3856181 3.5,12.5522847 3.5,12 C3.5,11.1715729 4.17157288,10.5 5,10.5 L37,10.5 C37.8284271,10.5 38.5,11.1715729 38.5,12 L38.5,19.5 L1.5,19.5 Z" id="Path-Copy-17" fill="#E6E7E8"></path>
+        <path d="M38.5,21.5 L38.5,28 C38.5,28.8284271 37.8284271,29.5 37,29.5 L3,29.5 C2.17157288,29.5 1.5,28.8284271 1.5,28 L1.5,21.5 L0.5,21.5 L0.5,18.5 L4.5,18.5 L5.5,19.5 L13.5,19.5 L14.5,18.5 L24.5,18.5 L24.5,19.5 L31,19.5 L32,18.5 L39.5,18.5 L39.5,21.5 L38.5,21.5 Z" id="Path-10-Copy" fill="#6B6E67"></path>
+        <path d="M8.5,14.5 L8.5,12 C8.5,11.1715729 9.17157288,10.5 10,10.5 C11,10.5 13,10.5 12,10.5 C11.1715729,10.5 10.5,11.1715729 10.5,12 L10.5,14.5 L8.5,14.5 Z" id="Path-Copy-18" stroke="#3D79CC" fill="#4C97FF"></path>
+        <polyline id="Path-10" stroke="#7C87A5" points="2 21.5 0.5 21.5 0.5 18.5 4.5 18.5 5.5 19.5 13.5 19.5 14.5 18.5 24.5 18.5 24.5 21.5 18 21.5"></polyline>
+        <polyline id="Path-11" stroke="#7C87A5" points="24.5 19.5 31 19.5 32 18.5 38.5 18.5"></polyline>
+        <rect id="Rectangle" stroke="#7C87A5" x="32.5" y="18.5" width="7" height="3"></rect>
+        <path d="M1.5,14.5 L2,14.5 C2.82842712,14.5 3.5,15.1715729 3.5,16 L3.5,18.5" id="Path-Copy-7" stroke="#7C87A5" transform="translate(2.500000, 16.500000) scale(-1, 1) translate(-2.500000, -16.500000) "></path>
+        <path d="M15.5,10.5 C16.3284271,10.5 17,11.1715729 17,12 L17,16" id="Path-Copy-8" stroke="#7C87A5" transform="translate(16.250000, 13.250000) scale(-1, 1) translate(-16.250000, -13.250000) "></path>
+        <path d="M27.5,10.5 C28.3284271,10.5 29,11.1715729 29,12 L29,15" id="Path-Copy-10" stroke="#7C87A5" transform="translate(28.250000, 12.750000) scale(-1, 1) translate(-28.250000, -12.750000) "></path>
+        <path d="M18.5,21 C19.3284271,21 20,21.6715729 20,22.5 L20,29.5" id="Path-Copy-15" stroke="#7C87A5" transform="translate(19.250000, 25.250000) scale(-1, -1) translate(-19.250000, -25.250000) "></path>
+        <path d="M30.5,10.5 C31.3284271,10.5 32,11.1715729 32,12 L32,15" id="Path-Copy-11" stroke="#7C87A5" transform="translate(31.250000, 12.750000) scale(-1, 1) translate(-31.250000, -12.750000) "></path>
+        <path d="M3.5,16 L3.5,12 C3.5,11.1715729 4.17157288,10.5 5,10.5 L37,10.5 C37.8284271,10.5 38.5,11.1715729 38.5,12 L38.5,18.5" id="Path-Copy-9" stroke="#7C87A5"></path>
+        <path d="M18.5,14.5 L29.5,14.5 C30.3284271,14.5 31,15.1715729 31,16 L31,18.5" id="Path-Copy-12" stroke="#7C87A5" transform="translate(24.750000, 16.500000) scale(-1, 1) translate(-24.750000, -16.500000) "></path>
+        <path d="M15.5,14.5 L26.5,14.5 C27.3284271,14.5 28,15.1715729 28,16" id="Path-Copy-13" stroke="#7C87A5" transform="translate(21.750000, 15.250000) scale(-1, 1) translate(-21.750000, -15.250000) "></path>
+        <path d="M1.5,29.5 L1.5,23 C1.5,22.1715729 2.17157288,21.5 3,21.5 L37,21.5 C37.8284271,21.5 38.5,22.1715729 38.5,23 L38.5,29.5" id="Path-Copy-14" stroke="#7C87A5" transform="translate(20.000000, 25.500000) scale(1, -1) translate(-20.000000, -25.500000) "></path>
+        <rect id="Rectangle-Copy-8" stroke="#7C87A5" fill="#B6B6B6" transform="translate(19.000000, 13.500000) scale(1, -1) translate(-19.000000, -13.500000) " x="17.5" y="12.5" width="3" height="2"></rect>
+        <rect id="Rectangle-Copy-9" stroke="#7C87A5" fill="#B6B6B6" transform="translate(24.000000, 13.500000) scale(1, -1) translate(-24.000000, -13.500000) " x="22.5" y="12.5" width="3" height="2"></rect>
+    </g>
+</svg>
