@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>spikeprime-small</title>
+    <g id="spikeprime-small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="body" stroke="#7C87A5" fill="#FFFFFF" x="9.5" y="4.5" width="21" height="31" rx="1.5"></rect>
+        <g id="matrix" transform="translate(13.000000, 12.000000)" fill="#FFD500">
+            <rect id="d" x="6" y="3" width="2" height="2"></rect>
+            <rect id="d-copy" x="9" y="3" width="2" height="2"></rect>
+            <rect id="d-copy-3" x="6" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-2" x="9" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-11" x="0" y="3" width="2" height="2"></rect>
+            <rect id="d-copy-10" x="3" y="3" width="2" height="2"></rect>
+            <rect id="d-copy-9" x="0" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-8" x="3" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-15" x="12" y="3" width="2" height="2"></rect>
+            <rect id="d-copy-14" x="3" y="9" width="2" height="2"></rect>
+            <rect id="d-copy-13" x="12" y="6" width="2" height="2"></rect>
+            <rect id="d-copy-12" x="6" y="12" width="2" height="2"></rect>
+            <rect id="d-copy-16" x="3" y="0" width="2" height="2"></rect>
+            <rect id="d-copy-17" x="9" y="0" width="2" height="2"></rect>
+            <rect id="d-copy-5" x="6" y="9" width="2" height="2"></rect>
+            <rect id="d-copy-4" x="9" y="9" width="2" height="2"></rect>
+        </g>
+        <circle id="Oval" stroke="#4C97FF" cx="26.5" cy="8.5" r="1.5"></circle>
+        <circle id="Oval-Copy" stroke="#7C87A5" cx="20" cy="31" r="2.5"></circle>
+    </g>
+</svg>
