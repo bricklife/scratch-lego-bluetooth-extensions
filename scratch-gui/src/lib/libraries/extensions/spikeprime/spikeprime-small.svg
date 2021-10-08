@@ -3,7 +3,7 @@
     <title>spikeprime-small</title>
     <g id="spikeprime-small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect id="body" stroke="#7C87A5" fill="#FFFFFF" x="9.5" y="4.5" width="21" height="31" rx="1.5"></rect>
-        <g id="matrix" transform="translate(13.000000, 13.000000)" fill="#FCD84E">
+        <g id="matrix" transform="translate(13.000000, 12.000000)" fill="#FFD500">
             <rect id="d" x="6" y="3" width="2" height="2"></rect>
             <rect id="d-copy" x="9" y="3" width="2" height="2"></rect>
             <rect id="d-copy-3" x="6" y="6" width="2" height="2"></rect>
