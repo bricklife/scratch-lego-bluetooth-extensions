@@ -138,7 +138,7 @@ class SpikePrime {
     }
 
     beep(freq, time) {
-        console.log(`freq: ${freq}, time: ${time}`);
+        //console.log(`freq: ${freq}, time: ${time}`);
     }
 
     stopAll() {
@@ -201,7 +201,7 @@ class SpikePrime {
 
     sendJSON(json, useLimiter = false) {
         const jsonText = JSON.stringify(json);
-        console.log('> ' + jsonText);
+        //console.log('> ' + jsonText);
 
         if (!this.isConnected()) return Promise.resolve();
 
@@ -258,12 +258,12 @@ class SpikePrime {
             responses.forEach(jsonText => {
                 const json = JSON.parse(jsonText);
                 if (json.hasOwnProperty('i') || json.m !== 0) {
-                    console.log('< ' + jsonText);
+                    //console.log('< ' + jsonText);
                 }
                 this._parseResponse(json);
             });
         } catch (error) {
-            console.log(text);
+            //console.log(text);
         }
     }
 
