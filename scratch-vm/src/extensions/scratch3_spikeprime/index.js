@@ -254,16 +254,16 @@ class SpikePrime {
         const text = (new TextDecoder()).decode(data);
         const responses = text.trim().split('\r');
 
-        try {
-            responses.forEach(jsonText => {
+        for (const jsonText of responses) {
+            try {
                 const json = JSON.parse(jsonText);
                 if (json.hasOwnProperty('i') || json.m !== 0) {
                     //console.log('< ' + jsonText);
                 }
                 this._parseResponse(json);
-            });
-        } catch (error) {
-            //console.log(text);
+            } catch (error) {
+                //console.log(jsonText);
+            }
         }
     }
 
