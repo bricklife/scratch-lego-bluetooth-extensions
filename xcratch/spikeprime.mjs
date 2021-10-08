@@ -14413,8 +14413,7 @@ var SpikePrime = /*#__PURE__*/function () {
     }
   }, {
     key: "beep",
-    value: function beep(freq, time) {
-      console.log("freq: ".concat(freq, ", time: ").concat(time));
+    value: function beep(freq, time) {//console.log(`freq: ${freq}, time: ${time}`);
     }
   }, {
     key: "stopAll",
@@ -14488,8 +14487,8 @@ var SpikePrime = /*#__PURE__*/function () {
       var _this = this;
 
       var useLimiter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var jsonText = JSON.stringify(json);
-      console.log('> ' + jsonText);
+      var jsonText = JSON.stringify(json); //console.log('> ' + jsonText);
+
       if (!this.isConnected()) return Promise.resolve();
 
       if (useLimiter) {
@@ -14553,14 +14552,12 @@ var SpikePrime = /*#__PURE__*/function () {
         responses.forEach(function (jsonText) {
           var json = JSON.parse(jsonText);
 
-          if (json.hasOwnProperty('i') || json.m !== 0) {
-            console.log('< ' + jsonText);
+          if (json.hasOwnProperty('i') || json.m !== 0) {//console.log('< ' + jsonText);
           }
 
           _this2._parseResponse(json);
         });
-      } catch (error) {
-        console.log(text);
+      } catch (error) {//console.log(text);
       }
     }
   }, {
