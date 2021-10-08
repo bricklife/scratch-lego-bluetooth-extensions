@@ -373,6 +373,80 @@ function _createSuper(Derived) {
   };
 }
 
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+
+  if (!it) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it) o = it;
+      var i = 0;
+
+      var F = function () {};
+
+      return {
+        s: F,
+        n: function () {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function (e) {
+          throw e;
+        },
+        f: F
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var normalCompletion = true,
+      didErr = false,
+      err;
+  return {
+    s: function () {
+      it = it.call(o);
+    },
+    n: function () {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function (e) {
+      didErr = true;
+      err = e;
+    },
+    f: function () {
+      try {
+        if (!normalCompletion && it.return != null) it.return();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+
 /*
 object-assign
 (c) Sindre Sorhus
@@ -14541,23 +14615,32 @@ var SpikePrime = /*#__PURE__*/function () {
   }, {
     key: "_onMessage",
     value: function _onMessage(params) {
-      var _this2 = this;
-
       var message = params.message;
       var data = base64Util.base64ToUint8Array(message);
       var text = new TextDecoder().decode(data);
       var responses = text.trim().split('\r');
 
+      var _iterator = _createForOfIteratorHelper(responses),
+          _step;
+
       try {
-        responses.forEach(function (jsonText) {
-          var json = JSON.parse(jsonText);
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var jsonText = _step.value;
 
-          if (json.hasOwnProperty('i') || json.m !== 0) {//console.log('< ' + jsonText);
+          try {
+            var json = JSON.parse(jsonText);
+
+            if (json.hasOwnProperty('i') || json.m !== 0) {//console.log('< ' + jsonText);
+            }
+
+            this._parseResponse(json);
+          } catch (error) {//console.log(jsonText);
           }
-
-          _this2._parseResponse(json);
-        });
-      } catch (error) {//console.log(text);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
       }
     }
   }, {
@@ -15118,11 +15201,11 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
   }, {
     key: "_motorRunForDegrees",
     value: function _motorRunForDegrees(ports, direction, degrees) {
-      var _this3 = this;
+      var _this2 = this;
 
       var promises = ports.map(function (port) {
-        var setting = _this3._peripheral.motorSettings[port];
-        return _this3._peripheral.sendCommand('scratch.motor_run_for_degrees', {
+        var setting = _this2._peripheral.motorSettings[port];
+        return _this2._peripheral.sendCommand('scratch.motor_run_for_degrees', {
           port: port,
           speed: setting.speed * direction,
           degrees: Math.floor(degrees),
@@ -15135,11 +15218,11 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
   }, {
     key: "_motorRunTimed",
     value: function _motorRunTimed(ports, direction, seconds) {
-      var _this4 = this;
+      var _this3 = this;
 
       var promises = ports.map(function (port) {
-        var setting = _this4._peripheral.motorSettings[port];
-        return _this4._peripheral.sendCommand('scratch.motor_run_timed', {
+        var setting = _this3._peripheral.motorSettings[port];
+        return _this3._peripheral.sendCommand('scratch.motor_run_timed', {
           port: port,
           speed: setting.speed * direction,
           time: Math.floor(seconds * 1000),
@@ -15152,7 +15235,7 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
   }, {
     key: "motorGoDirectionToPosition",
     value: function motorGoDirectionToPosition(args) {
-      var _this5 = this;
+      var _this4 = this;
 
       var direction = args.DIRECTION;
       var position = Math.round(cast.toNumber(args.POSITION));
@@ -15162,7 +15245,7 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
       var settings = this._peripheral.motorSettings;
       var promises = ports.map(function (port) {
         var setting = settings[port];
-        return _this5._peripheral.sendCommand('scratch.motor_go_direction_to_position', {
+        return _this4._peripheral.sendCommand('scratch.motor_go_direction_to_position', {
           port: port,
           direction: direction,
           position: position,
@@ -15176,7 +15259,7 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
   }, {
     key: "motorStart",
     value: function motorStart(args) {
-      var _this6 = this;
+      var _this5 = this;
 
       var direction = args.DIRECTION;
 
@@ -15185,7 +15268,7 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
       var settings = this._peripheral.motorSettings;
       var promises = ports.map(function (port) {
         var setting = settings[port];
-        return _this6._peripheral.sendCommand('scratch.motor_start', {
+        return _this5._peripheral.sendCommand('scratch.motor_start', {
           port: port,
           speed: setting.speed * direction,
           stall: setting.stallDetection
@@ -15196,14 +15279,14 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
   }, {
     key: "motorStop",
     value: function motorStop(args) {
-      var _this7 = this;
+      var _this6 = this;
 
       var ports = this._validatePorts(cast.toString(args.PORT));
 
       var settings = this._peripheral.motorSettings;
       var promises = ports.map(function (port) {
         var setting = settings[port];
-        return _this7._peripheral.sendCommand('scratch.motor_stop', {
+        return _this6._peripheral.sendCommand('scratch.motor_stop', {
           port: port,
           stop: setting.stopMode
         });
@@ -15353,7 +15436,7 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
   }, {
     key: "beep",
     value: function beep(args) {
-      var _this8 = this;
+      var _this7 = this;
 
       var note = mathUtil.clamp(cast.toNumber(args.NOTE), 47, 99); // valid EV3 sounds
 
@@ -15368,7 +15451,7 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
         // https://en.wikipedia.org/wiki/MIDI_tuning_standard#Frequency_values
         var freq = Math.pow(2, (note - 69 + 12) / 12) * 440;
 
-        _this8._peripheral.beep(freq, time); // Run for some time even when no piezo is connected.
+        _this7._peripheral.beep(freq, time); // Run for some time even when no piezo is connected.
 
 
         setTimeout(resolve, time);
