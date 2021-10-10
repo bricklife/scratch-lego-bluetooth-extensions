@@ -14425,6 +14425,7 @@ var SpikePrime = /*#__PURE__*/function () {
 
     this._runtime = runtime;
     this._extensionId = extensionId;
+    this._remainingText = '';
     this._sensors = {
       buttons: [0, 0, 0, 0],
       angle: {
@@ -14533,6 +14534,7 @@ var SpikePrime = /*#__PURE__*/function () {
   }, {
     key: "reset",
     value: function reset() {
+      this._remainingText = '';
       this._sensors = {
         buttons: [0, 0, 0, 0],
         angle: {
@@ -14618,7 +14620,8 @@ var SpikePrime = /*#__PURE__*/function () {
       var message = params.message;
       var data = base64Util.base64ToUint8Array(message);
       var text = new TextDecoder().decode(data);
-      var responses = text.trim().split('\r');
+      var responses = (this._remainingText + text).split('\r');
+      this._remainingText = responses.pop();
 
       var _iterator = _createForOfIteratorHelper(responses),
           _step;
@@ -14634,7 +14637,8 @@ var SpikePrime = /*#__PURE__*/function () {
             }
 
             this._parseResponse(json);
-          } catch (error) {//console.log(jsonText);
+          } catch (error) {
+            console.log('invalid JSON:', jsonText);
           }
         }
       } catch (err) {
