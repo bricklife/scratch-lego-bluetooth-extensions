@@ -77,6 +77,8 @@ class SpikePrime {
         this._runtime = runtime;
         this._extensionId = extensionId;
 
+        this._remainingText = '';
+
         this._sensors = {
             buttons: [0, 0, 0, 0],
             angle: {
@@ -178,6 +180,8 @@ class SpikePrime {
     }
 
     reset() {
+        this._remainingText = '';
+
         this._sensors = {
             buttons: [0, 0, 0, 0],
             angle: {
@@ -252,7 +256,8 @@ class SpikePrime {
         const message = params.message;
         const data = Base64Util.base64ToUint8Array(message);
         const text = (new TextDecoder()).decode(data);
-        const responses = text.trim().split('\r');
+        const responses = (this._remainingText + text).split('\r');
+        this._remainingText = responses.pop();
 
         for (const jsonText of responses) {
             try {
@@ -262,7 +267,7 @@ class SpikePrime {
                 }
                 this._parseResponse(json);
             } catch (error) {
-                //console.log(jsonText);
+                console.log('invalid JSON:', jsonText);
             }
         }
     }
