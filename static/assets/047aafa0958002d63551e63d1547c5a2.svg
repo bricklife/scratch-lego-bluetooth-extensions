@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="79px" height="123px" viewBox="0 0 79 123" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>spikeprime-illustration</title>
+    <g id="spikeprime-illustration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(1.000000, 1.000000)">
+            <rect id="Rectangle" stroke="#7C87A5" fill="#FFFFFF" x="0" y="0" width="77" height="121" rx="5.5"></rect>
+            <circle id="Oval" stroke="#7C87A5" stroke-width="0.5" cx="5.5" cy="5.5" r="3.5"></circle>
+            <circle id="Oval-Copy-3" stroke="#7C87A5" stroke-width="0.5" cx="71.5" cy="5.5" r="3.5"></circle>
+            <circle id="Oval-Copy" stroke="#7C87A5" stroke-width="0.5" cx="5.5" cy="115.5" r="3.5"></circle>
+            <circle id="Oval-Copy-5" stroke="#7C87A5" stroke-width="0.5" cx="71.5" cy="115.5" r="3.5"></circle>
+            <path d="M16.5,99 C13.4624339,99 11,101.462434 11,104.5 C11,107.537566 13.4624339,110 16.5,110 C38.5,110 38.5,110 60.5,110 C63.5375661,110 66,107.537566 66,104.5 C66,101.462434 63.5375661,99 60.5,99 C38.5,99 38.5,99 16.5,99 Z" id="Path" stroke="#7C87A5" stroke-width="0.5"></path>
+            <circle id="Center-Button" stroke="#7C87A5" stroke-width="1.5" fill="#FFFFFF" cx="38.5" cy="104.5" r="10.5"></circle>
+            <circle id="Bluetooth" stroke="#4C97FF" stroke-width="1.5" cx="60.5" cy="16.5" r="6.5"></circle>
+            <g id="matrix" transform="translate(12.000000, 34.000000)" fill="#FFD500">
+                <rect id="Rectangle-Copy-24" x="0" y="11" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-26" x="11" y="0" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-25" x="11" y="11" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-29" x="22" y="11" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-28" x="33" y="0" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-27" x="33" y="11" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-31" x="44" y="11" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-42" x="0" y="22" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-40" x="11" y="22" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-39" x="11" y="33" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-38" x="22" y="22" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-37" x="22" y="33" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-36" x="33" y="22" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-35" x="33" y="33" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-34" x="44" y="22" width="9" height="9"></rect>
+                <rect id="Rectangle-Copy-45" x="22" y="44" width="9" height="9"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
