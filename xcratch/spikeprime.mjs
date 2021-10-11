@@ -15314,7 +15314,7 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
     value: function getPosition(args) {
       var port = cast.toString(args.PORT).trim().toUpperCase();
 
-      if (!SpikePorts.includes(port)) {
+      if (!(SpikePorts.includes(port) && this._peripheral.portValues.hasOwnProperty(port))) {
         return 0;
       }
 
