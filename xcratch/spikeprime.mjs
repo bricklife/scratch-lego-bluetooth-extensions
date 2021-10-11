@@ -15312,17 +15312,10 @@ var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
   }, {
     key: "getPosition",
     value: function getPosition(args) {
+      var _this$_peripheral$por, _this$_peripheral$por2;
+
       var port = cast.toString(args.PORT).trim().toUpperCase();
-
-      if (!(SpikePorts.includes(port) && this._peripheral.portValues.hasOwnProperty(port))) {
-        return 0;
-      }
-
-      if (!this._peripheral.portValues[port].hasOwnProperty('position')) {
-        return 0;
-      }
-
-      return this._peripheral.portValues[port].position;
+      return (_this$_peripheral$por = (_this$_peripheral$por2 = this._peripheral.portValues[port]) === null || _this$_peripheral$por2 === void 0 ? void 0 : _this$_peripheral$por2.position) !== null && _this$_peripheral$por !== void 0 ? _this$_peripheral$por : 0;
     }
   }, {
     key: "displayImageFor",
