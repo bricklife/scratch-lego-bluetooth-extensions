@@ -973,14 +973,8 @@ class Scratch3SpikePrimeBlocks {
     getPosition(args) {
         const port = Cast.toString(args.PORT).trim()
             .toUpperCase();
-        if (!(SpikePorts.includes(port) && this._peripheral.portValues.hasOwnProperty(port))) {
-            return 0;
-        }
-        if (!this._peripheral.portValues[port].hasOwnProperty('position')) {
-            return 0;
-        }
 
-        return this._peripheral.portValues[port].position;
+        return this._peripheral.portValues[port]?.position ?? 0;
     }
 
     displayImageFor(args) {

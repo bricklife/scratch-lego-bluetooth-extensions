@@ -484,11 +484,7 @@ class Hub {
     // Input Values
 
     inputValue(portId, key) {
-        const device = this._devices[portId];
-        if (device && device.inputValues.hasOwnProperty(key)) {
-            return device.inputValues[key];
-        }
-        return null;
+        return this._devices[portId]?.inputValues[key] ?? null;
     }
 
     internalInputValue(key) {
