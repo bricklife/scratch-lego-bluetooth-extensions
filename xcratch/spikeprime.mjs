@@ -1,4 +1,6 @@
-var global$1 = typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};
+var global$1 = (typeof global !== "undefined" ? global :
+  typeof self !== "undefined" ? self :
+  typeof window !== "undefined" ? window : {});
 
 // based off https://github.com/defunctzombie/node-process/blob/master/browser.js
 
@@ -242,34 +244,16 @@ var process = {
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function createCommonjsModule(fn, basedir, module) {
-	return module = {
-		path: basedir,
-		exports: {},
-		require: function (path, base) {
-			return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
-		}
-	}, fn(module, module.exports), module.exports;
-}
-
-function commonjsRequire () {
-	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
-}
+var react = {exports: {}};
 
 function _typeof$1(obj) {
   "@babel/helpers - typeof";
 
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof$1 = function (obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof$1 = function (obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof$1(obj);
+  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, _typeof$1(obj);
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -291,6 +275,9 @@ function _defineProperties(target, props) {
 function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
   return Constructor;
 }
 
@@ -305,6 +292,9 @@ function _inherits(subClass, superClass) {
       writable: true,
       configurable: true
     }
+  });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
   });
   if (superClass) _setPrototypeOf(subClass, superClass);
 }
@@ -349,6 +339,8 @@ function _assertThisInitialized(self) {
 function _possibleConstructorReturn(self, call) {
   if (call && (typeof call === "object" || typeof call === "function")) {
     return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
   }
 
   return _assertThisInitialized(self);
@@ -453,6 +445,7 @@ object-assign
 @license MIT
 */
 /* eslint-disable no-unused-vars */
+
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -559,6 +552,7 @@ var emptyObject_1 = emptyObject;
  * 
  */
 
+
 function makeEmptyFunction(arg) {
   return function () {
     return arg;
@@ -571,32 +565,35 @@ function makeEmptyFunction(arg) {
  */
 
 
-var emptyFunction = function emptyFunction() {};
+var emptyFunction$1 = function emptyFunction() {};
 
-emptyFunction.thatReturns = makeEmptyFunction;
-emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction$1.thatReturns = makeEmptyFunction;
+emptyFunction$1.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction$1.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction$1.thatReturnsNull = makeEmptyFunction(null);
 
-emptyFunction.thatReturnsThis = function () {
+emptyFunction$1.thatReturnsThis = function () {
   return this;
 };
 
-emptyFunction.thatReturnsArgument = function (arg) {
+emptyFunction$1.thatReturnsArgument = function (arg) {
   return arg;
 };
 
-var emptyFunction_1 = emptyFunction;
+var emptyFunction_1 = emptyFunction$1;
 
-var q = "function" === typeof Symbol && Symbol["for"],
-    r = q ? Symbol["for"]("react.element") : 60103,
-    t = q ? Symbol["for"]("react.call") : 60104,
-    u = q ? Symbol["for"]("react.return") : 60105,
-    v = q ? Symbol["for"]("react.portal") : 60106,
-    w = q ? Symbol["for"]("react.fragment") : 60107,
-    x = "function" === typeof Symbol && Symbol.iterator;
+var m$1 = objectAssign,
+    n$1 = emptyObject_1,
+    p$1 = emptyFunction_1,
+    q$1 = "function" === typeof Symbol && Symbol["for"],
+    r$1 = q$1 ? Symbol["for"]("react.element") : 60103,
+    t$1 = q$1 ? Symbol["for"]("react.call") : 60104,
+    u = q$1 ? Symbol["for"]("react.return") : 60105,
+    v$1 = q$1 ? Symbol["for"]("react.portal") : 60106,
+    w$1 = q$1 ? Symbol["for"]("react.fragment") : 60107,
+    x$1 = "function" === typeof Symbol && Symbol.iterator;
 
-function y(a) {
+function y$1(a) {
   for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, c = 0; c < b; c++) {
     e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
   }
@@ -607,7 +604,7 @@ function y(a) {
   throw b;
 }
 
-var z = {
+var z$1 = {
   isMounted: function isMounted() {
     return !1;
   },
@@ -619,14 +616,14 @@ var z = {
 function A(a, b, e) {
   this.props = a;
   this.context = b;
-  this.refs = emptyObject_1;
-  this.updater = e || z;
+  this.refs = n$1;
+  this.updater = e || z$1;
 }
 
 A.prototype.isReactComponent = {};
 
 A.prototype.setState = function (a, b) {
-  "object" !== _typeof$1(a) && "function" !== typeof a && null != a ? y("85") : void 0;
+  "object" !== _typeof$1(a) && "function" !== typeof a && null != a ? y$1("85") : void 0;
   this.updater.enqueueSetState(this, a, b, "setState");
 };
 
@@ -637,8 +634,8 @@ A.prototype.forceUpdate = function (a) {
 function B(a, b, e) {
   this.props = a;
   this.context = b;
-  this.refs = emptyObject_1;
-  this.updater = e || z;
+  this.refs = n$1;
+  this.updater = e || z$1;
 }
 
 function C() {}
@@ -646,19 +643,19 @@ function C() {}
 C.prototype = A.prototype;
 var D = B.prototype = new C();
 D.constructor = B;
-objectAssign(D, A.prototype);
+m$1(D, A.prototype);
 D.isPureReactComponent = !0;
 
 function E(a, b, e) {
   this.props = a;
   this.context = b;
-  this.refs = emptyObject_1;
-  this.updater = e || z;
+  this.refs = n$1;
+  this.updater = e || z$1;
 }
 
 var F = E.prototype = new C();
 F.constructor = E;
-objectAssign(F, A.prototype);
+m$1(F, A.prototype);
 F.unstable_isAsyncReactComponent = !0;
 
 F.render = function () {
@@ -696,7 +693,7 @@ function J(a, b, e) {
     void 0 === d[c] && (d[c] = f[c]);
   }
   return {
-    $$typeof: r,
+    $$typeof: r$1,
     type: a,
     key: g,
     ref: k,
@@ -706,7 +703,7 @@ function J(a, b, e) {
 }
 
 function K(a) {
-  return "object" === _typeof$1(a) && null !== a && a.$$typeof === r;
+  return "object" === _typeof$1(a) && null !== a && a.$$typeof === r$1;
 }
 
 function escape$1(a) {
@@ -764,10 +761,10 @@ function P(a, b, e, c) {
 
     case "object":
       switch (a.$$typeof) {
-        case r:
-        case t:
+        case r$1:
+        case t$1:
         case u:
-        case v:
+        case v$1:
           g = !0;
       }
 
@@ -779,9 +776,9 @@ function P(a, b, e, c) {
     d = a[k];
     var f = b + Q(d, k);
     g += P(d, f, e, c);
-  } else if (null === a || "undefined" === typeof a ? f = null : (f = x && a[x] || a["@@iterator"], f = "function" === typeof f ? f : null), "function" === typeof f) for (a = f.call(a), k = 0; !(d = a.next()).done;) {
+  } else if (null === a || "undefined" === typeof a ? f = null : (f = x$1 && a[x$1] || a["@@iterator"], f = "function" === typeof f ? f : null), "function" === typeof f) for (a = f.call(a), k = 0; !(d = a.next()).done;) {
     d = d.value, f = b + Q(d, k++), g += P(d, f, e, c);
-  } else "object" === d && (e = "" + a, y("31", "[object Object]" === e ? "object with keys {" + Object.keys(a).join(", ") + "}" : e, ""));
+  } else "object" === d && (e = "" + a, y$1("31", "[object Object]" === e ? "object with keys {" + Object.keys(a).join(", ") + "}" : e, ""));
   return g;
 }
 
@@ -797,8 +794,8 @@ function S(a, b, e) {
   var c = a.result,
       d = a.keyPrefix;
   a = a.func.call(a.context, b, a.count++);
-  Array.isArray(a) ? T(a, c, e, emptyFunction_1.thatReturnsArgument) : null != a && (K(a) && (b = d + (!a.key || b && b.key === a.key ? "" : ("" + a.key).replace(L, "$\x26/") + "/") + e, a = {
-    $$typeof: r,
+  Array.isArray(a) ? T(a, c, e, p$1.thatReturnsArgument) : null != a && (K(a) && (b = d + (!a.key || b && b.key === a.key ? "" : ("" + a.key).replace(L, "$\x26/") + "/") + e, a = {
+    $$typeof: r$1,
     type: a.type,
     key: b,
     ref: a.ref,
@@ -830,25 +827,25 @@ var U = {
       O(b);
     },
     count: function count(a) {
-      return null == a ? 0 : P(a, "", emptyFunction_1.thatReturnsNull, null);
+      return null == a ? 0 : P(a, "", p$1.thatReturnsNull, null);
     },
     toArray: function toArray(a) {
       var b = [];
-      T(a, b, null, emptyFunction_1.thatReturnsArgument);
+      T(a, b, null, p$1.thatReturnsArgument);
       return b;
     },
     only: function only(a) {
-      K(a) ? void 0 : y("143");
+      K(a) ? void 0 : y$1("143");
       return a;
     }
   },
   Component: A,
   PureComponent: B,
   unstable_AsyncComponent: E,
-  Fragment: w,
+  Fragment: w$1,
   createElement: J,
   cloneElement: function cloneElement(a, b, e) {
-    var c = objectAssign({}, a.props),
+    var c = m$1({}, a.props),
         d = a.key,
         g = a.ref,
         k = a._owner;
@@ -874,7 +871,7 @@ var U = {
       c.children = f;
     }
     return {
-      $$typeof: r,
+      $$typeof: r$1,
       type: a.type,
       key: d,
       ref: g,
@@ -891,7 +888,7 @@ var U = {
   version: "16.2.0",
   __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
     ReactCurrentOwner: G,
-    assign: objectAssign
+    assign: m$1
   }
 },
     V = Object.freeze({
@@ -899,6 +896,8 @@ var U = {
 }),
     W = V && U || V;
 W["default"] ? W["default"] : W;
+
+var react_development = {exports: {}};
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -947,6 +946,7 @@ function invariant$1(condition, format, a, b, c, d, e, f) {
 
 var invariant_1 = invariant$1;
 
+var emptyFunction = emptyFunction_1;
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
  * This can be used to log issues in development environments in critical
@@ -954,8 +954,7 @@ var invariant_1 = invariant$1;
  * same logic and follow the same code paths.
  */
 
-
-var warning = emptyFunction_1;
+var warning = emptyFunction;
 
 {
   var printWarning$2 = function printWarning(format) {
@@ -1008,13 +1007,13 @@ var warning_1 = warning;
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$1 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$2;
 
 var printWarning$1 = function printWarning() {};
 
 {
-  var ReactPropTypesSecret = ReactPropTypesSecret_1;
+  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
   var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -1046,7 +1045,7 @@ var printWarning$1 = function printWarning() {};
  */
 
 
-function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
   {
     for (var typeSpecName in typeSpecs) {
       if (has$1(typeSpecs, typeSpecName)) {
@@ -1063,7 +1062,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
             throw err;
           }
 
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
         } catch (ex) {
           error = ex;
         }
@@ -1090,242 +1089,144 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
  */
 
 
-checkPropTypes.resetWarningCache = function () {
+checkPropTypes$1.resetWarningCache = function () {
   {
     loggedTypeFailures = {};
   }
 };
 
-var checkPropTypes_1 = checkPropTypes;
+var checkPropTypes_1 = checkPropTypes$1;
 
-var react_development = createCommonjsModule(function (module) {
+{
+  (function () {
 
-  {
-    (function () {
+    var _assign = objectAssign;
+    var emptyObject = emptyObject_1;
+    var invariant = invariant_1;
+    var warning = warning_1;
+    var emptyFunction = emptyFunction_1;
+    var checkPropTypes = checkPropTypes_1; // TODO: this is special because it gets imported during build.
 
-      var _assign = objectAssign;
-      var emptyObject = emptyObject_1;
-      var invariant = invariant_1;
-      var warning = warning_1;
-      var emptyFunction = emptyFunction_1;
-      var checkPropTypes = checkPropTypes_1; // TODO: this is special because it gets imported during build.
+    var ReactVersion = '16.2.0'; // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+    // nor polyfill, then a plain number is used for performance.
 
-      var ReactVersion = '16.2.0'; // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-      // nor polyfill, then a plain number is used for performance.
+    var hasSymbol = typeof Symbol === 'function' && Symbol['for'];
+    var REACT_ELEMENT_TYPE = hasSymbol ? Symbol['for']('react.element') : 0xeac7;
+    var REACT_CALL_TYPE = hasSymbol ? Symbol['for']('react.call') : 0xeac8;
+    var REACT_RETURN_TYPE = hasSymbol ? Symbol['for']('react.return') : 0xeac9;
+    var REACT_PORTAL_TYPE = hasSymbol ? Symbol['for']('react.portal') : 0xeaca;
+    var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol['for']('react.fragment') : 0xeacb;
+    var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+    var FAUX_ITERATOR_SYMBOL = '@@iterator';
 
-      var hasSymbol = typeof Symbol === 'function' && Symbol['for'];
-      var REACT_ELEMENT_TYPE = hasSymbol ? Symbol['for']('react.element') : 0xeac7;
-      var REACT_CALL_TYPE = hasSymbol ? Symbol['for']('react.call') : 0xeac8;
-      var REACT_RETURN_TYPE = hasSymbol ? Symbol['for']('react.return') : 0xeac9;
-      var REACT_PORTAL_TYPE = hasSymbol ? Symbol['for']('react.portal') : 0xeaca;
-      var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol['for']('react.fragment') : 0xeacb;
-      var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-      var FAUX_ITERATOR_SYMBOL = '@@iterator';
-
-      function getIteratorFn(maybeIterable) {
-        if (maybeIterable === null || typeof maybeIterable === 'undefined') {
-          return null;
-        }
-
-        var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
-
-        if (typeof maybeIterator === 'function') {
-          return maybeIterator;
-        }
-
+    function getIteratorFn(maybeIterable) {
+      if (maybeIterable === null || typeof maybeIterable === 'undefined') {
         return null;
       }
-      /**
-       * WARNING: DO NOT manually require this module.
-       * This is a replacement for `invariant(...)` used by the error code system
-       * and will _only_ be required by the corresponding babel pass.
-       * It always throws.
-       */
 
-      /**
-       * Forked from fbjs/warning:
-       * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
-       *
-       * Only change is we use console.warn instead of console.error,
-       * and do nothing when 'console' is not supported.
-       * This really simplifies the code.
-       * ---
-       * Similar to invariant but only logs a warning if the condition is not met.
-       * This can be used to log issues in development environments in critical
-       * paths. Removing the logging code for production environments will keep the
-       * same logic and follow the same code paths.
-       */
+      var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+
+      if (typeof maybeIterator === 'function') {
+        return maybeIterator;
+      }
+
+      return null;
+    }
+    /**
+     * WARNING: DO NOT manually require this module.
+     * This is a replacement for `invariant(...)` used by the error code system
+     * and will _only_ be required by the corresponding babel pass.
+     * It always throws.
+     */
+
+    /**
+     * Forked from fbjs/warning:
+     * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+     *
+     * Only change is we use console.warn instead of console.error,
+     * and do nothing when 'console' is not supported.
+     * This really simplifies the code.
+     * ---
+     * Similar to invariant but only logs a warning if the condition is not met.
+     * This can be used to log issues in development environments in critical
+     * paths. Removing the logging code for production environments will keep the
+     * same logic and follow the same code paths.
+     */
 
 
-      var lowPriorityWarning = function lowPriorityWarning() {};
+    var lowPriorityWarning = function lowPriorityWarning() {};
 
+    {
+      var printWarning = function printWarning(format) {
+        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          args[_key - 1] = arguments[_key];
+        }
+
+        var argIndex = 0;
+        var message = 'Warning: ' + format.replace(/%s/g, function () {
+          return args[argIndex++];
+        });
+
+        if (typeof console !== 'undefined') {
+          console.warn(message);
+        }
+
+        try {
+          // --- Welcome to debugging React ---
+          // This error was thrown as a convenience so that you can use this stack
+          // to find the callsite that caused this warning to fire.
+          throw new Error(message);
+        } catch (x) {}
+      };
+
+      lowPriorityWarning = function lowPriorityWarning(condition, format) {
+        if (format === undefined) {
+          throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+        }
+
+        if (!condition) {
+          for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+            args[_key2 - 2] = arguments[_key2];
+          }
+
+          printWarning.apply(undefined, [format].concat(args));
+        }
+      };
+    }
+    var lowPriorityWarning$1 = lowPriorityWarning;
+    var didWarnStateUpdateForUnmountedComponent = {};
+
+    function warnNoop(publicInstance, callerName) {
       {
-        var printWarning = function printWarning(format) {
-          for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-            args[_key - 1] = arguments[_key];
-          }
+        var constructor = publicInstance.constructor;
+        var componentName = constructor && (constructor.displayName || constructor.name) || 'ReactClass';
+        var warningKey = componentName + '.' + callerName;
 
-          var argIndex = 0;
-          var message = 'Warning: ' + format.replace(/%s/g, function () {
-            return args[argIndex++];
-          });
-
-          if (typeof console !== 'undefined') {
-            console.warn(message);
-          }
-
-          try {
-            // --- Welcome to debugging React ---
-            // This error was thrown as a convenience so that you can use this stack
-            // to find the callsite that caused this warning to fire.
-            throw new Error(message);
-          } catch (x) {}
-        };
-
-        lowPriorityWarning = function lowPriorityWarning(condition, format) {
-          if (format === undefined) {
-            throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-          }
-
-          if (!condition) {
-            for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-              args[_key2 - 2] = arguments[_key2];
-            }
-
-            printWarning.apply(undefined, [format].concat(args));
-          }
-        };
-      }
-      var lowPriorityWarning$1 = lowPriorityWarning;
-      var didWarnStateUpdateForUnmountedComponent = {};
-
-      function warnNoop(publicInstance, callerName) {
-        {
-          var constructor = publicInstance.constructor;
-          var componentName = constructor && (constructor.displayName || constructor.name) || 'ReactClass';
-          var warningKey = componentName + '.' + callerName;
-
-          if (didWarnStateUpdateForUnmountedComponent[warningKey]) {
-            return;
-          }
-
-          warning(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op.\n\nPlease check the code for the %s component.', callerName, callerName, componentName);
-          didWarnStateUpdateForUnmountedComponent[warningKey] = true;
+        if (didWarnStateUpdateForUnmountedComponent[warningKey]) {
+          return;
         }
+
+        warning(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op.\n\nPlease check the code for the %s component.', callerName, callerName, componentName);
+        didWarnStateUpdateForUnmountedComponent[warningKey] = true;
       }
+    }
+    /**
+     * This is the abstract API for an update queue.
+     */
+
+
+    var ReactNoopUpdateQueue = {
       /**
-       * This is the abstract API for an update queue.
-       */
-
-
-      var ReactNoopUpdateQueue = {
-        /**
-         * Checks whether or not this composite component is mounted.
-         * @param {ReactClass} publicInstance The instance we want to test.
-         * @return {boolean} True if mounted, false otherwise.
-         * @protected
-         * @final
-         */
-        isMounted: function isMounted(publicInstance) {
-          return false;
-        },
-
-        /**
-         * Forces an update. This should only be invoked when it is known with
-         * certainty that we are **not** in a DOM transaction.
-         *
-         * You may want to call this when you know that some deeper aspect of the
-         * component's state has changed but `setState` was not called.
-         *
-         * This will not invoke `shouldComponentUpdate`, but it will invoke
-         * `componentWillUpdate` and `componentDidUpdate`.
-         *
-         * @param {ReactClass} publicInstance The instance that should rerender.
-         * @param {?function} callback Called after component is updated.
-         * @param {?string} callerName name of the calling function in the public API.
-         * @internal
-         */
-        enqueueForceUpdate: function enqueueForceUpdate(publicInstance, callback, callerName) {
-          warnNoop(publicInstance, 'forceUpdate');
-        },
-
-        /**
-         * Replaces all of the state. Always use this or `setState` to mutate state.
-         * You should treat `this.state` as immutable.
-         *
-         * There is no guarantee that `this.state` will be immediately updated, so
-         * accessing `this.state` after calling this method may return the old value.
-         *
-         * @param {ReactClass} publicInstance The instance that should rerender.
-         * @param {object} completeState Next state.
-         * @param {?function} callback Called after component is updated.
-         * @param {?string} callerName name of the calling function in the public API.
-         * @internal
-         */
-        enqueueReplaceState: function enqueueReplaceState(publicInstance, completeState, callback, callerName) {
-          warnNoop(publicInstance, 'replaceState');
-        },
-
-        /**
-         * Sets a subset of the state. This only exists because _pendingState is
-         * internal. This provides a merging strategy that is not available to deep
-         * properties which is confusing. TODO: Expose pendingState or don't use it
-         * during the merge.
-         *
-         * @param {ReactClass} publicInstance The instance that should rerender.
-         * @param {object} partialState Next partial state to be merged with state.
-         * @param {?function} callback Called after component is updated.
-         * @param {?string} Name of the calling function in the public API.
-         * @internal
-         */
-        enqueueSetState: function enqueueSetState(publicInstance, partialState, callback, callerName) {
-          warnNoop(publicInstance, 'setState');
-        }
-      };
-      /**
-       * Base class helpers for the updating state of a component.
-       */
-
-      function Component(props, context, updater) {
-        this.props = props;
-        this.context = context;
-        this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the
-        // renderer.
-
-        this.updater = updater || ReactNoopUpdateQueue;
-      }
-
-      Component.prototype.isReactComponent = {};
-      /**
-       * Sets a subset of the state. Always use this to mutate
-       * state. You should treat `this.state` as immutable.
-       *
-       * There is no guarantee that `this.state` will be immediately updated, so
-       * accessing `this.state` after calling this method may return the old value.
-       *
-       * There is no guarantee that calls to `setState` will run synchronously,
-       * as they may eventually be batched together.  You can provide an optional
-       * callback that will be executed when the call to setState is actually
-       * completed.
-       *
-       * When a function is provided to setState, it will be called at some point in
-       * the future (not synchronously). It will be called with the up to date
-       * component arguments (state, props, context). These values can be different
-       * from this.* because your function may be called after receiveProps but before
-       * shouldComponentUpdate, and this new state, props, and context will not yet be
-       * assigned to this.
-       *
-       * @param {object|function} partialState Next partial state or function to
-       *        produce next partial state to be merged with current state.
-       * @param {?function} callback Called after state is updated.
-       * @final
+       * Checks whether or not this composite component is mounted.
+       * @param {ReactClass} publicInstance The instance we want to test.
+       * @return {boolean} True if mounted, false otherwise.
        * @protected
+       * @final
        */
+      isMounted: function isMounted(publicInstance) {
+        return false;
+      },
 
-      Component.prototype.setState = function (partialState, callback) {
-        !(_typeof$1(partialState) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
-        this.updater.enqueueSetState(this, partialState, callback, 'setState');
-      };
       /**
        * Forces an update. This should only be invoked when it is known with
        * certainty that we are **not** in a DOM transaction.
@@ -1336,1168 +1237,1270 @@ var react_development = createCommonjsModule(function (module) {
        * This will not invoke `shouldComponentUpdate`, but it will invoke
        * `componentWillUpdate` and `componentDidUpdate`.
        *
-       * @param {?function} callback Called after update is complete.
-       * @final
-       * @protected
-       */
-
-
-      Component.prototype.forceUpdate = function (callback) {
-        this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
-      };
-      /**
-       * Deprecated APIs. These APIs used to exist on classic React classes but since
-       * we would like to deprecate them, we're not going to move them over to this
-       * modern base class. Instead, we define a getter that warns if it's accessed.
-       */
-
-
-      {
-        var deprecatedAPIs = {
-          isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
-          replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
-        };
-
-        var defineDeprecationWarning = function defineDeprecationWarning(methodName, info) {
-          Object.defineProperty(Component.prototype, methodName, {
-            get: function get() {
-              lowPriorityWarning$1(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
-              return undefined;
-            }
-          });
-        };
-
-        for (var fnName in deprecatedAPIs) {
-          if (deprecatedAPIs.hasOwnProperty(fnName)) {
-            defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
-          }
-        }
-      }
-      /**
-       * Base class helpers for the updating state of a component.
-       */
-
-      function PureComponent(props, context, updater) {
-        // Duplicated from Component.
-        this.props = props;
-        this.context = context;
-        this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the
-        // renderer.
-
-        this.updater = updater || ReactNoopUpdateQueue;
-      }
-
-      function ComponentDummy() {}
-
-      ComponentDummy.prototype = Component.prototype;
-      var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
-      pureComponentPrototype.constructor = PureComponent; // Avoid an extra prototype jump for these methods.
-
-      _assign(pureComponentPrototype, Component.prototype);
-
-      pureComponentPrototype.isPureReactComponent = true;
-
-      function AsyncComponent(props, context, updater) {
-        // Duplicated from Component.
-        this.props = props;
-        this.context = context;
-        this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the
-        // renderer.
-
-        this.updater = updater || ReactNoopUpdateQueue;
-      }
-
-      var asyncComponentPrototype = AsyncComponent.prototype = new ComponentDummy();
-      asyncComponentPrototype.constructor = AsyncComponent; // Avoid an extra prototype jump for these methods.
-
-      _assign(asyncComponentPrototype, Component.prototype);
-
-      asyncComponentPrototype.unstable_isAsyncReactComponent = true;
-
-      asyncComponentPrototype.render = function () {
-        return this.props.children;
-      };
-      /**
-       * Keeps track of the current owner.
-       *
-       * The current owner is the component who should own any components that are
-       * currently being constructed.
-       */
-
-
-      var ReactCurrentOwner = {
-        /**
-         * @internal
-         * @type {ReactComponent}
-         */
-        current: null
-      };
-      var hasOwnProperty = Object.prototype.hasOwnProperty;
-      var RESERVED_PROPS = {
-        key: true,
-        ref: true,
-        __self: true,
-        __source: true
-      };
-      var specialPropKeyWarningShown;
-      var specialPropRefWarningShown;
-
-      function hasValidRef(config) {
-        {
-          if (hasOwnProperty.call(config, 'ref')) {
-            var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
-
-            if (getter && getter.isReactWarning) {
-              return false;
-            }
-          }
-        }
-        return config.ref !== undefined;
-      }
-
-      function hasValidKey(config) {
-        {
-          if (hasOwnProperty.call(config, 'key')) {
-            var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
-
-            if (getter && getter.isReactWarning) {
-              return false;
-            }
-          }
-        }
-        return config.key !== undefined;
-      }
-
-      function defineKeyPropWarningGetter(props, displayName) {
-        var warnAboutAccessingKey = function warnAboutAccessingKey() {
-          if (!specialPropKeyWarningShown) {
-            specialPropKeyWarningShown = true;
-            warning(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
-          }
-        };
-
-        warnAboutAccessingKey.isReactWarning = true;
-        Object.defineProperty(props, 'key', {
-          get: warnAboutAccessingKey,
-          configurable: true
-        });
-      }
-
-      function defineRefPropWarningGetter(props, displayName) {
-        var warnAboutAccessingRef = function warnAboutAccessingRef() {
-          if (!specialPropRefWarningShown) {
-            specialPropRefWarningShown = true;
-            warning(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
-          }
-        };
-
-        warnAboutAccessingRef.isReactWarning = true;
-        Object.defineProperty(props, 'ref', {
-          get: warnAboutAccessingRef,
-          configurable: true
-        });
-      }
-      /**
-       * Factory method to create a new React element. This no longer adheres to
-       * the class pattern, so do not use new to call it. Also, no instanceof check
-       * will work. Instead test $$typeof field against Symbol.for('react.element') to check
-       * if something is a React Element.
-       *
-       * @param {*} type
-       * @param {*} key
-       * @param {string|object} ref
-       * @param {*} self A *temporary* helper to detect places where `this` is
-       * different from the `owner` when React.createElement is called, so that we
-       * can warn. We want to get rid of owner and replace string `ref`s with arrow
-       * functions, and as long as `this` and owner are the same, there will be no
-       * change in behavior.
-       * @param {*} source An annotation object (added by a transpiler or otherwise)
-       * indicating filename, line number, and/or other information.
-       * @param {*} owner
-       * @param {*} props
+       * @param {ReactClass} publicInstance The instance that should rerender.
+       * @param {?function} callback Called after component is updated.
+       * @param {?string} callerName name of the calling function in the public API.
        * @internal
        */
+      enqueueForceUpdate: function enqueueForceUpdate(publicInstance, callback, callerName) {
+        warnNoop(publicInstance, 'forceUpdate');
+      },
+
+      /**
+       * Replaces all of the state. Always use this or `setState` to mutate state.
+       * You should treat `this.state` as immutable.
+       *
+       * There is no guarantee that `this.state` will be immediately updated, so
+       * accessing `this.state` after calling this method may return the old value.
+       *
+       * @param {ReactClass} publicInstance The instance that should rerender.
+       * @param {object} completeState Next state.
+       * @param {?function} callback Called after component is updated.
+       * @param {?string} callerName name of the calling function in the public API.
+       * @internal
+       */
+      enqueueReplaceState: function enqueueReplaceState(publicInstance, completeState, callback, callerName) {
+        warnNoop(publicInstance, 'replaceState');
+      },
+
+      /**
+       * Sets a subset of the state. This only exists because _pendingState is
+       * internal. This provides a merging strategy that is not available to deep
+       * properties which is confusing. TODO: Expose pendingState or don't use it
+       * during the merge.
+       *
+       * @param {ReactClass} publicInstance The instance that should rerender.
+       * @param {object} partialState Next partial state to be merged with state.
+       * @param {?function} callback Called after component is updated.
+       * @param {?string} Name of the calling function in the public API.
+       * @internal
+       */
+      enqueueSetState: function enqueueSetState(publicInstance, partialState, callback, callerName) {
+        warnNoop(publicInstance, 'setState');
+      }
+    };
+    /**
+     * Base class helpers for the updating state of a component.
+     */
+
+    function Component(props, context, updater) {
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the
+      // renderer.
+
+      this.updater = updater || ReactNoopUpdateQueue;
+    }
+
+    Component.prototype.isReactComponent = {};
+    /**
+     * Sets a subset of the state. Always use this to mutate
+     * state. You should treat `this.state` as immutable.
+     *
+     * There is no guarantee that `this.state` will be immediately updated, so
+     * accessing `this.state` after calling this method may return the old value.
+     *
+     * There is no guarantee that calls to `setState` will run synchronously,
+     * as they may eventually be batched together.  You can provide an optional
+     * callback that will be executed when the call to setState is actually
+     * completed.
+     *
+     * When a function is provided to setState, it will be called at some point in
+     * the future (not synchronously). It will be called with the up to date
+     * component arguments (state, props, context). These values can be different
+     * from this.* because your function may be called after receiveProps but before
+     * shouldComponentUpdate, and this new state, props, and context will not yet be
+     * assigned to this.
+     *
+     * @param {object|function} partialState Next partial state or function to
+     *        produce next partial state to be merged with current state.
+     * @param {?function} callback Called after state is updated.
+     * @final
+     * @protected
+     */
+
+    Component.prototype.setState = function (partialState, callback) {
+      !(_typeof$1(partialState) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
+      this.updater.enqueueSetState(this, partialState, callback, 'setState');
+    };
+    /**
+     * Forces an update. This should only be invoked when it is known with
+     * certainty that we are **not** in a DOM transaction.
+     *
+     * You may want to call this when you know that some deeper aspect of the
+     * component's state has changed but `setState` was not called.
+     *
+     * This will not invoke `shouldComponentUpdate`, but it will invoke
+     * `componentWillUpdate` and `componentDidUpdate`.
+     *
+     * @param {?function} callback Called after update is complete.
+     * @final
+     * @protected
+     */
 
 
-      var ReactElement = function ReactElement(type, key, ref, self, source, owner, props) {
-        var element = {
-          // This tag allow us to uniquely identify this as a React Element
-          $$typeof: REACT_ELEMENT_TYPE,
-          // Built-in properties that belong on the element
-          type: type,
-          key: key,
-          ref: ref,
-          props: props,
-          // Record the component responsible for creating this element.
-          _owner: owner
-        };
-        {
-          // The validation flag is currently mutative. We put it on
-          // an external backing store so that we can freeze the whole object.
-          // This can be replaced with a WeakMap once they are implemented in
-          // commonly used development environments.
-          element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
-          // the validation flag non-enumerable (where possible, which should
-          // include every environment we run tests in), so the test framework
-          // ignores it.
+    Component.prototype.forceUpdate = function (callback) {
+      this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
+    };
+    /**
+     * Deprecated APIs. These APIs used to exist on classic React classes but since
+     * we would like to deprecate them, we're not going to move them over to this
+     * modern base class. Instead, we define a getter that warns if it's accessed.
+     */
 
-          Object.defineProperty(element._store, 'validated', {
-            configurable: false,
-            enumerable: false,
-            writable: true,
-            value: false
-          }); // self and source are DEV only properties.
 
-          Object.defineProperty(element, '_self', {
-            configurable: false,
-            enumerable: false,
-            writable: false,
-            value: self
-          }); // Two elements created in two different places should be considered
-          // equal for testing purposes and therefore we hide it from enumeration.
+    {
+      var deprecatedAPIs = {
+        isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
+        replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
+      };
 
-          Object.defineProperty(element, '_source', {
-            configurable: false,
-            enumerable: false,
-            writable: false,
-            value: source
-          });
+      var defineDeprecationWarning = function defineDeprecationWarning(methodName, info) {
+        Object.defineProperty(Component.prototype, methodName, {
+          get: function get() {
+            lowPriorityWarning$1(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
+            return undefined;
+          }
+        });
+      };
 
-          if (Object.freeze) {
-            Object.freeze(element.props);
-            Object.freeze(element);
+      for (var fnName in deprecatedAPIs) {
+        if (deprecatedAPIs.hasOwnProperty(fnName)) {
+          defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
+        }
+      }
+    }
+    /**
+     * Base class helpers for the updating state of a component.
+     */
+
+    function PureComponent(props, context, updater) {
+      // Duplicated from Component.
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the
+      // renderer.
+
+      this.updater = updater || ReactNoopUpdateQueue;
+    }
+
+    function ComponentDummy() {}
+
+    ComponentDummy.prototype = Component.prototype;
+    var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
+    pureComponentPrototype.constructor = PureComponent; // Avoid an extra prototype jump for these methods.
+
+    _assign(pureComponentPrototype, Component.prototype);
+
+    pureComponentPrototype.isPureReactComponent = true;
+
+    function AsyncComponent(props, context, updater) {
+      // Duplicated from Component.
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the
+      // renderer.
+
+      this.updater = updater || ReactNoopUpdateQueue;
+    }
+
+    var asyncComponentPrototype = AsyncComponent.prototype = new ComponentDummy();
+    asyncComponentPrototype.constructor = AsyncComponent; // Avoid an extra prototype jump for these methods.
+
+    _assign(asyncComponentPrototype, Component.prototype);
+
+    asyncComponentPrototype.unstable_isAsyncReactComponent = true;
+
+    asyncComponentPrototype.render = function () {
+      return this.props.children;
+    };
+    /**
+     * Keeps track of the current owner.
+     *
+     * The current owner is the component who should own any components that are
+     * currently being constructed.
+     */
+
+
+    var ReactCurrentOwner = {
+      /**
+       * @internal
+       * @type {ReactComponent}
+       */
+      current: null
+    };
+    var hasOwnProperty = Object.prototype.hasOwnProperty;
+    var RESERVED_PROPS = {
+      key: true,
+      ref: true,
+      __self: true,
+      __source: true
+    };
+    var specialPropKeyWarningShown;
+    var specialPropRefWarningShown;
+
+    function hasValidRef(config) {
+      {
+        if (hasOwnProperty.call(config, 'ref')) {
+          var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
+
+          if (getter && getter.isReactWarning) {
+            return false;
           }
         }
-        return element;
+      }
+      return config.ref !== undefined;
+    }
+
+    function hasValidKey(config) {
+      {
+        if (hasOwnProperty.call(config, 'key')) {
+          var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
+
+          if (getter && getter.isReactWarning) {
+            return false;
+          }
+        }
+      }
+      return config.key !== undefined;
+    }
+
+    function defineKeyPropWarningGetter(props, displayName) {
+      var warnAboutAccessingKey = function warnAboutAccessingKey() {
+        if (!specialPropKeyWarningShown) {
+          specialPropKeyWarningShown = true;
+          warning(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
+        }
       };
-      /**
-       * Create and return a new ReactElement of the given type.
-       * See https://reactjs.org/docs/react-api.html#createelement
-       */
+
+      warnAboutAccessingKey.isReactWarning = true;
+      Object.defineProperty(props, 'key', {
+        get: warnAboutAccessingKey,
+        configurable: true
+      });
+    }
+
+    function defineRefPropWarningGetter(props, displayName) {
+      var warnAboutAccessingRef = function warnAboutAccessingRef() {
+        if (!specialPropRefWarningShown) {
+          specialPropRefWarningShown = true;
+          warning(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
+        }
+      };
+
+      warnAboutAccessingRef.isReactWarning = true;
+      Object.defineProperty(props, 'ref', {
+        get: warnAboutAccessingRef,
+        configurable: true
+      });
+    }
+    /**
+     * Factory method to create a new React element. This no longer adheres to
+     * the class pattern, so do not use new to call it. Also, no instanceof check
+     * will work. Instead test $$typeof field against Symbol.for('react.element') to check
+     * if something is a React Element.
+     *
+     * @param {*} type
+     * @param {*} key
+     * @param {string|object} ref
+     * @param {*} self A *temporary* helper to detect places where `this` is
+     * different from the `owner` when React.createElement is called, so that we
+     * can warn. We want to get rid of owner and replace string `ref`s with arrow
+     * functions, and as long as `this` and owner are the same, there will be no
+     * change in behavior.
+     * @param {*} source An annotation object (added by a transpiler or otherwise)
+     * indicating filename, line number, and/or other information.
+     * @param {*} owner
+     * @param {*} props
+     * @internal
+     */
 
 
-      function createElement(type, config, children) {
-        var propName; // Reserved names are extracted
+    var ReactElement = function ReactElement(type, key, ref, self, source, owner, props) {
+      var element = {
+        // This tag allow us to uniquely identify this as a React Element
+        $$typeof: REACT_ELEMENT_TYPE,
+        // Built-in properties that belong on the element
+        type: type,
+        key: key,
+        ref: ref,
+        props: props,
+        // Record the component responsible for creating this element.
+        _owner: owner
+      };
+      {
+        // The validation flag is currently mutative. We put it on
+        // an external backing store so that we can freeze the whole object.
+        // This can be replaced with a WeakMap once they are implemented in
+        // commonly used development environments.
+        element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
+        // the validation flag non-enumerable (where possible, which should
+        // include every environment we run tests in), so the test framework
+        // ignores it.
 
-        var props = {};
-        var key = null;
-        var ref = null;
-        var self = null;
-        var source = null;
+        Object.defineProperty(element._store, 'validated', {
+          configurable: false,
+          enumerable: false,
+          writable: true,
+          value: false
+        }); // self and source are DEV only properties.
 
-        if (config != null) {
-          if (hasValidRef(config)) {
-            ref = config.ref;
+        Object.defineProperty(element, '_self', {
+          configurable: false,
+          enumerable: false,
+          writable: false,
+          value: self
+        }); // Two elements created in two different places should be considered
+        // equal for testing purposes and therefore we hide it from enumeration.
+
+        Object.defineProperty(element, '_source', {
+          configurable: false,
+          enumerable: false,
+          writable: false,
+          value: source
+        });
+
+        if (Object.freeze) {
+          Object.freeze(element.props);
+          Object.freeze(element);
+        }
+      }
+      return element;
+    };
+    /**
+     * Create and return a new ReactElement of the given type.
+     * See https://reactjs.org/docs/react-api.html#createelement
+     */
+
+
+    function createElement(type, config, children) {
+      var propName; // Reserved names are extracted
+
+      var props = {};
+      var key = null;
+      var ref = null;
+      var self = null;
+      var source = null;
+
+      if (config != null) {
+        if (hasValidRef(config)) {
+          ref = config.ref;
+        }
+
+        if (hasValidKey(config)) {
+          key = '' + config.key;
+        }
+
+        self = config.__self === undefined ? null : config.__self;
+        source = config.__source === undefined ? null : config.__source; // Remaining properties are added to a new props object
+
+        for (propName in config) {
+          if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+            props[propName] = config[propName];
           }
+        }
+      } // Children can be more than one argument, and those are transferred onto
+      // the newly allocated props object.
 
-          if (hasValidKey(config)) {
-            key = '' + config.key;
+
+      var childrenLength = arguments.length - 2;
+
+      if (childrenLength === 1) {
+        props.children = children;
+      } else if (childrenLength > 1) {
+        var childArray = Array(childrenLength);
+
+        for (var i = 0; i < childrenLength; i++) {
+          childArray[i] = arguments[i + 2];
+        }
+
+        {
+          if (Object.freeze) {
+            Object.freeze(childArray);
           }
+        }
+        props.children = childArray;
+      } // Resolve default props
 
-          self = config.__self === undefined ? null : config.__self;
-          source = config.__source === undefined ? null : config.__source; // Remaining properties are added to a new props object
 
-          for (propName in config) {
-            if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+      if (type && type.defaultProps) {
+        var defaultProps = type.defaultProps;
+
+        for (propName in defaultProps) {
+          if (props[propName] === undefined) {
+            props[propName] = defaultProps[propName];
+          }
+        }
+      }
+
+      {
+        if (key || ref) {
+          if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE) {
+            var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
+
+            if (key) {
+              defineKeyPropWarningGetter(props, displayName);
+            }
+
+            if (ref) {
+              defineRefPropWarningGetter(props, displayName);
+            }
+          }
+        }
+      }
+      return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+    }
+    /**
+     * Return a function that produces ReactElements of a given type.
+     * See https://reactjs.org/docs/react-api.html#createfactory
+     */
+
+
+    function cloneAndReplaceKey(oldElement, newKey) {
+      var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
+      return newElement;
+    }
+    /**
+     * Clone and return a new ReactElement using element as the starting point.
+     * See https://reactjs.org/docs/react-api.html#cloneelement
+     */
+
+
+    function cloneElement(element, config, children) {
+      var propName; // Original props are copied
+
+      var props = _assign({}, element.props); // Reserved names are extracted
+
+
+      var key = element.key;
+      var ref = element.ref; // Self is preserved since the owner is preserved.
+
+      var self = element._self; // Source is preserved since cloneElement is unlikely to be targeted by a
+      // transpiler, and the original source is probably a better indicator of the
+      // true owner.
+
+      var source = element._source; // Owner will be preserved, unless ref is overridden
+
+      var owner = element._owner;
+
+      if (config != null) {
+        if (hasValidRef(config)) {
+          // Silently steal the ref from the parent.
+          ref = config.ref;
+          owner = ReactCurrentOwner.current;
+        }
+
+        if (hasValidKey(config)) {
+          key = '' + config.key;
+        } // Remaining properties override existing props
+
+
+        var defaultProps;
+
+        if (element.type && element.type.defaultProps) {
+          defaultProps = element.type.defaultProps;
+        }
+
+        for (propName in config) {
+          if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+            if (config[propName] === undefined && defaultProps !== undefined) {
+              // Resolve default props
+              props[propName] = defaultProps[propName];
+            } else {
               props[propName] = config[propName];
             }
           }
-        } // Children can be more than one argument, and those are transferred onto
-        // the newly allocated props object.
+        }
+      } // Children can be more than one argument, and those are transferred onto
+      // the newly allocated props object.
 
 
-        var childrenLength = arguments.length - 2;
+      var childrenLength = arguments.length - 2;
 
-        if (childrenLength === 1) {
-          props.children = children;
-        } else if (childrenLength > 1) {
-          var childArray = Array(childrenLength);
+      if (childrenLength === 1) {
+        props.children = children;
+      } else if (childrenLength > 1) {
+        var childArray = Array(childrenLength);
 
-          for (var i = 0; i < childrenLength; i++) {
-            childArray[i] = arguments[i + 2];
-          }
-
-          {
-            if (Object.freeze) {
-              Object.freeze(childArray);
-            }
-          }
-          props.children = childArray;
-        } // Resolve default props
-
-
-        if (type && type.defaultProps) {
-          var defaultProps = type.defaultProps;
-
-          for (propName in defaultProps) {
-            if (props[propName] === undefined) {
-              props[propName] = defaultProps[propName];
-            }
-          }
+        for (var i = 0; i < childrenLength; i++) {
+          childArray[i] = arguments[i + 2];
         }
 
-        {
-          if (key || ref) {
-            if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE) {
-              var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
-
-              if (key) {
-                defineKeyPropWarningGetter(props, displayName);
-              }
-
-              if (ref) {
-                defineRefPropWarningGetter(props, displayName);
-              }
-            }
-          }
-        }
-        return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
-      }
-      /**
-       * Return a function that produces ReactElements of a given type.
-       * See https://reactjs.org/docs/react-api.html#createfactory
-       */
-
-
-      function cloneAndReplaceKey(oldElement, newKey) {
-        var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
-        return newElement;
-      }
-      /**
-       * Clone and return a new ReactElement using element as the starting point.
-       * See https://reactjs.org/docs/react-api.html#cloneelement
-       */
-
-
-      function cloneElement(element, config, children) {
-        var propName; // Original props are copied
-
-        var props = _assign({}, element.props); // Reserved names are extracted
-
-
-        var key = element.key;
-        var ref = element.ref; // Self is preserved since the owner is preserved.
-
-        var self = element._self; // Source is preserved since cloneElement is unlikely to be targeted by a
-        // transpiler, and the original source is probably a better indicator of the
-        // true owner.
-
-        var source = element._source; // Owner will be preserved, unless ref is overridden
-
-        var owner = element._owner;
-
-        if (config != null) {
-          if (hasValidRef(config)) {
-            // Silently steal the ref from the parent.
-            ref = config.ref;
-            owner = ReactCurrentOwner.current;
-          }
-
-          if (hasValidKey(config)) {
-            key = '' + config.key;
-          } // Remaining properties override existing props
-
-
-          var defaultProps;
-
-          if (element.type && element.type.defaultProps) {
-            defaultProps = element.type.defaultProps;
-          }
-
-          for (propName in config) {
-            if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
-              if (config[propName] === undefined && defaultProps !== undefined) {
-                // Resolve default props
-                props[propName] = defaultProps[propName];
-              } else {
-                props[propName] = config[propName];
-              }
-            }
-          }
-        } // Children can be more than one argument, and those are transferred onto
-        // the newly allocated props object.
-
-
-        var childrenLength = arguments.length - 2;
-
-        if (childrenLength === 1) {
-          props.children = children;
-        } else if (childrenLength > 1) {
-          var childArray = Array(childrenLength);
-
-          for (var i = 0; i < childrenLength; i++) {
-            childArray[i] = arguments[i + 2];
-          }
-
-          props.children = childArray;
-        }
-
-        return ReactElement(element.type, key, ref, self, source, owner, props);
-      }
-      /**
-       * Verifies the object is a ReactElement.
-       * See https://reactjs.org/docs/react-api.html#isvalidelement
-       * @param {?object} object
-       * @return {boolean} True if `object` is a valid component.
-       * @final
-       */
-
-
-      function isValidElement(object) {
-        return _typeof$1(object) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+        props.children = childArray;
       }
 
-      var ReactDebugCurrentFrame = {};
-      {
-        // Component that is being worked on
-        ReactDebugCurrentFrame.getCurrentStack = null;
-
-        ReactDebugCurrentFrame.getStackAddendum = function () {
-          var impl = ReactDebugCurrentFrame.getCurrentStack;
-
-          if (impl) {
-            return impl();
-          }
-
-          return null;
-        };
-      }
-      var SEPARATOR = '.';
-      var SUBSEPARATOR = ':';
-      /**
-       * Escape and wrap key so it is safe to use as a reactid
-       *
-       * @param {string} key to be escaped.
-       * @return {string} the escaped key.
-       */
-
-      function escape(key) {
-        var escapeRegex = /[=:]/g;
-        var escaperLookup = {
-          '=': '=0',
-          ':': '=2'
-        };
-        var escapedString = ('' + key).replace(escapeRegex, function (match) {
-          return escaperLookup[match];
-        });
-        return '$' + escapedString;
-      }
-      /**
-       * TODO: Test that a single child and an array with one item have the same key
-       * pattern.
-       */
+      return ReactElement(element.type, key, ref, self, source, owner, props);
+    }
+    /**
+     * Verifies the object is a ReactElement.
+     * See https://reactjs.org/docs/react-api.html#isvalidelement
+     * @param {?object} object
+     * @return {boolean} True if `object` is a valid component.
+     * @final
+     */
 
 
-      var didWarnAboutMaps = false;
-      var userProvidedKeyEscapeRegex = /\/+/g;
+    function isValidElement(object) {
+      return _typeof$1(object) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+    }
 
-      function escapeUserProvidedKey(text) {
-        return ('' + text).replace(userProvidedKeyEscapeRegex, '$&/');
-      }
+    var ReactDebugCurrentFrame = {};
+    {
+      // Component that is being worked on
+      ReactDebugCurrentFrame.getCurrentStack = null;
 
-      var POOL_SIZE = 10;
-      var traverseContextPool = [];
+      ReactDebugCurrentFrame.getStackAddendum = function () {
+        var impl = ReactDebugCurrentFrame.getCurrentStack;
 
-      function getPooledTraverseContext(mapResult, keyPrefix, mapFunction, mapContext) {
-        if (traverseContextPool.length) {
-          var traverseContext = traverseContextPool.pop();
-          traverseContext.result = mapResult;
-          traverseContext.keyPrefix = keyPrefix;
-          traverseContext.func = mapFunction;
-          traverseContext.context = mapContext;
-          traverseContext.count = 0;
-          return traverseContext;
-        } else {
-          return {
-            result: mapResult,
-            keyPrefix: keyPrefix,
-            func: mapFunction,
-            context: mapContext,
-            count: 0
-          };
-        }
-      }
-
-      function releaseTraverseContext(traverseContext) {
-        traverseContext.result = null;
-        traverseContext.keyPrefix = null;
-        traverseContext.func = null;
-        traverseContext.context = null;
-        traverseContext.count = 0;
-
-        if (traverseContextPool.length < POOL_SIZE) {
-          traverseContextPool.push(traverseContext);
-        }
-      }
-      /**
-       * @param {?*} children Children tree container.
-       * @param {!string} nameSoFar Name of the key path so far.
-       * @param {!function} callback Callback to invoke with each child found.
-       * @param {?*} traverseContext Used to pass information throughout the traversal
-       * process.
-       * @return {!number} The number of children in this subtree.
-       */
-
-
-      function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
-        var type = _typeof$1(children);
-
-        if (type === 'undefined' || type === 'boolean') {
-          // All of the above are perceived as null.
-          children = null;
-        }
-
-        var invokeCallback = false;
-
-        if (children === null) {
-          invokeCallback = true;
-        } else {
-          switch (type) {
-            case 'string':
-            case 'number':
-              invokeCallback = true;
-              break;
-
-            case 'object':
-              switch (children.$$typeof) {
-                case REACT_ELEMENT_TYPE:
-                case REACT_CALL_TYPE:
-                case REACT_RETURN_TYPE:
-                case REACT_PORTAL_TYPE:
-                  invokeCallback = true;
-              }
-
-          }
-        }
-
-        if (invokeCallback) {
-          callback(traverseContext, children, // If it's the only child, treat the name as if it was wrapped in an array
-          // so that it's consistent if the number of children grows.
-          nameSoFar === '' ? SEPARATOR + getComponentKey(children, 0) : nameSoFar);
-          return 1;
-        }
-
-        var child;
-        var nextName;
-        var subtreeCount = 0; // Count of children found in the current subtree.
-
-        var nextNamePrefix = nameSoFar === '' ? SEPARATOR : nameSoFar + SUBSEPARATOR;
-
-        if (Array.isArray(children)) {
-          for (var i = 0; i < children.length; i++) {
-            child = children[i];
-            nextName = nextNamePrefix + getComponentKey(child, i);
-            subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
-          }
-        } else {
-          var iteratorFn = getIteratorFn(children);
-
-          if (typeof iteratorFn === 'function') {
-            {
-              // Warn about using Maps as children
-              if (iteratorFn === children.entries) {
-                warning(didWarnAboutMaps, 'Using Maps as children is unsupported and will likely yield ' + 'unexpected results. Convert it to a sequence/iterable of keyed ' + 'ReactElements instead.%s', ReactDebugCurrentFrame.getStackAddendum());
-                didWarnAboutMaps = true;
-              }
-            }
-            var iterator = iteratorFn.call(children);
-            var step;
-            var ii = 0;
-
-            while (!(step = iterator.next()).done) {
-              child = step.value;
-              nextName = nextNamePrefix + getComponentKey(child, ii++);
-              subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
-            }
-          } else if (type === 'object') {
-            var addendum = '';
-            {
-              addendum = ' If you meant to render a collection of children, use an array ' + 'instead.' + ReactDebugCurrentFrame.getStackAddendum();
-            }
-            var childrenString = '' + children;
-            invariant(false, 'Objects are not valid as a React child (found: %s).%s', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum);
-          }
-        }
-
-        return subtreeCount;
-      }
-      /**
-       * Traverses children that are typically specified as `props.children`, but
-       * might also be specified through attributes:
-       *
-       * - `traverseAllChildren(this.props.children, ...)`
-       * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
-       *
-       * The `traverseContext` is an optional argument that is passed through the
-       * entire traversal. It can be used to store accumulations or anything else that
-       * the callback might find relevant.
-       *
-       * @param {?*} children Children tree object.
-       * @param {!function} callback To invoke upon traversing each child.
-       * @param {?*} traverseContext Context for traversal.
-       * @return {!number} The number of children in this subtree.
-       */
-
-
-      function traverseAllChildren(children, callback, traverseContext) {
-        if (children == null) {
-          return 0;
-        }
-
-        return traverseAllChildrenImpl(children, '', callback, traverseContext);
-      }
-      /**
-       * Generate a key string that identifies a component within a set.
-       *
-       * @param {*} component A component that could contain a manual key.
-       * @param {number} index Index that is used if a manual key is not provided.
-       * @return {string}
-       */
-
-
-      function getComponentKey(component, index) {
-        // Do some typechecking here since we call this blindly. We want to ensure
-        // that we don't block potential future ES APIs.
-        if (_typeof$1(component) === 'object' && component !== null && component.key != null) {
-          // Explicit key
-          return escape(component.key);
-        } // Implicit key determined by the index in the set
-
-
-        return index.toString(36);
-      }
-
-      function forEachSingleChild(bookKeeping, child, name) {
-        var func = bookKeeping.func,
-            context = bookKeeping.context;
-        func.call(context, child, bookKeeping.count++);
-      }
-      /**
-       * Iterates through children that are typically specified as `props.children`.
-       *
-       * See https://reactjs.org/docs/react-api.html#react.children.foreach
-       *
-       * The provided forEachFunc(child, index) will be called for each
-       * leaf child.
-       *
-       * @param {?*} children Children tree container.
-       * @param {function(*, int)} forEachFunc
-       * @param {*} forEachContext Context for forEachContext.
-       */
-
-
-      function forEachChildren(children, forEachFunc, forEachContext) {
-        if (children == null) {
-          return children;
-        }
-
-        var traverseContext = getPooledTraverseContext(null, null, forEachFunc, forEachContext);
-        traverseAllChildren(children, forEachSingleChild, traverseContext);
-        releaseTraverseContext(traverseContext);
-      }
-
-      function mapSingleChildIntoContext(bookKeeping, child, childKey) {
-        var result = bookKeeping.result,
-            keyPrefix = bookKeeping.keyPrefix,
-            func = bookKeeping.func,
-            context = bookKeeping.context;
-        var mappedChild = func.call(context, child, bookKeeping.count++);
-
-        if (Array.isArray(mappedChild)) {
-          mapIntoWithKeyPrefixInternal(mappedChild, result, childKey, emptyFunction.thatReturnsArgument);
-        } else if (mappedChild != null) {
-          if (isValidElement(mappedChild)) {
-            mappedChild = cloneAndReplaceKey(mappedChild, // Keep both the (mapped) and old keys if they differ, just as
-            // traverseAllChildren used to do for objects as children
-            keyPrefix + (mappedChild.key && (!child || child.key !== mappedChild.key) ? escapeUserProvidedKey(mappedChild.key) + '/' : '') + childKey);
-          }
-
-          result.push(mappedChild);
-        }
-      }
-
-      function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
-        var escapedPrefix = '';
-
-        if (prefix != null) {
-          escapedPrefix = escapeUserProvidedKey(prefix) + '/';
-        }
-
-        var traverseContext = getPooledTraverseContext(array, escapedPrefix, func, context);
-        traverseAllChildren(children, mapSingleChildIntoContext, traverseContext);
-        releaseTraverseContext(traverseContext);
-      }
-      /**
-       * Maps children that are typically specified as `props.children`.
-       *
-       * See https://reactjs.org/docs/react-api.html#react.children.map
-       *
-       * The provided mapFunction(child, key, index) will be called for each
-       * leaf child.
-       *
-       * @param {?*} children Children tree container.
-       * @param {function(*, int)} func The map function.
-       * @param {*} context Context for mapFunction.
-       * @return {object} Object containing the ordered map of results.
-       */
-
-
-      function mapChildren(children, func, context) {
-        if (children == null) {
-          return children;
-        }
-
-        var result = [];
-        mapIntoWithKeyPrefixInternal(children, result, null, func, context);
-        return result;
-      }
-      /**
-       * Count the number of children that are typically specified as
-       * `props.children`.
-       *
-       * See https://reactjs.org/docs/react-api.html#react.children.count
-       *
-       * @param {?*} children Children tree container.
-       * @return {number} The number of children.
-       */
-
-
-      function countChildren(children, context) {
-        return traverseAllChildren(children, emptyFunction.thatReturnsNull, null);
-      }
-      /**
-       * Flatten a children object (typically specified as `props.children`) and
-       * return an array with appropriately re-keyed children.
-       *
-       * See https://reactjs.org/docs/react-api.html#react.children.toarray
-       */
-
-
-      function toArray(children) {
-        var result = [];
-        mapIntoWithKeyPrefixInternal(children, result, null, emptyFunction.thatReturnsArgument);
-        return result;
-      }
-      /**
-       * Returns the first child in a collection of children and verifies that there
-       * is only one child in the collection.
-       *
-       * See https://reactjs.org/docs/react-api.html#react.children.only
-       *
-       * The current implementation of this function assumes that a single child gets
-       * passed without a wrapper, but the purpose of this helper function is to
-       * abstract away the particular structure of children.
-       *
-       * @param {?object} children Child collection structure.
-       * @return {ReactElement} The first and only `ReactElement` contained in the
-       * structure.
-       */
-
-
-      function onlyChild(children) {
-        !isValidElement(children) ? invariant(false, 'React.Children.only expected to receive a single React element child.') : void 0;
-        return children;
-      }
-
-      var describeComponentFrame = function describeComponentFrame(name, source, ownerName) {
-        return '\n    in ' + (name || 'Unknown') + (source ? ' (at ' + source.fileName.replace(/^.*[\\\/]/, '') + ':' + source.lineNumber + ')' : ownerName ? ' (created by ' + ownerName + ')' : '');
-      };
-
-      function getComponentName(fiber) {
-        var type = fiber.type;
-
-        if (typeof type === 'string') {
-          return type;
-        }
-
-        if (typeof type === 'function') {
-          return type.displayName || type.name;
+        if (impl) {
+          return impl();
         }
 
         return null;
-      }
-      /**
-       * ReactElementValidator provides a wrapper around a element factory
-       * which validates the props passed to the element. This is intended to be
-       * used only in DEV and could be replaced by a static type checker for languages
-       * that support it.
-       */
+      };
+    }
+    var SEPARATOR = '.';
+    var SUBSEPARATOR = ':';
+    /**
+     * Escape and wrap key so it is safe to use as a reactid
+     *
+     * @param {string} key to be escaped.
+     * @return {string} the escaped key.
+     */
+
+    function escape(key) {
+      var escapeRegex = /[=:]/g;
+      var escaperLookup = {
+        '=': '=0',
+        ':': '=2'
+      };
+      var escapedString = ('' + key).replace(escapeRegex, function (match) {
+        return escaperLookup[match];
+      });
+      return '$' + escapedString;
+    }
+    /**
+     * TODO: Test that a single child and an array with one item have the same key
+     * pattern.
+     */
 
 
-      {
-        var currentlyValidatingElement = null;
-        var propTypesMisspellWarningShown = false;
+    var didWarnAboutMaps = false;
+    var userProvidedKeyEscapeRegex = /\/+/g;
 
-        var getDisplayName = function getDisplayName(element) {
-          if (element == null) {
-            return '#empty';
-          } else if (typeof element === 'string' || typeof element === 'number') {
-            return '#text';
-          } else if (typeof element.type === 'string') {
-            return element.type;
-          } else if (element.type === REACT_FRAGMENT_TYPE) {
-            return 'React.Fragment';
-          } else {
-            return element.type.displayName || element.type.name || 'Unknown';
-          }
+    function escapeUserProvidedKey(text) {
+      return ('' + text).replace(userProvidedKeyEscapeRegex, '$&/');
+    }
+
+    var POOL_SIZE = 10;
+    var traverseContextPool = [];
+
+    function getPooledTraverseContext(mapResult, keyPrefix, mapFunction, mapContext) {
+      if (traverseContextPool.length) {
+        var traverseContext = traverseContextPool.pop();
+        traverseContext.result = mapResult;
+        traverseContext.keyPrefix = keyPrefix;
+        traverseContext.func = mapFunction;
+        traverseContext.context = mapContext;
+        traverseContext.count = 0;
+        return traverseContext;
+      } else {
+        return {
+          result: mapResult,
+          keyPrefix: keyPrefix,
+          func: mapFunction,
+          context: mapContext,
+          count: 0
         };
+      }
+    }
 
-        var getStackAddendum = function getStackAddendum() {
-          var stack = '';
+    function releaseTraverseContext(traverseContext) {
+      traverseContext.result = null;
+      traverseContext.keyPrefix = null;
+      traverseContext.func = null;
+      traverseContext.context = null;
+      traverseContext.count = 0;
 
-          if (currentlyValidatingElement) {
-            var name = getDisplayName(currentlyValidatingElement);
-            var owner = currentlyValidatingElement._owner;
-            stack += describeComponentFrame(name, currentlyValidatingElement._source, owner && getComponentName(owner));
-          }
+      if (traverseContextPool.length < POOL_SIZE) {
+        traverseContextPool.push(traverseContext);
+      }
+    }
+    /**
+     * @param {?*} children Children tree container.
+     * @param {!string} nameSoFar Name of the key path so far.
+     * @param {!function} callback Callback to invoke with each child found.
+     * @param {?*} traverseContext Used to pass information throughout the traversal
+     * process.
+     * @return {!number} The number of children in this subtree.
+     */
 
-          stack += ReactDebugCurrentFrame.getStackAddendum() || '';
-          return stack;
-        };
 
-        var VALID_FRAGMENT_PROPS = new Map([['children', true], ['key', true]]);
+    function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
+      var type = _typeof$1(children);
+
+      if (type === 'undefined' || type === 'boolean') {
+        // All of the above are perceived as null.
+        children = null;
       }
 
-      function getDeclarationErrorAddendum() {
-        if (ReactCurrentOwner.current) {
-          var name = getComponentName(ReactCurrentOwner.current);
+      var invokeCallback = false;
 
-          if (name) {
-            return '\n\nCheck the render method of `' + name + '`.';
-          }
+      if (children === null) {
+        invokeCallback = true;
+      } else {
+        switch (type) {
+          case 'string':
+          case 'number':
+            invokeCallback = true;
+            break;
+
+          case 'object':
+            switch (children.$$typeof) {
+              case REACT_ELEMENT_TYPE:
+              case REACT_CALL_TYPE:
+              case REACT_RETURN_TYPE:
+              case REACT_PORTAL_TYPE:
+                invokeCallback = true;
+            }
+
         }
-
-        return '';
       }
 
-      function getSourceInfoErrorAddendum(elementProps) {
-        if (elementProps !== null && elementProps !== undefined && elementProps.__source !== undefined) {
-          var source = elementProps.__source;
-          var fileName = source.fileName.replace(/^.*[\\\/]/, '');
-          var lineNumber = source.lineNumber;
-          return '\n\nCheck your code at ' + fileName + ':' + lineNumber + '.';
-        }
-
-        return '';
+      if (invokeCallback) {
+        callback(traverseContext, children, // If it's the only child, treat the name as if it was wrapped in an array
+        // so that it's consistent if the number of children grows.
+        nameSoFar === '' ? SEPARATOR + getComponentKey(children, 0) : nameSoFar);
+        return 1;
       }
-      /**
-       * Warn if there's no key explicitly set on dynamic arrays of children or
-       * object keys are not valid. This allows us to keep track of children between
-       * updates.
-       */
 
+      var child;
+      var nextName;
+      var subtreeCount = 0; // Count of children found in the current subtree.
 
-      var ownerHasKeyUseWarning = {};
+      var nextNamePrefix = nameSoFar === '' ? SEPARATOR : nameSoFar + SUBSEPARATOR;
 
-      function getCurrentComponentErrorInfo(parentType) {
-        var info = getDeclarationErrorAddendum();
-
-        if (!info) {
-          var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
-
-          if (parentName) {
-            info = '\n\nCheck the top-level render call using <' + parentName + '>.';
-          }
+      if (Array.isArray(children)) {
+        for (var i = 0; i < children.length; i++) {
+          child = children[i];
+          nextName = nextNamePrefix + getComponentKey(child, i);
+          subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
         }
+      } else {
+        var iteratorFn = getIteratorFn(children);
 
-        return info;
-      }
-      /**
-       * Warn if the element doesn't have an explicit key assigned to it.
-       * This element is in an array. The array could grow and shrink or be
-       * reordered. All children that haven't already been validated are required to
-       * have a "key" property assigned to it. Error statuses are cached so a warning
-       * will only be shown once.
-       *
-       * @internal
-       * @param {ReactElement} element Element that requires a key.
-       * @param {*} parentType element's parent's type.
-       */
-
-
-      function validateExplicitKey(element, parentType) {
-        if (!element._store || element._store.validated || element.key != null) {
-          return;
-        }
-
-        element._store.validated = true;
-        var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
-
-        if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
-          return;
-        }
-
-        ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
-        // property, it may be the creator of the child that's responsible for
-        // assigning it a key.
-
-        var childOwner = '';
-
-        if (element && element._owner && element._owner !== ReactCurrentOwner.current) {
-          // Give the component that originally created this child.
-          childOwner = ' It was passed a child from ' + getComponentName(element._owner) + '.';
-        }
-
-        currentlyValidatingElement = element;
-        {
-          warning(false, 'Each child in an array or iterator should have a unique "key" prop.' + '%s%s See https://fb.me/react-warning-keys for more information.%s', currentComponentErrorInfo, childOwner, getStackAddendum());
-        }
-        currentlyValidatingElement = null;
-      }
-      /**
-       * Ensure that every element either is passed in a static location, in an
-       * array with an explicit keys property defined, or in an object literal
-       * with valid key property.
-       *
-       * @internal
-       * @param {ReactNode} node Statically passed child of any type.
-       * @param {*} parentType node's parent's type.
-       */
-
-
-      function validateChildKeys(node, parentType) {
-        if (_typeof$1(node) !== 'object') {
-          return;
-        }
-
-        if (Array.isArray(node)) {
-          for (var i = 0; i < node.length; i++) {
-            var child = node[i];
-
-            if (isValidElement(child)) {
-              validateExplicitKey(child, parentType);
+        if (typeof iteratorFn === 'function') {
+          {
+            // Warn about using Maps as children
+            if (iteratorFn === children.entries) {
+              warning(didWarnAboutMaps, 'Using Maps as children is unsupported and will likely yield ' + 'unexpected results. Convert it to a sequence/iterable of keyed ' + 'ReactElements instead.%s', ReactDebugCurrentFrame.getStackAddendum());
+              didWarnAboutMaps = true;
             }
           }
-        } else if (isValidElement(node)) {
-          // This element was passed in a valid location.
-          if (node._store) {
-            node._store.validated = true;
+          var iterator = iteratorFn.call(children);
+          var step;
+          var ii = 0;
+
+          while (!(step = iterator.next()).done) {
+            child = step.value;
+            nextName = nextNamePrefix + getComponentKey(child, ii++);
+            subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
           }
-        } else if (node) {
-          var iteratorFn = getIteratorFn(node);
+        } else if (type === 'object') {
+          var addendum = '';
+          {
+            addendum = ' If you meant to render a collection of children, use an array ' + 'instead.' + ReactDebugCurrentFrame.getStackAddendum();
+          }
+          var childrenString = '' + children;
+          invariant(false, 'Objects are not valid as a React child (found: %s).%s', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum);
+        }
+      }
 
-          if (typeof iteratorFn === 'function') {
-            // Entry iterators used to provide implicit keys,
-            // but now we print a separate warning for them later.
-            if (iteratorFn !== node.entries) {
-              var iterator = iteratorFn.call(node);
-              var step;
+      return subtreeCount;
+    }
+    /**
+     * Traverses children that are typically specified as `props.children`, but
+     * might also be specified through attributes:
+     *
+     * - `traverseAllChildren(this.props.children, ...)`
+     * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
+     *
+     * The `traverseContext` is an optional argument that is passed through the
+     * entire traversal. It can be used to store accumulations or anything else that
+     * the callback might find relevant.
+     *
+     * @param {?*} children Children tree object.
+     * @param {!function} callback To invoke upon traversing each child.
+     * @param {?*} traverseContext Context for traversal.
+     * @return {!number} The number of children in this subtree.
+     */
 
-              while (!(step = iterator.next()).done) {
-                if (isValidElement(step.value)) {
-                  validateExplicitKey(step.value, parentType);
-                }
+
+    function traverseAllChildren(children, callback, traverseContext) {
+      if (children == null) {
+        return 0;
+      }
+
+      return traverseAllChildrenImpl(children, '', callback, traverseContext);
+    }
+    /**
+     * Generate a key string that identifies a component within a set.
+     *
+     * @param {*} component A component that could contain a manual key.
+     * @param {number} index Index that is used if a manual key is not provided.
+     * @return {string}
+     */
+
+
+    function getComponentKey(component, index) {
+      // Do some typechecking here since we call this blindly. We want to ensure
+      // that we don't block potential future ES APIs.
+      if (_typeof$1(component) === 'object' && component !== null && component.key != null) {
+        // Explicit key
+        return escape(component.key);
+      } // Implicit key determined by the index in the set
+
+
+      return index.toString(36);
+    }
+
+    function forEachSingleChild(bookKeeping, child, name) {
+      var func = bookKeeping.func,
+          context = bookKeeping.context;
+      func.call(context, child, bookKeeping.count++);
+    }
+    /**
+     * Iterates through children that are typically specified as `props.children`.
+     *
+     * See https://reactjs.org/docs/react-api.html#react.children.foreach
+     *
+     * The provided forEachFunc(child, index) will be called for each
+     * leaf child.
+     *
+     * @param {?*} children Children tree container.
+     * @param {function(*, int)} forEachFunc
+     * @param {*} forEachContext Context for forEachContext.
+     */
+
+
+    function forEachChildren(children, forEachFunc, forEachContext) {
+      if (children == null) {
+        return children;
+      }
+
+      var traverseContext = getPooledTraverseContext(null, null, forEachFunc, forEachContext);
+      traverseAllChildren(children, forEachSingleChild, traverseContext);
+      releaseTraverseContext(traverseContext);
+    }
+
+    function mapSingleChildIntoContext(bookKeeping, child, childKey) {
+      var result = bookKeeping.result,
+          keyPrefix = bookKeeping.keyPrefix,
+          func = bookKeeping.func,
+          context = bookKeeping.context;
+      var mappedChild = func.call(context, child, bookKeeping.count++);
+
+      if (Array.isArray(mappedChild)) {
+        mapIntoWithKeyPrefixInternal(mappedChild, result, childKey, emptyFunction.thatReturnsArgument);
+      } else if (mappedChild != null) {
+        if (isValidElement(mappedChild)) {
+          mappedChild = cloneAndReplaceKey(mappedChild, // Keep both the (mapped) and old keys if they differ, just as
+          // traverseAllChildren used to do for objects as children
+          keyPrefix + (mappedChild.key && (!child || child.key !== mappedChild.key) ? escapeUserProvidedKey(mappedChild.key) + '/' : '') + childKey);
+        }
+
+        result.push(mappedChild);
+      }
+    }
+
+    function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
+      var escapedPrefix = '';
+
+      if (prefix != null) {
+        escapedPrefix = escapeUserProvidedKey(prefix) + '/';
+      }
+
+      var traverseContext = getPooledTraverseContext(array, escapedPrefix, func, context);
+      traverseAllChildren(children, mapSingleChildIntoContext, traverseContext);
+      releaseTraverseContext(traverseContext);
+    }
+    /**
+     * Maps children that are typically specified as `props.children`.
+     *
+     * See https://reactjs.org/docs/react-api.html#react.children.map
+     *
+     * The provided mapFunction(child, key, index) will be called for each
+     * leaf child.
+     *
+     * @param {?*} children Children tree container.
+     * @param {function(*, int)} func The map function.
+     * @param {*} context Context for mapFunction.
+     * @return {object} Object containing the ordered map of results.
+     */
+
+
+    function mapChildren(children, func, context) {
+      if (children == null) {
+        return children;
+      }
+
+      var result = [];
+      mapIntoWithKeyPrefixInternal(children, result, null, func, context);
+      return result;
+    }
+    /**
+     * Count the number of children that are typically specified as
+     * `props.children`.
+     *
+     * See https://reactjs.org/docs/react-api.html#react.children.count
+     *
+     * @param {?*} children Children tree container.
+     * @return {number} The number of children.
+     */
+
+
+    function countChildren(children, context) {
+      return traverseAllChildren(children, emptyFunction.thatReturnsNull, null);
+    }
+    /**
+     * Flatten a children object (typically specified as `props.children`) and
+     * return an array with appropriately re-keyed children.
+     *
+     * See https://reactjs.org/docs/react-api.html#react.children.toarray
+     */
+
+
+    function toArray(children) {
+      var result = [];
+      mapIntoWithKeyPrefixInternal(children, result, null, emptyFunction.thatReturnsArgument);
+      return result;
+    }
+    /**
+     * Returns the first child in a collection of children and verifies that there
+     * is only one child in the collection.
+     *
+     * See https://reactjs.org/docs/react-api.html#react.children.only
+     *
+     * The current implementation of this function assumes that a single child gets
+     * passed without a wrapper, but the purpose of this helper function is to
+     * abstract away the particular structure of children.
+     *
+     * @param {?object} children Child collection structure.
+     * @return {ReactElement} The first and only `ReactElement` contained in the
+     * structure.
+     */
+
+
+    function onlyChild(children) {
+      !isValidElement(children) ? invariant(false, 'React.Children.only expected to receive a single React element child.') : void 0;
+      return children;
+    }
+
+    var describeComponentFrame = function describeComponentFrame(name, source, ownerName) {
+      return '\n    in ' + (name || 'Unknown') + (source ? ' (at ' + source.fileName.replace(/^.*[\\\/]/, '') + ':' + source.lineNumber + ')' : ownerName ? ' (created by ' + ownerName + ')' : '');
+    };
+
+    function getComponentName(fiber) {
+      var type = fiber.type;
+
+      if (typeof type === 'string') {
+        return type;
+      }
+
+      if (typeof type === 'function') {
+        return type.displayName || type.name;
+      }
+
+      return null;
+    }
+    /**
+     * ReactElementValidator provides a wrapper around a element factory
+     * which validates the props passed to the element. This is intended to be
+     * used only in DEV and could be replaced by a static type checker for languages
+     * that support it.
+     */
+
+
+    {
+      var currentlyValidatingElement = null;
+      var propTypesMisspellWarningShown = false;
+
+      var getDisplayName = function getDisplayName(element) {
+        if (element == null) {
+          return '#empty';
+        } else if (typeof element === 'string' || typeof element === 'number') {
+          return '#text';
+        } else if (typeof element.type === 'string') {
+          return element.type;
+        } else if (element.type === REACT_FRAGMENT_TYPE) {
+          return 'React.Fragment';
+        } else {
+          return element.type.displayName || element.type.name || 'Unknown';
+        }
+      };
+
+      var getStackAddendum = function getStackAddendum() {
+        var stack = '';
+
+        if (currentlyValidatingElement) {
+          var name = getDisplayName(currentlyValidatingElement);
+          var owner = currentlyValidatingElement._owner;
+          stack += describeComponentFrame(name, currentlyValidatingElement._source, owner && getComponentName(owner));
+        }
+
+        stack += ReactDebugCurrentFrame.getStackAddendum() || '';
+        return stack;
+      };
+
+      var VALID_FRAGMENT_PROPS = new Map([['children', true], ['key', true]]);
+    }
+
+    function getDeclarationErrorAddendum() {
+      if (ReactCurrentOwner.current) {
+        var name = getComponentName(ReactCurrentOwner.current);
+
+        if (name) {
+          return '\n\nCheck the render method of `' + name + '`.';
+        }
+      }
+
+      return '';
+    }
+
+    function getSourceInfoErrorAddendum(elementProps) {
+      if (elementProps !== null && elementProps !== undefined && elementProps.__source !== undefined) {
+        var source = elementProps.__source;
+        var fileName = source.fileName.replace(/^.*[\\\/]/, '');
+        var lineNumber = source.lineNumber;
+        return '\n\nCheck your code at ' + fileName + ':' + lineNumber + '.';
+      }
+
+      return '';
+    }
+    /**
+     * Warn if there's no key explicitly set on dynamic arrays of children or
+     * object keys are not valid. This allows us to keep track of children between
+     * updates.
+     */
+
+
+    var ownerHasKeyUseWarning = {};
+
+    function getCurrentComponentErrorInfo(parentType) {
+      var info = getDeclarationErrorAddendum();
+
+      if (!info) {
+        var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
+
+        if (parentName) {
+          info = '\n\nCheck the top-level render call using <' + parentName + '>.';
+        }
+      }
+
+      return info;
+    }
+    /**
+     * Warn if the element doesn't have an explicit key assigned to it.
+     * This element is in an array. The array could grow and shrink or be
+     * reordered. All children that haven't already been validated are required to
+     * have a "key" property assigned to it. Error statuses are cached so a warning
+     * will only be shown once.
+     *
+     * @internal
+     * @param {ReactElement} element Element that requires a key.
+     * @param {*} parentType element's parent's type.
+     */
+
+
+    function validateExplicitKey(element, parentType) {
+      if (!element._store || element._store.validated || element.key != null) {
+        return;
+      }
+
+      element._store.validated = true;
+      var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+
+      if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
+        return;
+      }
+
+      ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
+      // property, it may be the creator of the child that's responsible for
+      // assigning it a key.
+
+      var childOwner = '';
+
+      if (element && element._owner && element._owner !== ReactCurrentOwner.current) {
+        // Give the component that originally created this child.
+        childOwner = ' It was passed a child from ' + getComponentName(element._owner) + '.';
+      }
+
+      currentlyValidatingElement = element;
+      {
+        warning(false, 'Each child in an array or iterator should have a unique "key" prop.' + '%s%s See https://fb.me/react-warning-keys for more information.%s', currentComponentErrorInfo, childOwner, getStackAddendum());
+      }
+      currentlyValidatingElement = null;
+    }
+    /**
+     * Ensure that every element either is passed in a static location, in an
+     * array with an explicit keys property defined, or in an object literal
+     * with valid key property.
+     *
+     * @internal
+     * @param {ReactNode} node Statically passed child of any type.
+     * @param {*} parentType node's parent's type.
+     */
+
+
+    function validateChildKeys(node, parentType) {
+      if (_typeof$1(node) !== 'object') {
+        return;
+      }
+
+      if (Array.isArray(node)) {
+        for (var i = 0; i < node.length; i++) {
+          var child = node[i];
+
+          if (isValidElement(child)) {
+            validateExplicitKey(child, parentType);
+          }
+        }
+      } else if (isValidElement(node)) {
+        // This element was passed in a valid location.
+        if (node._store) {
+          node._store.validated = true;
+        }
+      } else if (node) {
+        var iteratorFn = getIteratorFn(node);
+
+        if (typeof iteratorFn === 'function') {
+          // Entry iterators used to provide implicit keys,
+          // but now we print a separate warning for them later.
+          if (iteratorFn !== node.entries) {
+            var iterator = iteratorFn.call(node);
+            var step;
+
+            while (!(step = iterator.next()).done) {
+              if (isValidElement(step.value)) {
+                validateExplicitKey(step.value, parentType);
               }
             }
           }
         }
       }
-      /**
-       * Given an element, validate that its props follow the propTypes definition,
-       * provided by the type.
-       *
-       * @param {ReactElement} element
-       */
+    }
+    /**
+     * Given an element, validate that its props follow the propTypes definition,
+     * provided by the type.
+     *
+     * @param {ReactElement} element
+     */
 
 
-      function validatePropTypes(element) {
-        var componentClass = element.type;
+    function validatePropTypes(element) {
+      var componentClass = element.type;
 
-        if (typeof componentClass !== 'function') {
-          return;
-        }
-
-        var name = componentClass.displayName || componentClass.name;
-        var propTypes = componentClass.propTypes;
-
-        if (propTypes) {
-          currentlyValidatingElement = element;
-          checkPropTypes(propTypes, element.props, 'prop', name, getStackAddendum);
-          currentlyValidatingElement = null;
-        } else if (componentClass.PropTypes !== undefined && !propTypesMisspellWarningShown) {
-          propTypesMisspellWarningShown = true;
-          warning(false, 'Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
-        }
-
-        if (typeof componentClass.getDefaultProps === 'function') {
-          warning(componentClass.getDefaultProps.isReactClassApproved, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
-        }
+      if (typeof componentClass !== 'function') {
+        return;
       }
-      /**
-       * Given a fragment, validate that it can only be provided with fragment props
-       * @param {ReactElement} fragment
-       */
 
+      var name = componentClass.displayName || componentClass.name;
+      var propTypes = componentClass.propTypes;
 
-      function validateFragmentProps(fragment) {
-        currentlyValidatingElement = fragment;
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = Object.keys(fragment.props)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var key = _step.value;
-
-            if (!VALID_FRAGMENT_PROPS.has(key)) {
-              warning(false, 'Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.%s', key, getStackAddendum());
-              break;
-            }
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator['return']) {
-              _iterator['return']();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
-        }
-
-        if (fragment.ref !== null) {
-          warning(false, 'Invalid attribute `ref` supplied to `React.Fragment`.%s', getStackAddendum());
-        }
-
+      if (propTypes) {
+        currentlyValidatingElement = element;
+        checkPropTypes(propTypes, element.props, 'prop', name, getStackAddendum);
         currentlyValidatingElement = null;
+      } else if (componentClass.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+        propTypesMisspellWarningShown = true;
+        warning(false, 'Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
       }
 
-      function createElementWithValidation(type, props, children) {
-        var validType = typeof type === 'string' || typeof type === 'function' || _typeof$1(type) === 'symbol' || typeof type === 'number'; // We warn in this case but don't throw. We expect the element creation to
-        // succeed and there will likely be errors in render.
-
-        if (!validType) {
-          var info = '';
-
-          if (type === undefined || _typeof$1(type) === 'object' && type !== null && Object.keys(type).length === 0) {
-            info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
-          }
-
-          var sourceInfo = getSourceInfoErrorAddendum(props);
-
-          if (sourceInfo) {
-            info += sourceInfo;
-          } else {
-            info += getDeclarationErrorAddendum();
-          }
-
-          info += getStackAddendum() || '';
-          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : _typeof$1(type), info);
-        }
-
-        var element = createElement.apply(this, arguments); // The result can be nullish if a mock or a custom function is used.
-        // TODO: Drop this when these are no longer allowed as the type argument.
-
-        if (element == null) {
-          return element;
-        } // Skip key warning if the type isn't valid since our key validation logic
-        // doesn't expect a non-string/function type and can throw confusing errors.
-        // We don't want exception behavior to differ between dev and prod.
-        // (Rendering will throw with a helpful message and as soon as the type is
-        // fixed, the key warnings will appear.)
+      if (typeof componentClass.getDefaultProps === 'function') {
+        warning(componentClass.getDefaultProps.isReactClassApproved, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
+      }
+    }
+    /**
+     * Given a fragment, validate that it can only be provided with fragment props
+     * @param {ReactElement} fragment
+     */
 
 
-        if (validType) {
-          for (var i = 2; i < arguments.length; i++) {
-            validateChildKeys(arguments[i], type);
+    function validateFragmentProps(fragment) {
+      currentlyValidatingElement = fragment;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = Object.keys(fragment.props)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var key = _step.value;
+
+          if (!VALID_FRAGMENT_PROPS.has(key)) {
+            warning(false, 'Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.%s', key, getStackAddendum());
+            break;
           }
         }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator['return']) {
+            _iterator['return']();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
 
-        if (_typeof$1(type) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
-          validateFragmentProps(element);
+      if (fragment.ref !== null) {
+        warning(false, 'Invalid attribute `ref` supplied to `React.Fragment`.%s', getStackAddendum());
+      }
+
+      currentlyValidatingElement = null;
+    }
+
+    function createElementWithValidation(type, props, children) {
+      var validType = typeof type === 'string' || typeof type === 'function' || _typeof$1(type) === 'symbol' || typeof type === 'number'; // We warn in this case but don't throw. We expect the element creation to
+      // succeed and there will likely be errors in render.
+
+      if (!validType) {
+        var info = '';
+
+        if (type === undefined || _typeof$1(type) === 'object' && type !== null && Object.keys(type).length === 0) {
+          info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
+        }
+
+        var sourceInfo = getSourceInfoErrorAddendum(props);
+
+        if (sourceInfo) {
+          info += sourceInfo;
         } else {
-          validatePropTypes(element);
+          info += getDeclarationErrorAddendum();
         }
 
+        info += getStackAddendum() || '';
+        warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : _typeof$1(type), info);
+      }
+
+      var element = createElement.apply(this, arguments); // The result can be nullish if a mock or a custom function is used.
+      // TODO: Drop this when these are no longer allowed as the type argument.
+
+      if (element == null) {
         return element;
-      }
+      } // Skip key warning if the type isn't valid since our key validation logic
+      // doesn't expect a non-string/function type and can throw confusing errors.
+      // We don't want exception behavior to differ between dev and prod.
+      // (Rendering will throw with a helpful message and as soon as the type is
+      // fixed, the key warnings will appear.)
 
-      function createFactoryWithValidation(type) {
-        var validatedFactory = createElementWithValidation.bind(null, type); // Legacy hook TODO: Warn if this is accessed
 
-        validatedFactory.type = type;
-        {
-          Object.defineProperty(validatedFactory, 'type', {
-            enumerable: false,
-            get: function get() {
-              lowPriorityWarning$1(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
-              Object.defineProperty(this, 'type', {
-                value: type
-              });
-              return type;
-            }
-          });
-        }
-        return validatedFactory;
-      }
-
-      function cloneElementWithValidation(element, props, children) {
-        var newElement = cloneElement.apply(this, arguments);
-
+      if (validType) {
         for (var i = 2; i < arguments.length; i++) {
-          validateChildKeys(arguments[i], newElement.type);
+          validateChildKeys(arguments[i], type);
         }
-
-        validatePropTypes(newElement);
-        return newElement;
       }
 
-      var React = {
-        Children: {
-          map: mapChildren,
-          forEach: forEachChildren,
-          count: countChildren,
-          toArray: toArray,
-          only: onlyChild
-        },
-        Component: Component,
-        PureComponent: PureComponent,
-        unstable_AsyncComponent: AsyncComponent,
-        Fragment: REACT_FRAGMENT_TYPE,
-        createElement: createElementWithValidation,
-        cloneElement: cloneElementWithValidation,
-        createFactory: createFactoryWithValidation,
-        isValidElement: isValidElement,
-        version: ReactVersion,
-        __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
-          ReactCurrentOwner: ReactCurrentOwner,
-          // Used by renderers to avoid bundling object-assign twice in UMD bundles:
-          assign: _assign
-        }
-      };
+      if (_typeof$1(type) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
+        validateFragmentProps(element);
+      } else {
+        validatePropTypes(element);
+      }
+
+      return element;
+    }
+
+    function createFactoryWithValidation(type) {
+      var validatedFactory = createElementWithValidation.bind(null, type); // Legacy hook TODO: Warn if this is accessed
+
+      validatedFactory.type = type;
       {
-        _assign(React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, {
-          // These should not be included in production.
-          ReactDebugCurrentFrame: ReactDebugCurrentFrame,
-          // Shim for React DOM 16.0.0 which still destructured (but not used) this.
-          // TODO: remove in React 17.0.
-          ReactComponentTreeHook: {}
+        Object.defineProperty(validatedFactory, 'type', {
+          enumerable: false,
+          get: function get() {
+            lowPriorityWarning$1(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
+            Object.defineProperty(this, 'type', {
+              value: type
+            });
+            return type;
+          }
         });
       }
-      var React$2 = Object.freeze({
-        default: React
+      return validatedFactory;
+    }
+
+    function cloneElementWithValidation(element, props, children) {
+      var newElement = cloneElement.apply(this, arguments);
+
+      for (var i = 2; i < arguments.length; i++) {
+        validateChildKeys(arguments[i], newElement.type);
+      }
+
+      validatePropTypes(newElement);
+      return newElement;
+    }
+
+    var React = {
+      Children: {
+        map: mapChildren,
+        forEach: forEachChildren,
+        count: countChildren,
+        toArray: toArray,
+        only: onlyChild
+      },
+      Component: Component,
+      PureComponent: PureComponent,
+      unstable_AsyncComponent: AsyncComponent,
+      Fragment: REACT_FRAGMENT_TYPE,
+      createElement: createElementWithValidation,
+      cloneElement: cloneElementWithValidation,
+      createFactory: createFactoryWithValidation,
+      isValidElement: isValidElement,
+      version: ReactVersion,
+      __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
+        ReactCurrentOwner: ReactCurrentOwner,
+        // Used by renderers to avoid bundling object-assign twice in UMD bundles:
+        assign: _assign
+      }
+    };
+    {
+      _assign(React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, {
+        // These should not be included in production.
+        ReactDebugCurrentFrame: ReactDebugCurrentFrame,
+        // Shim for React DOM 16.0.0 which still destructured (but not used) this.
+        // TODO: remove in React 17.0.
+        ReactComponentTreeHook: {}
       });
-      var React$3 = React$2 && React || React$2; // TODO: decide on the top-level export form.
-      // This is hacky but makes it work with both Rollup and Jest.
+    }
+    var React$2 = Object.freeze({
+      default: React
+    });
+    var React$3 = React$2 && React || React$2; // TODO: decide on the top-level export form.
+    // This is hacky but makes it work with both Rollup and Jest.
 
-      var react = React$3['default'] ? React$3['default'] : React$3;
-      module.exports = react;
-    })();
-  }
-});
+    var react = React$3['default'] ? React$3['default'] : React$3;
+    react_development.exports = react;
+  })();
+}
 
-var react = createCommonjsModule(function (module) {
+{
+  react.exports = react_development.exports;
+}
 
-  {
-    module.exports = react_development;
-  }
-});
+var React = react.exports;
 
 var allLocaleData = {};
+
+var intlMessageformat = {exports: {}};
+
+var main$1 = {};
+
+var core$1 = {};
+
+var utils = {};
 
 /*
 Copyright (c) 2014, Yahoo! Inc. All rights reserved.
@@ -2505,8 +2508,8 @@ Copyrights licensed under the New BSD License.
 See the accompanying LICENSE file for terms.
 */
 
-var extend_1 = extend;
-var hop = Object.prototype.hasOwnProperty;
+utils.extend = extend;
+var hop$1 = Object.prototype.hasOwnProperty;
 
 function extend(obj) {
   var sources = Array.prototype.slice.call(arguments, 1),
@@ -2523,7 +2526,7 @@ function extend(obj) {
     }
 
     for (key in source) {
-      if (hop.call(source, key)) {
+      if (hop$1.call(source, key)) {
         obj[key] = source[key];
       }
     }
@@ -2532,51 +2535,62 @@ function extend(obj) {
   return obj;
 }
 
-var hop_1 = hop;
-var utils = {
-  extend: extend_1,
-  hop: hop_1
+utils.hop = hop$1;
+
+var es5$1 = {};
+
+/*
+Copyright (c) 2014, Yahoo! Inc. All rights reserved.
+Copyrights licensed under the New BSD License.
+See the accompanying LICENSE file for terms.
+*/
+
+var src$utils$$ = utils; // Purposely using the same implementation as the Intl.js `Intl` polyfill.
+// Copyright 2013 Andy Earnshaw, MIT License
+
+var realDefineProp$1 = function () {
+  try {
+    return !!Object.defineProperty({}, 'a', {});
+  } catch (e) {
+    return false;
+  }
+}();
+var defineProperty$1 = realDefineProp$1 ? Object.defineProperty : function (obj, name, desc) {
+  if ('get' in desc && obj.__defineGetter__) {
+    obj.__defineGetter__(name, desc.get);
+  } else if (!src$utils$$.hop.call(obj, name) || 'value' in desc) {
+    obj[name] = desc.value;
+  }
 };
 
-var es5$1 = createCommonjsModule(function (module, exports) {
-  // Copyright 2013 Andy Earnshaw, MIT License
+var objCreate$1 = Object.create || function (proto, props) {
+  var obj, k;
 
-  var realDefineProp = function () {
-    try {
-      return !!Object.defineProperty({}, 'a', {});
-    } catch (e) {
-      return false;
+  function F() {}
+
+  F.prototype = proto;
+  obj = new F();
+
+  for (k in props) {
+    if (src$utils$$.hop.call(props, k)) {
+      defineProperty$1(obj, k, props[k]);
     }
-  }();
-  var defineProperty = realDefineProp ? Object.defineProperty : function (obj, name, desc) {
-    if ('get' in desc && obj.__defineGetter__) {
-      obj.__defineGetter__(name, desc.get);
-    } else if (!utils.hop.call(obj, name) || 'value' in desc) {
-      obj[name] = desc.value;
-    }
-  };
+  }
 
-  var objCreate = Object.create || function (proto, props) {
-    var obj, k;
+  return obj;
+};
 
-    function F() {}
+es5$1.defineProperty = defineProperty$1, es5$1.objCreate = objCreate$1;
 
-    F.prototype = proto;
-    obj = new F();
+var compiler = {};
 
-    for (k in props) {
-      if (utils.hop.call(props, k)) {
-        defineProperty(obj, k, props[k]);
-      }
-    }
+/*
+Copyright (c) 2014, Yahoo! Inc. All rights reserved.
+Copyrights licensed under the New BSD License.
+See the accompanying LICENSE file for terms.
+*/
 
-    return obj;
-  };
-
-  exports.defineProperty = defineProperty, exports.objCreate = objCreate;
-});
-
-var compiler = createCommonjsModule(function (module, exports) {
+(function (exports) {
 
   exports["default"] = Compiler;
 
@@ -2757,9 +2771,13 @@ var compiler = createCommonjsModule(function (module, exports) {
     var options = this.options;
     return options[value] || options.other;
   };
-});
+})(compiler);
 
-var parser = createCommonjsModule(function (module, exports) {
+var intlMessageformatParser = {exports: {}};
+
+var parser = {};
+
+(function (exports) {
 
   exports["default"] = function () {
     /*
@@ -4451,16 +4469,26 @@ var parser = createCommonjsModule(function (module, exports) {
       parse: peg$parse
     };
   }();
-});
+})(parser);
 
-var intlMessageformatParser = createCommonjsModule(function (module, exports) {
+(function (module, exports) {
 
   exports = module.exports = parser['default'];
   exports['default'] = exports;
-});
+})(intlMessageformatParser, intlMessageformatParser.exports);
 
-var core$1 = createCommonjsModule(function (module, exports) {
+/*
+Copyright (c) 2014, Yahoo! Inc. All rights reserved.
+Copyrights licensed under the New BSD License.
+See the accompanying LICENSE file for terms.
+*/
 
+(function (exports) {
+
+  var src$utils$$ = utils,
+      src$es5$$ = es5$1,
+      src$compiler$$ = compiler,
+      intl$messageformat$parser$$ = intlMessageformatParser.exports;
   exports["default"] = MessageFormat; // -- MessageFormat --------------------------------------------------------
 
   function MessageFormat(message, locales, formats) {
@@ -4475,7 +4503,7 @@ var core$1 = createCommonjsModule(function (module, exports) {
 
     formats = this._mergeFormats(MessageFormat.formats, formats); // Defined first because it's used to build the format pattern.
 
-    es5$1.defineProperty(this, '_locale', {
+    src$es5$$.defineProperty(this, '_locale', {
       value: this._resolveLocale(locales)
     }); // Compile the `ast` to a pattern that is highly optimized for repeated
     // `format()` invocations. **Note:** This passes the `locales` set provided
@@ -4505,7 +4533,7 @@ var core$1 = createCommonjsModule(function (module, exports) {
   // and Intl.DateTimeFormat instances.
 
 
-  es5$1.defineProperty(MessageFormat, 'formats', {
+  src$es5$$.defineProperty(MessageFormat, 'formats', {
     enumerable: true,
     value: {
       number: {
@@ -4565,10 +4593,10 @@ var core$1 = createCommonjsModule(function (module, exports) {
     }
   }); // Define internal private properties for dealing with locale data.
 
-  es5$1.defineProperty(MessageFormat, '__localeData__', {
-    value: es5$1.objCreate(null)
+  src$es5$$.defineProperty(MessageFormat, '__localeData__', {
+    value: src$es5$$.objCreate(null)
   });
-  es5$1.defineProperty(MessageFormat, '__addLocaleData', {
+  src$es5$$.defineProperty(MessageFormat, '__addLocaleData', {
     value: function value(data) {
       if (!(data && data.locale)) {
         throw new Error('Locale data provided to IntlMessageFormat is missing a ' + '`locale` property');
@@ -4578,12 +4606,12 @@ var core$1 = createCommonjsModule(function (module, exports) {
     }
   }); // Defines `__parse()` static method as an exposed private.
 
-  es5$1.defineProperty(MessageFormat, '__parse', {
-    value: intlMessageformatParser["default"].parse
+  src$es5$$.defineProperty(MessageFormat, '__parse', {
+    value: intl$messageformat$parser$$["default"].parse
   }); // Define public `defaultLocale` property which defaults to English, but can be
   // set by the developer.
 
-  es5$1.defineProperty(MessageFormat, 'defaultLocale', {
+  src$es5$$.defineProperty(MessageFormat, 'defaultLocale', {
     enumerable: true,
     writable: true,
     value: undefined
@@ -4597,8 +4625,8 @@ var core$1 = createCommonjsModule(function (module, exports) {
   };
 
   MessageFormat.prototype._compilePattern = function (ast, locales, formats, pluralFn) {
-    var compiler$1 = new compiler["default"](locales, formats, pluralFn);
-    return compiler$1.compile(ast);
+    var compiler = new src$compiler$$["default"](locales, formats, pluralFn);
+    return compiler.compile(ast);
   };
 
   MessageFormat.prototype._findPluralRuleFunction = function (locale) {
@@ -4636,7 +4664,7 @@ var core$1 = createCommonjsModule(function (module, exports) {
 
       id = part.id; // Enforce that all required values are provided by the caller.
 
-      if (!(values && utils.hop.call(values, id))) {
+      if (!(values && src$utils$$.hop.call(values, id))) {
         err = new Error('A value must be provided for: ' + id);
         err.variableId = id;
         throw err;
@@ -4662,14 +4690,14 @@ var core$1 = createCommonjsModule(function (module, exports) {
         mergedType;
 
     for (type in defaults) {
-      if (!utils.hop.call(defaults, type)) {
+      if (!src$utils$$.hop.call(defaults, type)) {
         continue;
       }
 
-      mergedFormats[type] = mergedType = es5$1.objCreate(defaults[type]);
+      mergedFormats[type] = mergedType = src$es5$$.objCreate(defaults[type]);
 
-      if (formats && utils.hop.call(formats, type)) {
-        utils.extend(mergedType, formats[type]);
+      if (formats && src$utils$$.hop.call(formats, type)) {
+        src$utils$$.extend(mergedType, formats[type]);
       }
     }
 
@@ -4709,9 +4737,11 @@ var core$1 = createCommonjsModule(function (module, exports) {
     var defaultLocale = locales.pop();
     throw new Error('No locale data has been added to IntlMessageFormat for: ' + locales.join(', ') + ', or the default locale: ' + defaultLocale);
   };
-});
+})(core$1);
 
-var en$1 = createCommonjsModule(function (module, exports) {
+var en$1 = {};
+
+(function (exports) {
 
   exports["default"] = {
     "locale": "en",
@@ -4725,17 +4755,24 @@ var en$1 = createCommonjsModule(function (module, exports) {
       return n == 1 && v0 ? "one" : "other";
     }
   };
-});
+})(en$1);
 
-var main$1 = createCommonjsModule(function (module, exports) {
+/* jslint esnext: true */
 
-  core$1["default"].__addLocaleData(en$1["default"]);
+(function (exports) {
 
-  core$1["default"].defaultLocale = 'en';
-  exports["default"] = core$1["default"];
-});
+  var src$core$$ = core$1,
+      src$en$$ = en$1;
 
-var intlMessageformat = createCommonjsModule(function (module, exports) {
+  src$core$$["default"].__addLocaleData(src$en$$["default"]);
+
+  src$core$$["default"].defaultLocale = 'en';
+  exports["default"] = src$core$$["default"];
+})(main$1);
+
+/* jshint node:true */
+
+(function (module, exports) {
 
   var IntlMessageFormat = main$1['default']; // Add all locale data to `IntlMessageFormat`. This module will be ignored when
   // bundling for the browser with Browserify/Webpack.
@@ -4745,739 +4782,756 @@ var intlMessageformat = createCommonjsModule(function (module, exports) {
 
   exports = module.exports = IntlMessageFormat;
   exports['default'] = exports;
+})(intlMessageformat, intlMessageformat.exports);
+
+var IntlMessageFormat = intlMessageformat.exports;
+
+var intlRelativeformat = {exports: {}};
+
+var main = {};
+
+var core = {};
+
+var diff = {};
+
+/*
+Copyright (c) 2014, Yahoo! Inc. All rights reserved.
+Copyrights licensed under the New BSD License.
+See the accompanying LICENSE file for terms.
+*/
+
+
+Object.defineProperty(diff, "__esModule", {
+  value: true
 });
+/* jslint esnext: true */
 
-var diff = createCommonjsModule(function (module, exports) {
-  /*
-  Copyright (c) 2014, Yahoo! Inc. All rights reserved.
-  Copyrights licensed under the New BSD License.
-  See the accompanying LICENSE file for terms.
-  */
+var round = Math.round;
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  /* jslint esnext: true */
-
-  var round = Math.round;
-
-  function daysToYears(days) {
-    // 400 years have 146097 days (taking into account leap year rules)
-    return days * 400 / 146097;
-  } // Thanks to date-fns
-  // https://github.com/date-fns/date-fns
-  // MIT © Sasha Koss
+function daysToYears(days) {
+  // 400 years have 146097 days (taking into account leap year rules)
+  return days * 400 / 146097;
+} // Thanks to date-fns
+// https://github.com/date-fns/date-fns
+// MIT © Sasha Koss
 
 
-  var MILLISECONDS_IN_MINUTE = 60000;
-  var MILLISECONDS_IN_DAY = 86400000;
+var MILLISECONDS_IN_MINUTE = 60000;
+var MILLISECONDS_IN_DAY = 86400000;
 
-  function startOfDay(dirtyDate) {
-    var date = new Date(dirtyDate);
-    date.setHours(0, 0, 0, 0);
-    return date;
-  }
+function startOfDay(dirtyDate) {
+  var date = new Date(dirtyDate);
+  date.setHours(0, 0, 0, 0);
+  return date;
+}
 
-  function differenceInCalendarDays(dirtyDateLeft, dirtyDateRight) {
-    var startOfDayLeft = startOfDay(dirtyDateLeft);
-    var startOfDayRight = startOfDay(dirtyDateRight);
-    var timestampLeft = startOfDayLeft.getTime() - startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE;
-    var timestampRight = startOfDayRight.getTime() - startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE; // Round the number of days to the nearest integer
-    // because the number of milliseconds in a day is not constant
-    // (e.g. it's different in the day of the daylight saving time clock shift)
+function differenceInCalendarDays(dirtyDateLeft, dirtyDateRight) {
+  var startOfDayLeft = startOfDay(dirtyDateLeft);
+  var startOfDayRight = startOfDay(dirtyDateRight);
+  var timestampLeft = startOfDayLeft.getTime() - startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE;
+  var timestampRight = startOfDayRight.getTime() - startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE; // Round the number of days to the nearest integer
+  // because the number of milliseconds in a day is not constant
+  // (e.g. it's different in the day of the daylight saving time clock shift)
 
-    return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY);
-  }
+  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY);
+}
 
-  function default_1(from, to) {
-    // Convert to ms timestamps.
-    from = +from;
-    to = +to;
-    var millisecond = round(to - from),
-        second = round(millisecond / 1000),
-        minute = round(second / 60),
-        hour = round(minute / 60); // We expect a more precision in rounding when dealing with
-    // days as it feels wrong when something happended 13 hours ago and
-    // is regarded as "yesterday" even if the time was this morning.
+function default_1(from, to) {
+  // Convert to ms timestamps.
+  from = +from;
+  to = +to;
+  var millisecond = round(to - from),
+      second = round(millisecond / 1000),
+      minute = round(second / 60),
+      hour = round(minute / 60); // We expect a more precision in rounding when dealing with
+  // days as it feels wrong when something happended 13 hours ago and
+  // is regarded as "yesterday" even if the time was this morning.
 
-    var day = differenceInCalendarDays(to, from);
-    var week = round(day / 7);
-    var rawYears = daysToYears(day),
-        month = round(rawYears * 12),
-        year = round(rawYears);
-    return {
-      millisecond: millisecond,
-      second: second,
-      'second-short': second,
-      minute: minute,
-      'minute-short': minute,
-      hour: hour,
-      'hour-short': hour,
-      day: day,
-      'day-short': day,
-      week: week,
-      'week-short': week,
-      month: month,
-      'month-short': month,
-      year: year,
-      'year-short': year
-    };
-  }
+  var day = differenceInCalendarDays(to, from);
+  var week = round(day / 7);
+  var rawYears = daysToYears(day),
+      month = round(rawYears * 12),
+      year = round(rawYears);
+  return {
+    millisecond: millisecond,
+    second: second,
+    'second-short': second,
+    minute: minute,
+    'minute-short': minute,
+    hour: hour,
+    'hour-short': hour,
+    day: day,
+    'day-short': day,
+    week: week,
+    'week-short': week,
+    month: month,
+    'month-short': month,
+    year: year,
+    'year-short': year
+  };
+}
 
-  exports.default = default_1;
+diff.default = default_1;
+
+var es5 = {};
+
+/*
+Copyright (c) 2014, Yahoo! Inc. All rights reserved.
+Copyrights licensed under the New BSD License.
+See the accompanying LICENSE file for terms.
+*/
+
+
+Object.defineProperty(es5, "__esModule", {
+  value: true
 });
+/* jslint esnext: true */
+// Purposely using the same implementation as the Intl.js `Intl` polyfill.
+// Copyright 2013 Andy Earnshaw, MIT License
 
-var es5 = createCommonjsModule(function (module, exports) {
-  /*
-  Copyright (c) 2014, Yahoo! Inc. All rights reserved.
-  Copyrights licensed under the New BSD License.
-  See the accompanying LICENSE file for terms.
-  */
+var hop = Object.prototype.hasOwnProperty;
+var toString$1 = Object.prototype.toString;
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  /* jslint esnext: true */
-  // Purposely using the same implementation as the Intl.js `Intl` polyfill.
-  // Copyright 2013 Andy Earnshaw, MIT License
+var realDefineProp = function () {
+  try {
+    return !!Object.defineProperty({}, 'a', {});
+  } catch (e) {
+    return false;
+  }
+}();
+var defineProperty = realDefineProp ? Object.defineProperty : function (obj, name, desc) {
+  if ('get' in desc && obj.__defineGetter__) {
+    obj.__defineGetter__(name, desc.get);
+  } else if (!hop.call(obj, name) || 'value' in desc) {
+    obj[name] = desc.value;
+  }
+};
+es5.defineProperty = defineProperty;
 
-  var hop = Object.prototype.hasOwnProperty;
-  var toString = Object.prototype.toString;
+var objCreate = Object.create || function (proto, props) {
+  var obj, k;
 
-  var realDefineProp = function () {
-    try {
-      return !!Object.defineProperty({}, 'a', {});
-    } catch (e) {
-      return false;
+  function F() {}
+
+  F.prototype = proto;
+  obj = new F();
+
+  for (k in props) {
+    if (hop.call(props, k)) {
+      defineProperty(obj, k, props[k]);
     }
-  }();
-  var defineProperty = realDefineProp ? Object.defineProperty : function (obj, name, desc) {
-    if ('get' in desc && obj.__defineGetter__) {
-      obj.__defineGetter__(name, desc.get);
-    } else if (!hop.call(obj, name) || 'value' in desc) {
-      obj[name] = desc.value;
-    }
-  };
-  exports.defineProperty = defineProperty;
+  }
 
-  var objCreate = Object.create || function (proto, props) {
-    var obj, k;
+  return obj;
+};
 
-    function F() {}
+es5.objCreate = objCreate;
 
-    F.prototype = proto;
-    obj = new F();
+var arrIndexOf = Array.prototype.indexOf || function (search, fromIndex) {
+  /*jshint validthis:true */
+  var arr = this;
 
-    for (k in props) {
-      if (hop.call(props, k)) {
-        defineProperty(obj, k, props[k]);
-      }
-    }
-
-    return obj;
-  };
-
-  exports.objCreate = objCreate;
-
-  var arrIndexOf = Array.prototype.indexOf || function (search, fromIndex) {
-    /*jshint validthis:true */
-    var arr = this;
-
-    if (!arr.length) {
-      return -1;
-    }
-
-    for (var i = fromIndex || 0, max = arr.length; i < max; i++) {
-      if (arr[i] === search) {
-        return i;
-      }
-    }
-
+  if (!arr.length) {
     return -1;
-  };
+  }
 
-  exports.arrIndexOf = arrIndexOf;
+  for (var i = fromIndex || 0, max = arr.length; i < max; i++) {
+    if (arr[i] === search) {
+      return i;
+    }
+  }
 
-  var isArray = Array.isArray || function (obj) {
-    return toString.call(obj) === '[object Array]';
-  };
+  return -1;
+};
 
-  exports.isArray = isArray;
+es5.arrIndexOf = arrIndexOf;
 
-  var dateNow = Date.now || function () {
-    return new Date().getTime();
-  };
+var isArray$1 = Array.isArray || function (obj) {
+  return toString$1.call(obj) === '[object Array]';
+};
 
-  exports.dateNow = dateNow;
+es5.isArray = isArray$1;
+
+var dateNow = Date.now || function () {
+  return new Date().getTime();
+};
+
+es5.dateNow = dateNow;
+
+/*
+Copyright (c) 2014, Yahoo! Inc. All rights reserved.
+Copyrights licensed under the New BSD License.
+See the accompanying LICENSE file for terms.
+*/
+
+
+Object.defineProperty(core, "__esModule", {
+  value: true
 });
+/* jslint esnext: true */
 
-var core = createCommonjsModule(function (module, exports) {
-  /*
-  Copyright (c) 2014, Yahoo! Inc. All rights reserved.
-  Copyrights licensed under the New BSD License.
-  See the accompanying LICENSE file for terms.
-  */
+var intl_messageformat_1 = intlMessageformat.exports;
+var diff_1 = diff;
+var es5_1 = es5;
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
+core.default = RelativeFormat; // -----------------------------------------------------------------------------
+
+
+var FIELDS = ['second', 'second-short', 'minute', 'minute-short', 'hour', 'hour-short', 'day', 'day-short', 'month', 'month-short', 'year', 'year-short'];
+var STYLES = ['best fit', 'numeric']; // -- RelativeFormat -----------------------------------------------------------
+
+function RelativeFormat(locales, options) {
+  options = options || {}; // Make a copy of `locales` if it's an array, so that it doesn't change
+  // since it's used lazily.
+
+  if (es5_1.isArray(locales)) {
+    locales = locales.concat();
+  }
+
+  es5_1.defineProperty(this, '_locale', {
+    value: this._resolveLocale(locales)
   });
-  /* jslint esnext: true */
-
-  exports.default = RelativeFormat; // -----------------------------------------------------------------------------
-
-  var FIELDS = ['second', 'second-short', 'minute', 'minute-short', 'hour', 'hour-short', 'day', 'day-short', 'month', 'month-short', 'year', 'year-short'];
-  var STYLES = ['best fit', 'numeric']; // -- RelativeFormat -----------------------------------------------------------
-
-  function RelativeFormat(locales, options) {
-    options = options || {}; // Make a copy of `locales` if it's an array, so that it doesn't change
-    // since it's used lazily.
-
-    if (es5.isArray(locales)) {
-      locales = locales.concat();
-    }
-
-    es5.defineProperty(this, '_locale', {
-      value: this._resolveLocale(locales)
-    });
-    es5.defineProperty(this, '_options', {
-      value: {
-        style: this._resolveStyle(options.style),
-        units: this._isValidUnits(options.units) && options.units
-      }
-    });
-    es5.defineProperty(this, '_locales', {
-      value: locales
-    });
-    es5.defineProperty(this, '_fields', {
-      value: this._findFields(this._locale)
-    });
-    es5.defineProperty(this, '_messages', {
-      value: es5.objCreate(null)
-    }); // "Bind" `format()` method to `this` so it can be passed by reference like
-    // the other `Intl` APIs.
-
-    var relativeFormat = this;
-
-    this.format = function format(date, options) {
-      return relativeFormat._format(date, options);
-    };
-  } // Define internal private properties for dealing with locale data.
-
-
-  es5.defineProperty(RelativeFormat, '__localeData__', {
-    value: es5.objCreate(null)
-  });
-  es5.defineProperty(RelativeFormat, '__addLocaleData', {
-    value: function value() {
-      for (var i = 0; i < arguments.length; i++) {
-        var datum = arguments[i];
-
-        if (!(datum && datum.locale)) {
-          throw new Error('Locale data provided to IntlRelativeFormat is missing a ' + '`locale` property value');
-        }
-
-        RelativeFormat.__localeData__[datum.locale.toLowerCase()] = datum; // Add data to IntlMessageFormat.
-
-        intlMessageformat.default.__addLocaleData(datum);
-      }
-    }
-  }); // Define public `defaultLocale` property which can be set by the developer, or
-  // it will be set when the first RelativeFormat instance is created by
-  // leveraging the resolved locale from `Intl`.
-
-  es5.defineProperty(RelativeFormat, 'defaultLocale', {
-    enumerable: true,
-    writable: true,
-    value: undefined
-  }); // Define public `thresholds` property which can be set by the developer, and
-  // defaults to relative time thresholds from moment.js.
-
-  es5.defineProperty(RelativeFormat, 'thresholds', {
-    enumerable: true,
+  es5_1.defineProperty(this, '_options', {
     value: {
-      second: 45,
-      'second-short': 45,
-      minute: 45,
-      'minute-short': 45,
-      hour: 22,
-      'hour-short': 22,
-      day: 26,
-      'day-short': 26,
-      month: 11,
-      'month-short': 11 // months to year
-
+      style: this._resolveStyle(options.style),
+      units: this._isValidUnits(options.units) && options.units
     }
   });
+  es5_1.defineProperty(this, '_locales', {
+    value: locales
+  });
+  es5_1.defineProperty(this, '_fields', {
+    value: this._findFields(this._locale)
+  });
+  es5_1.defineProperty(this, '_messages', {
+    value: es5_1.objCreate(null)
+  }); // "Bind" `format()` method to `this` so it can be passed by reference like
+  // the other `Intl` APIs.
 
-  RelativeFormat.prototype.resolvedOptions = function () {
-    return {
-      locale: this._locale,
-      style: this._options.style,
-      units: this._options.units
-    };
+  var relativeFormat = this;
+
+  this.format = function format(date, options) {
+    return relativeFormat._format(date, options);
   };
+} // Define internal private properties for dealing with locale data.
 
-  RelativeFormat.prototype._compileMessage = function (units) {
-    // `this._locales` is the original set of locales the user specified to the
-    // constructor, while `this._locale` is the resolved root locale.
-    var locales = this._locales;
-    this._locale;
-    var field = this._fields[units];
-    var relativeTime = field.relativeTime;
-    var future = '';
-    var past = '';
-    var i;
 
-    for (i in relativeTime.future) {
-      if (relativeTime.future.hasOwnProperty(i)) {
-        future += ' ' + i + ' {' + relativeTime.future[i].replace('{0}', '#') + '}';
-      }
-    }
+es5_1.defineProperty(RelativeFormat, '__localeData__', {
+  value: es5_1.objCreate(null)
+});
+es5_1.defineProperty(RelativeFormat, '__addLocaleData', {
+  value: function value() {
+    for (var i = 0; i < arguments.length; i++) {
+      var datum = arguments[i];
 
-    for (i in relativeTime.past) {
-      if (relativeTime.past.hasOwnProperty(i)) {
-        past += ' ' + i + ' {' + relativeTime.past[i].replace('{0}', '#') + '}';
-      }
-    }
-
-    var message = '{when, select, future {{0, plural, ' + future + '}}' + 'past {{0, plural, ' + past + '}}}'; // Create the synthetic IntlMessageFormat instance using the original
-    // locales value specified by the user when constructing the the parent
-    // IntlRelativeFormat instance.
-
-    return new intlMessageformat.default(message, locales);
-  };
-
-  RelativeFormat.prototype._getMessage = function (units) {
-    var messages = this._messages; // Create a new synthetic message based on the locale data from CLDR.
-
-    if (!messages[units]) {
-      messages[units] = this._compileMessage(units);
-    }
-
-    return messages[units];
-  };
-
-  RelativeFormat.prototype._getRelativeUnits = function (diff, units) {
-    var field = this._fields[units];
-
-    if (field.relative) {
-      return field.relative[diff];
-    }
-  };
-
-  RelativeFormat.prototype._findFields = function (locale) {
-    var localeData = RelativeFormat.__localeData__;
-    var data = localeData[locale.toLowerCase()]; // The locale data is de-duplicated, so we have to traverse the locale's
-    // hierarchy until we find `fields` to return.
-
-    while (data) {
-      if (data.fields) {
-        return data.fields;
+      if (!(datum && datum.locale)) {
+        throw new Error('Locale data provided to IntlRelativeFormat is missing a ' + '`locale` property value');
       }
 
-      data = data.parentLocale && localeData[data.parentLocale.toLowerCase()];
+      RelativeFormat.__localeData__[datum.locale.toLowerCase()] = datum; // Add data to IntlMessageFormat.
+
+      intl_messageformat_1.default.__addLocaleData(datum);
     }
+  }
+}); // Define public `defaultLocale` property which can be set by the developer, or
+// it will be set when the first RelativeFormat instance is created by
+// leveraging the resolved locale from `Intl`.
 
-    throw new Error('Locale data added to IntlRelativeFormat is missing `fields` for :' + locale);
-  };
+es5_1.defineProperty(RelativeFormat, 'defaultLocale', {
+  enumerable: true,
+  writable: true,
+  value: undefined
+}); // Define public `thresholds` property which can be set by the developer, and
+// defaults to relative time thresholds from moment.js.
 
-  RelativeFormat.prototype._format = function (date, options) {
-    var now = options && options.now !== undefined ? options.now : es5.dateNow();
+es5_1.defineProperty(RelativeFormat, 'thresholds', {
+  enumerable: true,
+  value: {
+    second: 45,
+    'second-short': 45,
+    minute: 45,
+    'minute-short': 45,
+    hour: 22,
+    'hour-short': 22,
+    day: 26,
+    'day-short': 26,
+    month: 11,
+    'month-short': 11 // months to year
 
-    if (date === undefined) {
-      date = now;
-    } // Determine if the `date` and optional `now` values are valid, and throw a
-    // similar error to what `Intl.DateTimeFormat#format()` would throw.
-
-
-    if (!isFinite(now)) {
-      throw new RangeError('The `now` option provided to IntlRelativeFormat#format() is not ' + 'in valid range.');
-    }
-
-    if (!isFinite(date)) {
-      throw new RangeError('The date value provided to IntlRelativeFormat#format() is not ' + 'in valid range.');
-    }
-
-    var diffReport = diff.default(now, date);
-
-    var units = this._options.units || this._selectUnits(diffReport);
-
-    var diffInUnits = diffReport[units];
-
-    if (this._options.style !== 'numeric') {
-      var relativeUnits = this._getRelativeUnits(diffInUnits, units);
-
-      if (relativeUnits) {
-        return relativeUnits;
-      }
-    }
-
-    return this._getMessage(units).format({
-      '0': Math.abs(diffInUnits),
-      when: diffInUnits < 0 ? 'past' : 'future'
-    });
-  };
-
-  RelativeFormat.prototype._isValidUnits = function (units) {
-    if (!units || es5.arrIndexOf.call(FIELDS, units) >= 0) {
-      return true;
-    }
-
-    if (typeof units === 'string') {
-      var suggestion = /s$/.test(units) && units.substr(0, units.length - 1);
-
-      if (suggestion && es5.arrIndexOf.call(FIELDS, suggestion) >= 0) {
-        throw new Error('"' + units + '" is not a valid IntlRelativeFormat `units` ' + 'value, did you mean: ' + suggestion);
-      }
-    }
-
-    throw new Error('"' + units + '" is not a valid IntlRelativeFormat `units` value, it ' + 'must be one of: "' + FIELDS.join('", "') + '"');
-  };
-
-  RelativeFormat.prototype._resolveLocale = function (locales) {
-    if (typeof locales === 'string') {
-      locales = [locales];
-    } // Create a copy of the array so we can push on the default locale.
-
-
-    locales = (locales || []).concat(RelativeFormat.defaultLocale);
-    var localeData = RelativeFormat.__localeData__;
-    var i, len, localeParts, data; // Using the set of locales + the default locale, we look for the first one
-    // which that has been registered. When data does not exist for a locale, we
-    // traverse its ancestors to find something that's been registered within
-    // its hierarchy of locales. Since we lack the proper `parentLocale` data
-    // here, we must take a naive approach to traversal.
-
-    for (i = 0, len = locales.length; i < len; i += 1) {
-      localeParts = locales[i].toLowerCase().split('-');
-
-      while (localeParts.length) {
-        data = localeData[localeParts.join('-')];
-
-        if (data) {
-          // Return the normalized locale string; e.g., we return "en-US",
-          // instead of "en-us".
-          return data.locale;
-        }
-
-        localeParts.pop();
-      }
-    }
-
-    var defaultLocale = locales.pop();
-    throw new Error('No locale data has been added to IntlRelativeFormat for: ' + locales.join(', ') + ', or the default locale: ' + defaultLocale);
-  };
-
-  RelativeFormat.prototype._resolveStyle = function (style) {
-    // Default to "best fit" style.
-    if (!style) {
-      return STYLES[0];
-    }
-
-    if (es5.arrIndexOf.call(STYLES, style) >= 0) {
-      return style;
-    }
-
-    throw new Error('"' + style + '" is not a valid IntlRelativeFormat `style` value, it ' + 'must be one of: "' + STYLES.join('", "') + '"');
-  };
-
-  RelativeFormat.prototype._selectUnits = function (diffReport) {
-    var i, l, units;
-    var fields = FIELDS.filter(function (field) {
-      return field.indexOf('-short') < 1;
-    });
-
-    for (i = 0, l = fields.length; i < l; i += 1) {
-      units = fields[i];
-
-      if (Math.abs(diffReport[units]) < RelativeFormat.thresholds[units]) {
-        break;
-      }
-    }
-
-    return units;
-  };
+  }
 });
 
-var en = createCommonjsModule(function (module, exports) {
+RelativeFormat.prototype.resolvedOptions = function () {
+  return {
+    locale: this._locale,
+    style: this._options.style,
+    units: this._options.units
+  };
+};
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
+RelativeFormat.prototype._compileMessage = function (units) {
+  // `this._locales` is the original set of locales the user specified to the
+  // constructor, while `this._locale` is the resolved root locale.
+  var locales = this._locales;
+  this._locale;
+  var field = this._fields[units];
+  var relativeTime = field.relativeTime;
+  var future = '';
+  var past = '';
+  var i;
+
+  for (i in relativeTime.future) {
+    if (relativeTime.future.hasOwnProperty(i)) {
+      future += ' ' + i + ' {' + relativeTime.future[i].replace('{0}', '#') + '}';
+    }
+  }
+
+  for (i in relativeTime.past) {
+    if (relativeTime.past.hasOwnProperty(i)) {
+      past += ' ' + i + ' {' + relativeTime.past[i].replace('{0}', '#') + '}';
+    }
+  }
+
+  var message = '{when, select, future {{0, plural, ' + future + '}}' + 'past {{0, plural, ' + past + '}}}'; // Create the synthetic IntlMessageFormat instance using the original
+  // locales value specified by the user when constructing the the parent
+  // IntlRelativeFormat instance.
+
+  return new intl_messageformat_1.default(message, locales);
+};
+
+RelativeFormat.prototype._getMessage = function (units) {
+  var messages = this._messages; // Create a new synthetic message based on the locale data from CLDR.
+
+  if (!messages[units]) {
+    messages[units] = this._compileMessage(units);
+  }
+
+  return messages[units];
+};
+
+RelativeFormat.prototype._getRelativeUnits = function (diff, units) {
+  var field = this._fields[units];
+
+  if (field.relative) {
+    return field.relative[diff];
+  }
+};
+
+RelativeFormat.prototype._findFields = function (locale) {
+  var localeData = RelativeFormat.__localeData__;
+  var data = localeData[locale.toLowerCase()]; // The locale data is de-duplicated, so we have to traverse the locale's
+  // hierarchy until we find `fields` to return.
+
+  while (data) {
+    if (data.fields) {
+      return data.fields;
+    }
+
+    data = data.parentLocale && localeData[data.parentLocale.toLowerCase()];
+  }
+
+  throw new Error('Locale data added to IntlRelativeFormat is missing `fields` for :' + locale);
+};
+
+RelativeFormat.prototype._format = function (date, options) {
+  var now = options && options.now !== undefined ? options.now : es5_1.dateNow();
+
+  if (date === undefined) {
+    date = now;
+  } // Determine if the `date` and optional `now` values are valid, and throw a
+  // similar error to what `Intl.DateTimeFormat#format()` would throw.
+
+
+  if (!isFinite(now)) {
+    throw new RangeError('The `now` option provided to IntlRelativeFormat#format() is not ' + 'in valid range.');
+  }
+
+  if (!isFinite(date)) {
+    throw new RangeError('The date value provided to IntlRelativeFormat#format() is not ' + 'in valid range.');
+  }
+
+  var diffReport = diff_1.default(now, date);
+
+  var units = this._options.units || this._selectUnits(diffReport);
+
+  var diffInUnits = diffReport[units];
+
+  if (this._options.style !== 'numeric') {
+    var relativeUnits = this._getRelativeUnits(diffInUnits, units);
+
+    if (relativeUnits) {
+      return relativeUnits;
+    }
+  }
+
+  return this._getMessage(units).format({
+    '0': Math.abs(diffInUnits),
+    when: diffInUnits < 0 ? 'past' : 'future'
   });
-  /* @generated */
+};
 
-  exports.default = {
-    "locale": "en",
-    "pluralRuleFunction": function pluralRuleFunction(n, ord) {
-      var s = String(n).split('.'),
-          v0 = !s[1],
-          t0 = Number(s[0]) == n,
-          n10 = t0 && s[0].slice(-1),
-          n100 = t0 && s[0].slice(-2);
-      if (ord) return n10 == 1 && n100 != 11 ? 'one' : n10 == 2 && n100 != 12 ? 'two' : n10 == 3 && n100 != 13 ? 'few' : 'other';
-      return n == 1 && v0 ? 'one' : 'other';
+RelativeFormat.prototype._isValidUnits = function (units) {
+  if (!units || es5_1.arrIndexOf.call(FIELDS, units) >= 0) {
+    return true;
+  }
+
+  if (typeof units === 'string') {
+    var suggestion = /s$/.test(units) && units.substr(0, units.length - 1);
+
+    if (suggestion && es5_1.arrIndexOf.call(FIELDS, suggestion) >= 0) {
+      throw new Error('"' + units + '" is not a valid IntlRelativeFormat `units` ' + 'value, did you mean: ' + suggestion);
+    }
+  }
+
+  throw new Error('"' + units + '" is not a valid IntlRelativeFormat `units` value, it ' + 'must be one of: "' + FIELDS.join('", "') + '"');
+};
+
+RelativeFormat.prototype._resolveLocale = function (locales) {
+  if (typeof locales === 'string') {
+    locales = [locales];
+  } // Create a copy of the array so we can push on the default locale.
+
+
+  locales = (locales || []).concat(RelativeFormat.defaultLocale);
+  var localeData = RelativeFormat.__localeData__;
+  var i, len, localeParts, data; // Using the set of locales + the default locale, we look for the first one
+  // which that has been registered. When data does not exist for a locale, we
+  // traverse its ancestors to find something that's been registered within
+  // its hierarchy of locales. Since we lack the proper `parentLocale` data
+  // here, we must take a naive approach to traversal.
+
+  for (i = 0, len = locales.length; i < len; i += 1) {
+    localeParts = locales[i].toLowerCase().split('-');
+
+    while (localeParts.length) {
+      data = localeData[localeParts.join('-')];
+
+      if (data) {
+        // Return the normalized locale string; e.g., we return "en-US",
+        // instead of "en-us".
+        return data.locale;
+      }
+
+      localeParts.pop();
+    }
+  }
+
+  var defaultLocale = locales.pop();
+  throw new Error('No locale data has been added to IntlRelativeFormat for: ' + locales.join(', ') + ', or the default locale: ' + defaultLocale);
+};
+
+RelativeFormat.prototype._resolveStyle = function (style) {
+  // Default to "best fit" style.
+  if (!style) {
+    return STYLES[0];
+  }
+
+  if (es5_1.arrIndexOf.call(STYLES, style) >= 0) {
+    return style;
+  }
+
+  throw new Error('"' + style + '" is not a valid IntlRelativeFormat `style` value, it ' + 'must be one of: "' + STYLES.join('", "') + '"');
+};
+
+RelativeFormat.prototype._selectUnits = function (diffReport) {
+  var i, l, units;
+  var fields = FIELDS.filter(function (field) {
+    return field.indexOf('-short') < 1;
+  });
+
+  for (i = 0, l = fields.length; i < l; i += 1) {
+    units = fields[i];
+
+    if (Math.abs(diffReport[units]) < RelativeFormat.thresholds[units]) {
+      break;
+    }
+  }
+
+  return units;
+};
+
+var en = {};
+
+Object.defineProperty(en, "__esModule", {
+  value: true
+});
+/* @generated */
+
+en.default = {
+  "locale": "en",
+  "pluralRuleFunction": function pluralRuleFunction(n, ord) {
+    var s = String(n).split('.'),
+        v0 = !s[1],
+        t0 = Number(s[0]) == n,
+        n10 = t0 && s[0].slice(-1),
+        n100 = t0 && s[0].slice(-2);
+    if (ord) return n10 == 1 && n100 != 11 ? 'one' : n10 == 2 && n100 != 12 ? 'two' : n10 == 3 && n100 != 13 ? 'few' : 'other';
+    return n == 1 && v0 ? 'one' : 'other';
+  },
+  "fields": {
+    "year": {
+      "displayName": "year",
+      "relative": {
+        "0": "this year",
+        "1": "next year",
+        "-1": "last year"
+      },
+      "relativeTime": {
+        "future": {
+          "one": "in {0} year",
+          "other": "in {0} years"
+        },
+        "past": {
+          "one": "{0} year ago",
+          "other": "{0} years ago"
+        }
+      }
     },
-    "fields": {
-      "year": {
-        "displayName": "year",
-        "relative": {
-          "0": "this year",
-          "1": "next year",
-          "-1": "last year"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} year",
-            "other": "in {0} years"
-          },
-          "past": {
-            "one": "{0} year ago",
-            "other": "{0} years ago"
-          }
-        }
+    "year-short": {
+      "displayName": "yr.",
+      "relative": {
+        "0": "this yr.",
+        "1": "next yr.",
+        "-1": "last yr."
       },
-      "year-short": {
-        "displayName": "yr.",
-        "relative": {
-          "0": "this yr.",
-          "1": "next yr.",
-          "-1": "last yr."
+      "relativeTime": {
+        "future": {
+          "one": "in {0} yr.",
+          "other": "in {0} yr."
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} yr.",
-            "other": "in {0} yr."
-          },
-          "past": {
-            "one": "{0} yr. ago",
-            "other": "{0} yr. ago"
-          }
+        "past": {
+          "one": "{0} yr. ago",
+          "other": "{0} yr. ago"
         }
+      }
+    },
+    "month": {
+      "displayName": "month",
+      "relative": {
+        "0": "this month",
+        "1": "next month",
+        "-1": "last month"
       },
-      "month": {
-        "displayName": "month",
-        "relative": {
-          "0": "this month",
-          "1": "next month",
-          "-1": "last month"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} month",
+          "other": "in {0} months"
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} month",
-            "other": "in {0} months"
-          },
-          "past": {
-            "one": "{0} month ago",
-            "other": "{0} months ago"
-          }
+        "past": {
+          "one": "{0} month ago",
+          "other": "{0} months ago"
         }
+      }
+    },
+    "month-short": {
+      "displayName": "mo.",
+      "relative": {
+        "0": "this mo.",
+        "1": "next mo.",
+        "-1": "last mo."
       },
-      "month-short": {
-        "displayName": "mo.",
-        "relative": {
-          "0": "this mo.",
-          "1": "next mo.",
-          "-1": "last mo."
+      "relativeTime": {
+        "future": {
+          "one": "in {0} mo.",
+          "other": "in {0} mo."
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} mo.",
-            "other": "in {0} mo."
-          },
-          "past": {
-            "one": "{0} mo. ago",
-            "other": "{0} mo. ago"
-          }
+        "past": {
+          "one": "{0} mo. ago",
+          "other": "{0} mo. ago"
         }
+      }
+    },
+    "week": {
+      "displayName": "week",
+      "relativePeriod": "the week of {0}",
+      "relative": {
+        "0": "this week",
+        "1": "next week",
+        "-1": "last week"
       },
-      "week": {
-        "displayName": "week",
-        "relativePeriod": "the week of {0}",
-        "relative": {
-          "0": "this week",
-          "1": "next week",
-          "-1": "last week"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} week",
+          "other": "in {0} weeks"
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} week",
-            "other": "in {0} weeks"
-          },
-          "past": {
-            "one": "{0} week ago",
-            "other": "{0} weeks ago"
-          }
+        "past": {
+          "one": "{0} week ago",
+          "other": "{0} weeks ago"
         }
+      }
+    },
+    "week-short": {
+      "displayName": "wk.",
+      "relativePeriod": "the week of {0}",
+      "relative": {
+        "0": "this wk.",
+        "1": "next wk.",
+        "-1": "last wk."
       },
-      "week-short": {
-        "displayName": "wk.",
-        "relativePeriod": "the week of {0}",
-        "relative": {
-          "0": "this wk.",
-          "1": "next wk.",
-          "-1": "last wk."
+      "relativeTime": {
+        "future": {
+          "one": "in {0} wk.",
+          "other": "in {0} wk."
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} wk.",
-            "other": "in {0} wk."
-          },
-          "past": {
-            "one": "{0} wk. ago",
-            "other": "{0} wk. ago"
-          }
+        "past": {
+          "one": "{0} wk. ago",
+          "other": "{0} wk. ago"
         }
+      }
+    },
+    "day": {
+      "displayName": "day",
+      "relative": {
+        "0": "today",
+        "1": "tomorrow",
+        "-1": "yesterday"
       },
-      "day": {
-        "displayName": "day",
-        "relative": {
-          "0": "today",
-          "1": "tomorrow",
-          "-1": "yesterday"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} day",
+          "other": "in {0} days"
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} day",
-            "other": "in {0} days"
-          },
-          "past": {
-            "one": "{0} day ago",
-            "other": "{0} days ago"
-          }
+        "past": {
+          "one": "{0} day ago",
+          "other": "{0} days ago"
         }
+      }
+    },
+    "day-short": {
+      "displayName": "day",
+      "relative": {
+        "0": "today",
+        "1": "tomorrow",
+        "-1": "yesterday"
       },
-      "day-short": {
-        "displayName": "day",
-        "relative": {
-          "0": "today",
-          "1": "tomorrow",
-          "-1": "yesterday"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} day",
+          "other": "in {0} days"
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} day",
-            "other": "in {0} days"
-          },
-          "past": {
-            "one": "{0} day ago",
-            "other": "{0} days ago"
-          }
+        "past": {
+          "one": "{0} day ago",
+          "other": "{0} days ago"
         }
+      }
+    },
+    "hour": {
+      "displayName": "hour",
+      "relative": {
+        "0": "this hour"
       },
-      "hour": {
-        "displayName": "hour",
-        "relative": {
-          "0": "this hour"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} hour",
+          "other": "in {0} hours"
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} hour",
-            "other": "in {0} hours"
-          },
-          "past": {
-            "one": "{0} hour ago",
-            "other": "{0} hours ago"
-          }
+        "past": {
+          "one": "{0} hour ago",
+          "other": "{0} hours ago"
         }
+      }
+    },
+    "hour-short": {
+      "displayName": "hr.",
+      "relative": {
+        "0": "this hour"
       },
-      "hour-short": {
-        "displayName": "hr.",
-        "relative": {
-          "0": "this hour"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} hr.",
+          "other": "in {0} hr."
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} hr.",
-            "other": "in {0} hr."
-          },
-          "past": {
-            "one": "{0} hr. ago",
-            "other": "{0} hr. ago"
-          }
+        "past": {
+          "one": "{0} hr. ago",
+          "other": "{0} hr. ago"
         }
+      }
+    },
+    "minute": {
+      "displayName": "minute",
+      "relative": {
+        "0": "this minute"
       },
-      "minute": {
-        "displayName": "minute",
-        "relative": {
-          "0": "this minute"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} minute",
+          "other": "in {0} minutes"
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} minute",
-            "other": "in {0} minutes"
-          },
-          "past": {
-            "one": "{0} minute ago",
-            "other": "{0} minutes ago"
-          }
+        "past": {
+          "one": "{0} minute ago",
+          "other": "{0} minutes ago"
         }
+      }
+    },
+    "minute-short": {
+      "displayName": "min.",
+      "relative": {
+        "0": "this minute"
       },
-      "minute-short": {
-        "displayName": "min.",
-        "relative": {
-          "0": "this minute"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} min.",
+          "other": "in {0} min."
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} min.",
-            "other": "in {0} min."
-          },
-          "past": {
-            "one": "{0} min. ago",
-            "other": "{0} min. ago"
-          }
+        "past": {
+          "one": "{0} min. ago",
+          "other": "{0} min. ago"
         }
+      }
+    },
+    "second": {
+      "displayName": "second",
+      "relative": {
+        "0": "now"
       },
-      "second": {
-        "displayName": "second",
-        "relative": {
-          "0": "now"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} second",
+          "other": "in {0} seconds"
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} second",
-            "other": "in {0} seconds"
-          },
-          "past": {
-            "one": "{0} second ago",
-            "other": "{0} seconds ago"
-          }
+        "past": {
+          "one": "{0} second ago",
+          "other": "{0} seconds ago"
         }
+      }
+    },
+    "second-short": {
+      "displayName": "sec.",
+      "relative": {
+        "0": "now"
       },
-      "second-short": {
-        "displayName": "sec.",
-        "relative": {
-          "0": "now"
+      "relativeTime": {
+        "future": {
+          "one": "in {0} sec.",
+          "other": "in {0} sec."
         },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} sec.",
-            "other": "in {0} sec."
-          },
-          "past": {
-            "one": "{0} sec. ago",
-            "other": "{0} sec. ago"
-          }
+        "past": {
+          "one": "{0} sec. ago",
+          "other": "{0} sec. ago"
         }
       }
     }
-  };
+  }
+};
+
+/* jslint esnext: true */
+
+
+Object.defineProperty(main, "__esModule", {
+  value: true
 });
+var core_1 = core;
+var en_1 = en;
 
-var main = createCommonjsModule(function (module, exports) {
-  /* jslint esnext: true */
+core_1.default.__addLocaleData(en_1.default);
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+core_1.default.defaultLocale = 'en';
 
-  core.default.__addLocaleData(en.default);
+main.default = core_1.default;
 
-  core.default.defaultLocale = 'en';
-  exports.default = core.default;
-});
+/* jshint node:true */
 
-var intlRelativeformat = createCommonjsModule(function (module, exports) {
+(function (module, exports) {
 
   var IntlRelativeFormat = main['default']; // Add all locale data to `IntlRelativeFormat`. This module will be ignored when
   // bundling for the browser with Browserify/Webpack.
@@ -5487,143 +5541,150 @@ var intlRelativeformat = createCommonjsModule(function (module, exports) {
 
   exports = module.exports = IntlRelativeFormat;
   exports['default'] = exports;
+})(intlRelativeformat, intlRelativeformat.exports);
+
+var IntlRelativeFormat = intlRelativeformat.exports;
+
+var propTypes = {exports: {}};
+
+var reactIs = {exports: {}};
+
+var reactIs_production_min = {};
+
+Object.defineProperty(reactIs_production_min, "__esModule", {
+  value: !0
 });
+var b = "function" === typeof Symbol && Symbol.for,
+    c = b ? Symbol.for("react.element") : 60103,
+    d = b ? Symbol.for("react.portal") : 60106,
+    e = b ? Symbol.for("react.fragment") : 60107,
+    f$1 = b ? Symbol.for("react.strict_mode") : 60108,
+    g = b ? Symbol.for("react.profiler") : 60114,
+    h = b ? Symbol.for("react.provider") : 60109,
+    k = b ? Symbol.for("react.context") : 60110,
+    l = b ? Symbol.for("react.async_mode") : 60111,
+    m = b ? Symbol.for("react.concurrent_mode") : 60111,
+    n = b ? Symbol.for("react.forward_ref") : 60112,
+    p = b ? Symbol.for("react.suspense") : 60113,
+    q = b ? Symbol.for("react.suspense_list") : 60120,
+    r = b ? Symbol.for("react.memo") : 60115,
+    t = b ? Symbol.for("react.lazy") : 60116,
+    v = b ? Symbol.for("react.fundamental") : 60117,
+    w = b ? Symbol.for("react.responder") : 60118,
+    x = b ? Symbol.for("react.scope") : 60119;
 
-createCommonjsModule(function (module, exports) {
+function y(a) {
+  if ("object" === _typeof$1(a) && null !== a) {
+    var u = a.$$typeof;
 
-  Object.defineProperty(exports, "__esModule", {
-    value: !0
-  });
-  var b = "function" === typeof Symbol && Symbol.for,
-      c = b ? Symbol.for("react.element") : 60103,
-      d = b ? Symbol.for("react.portal") : 60106,
-      e = b ? Symbol.for("react.fragment") : 60107,
-      f = b ? Symbol.for("react.strict_mode") : 60108,
-      g = b ? Symbol.for("react.profiler") : 60114,
-      h = b ? Symbol.for("react.provider") : 60109,
-      k = b ? Symbol.for("react.context") : 60110,
-      l = b ? Symbol.for("react.async_mode") : 60111,
-      m = b ? Symbol.for("react.concurrent_mode") : 60111,
-      n = b ? Symbol.for("react.forward_ref") : 60112,
-      p = b ? Symbol.for("react.suspense") : 60113,
-      q = b ? Symbol.for("react.suspense_list") : 60120,
-      r = b ? Symbol.for("react.memo") : 60115,
-      t = b ? Symbol.for("react.lazy") : 60116,
-      v = b ? Symbol.for("react.fundamental") : 60117,
-      w = b ? Symbol.for("react.responder") : 60118,
-      x = b ? Symbol.for("react.scope") : 60119;
+    switch (u) {
+      case c:
+        switch (a = a.type, a) {
+          case l:
+          case m:
+          case e:
+          case g:
+          case f$1:
+          case p:
+            return a;
 
-  function y(a) {
-    if ("object" === _typeof$1(a) && null !== a) {
-      var u = a.$$typeof;
+          default:
+            switch (a = a && a.$$typeof, a) {
+              case k:
+              case n:
+              case h:
+                return a;
 
-      switch (u) {
-        case c:
-          switch (a = a.type, a) {
-            case l:
-            case m:
-            case e:
-            case g:
-            case f:
-            case p:
-              return a;
+              default:
+                return u;
+            }
 
-            default:
-              switch (a = a && a.$$typeof, a) {
-                case k:
-                case n:
-                case h:
-                  return a;
+        }
 
-                default:
-                  return u;
-              }
-
-          }
-
-        case t:
-        case r:
-        case d:
-          return u;
-      }
+      case t:
+      case r:
+      case d:
+        return u;
     }
   }
+}
 
-  function z(a) {
-    return y(a) === m;
-  }
+function z(a) {
+  return y(a) === m;
+}
 
-  exports.typeOf = y;
-  exports.AsyncMode = l;
-  exports.ConcurrentMode = m;
-  exports.ContextConsumer = k;
-  exports.ContextProvider = h;
-  exports.Element = c;
-  exports.ForwardRef = n;
-  exports.Fragment = e;
-  exports.Lazy = t;
-  exports.Memo = r;
-  exports.Portal = d;
-  exports.Profiler = g;
-  exports.StrictMode = f;
-  exports.Suspense = p;
+reactIs_production_min.typeOf = y;
+reactIs_production_min.AsyncMode = l;
+reactIs_production_min.ConcurrentMode = m;
+reactIs_production_min.ContextConsumer = k;
+reactIs_production_min.ContextProvider = h;
+reactIs_production_min.Element = c;
+reactIs_production_min.ForwardRef = n;
+reactIs_production_min.Fragment = e;
+reactIs_production_min.Lazy = t;
+reactIs_production_min.Memo = r;
+reactIs_production_min.Portal = d;
+reactIs_production_min.Profiler = g;
+reactIs_production_min.StrictMode = f$1;
+reactIs_production_min.Suspense = p;
 
-  exports.isValidElementType = function (a) {
-    return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || a === q || "object" === _typeof$1(a) && null !== a && (a.$$typeof === t || a.$$typeof === r || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n || a.$$typeof === v || a.$$typeof === w || a.$$typeof === x);
-  };
+reactIs_production_min.isValidElementType = function (a) {
+  return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f$1 || a === p || a === q || "object" === _typeof$1(a) && null !== a && (a.$$typeof === t || a.$$typeof === r || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n || a.$$typeof === v || a.$$typeof === w || a.$$typeof === x);
+};
 
-  exports.isAsyncMode = function (a) {
-    return z(a) || y(a) === l;
-  };
+reactIs_production_min.isAsyncMode = function (a) {
+  return z(a) || y(a) === l;
+};
 
-  exports.isConcurrentMode = z;
+reactIs_production_min.isConcurrentMode = z;
 
-  exports.isContextConsumer = function (a) {
-    return y(a) === k;
-  };
+reactIs_production_min.isContextConsumer = function (a) {
+  return y(a) === k;
+};
 
-  exports.isContextProvider = function (a) {
-    return y(a) === h;
-  };
+reactIs_production_min.isContextProvider = function (a) {
+  return y(a) === h;
+};
 
-  exports.isElement = function (a) {
-    return "object" === _typeof$1(a) && null !== a && a.$$typeof === c;
-  };
+reactIs_production_min.isElement = function (a) {
+  return "object" === _typeof$1(a) && null !== a && a.$$typeof === c;
+};
 
-  exports.isForwardRef = function (a) {
-    return y(a) === n;
-  };
+reactIs_production_min.isForwardRef = function (a) {
+  return y(a) === n;
+};
 
-  exports.isFragment = function (a) {
-    return y(a) === e;
-  };
+reactIs_production_min.isFragment = function (a) {
+  return y(a) === e;
+};
 
-  exports.isLazy = function (a) {
-    return y(a) === t;
-  };
+reactIs_production_min.isLazy = function (a) {
+  return y(a) === t;
+};
 
-  exports.isMemo = function (a) {
-    return y(a) === r;
-  };
+reactIs_production_min.isMemo = function (a) {
+  return y(a) === r;
+};
 
-  exports.isPortal = function (a) {
-    return y(a) === d;
-  };
+reactIs_production_min.isPortal = function (a) {
+  return y(a) === d;
+};
 
-  exports.isProfiler = function (a) {
-    return y(a) === g;
-  };
+reactIs_production_min.isProfiler = function (a) {
+  return y(a) === g;
+};
 
-  exports.isStrictMode = function (a) {
-    return y(a) === f;
-  };
+reactIs_production_min.isStrictMode = function (a) {
+  return y(a) === f$1;
+};
 
-  exports.isSuspense = function (a) {
-    return y(a) === p;
-  };
-});
+reactIs_production_min.isSuspense = function (a) {
+  return y(a) === p;
+};
 
-var reactIs_development = createCommonjsModule(function (module, exports) {
+var reactIs_development = {};
+
+(function (exports) {
 
   {
     (function () {
@@ -5860,15 +5921,16 @@ var reactIs_development = createCommonjsModule(function (module, exports) {
       exports.isSuspense = isSuspense;
     })();
   }
-});
+})(reactIs_development);
 
-var reactIs = createCommonjsModule(function (module) {
+{
+  reactIs.exports = reactIs_development;
+}
 
-  {
-    module.exports = reactIs_development;
-  }
-});
-
+var ReactIs$2 = reactIs.exports;
+var assign = objectAssign;
+var ReactPropTypesSecret = ReactPropTypesSecret_1;
+var checkPropTypes = checkPropTypes_1;
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
 var printWarning = function printWarning() {};
@@ -6039,7 +6101,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       componentName = componentName || ANONYMOUS;
       propFullName = propFullName || propName;
 
-      if (secret !== ReactPropTypesSecret_1) {
+      if (secret !== ReactPropTypesSecret) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
           var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
@@ -6115,7 +6177,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       }
 
       for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1);
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
 
         if (error instanceof Error) {
           return error;
@@ -6147,7 +6209,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
     function validate(props, propName, componentName, location, propFullName) {
       var propValue = props[propName];
 
-      if (!reactIs.isValidElementType(propValue)) {
+      if (!ReactIs$2.isValidElementType(propValue)) {
         var propType = getPropType(propValue);
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
       }
@@ -6224,7 +6286,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
       for (var key in propValue) {
         if (has(propValue, key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
 
           if (error instanceof Error) {
             return error;
@@ -6257,7 +6319,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
 
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1) == null) {
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
           return null;
         }
       }
@@ -6296,7 +6358,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           continue;
         }
 
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
 
         if (error) {
           return error;
@@ -6320,7 +6382,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       // props.
 
 
-      var allKeys = objectAssign({}, props[propName], shapeTypes);
+      var allKeys = assign({}, props[propName], shapeTypes);
 
       for (var key in allKeys) {
         var checker = shapeTypes[key];
@@ -6329,7 +6391,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
         }
 
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
 
         if (error) {
           return error;
@@ -6491,28 +6553,29 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
     return propValue.constructor.name;
   }
 
-  ReactPropTypes.checkPropTypes = checkPropTypes_1;
-  ReactPropTypes.resetWarningCache = checkPropTypes_1.resetWarningCache;
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
   ReactPropTypes.PropTypes = ReactPropTypes;
   return ReactPropTypes;
 };
 
-var propTypes = createCommonjsModule(function (module) {
-  /**
-   * Copyright (c) 2013-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   */
-  {
-    var ReactIs = reactIs; // By explicitly using `prop-types` you are opting into new development behavior.
-    // http://fb.me/prop-types-in-prod
+{
+  var ReactIs$1 = reactIs.exports; // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
 
-    var throwOnDirectAccess = true;
-    module.exports = factoryWithTypeCheckers(ReactIs.isElement, throwOnDirectAccess);
-  }
-});
+  var throwOnDirectAccess = true;
+  propTypes.exports = factoryWithTypeCheckers(ReactIs$1.isElement, throwOnDirectAccess);
+}
 
+var PropTypes = propTypes.exports;
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+
+
+var ReactIs = reactIs.exports;
 var FORWARD_REF_STATICS = {
   '$$typeof': true,
   render: true,
@@ -6521,7 +6584,7 @@ var FORWARD_REF_STATICS = {
   propTypes: true
 };
 var TYPE_STATICS = {};
-TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[ReactIs.ForwardRef] = FORWARD_REF_STATICS;
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -6836,9 +6899,9 @@ function addLocaleData() {
   var locales = Array.isArray(data) ? data : [data];
   locales.forEach(function (localeData) {
     if (localeData && localeData.locale) {
-      intlMessageformat.__addLocaleData(localeData);
+      IntlMessageFormat.__addLocaleData(localeData);
 
-      intlRelativeformat.__addLocaleData(localeData);
+      IntlRelativeFormat.__addLocaleData(localeData);
     }
   });
 }
@@ -6859,7 +6922,7 @@ function hasLocaleData(locale) {
 
 function hasIMFAndIRFLocaleData(locale) {
   var normalizedLocale = locale && locale.toLowerCase();
-  return !!(intlMessageformat.__localeData__[normalizedLocale] && intlRelativeformat.__localeData__[normalizedLocale]);
+  return !!(IntlMessageFormat.__localeData__[normalizedLocale] && IntlRelativeFormat.__localeData__[normalizedLocale]);
 }
 
 var _typeof = typeof Symbol === "function" && _typeof$1(Symbol.iterator) === "symbol" ? function (obj) {
@@ -6960,15 +7023,15 @@ var toConsumableArray = function toConsumableArray(arr) {
  */
 
 
-var bool = propTypes.bool;
-var number = propTypes.number;
-var string = propTypes.string;
-var func = propTypes.func;
-var object = propTypes.object;
-var oneOf = propTypes.oneOf;
-var shape = propTypes.shape;
-var any = propTypes.any;
-var oneOfType = propTypes.oneOfType;
+var bool = PropTypes.bool;
+var number = PropTypes.number;
+var string = PropTypes.string;
+var func = PropTypes.func;
+var object = PropTypes.object;
+var oneOf = PropTypes.oneOf;
+var shape = PropTypes.shape;
+var any = PropTypes.any;
+var oneOfType = PropTypes.oneOfType;
 var localeMatcher = oneOf(['best fit', 'lookup']);
 var narrowShortLong = oneOf(['narrow', 'short', 'long']);
 var numeric2digit = oneOf(['numeric', '2-digit']);
@@ -7143,12 +7206,12 @@ function defaultErrorHandler(error) {
 
 function resolveLocale(locales) {
   // IntlMessageFormat#_resolveLocale() does not depend on `this`.
-  return intlMessageformat.prototype._resolveLocale(locales);
+  return IntlMessageFormat.prototype._resolveLocale(locales);
 }
 
 function findPluralFunction(locale) {
   // IntlMessageFormat#_findPluralFunction() does not depend on `this`.
-  return intlMessageformat.prototype._findPluralRuleFunction(locale);
+  return IntlMessageFormat.prototype._findPluralRuleFunction(locale);
 }
 
 var IntlPluralFormat = function IntlPluralFormat(locales) {
@@ -7185,7 +7248,7 @@ var RELATIVE_FORMAT_THRESHOLDS = {
 };
 
 function updateRelativeFormatThresholds(newThresholds) {
-  var thresholds = intlRelativeformat.thresholds;
+  var thresholds = IntlRelativeFormat.thresholds;
   thresholds.second = newThresholds.second;
   thresholds.minute = newThresholds.minute;
   thresholds.hour = newThresholds.hour;
@@ -7276,7 +7339,7 @@ function formatRelative(config, state, value) {
   var filteredOptions = filterProps(options, RELATIVE_FORMAT_OPTIONS, defaults$$1); // Capture the current threshold values, then temporarily override them with
   // specific values just for this render.
 
-  var oldThresholds = _extends({}, intlRelativeformat.thresholds);
+  var oldThresholds = _extends({}, IntlRelativeFormat.thresholds);
 
   updateRelativeFormatThresholds(RELATIVE_FORMAT_THRESHOLDS);
 
@@ -7326,7 +7389,7 @@ function formatPlural(config, state, value) {
   return 'other';
 }
 
-function formatMessage$2(config, state) {
+function formatMessage$1(config, state) {
   var messageDescriptor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   var values = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   var locale = config.locale,
@@ -7338,7 +7401,7 @@ function formatMessage$2(config, state) {
       defaultMessage = messageDescriptor.defaultMessage; // Produce a better error if the user calls `intl.formatMessage(element)`
 
   {
-    browser(! /*#__PURE__*/react.isValidElement(config), '[React Intl] Don\'t pass React elements to ' + 'formatMessage(), pass `.props`.');
+    browser(! /*#__PURE__*/react.exports.isValidElement(config), '[React Intl] Don\'t pass React elements to ' + 'formatMessage(), pass `.props`.');
   } // `id` is a required field of a Message Descriptor.
 
 
@@ -7397,7 +7460,7 @@ function formatHTMLMessage(config, state, messageDescriptor) {
     escaped[name] = typeof value === 'string' ? escape(value) : value;
     return escaped;
   }, {});
-  return formatMessage$2(config, state, messageDescriptor, escapedValues);
+  return formatMessage$1(config, state, messageDescriptor, escapedValues);
 }
 
 var format = Object.freeze({
@@ -7406,7 +7469,7 @@ var format = Object.freeze({
   formatRelative: formatRelative,
   formatNumber: formatNumber,
   formatPlural: formatPlural,
-  formatMessage: formatMessage$2,
+  formatMessage: formatMessage$1,
   formatHTMLMessage: formatHTMLMessage
 });
 /*
@@ -7462,8 +7525,8 @@ var IntlProvider = function (_Component) {
         formatters = _ref$formatters === undefined ? {
       getDateTimeFormat: memoizeFormatConstructor(Intl.DateTimeFormat),
       getNumberFormat: memoizeFormatConstructor(Intl.NumberFormat),
-      getMessageFormat: memoizeFormatConstructor(intlMessageformat),
-      getRelativeFormat: memoizeFormatConstructor(intlRelativeformat),
+      getMessageFormat: memoizeFormatConstructor(IntlMessageFormat),
+      getRelativeFormat: memoizeFormatConstructor(IntlRelativeFormat),
       getPluralFormat: memoizeFormatConstructor(IntlPluralFormat)
     } : _ref$formatters;
 
@@ -7554,11 +7617,11 @@ var IntlProvider = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return react.Children.only(this.props.children);
+      return react.exports.Children.only(this.props.children);
     }
   }]);
   return IntlProvider;
-}(react.Component);
+}(react.exports.Component);
 
 IntlProvider.displayName = 'IntlProvider';
 IntlProvider.contextTypes = {
@@ -7568,8 +7631,8 @@ IntlProvider.childContextTypes = {
   intl: intlShape.isRequired
 };
 IntlProvider.propTypes = _extends({}, intlConfigPropTypes, {
-  children: propTypes.element.isRequired,
-  initialNow: propTypes.any
+  children: PropTypes.element.isRequired,
+  initialNow: PropTypes.any
 }) ;
 /*
  * Copyright 2015, Yahoo Inc.
@@ -7613,20 +7676,20 @@ var FormattedDate = function (_Component) {
         return children(formattedDate);
       }
 
-      return /*#__PURE__*/react.createElement(Text, null, formattedDate);
+      return /*#__PURE__*/React.createElement(Text, null, formattedDate);
     }
   }]);
   return FormattedDate;
-}(react.Component);
+}(react.exports.Component);
 
 FormattedDate.displayName = 'FormattedDate';
 FormattedDate.contextTypes = {
   intl: intlShape
 };
 FormattedDate.propTypes = _extends({}, dateTimeFormatPropTypes, {
-  value: propTypes.any.isRequired,
-  format: propTypes.string,
-  children: propTypes.func
+  value: PropTypes.any.isRequired,
+  format: PropTypes.string,
+  children: PropTypes.func
 }) ;
 /*
  * Copyright 2015, Yahoo Inc.
@@ -7670,20 +7733,20 @@ var FormattedTime = function (_Component) {
         return children(formattedTime);
       }
 
-      return /*#__PURE__*/react.createElement(Text, null, formattedTime);
+      return /*#__PURE__*/React.createElement(Text, null, formattedTime);
     }
   }]);
   return FormattedTime;
-}(react.Component);
+}(react.exports.Component);
 
 FormattedTime.displayName = 'FormattedTime';
 FormattedTime.contextTypes = {
   intl: intlShape
 };
 FormattedTime.propTypes = _extends({}, dateTimeFormatPropTypes, {
-  value: propTypes.any.isRequired,
-  format: propTypes.string,
-  children: propTypes.func
+  value: PropTypes.any.isRequired,
+  format: PropTypes.string,
+  children: PropTypes.func
 }) ;
 /*
  * Copyright 2015, Yahoo Inc.
@@ -7849,11 +7912,11 @@ var FormattedRelative = function (_Component) {
         return children(formattedRelative);
       }
 
-      return /*#__PURE__*/react.createElement(Text, null, formattedRelative);
+      return /*#__PURE__*/React.createElement(Text, null, formattedRelative);
     }
   }]);
   return FormattedRelative;
-}(react.Component);
+}(react.exports.Component);
 
 FormattedRelative.displayName = 'FormattedRelative';
 FormattedRelative.contextTypes = {
@@ -7863,11 +7926,11 @@ FormattedRelative.defaultProps = {
   updateInterval: 1000 * 10
 };
 FormattedRelative.propTypes = _extends({}, relativeFormatPropTypes, {
-  value: propTypes.any.isRequired,
-  format: propTypes.string,
-  updateInterval: propTypes.number,
-  initialNow: propTypes.any,
-  children: propTypes.func
+  value: PropTypes.any.isRequired,
+  format: PropTypes.string,
+  updateInterval: PropTypes.number,
+  initialNow: PropTypes.any,
+  children: PropTypes.func
 }) ;
 /*
  * Copyright 2015, Yahoo Inc.
@@ -7911,20 +7974,20 @@ var FormattedNumber = function (_Component) {
         return children(formattedNumber);
       }
 
-      return /*#__PURE__*/react.createElement(Text, null, formattedNumber);
+      return /*#__PURE__*/React.createElement(Text, null, formattedNumber);
     }
   }]);
   return FormattedNumber;
-}(react.Component);
+}(react.exports.Component);
 
 FormattedNumber.displayName = 'FormattedNumber';
 FormattedNumber.contextTypes = {
   intl: intlShape
 };
 FormattedNumber.propTypes = _extends({}, numberFormatPropTypes, {
-  value: propTypes.any.isRequired,
-  format: propTypes.string,
-  children: propTypes.func
+  value: PropTypes.any.isRequired,
+  format: PropTypes.string,
+  children: PropTypes.func
 }) ;
 /*
  * Copyright 2015, Yahoo Inc.
@@ -7970,11 +8033,11 @@ var FormattedPlural = function (_Component) {
         return children(formattedPlural);
       }
 
-      return /*#__PURE__*/react.createElement(Text, null, formattedPlural);
+      return /*#__PURE__*/React.createElement(Text, null, formattedPlural);
     }
   }]);
   return FormattedPlural;
-}(react.Component);
+}(react.exports.Component);
 
 FormattedPlural.displayName = 'FormattedPlural';
 FormattedPlural.contextTypes = {
@@ -7984,14 +8047,14 @@ FormattedPlural.defaultProps = {
   style: 'cardinal'
 };
 FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
-  value: propTypes.any.isRequired,
-  other: propTypes.node.isRequired,
-  zero: propTypes.node,
-  one: propTypes.node,
-  two: propTypes.node,
-  few: propTypes.node,
-  many: propTypes.node,
-  children: propTypes.func
+  value: PropTypes.any.isRequired,
+  other: PropTypes.node.isRequired,
+  zero: PropTypes.node,
+  one: PropTypes.node,
+  two: PropTypes.node,
+  few: PropTypes.node,
+  many: PropTypes.node,
+  children: PropTypes.func
 }) ;
 /*
  * Copyright 2015, Yahoo Inc.
@@ -8004,8 +8067,8 @@ var defaultFormatMessage = function defaultFormatMessage(descriptor, values) {
     console.error('[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry. Using default message as fallback.');
   }
 
-  return formatMessage$2({}, {
-    getMessageFormat: memoizeFormatConstructor(intlMessageformat)
+  return formatMessage$1({}, {
+    getMessageFormat: memoizeFormatConstructor(IntlMessageFormat)
   }, descriptor, values);
 };
 
@@ -8095,7 +8158,7 @@ var FormattedMessage = function (_Component) {
         Object.keys(values).forEach(function (name) {
           var value = values[name];
 
-          if ( /*#__PURE__*/react.isValidElement(value)) {
+          if ( /*#__PURE__*/react.exports.isValidElement(value)) {
             var token = generateToken();
             tokenizedValues[name] = tokenDelimiter + token + tokenDelimiter;
             elements[token] = value;
@@ -8134,11 +8197,11 @@ var FormattedMessage = function (_Component) {
       // warn about a missing `key` prop with rich-text message formatting.
 
 
-      return react.createElement.apply(undefined, [Component$$1, null].concat(toConsumableArray(nodes)));
+      return react.exports.createElement.apply(undefined, [Component$$1, null].concat(toConsumableArray(nodes)));
     }
   }]);
   return FormattedMessage;
-}(react.Component);
+}(react.exports.Component);
 
 FormattedMessage.displayName = 'FormattedMessage';
 FormattedMessage.contextTypes = {
@@ -8148,9 +8211,9 @@ FormattedMessage.defaultProps = {
   values: {}
 };
 FormattedMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
-  values: propTypes.object,
-  tagName: propTypes.oneOfType([propTypes.string, propTypes.element]),
-  children: propTypes.func
+  values: PropTypes.object,
+  tagName: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.func
 }) ;
 /*
  * Copyright 2015, Yahoo Inc.
@@ -8229,13 +8292,13 @@ var FormattedHTMLMessage = function (_Component) {
       var html = {
         __html: formattedHTMLMessage
       };
-      return /*#__PURE__*/react.createElement(Component$$1, {
+      return /*#__PURE__*/React.createElement(Component$$1, {
         dangerouslySetInnerHTML: html
       });
     }
   }]);
   return FormattedHTMLMessage;
-}(react.Component);
+}(react.exports.Component);
 
 FormattedHTMLMessage.displayName = 'FormattedHTMLMessage';
 FormattedHTMLMessage.contextTypes = {
@@ -8245,9 +8308,9 @@ FormattedHTMLMessage.defaultProps = {
   values: {}
 };
 FormattedHTMLMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
-  values: propTypes.object,
-  tagName: propTypes.string,
-  children: propTypes.func
+  values: PropTypes.object,
+  tagName: PropTypes.string,
+  children: PropTypes.func
 }) ;
 /*
  * Copyright 2015, Yahoo Inc.
@@ -8276,7 +8339,7 @@ var entry = {
   collaborator: 'bricklife',
   iconURL: img$2,
   insetIconURL: img$1,
-  description: /*#__PURE__*/react.createElement(FormattedMessage, {
+  description: /*#__PURE__*/React.createElement(FormattedMessage, {
     defaultMessage: "Build interactive robots and more.",
     id: "gui.extension.spikeprime.description"
   }),
@@ -8288,12 +8351,14 @@ var entry = {
   useAutoScan: false,
   connectionIconURL: img,
   connectionSmallIconURL: img$1,
-  connectingMessage: /*#__PURE__*/react.createElement(FormattedMessage, {
+  connectingMessage: /*#__PURE__*/React.createElement(FormattedMessage, {
     defaultMessage: "Connecting",
     id: "gui.extension.boost.connectingMessage"
   }),
   helpLink: 'https://scratch.mit.edu/boost'
 };
+
+var _spikeprime = {exports: {}};
 
 /**
  * Block argument types
@@ -8392,7 +8457,7 @@ var BlockType = {
 };
 var blockType = BlockType;
 
-var Color$1 = /*#__PURE__*/function () {
+var Color$2 = /*#__PURE__*/function () {
   function Color() {
     _classCallCheck(this, Color);
   }
@@ -8648,8 +8713,9 @@ var Color$1 = /*#__PURE__*/function () {
   return Color;
 }();
 
-var color$1 = Color$1;
+var color$1 = Color$2;
 
+var Color$1 = color$1;
 /**
  * @fileoverview
  * Utilities for casting and comparing Scratch data-types.
@@ -8763,7 +8829,7 @@ var Cast = /*#__PURE__*/function () {
       var color;
 
       if (typeof value === 'string' && value.substring(0, 1) === '#') {
-        color = color$1.hexToRgb(value); // If the color wasn't *actually* a hex color, cast to black
+        color = Color$1.hexToRgb(value); // If the color wasn't *actually* a hex color, cast to black
 
         if (!color) color = {
           r: 0,
@@ -8772,7 +8838,7 @@ var Cast = /*#__PURE__*/function () {
           a: 255
         };
       } else {
-        color = color$1.decimalToRgb(Cast.toNumber(value));
+        color = Color$1.decimalToRgb(Cast.toNumber(value));
       }
 
       return color;
@@ -8918,7 +8984,7 @@ var Cast = /*#__PURE__*/function () {
 
 var cast = Cast;
 
-var JSONRPC = /*#__PURE__*/function () {
+var JSONRPC$1 = /*#__PURE__*/function () {
   function JSONRPC() {
     _classCallCheck(this, JSONRPC);
 
@@ -8969,16 +9035,16 @@ var JSONRPC = /*#__PURE__*/function () {
 
   }, {
     key: "didReceiveCall",
-    value: function didReceiveCall()
-    /* method , params */
-    {
+    value: function
+      /* method , params */
+    didReceiveCall() {
       throw new Error('Must override didReceiveCall');
     }
   }, {
     key: "_sendMessage",
-    value: function _sendMessage()
-    /* jsonMessageObject */
-    {
+    value: function
+      /* jsonMessageObject */
+    _sendMessage() {
       throw new Error('Must override _sendMessage');
     }
   }, {
@@ -9065,7 +9131,9 @@ var JSONRPC = /*#__PURE__*/function () {
   return JSONRPC;
 }();
 
-var jsonrpc = JSONRPC;
+var jsonrpc = JSONRPC$1;
+
+var JSONRPC = jsonrpc;
 
 var BT = /*#__PURE__*/function (_JSONRPC) {
   _inherits(BT, _JSONRPC);
@@ -9277,9 +9345,9 @@ var BT = /*#__PURE__*/function (_JSONRPC) {
 
   }, {
     key: "handleDisconnectError",
-    value: function handleDisconnectError()
-    /* e */
-    {
+    value: function
+      /* e */
+    handleDisconnectError() {
       // log.error(`BT error: ${JSON.stringify(e)}`);
       if (!this._connected) return;
       this.disconnect();
@@ -9295,9 +9363,9 @@ var BT = /*#__PURE__*/function (_JSONRPC) {
     }
   }, {
     key: "_handleRequestError",
-    value: function _handleRequestError()
-    /* e */
-    {
+    value: function
+      /* e */
+    _handleRequestError() {
       // log.error(`BT error: ${JSON.stringify(e)}`);
       this._runtime.emit(this._runtime.constructor.PERIPHERAL_REQUEST_ERROR, {
         message: "Scratch lost connection to",
@@ -9316,7 +9384,7 @@ var BT = /*#__PURE__*/function (_JSONRPC) {
   }]);
 
   return BT;
-}(jsonrpc);
+}(JSONRPC);
 
 var bt = BT;
 
@@ -11339,7 +11407,9 @@ function isSlowBuffer(obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isFastBuffer(obj.slice(0, 0));
 }
 
-var browserAtob = createCommonjsModule(function (module) {
+var browserAtob = {exports: {}};
+
+(function (module) {
   (function (w) {
 
     function findBest(atobNative) {
@@ -11383,26 +11453,29 @@ var browserAtob = createCommonjsModule(function (module) {
       module.exports = atobBest;
     }
   })(window);
-});
+})(browserAtob);
 
-var btoa = createCommonjsModule(function (module) {
-  (function () {
+var btoa$1 = {exports: {}};
 
-    function btoa(str) {
-      var buffer;
+(function () {
 
-      if (str instanceof Buffer) {
-        buffer = str;
-      } else {
-        buffer = Buffer.from(str.toString(), 'binary');
-      }
+  function btoa(str) {
+    var buffer;
 
-      return buffer.toString('base64');
+    if (str instanceof Buffer) {
+      buffer = str;
+    } else {
+      buffer = Buffer.from(str.toString(), 'binary');
     }
 
-    module.exports = btoa;
-  })();
-});
+    return buffer.toString('base64');
+  }
+
+  btoa$1.exports = btoa;
+})();
+
+var atob = browserAtob.exports;
+var btoa = btoa$1.exports;
 
 var Base64Util = /*#__PURE__*/function () {
   function Base64Util() {
@@ -11418,7 +11491,7 @@ var Base64Util = /*#__PURE__*/function () {
      * @return {Uint8Array} - a decoded Uint8Array.
      */
     function base64ToUint8Array(base64) {
-      var binaryString = browserAtob(base64);
+      var binaryString = atob(base64);
       var len = binaryString.length;
       var array = new Uint8Array(len);
 
@@ -11619,21 +11692,7 @@ var MathUtil = /*#__PURE__*/function () {
 
 var mathUtil = MathUtil;
 
-/**
- * @fileoverview
- * A utility for accurately measuring time.
- * To use:
- * ---
- * var timer = new Timer();
- * timer.start();
- * ... pass some time ...
- * var timeDifference = timer.timeElapsed();
- * ---
- * Or, you can use the `time` and `relativeTime`
- * to do some measurement yourself.
- */
-
-var Timer = /*#__PURE__*/function () {
+var Timer$1 = /*#__PURE__*/function () {
   function Timer() {
     var nowObj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Timer.nowObj;
 
@@ -11758,7 +11817,9 @@ var Timer = /*#__PURE__*/function () {
   return Timer;
 }();
 
-var timer = Timer;
+var timer = Timer$1;
+
+var Timer = timer;
 
 var RateLimiter = /*#__PURE__*/function () {
   /**
@@ -11790,7 +11851,7 @@ var RateLimiter = /*#__PURE__*/function () {
      */
 
     this._count = this._maxTokens;
-    this._timer = new timer();
+    this._timer = new Timer();
 
     this._timer.start();
     /**
@@ -11978,7 +12039,11 @@ var setupTranslations = function setupTranslations(formatMessage) {
 
 var setupTranslations_1 = setupTranslations;
 
-var formatMessageParse = createCommonjsModule(function (module, exports) {
+var formatMessage = {exports: {}};
+
+var formatMessageParse = {exports: {}};
+
+(function (module, exports) {
   /*::
   export type AST = Element[]
   export type Element = string | Placeholder
@@ -12526,9 +12591,10 @@ var formatMessageParse = createCommonjsModule(function (module, exports) {
 
   SyntaxError.prototype = Object.create(Error.prototype);
   exports.SyntaxError = SyntaxError;
-});
+})(formatMessageParse, formatMessageParse.exports);
 
-// @flow
+var formatMessageInterpret = {exports: {}};
+
 var LONG = 'long';
 var SHORT = 'short';
 var NARROW = 'narrow';
@@ -12757,9 +12823,9 @@ var formatMessageFormats = {
   }
 };
 
-// @flow
 // "lookup" algorithm http://tools.ietf.org/html/rfc4647#section-3.4
 // assumes normalized language tags, and matches in a case sensitive manner
+
 var lookupClosestLocale = function lookupClosestLocale(locale
 /*: string | string[] | void */
 , available
@@ -12781,8 +12847,8 @@ var lookupClosestLocale = function lookupClosestLocale(locale
   }
 };
 
-// @flow
 /*:: export type Rule = 'zero' | 'one' | 'two' | 'few' | 'many' | 'other' */
+
 
 var zero = 'zero',
     one = 'one',
@@ -13769,7 +13835,11 @@ var plurals = {
   }
 };
 
-var formatMessageInterpret = createCommonjsModule(function (module, exports) {
+(function (module, exports) {
+
+  var formats = formatMessageFormats;
+  var lookupClosestLocale$1 = lookupClosestLocale;
+  var plurals$1 = plurals;
   /*::
   import type {
     AST,
@@ -13934,7 +14004,7 @@ var formatMessageInterpret = createCommonjsModule(function (module, exports) {
   /*: Locales */
   ) {
     var style = element[2];
-    var options = formatMessageFormats.number[style] || formatMessageFormats.parseNumberPattern(style) || formatMessageFormats.number.default;
+    var options = formats.number[style] || formats.parseNumberPattern(style) || formats.number.default;
     return new Intl.NumberFormat(locales, options).format;
   }
 
@@ -13944,7 +14014,7 @@ var formatMessageInterpret = createCommonjsModule(function (module, exports) {
   /*: Locales */
   ) {
     var style = element[2];
-    var options = formatMessageFormats.duration[style] || formatMessageFormats.duration.default;
+    var options = formats.duration[style] || formats.duration.default;
     var fs = new Intl.NumberFormat(locales, options.seconds).format;
     var fm = new Intl.NumberFormat(locales, options.minutes).format;
     var fh = new Intl.NumberFormat(locales, options.hours).format;
@@ -13967,7 +14037,7 @@ var formatMessageInterpret = createCommonjsModule(function (module, exports) {
   ) {
     var type = element[1];
     var style = element[2];
-    var options = formatMessageFormats[type][style] || formatMessageFormats.parseDatePattern(style) || formatMessageFormats[type].default;
+    var options = formats[type][style] || formats.parseDatePattern(style) || formats[type].default;
     return new Intl.DateTimeFormat(locales, options).format;
   }
 
@@ -13987,8 +14057,8 @@ var formatMessageInterpret = createCommonjsModule(function (module, exports) {
         type: pluralType
       });
     } else {
-      var locale = lookupClosestLocale(locales, plurals);
-      var select = locale && plurals[locale][pluralType] || returnOther;
+      var locale = lookupClosestLocale$1(locales, plurals$1);
+      var select = locale && plurals$1[locale][pluralType] || returnOther;
       pluralRules = {
         select: select
       };
@@ -14000,9 +14070,9 @@ var formatMessageInterpret = createCommonjsModule(function (module, exports) {
     };
   }
 
-  function returnOther()
-  /*:: n:number */
-  {
+  function
+    /*:: n:number */
+  returnOther() {
     return 'other';
   }
 
@@ -14034,9 +14104,15 @@ var formatMessageInterpret = createCommonjsModule(function (module, exports) {
     select: interpretSelect
   };
   exports.types = defaults;
-});
+})(formatMessageInterpret, formatMessageInterpret.exports);
 
-var formatMessage$1 = createCommonjsModule(function (module, exports) {
+(function (module, exports) {
+
+  var parse = formatMessageParse.exports;
+  var interpret = formatMessageInterpret.exports;
+  var plurals$1 = plurals;
+  var lookupClosestLocale$1 = lookupClosestLocale;
+  var origFormats = formatMessageFormats;
   /*::
   import type { Types } from 'format-message-interpret'
   type Locale = string
@@ -14113,7 +14189,7 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
   function namespace()
   /*: FormatMessage */
   {
-    var formats = assign({}, formatMessageFormats);
+    var formats = assign({}, origFormats);
     var currentLocales
     /*: Locales */
     = 'en';
@@ -14147,7 +14223,7 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
       var pattern = typeof msg === 'string' ? msg : msg.default;
       var id = _typeof$1(msg) === 'object' && msg.id || generateId(pattern);
       var translated = translate(pattern, id, locales || currentLocales);
-      var format = translated.format || (translated.format = formatMessageInterpret(formatMessageParse(translated.message), locales || currentLocales, types));
+      var format = translated.format || (translated.format = interpret(parse(translated.message), locales || currentLocales, types));
       return format(args);
     }
 
@@ -14161,7 +14237,7 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
       var pattern = typeof msg === 'string' ? msg : msg.default;
       var id = _typeof$1(msg) === 'object' && msg.id || generateId(pattern);
       var translated = translate(pattern, id, locales || currentLocales);
-      var format = translated.toParts || (translated.toParts = formatMessageInterpret.toParts(formatMessageParse(translated.message, {
+      var format = translated.toParts || (translated.toParts = interpret.toParts(parse(translated.message, {
         tagsType: tagsType
       }), locales || currentLocales, types));
       return format(args);
@@ -14203,7 +14279,7 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
     )
     /*: Translation */
     {
-      var locale = lookupClosestLocale(locales, translations) || 'en';
+      var locale = lookupClosestLocale$1(locales, translations) || 'en';
       var messages = translations[locale] || (translations[locale] = {});
       var translated = messages[id];
 
@@ -14340,14 +14416,14 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
         offset = 0;
       }
 
-      var closest = lookupClosestLocale(locale || currentLocales, plurals);
-      var plural = closest && plurals[closest][pluralType] || returnOther;
+      var closest = lookupClosestLocale$1(locale || currentLocales, plurals$1);
+      var plural = closest && plurals$1[closest][pluralType] || returnOther;
       return options['=' + +value] || options[plural(value - offset)] || options.other;
     }
 
-    function returnOther()
-    /*:: n:number */
-    {
+    function
+      /*:: n:number */
+    returnOther() {
       return 'other';
     }
 
@@ -14356,184 +14432,85 @@ var formatMessage$1 = createCommonjsModule(function (module, exports) {
   }
 
   module.exports = namespace();
-});
+})(formatMessage);
 
-var blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAAEUUlEQVR4Ae2cTWgTURDHZxORatUeFLUeqtaThSDFHopQ1HoQhB4LigjWq3pTEbUXK+LHUb2qICrYkwiCF7UUpYdq0UA9iFVbaFXqoWq1CMm6/022SZNsnsmb3X2kM7Dp5s17k5lf5r15KewjEhECQkAICAEhIASEgBBYjAQs7qB7r9zvoLR90rbtNsd2I7f9Ku1NWZY1TDHrat+pA4NV2ig5jBVg76W7Z2yyLpBts9ot6XkVjY5TabKot+/0wYtVDC85hC1QN/NS6efxeDzW2ZGg1kQzraivK/mhYTf+mp2jkeQYPR1MUiqVSlM8tosrE2NswWDaErnwOtpbjIGH+PBFwid8sfARSwxX3GwAs2uem3lcznHbwayAeL5y2F/CYSRrwy0YUU3b77NEt4aIkpMZbxIbiHraiVbX5yLM842tuHECzHka8h3gHe8n+jmX++CB90SvJ4iudS+EmOvBc8c2hXncqc4KMg/w2pqIbh/KXLhHG3RBSk0A9KbtsZ2ZbMO0xT3E02Xe8b/WBEB+LP9vsSYAomBArg8QYT3EhXuIp8u843+tiSKCaouCMTxOdPhODtJKZx8PXZBSEwCx5qHaqrYxQYCsCYAAA4gn9gSBqLzNmlgDy4cYrFYAavKNfgqPFvxDqMX5uV9OKu1fzhaDTjJQE6IAFICaBDSHR78Gqta8wgAr7V84nvm9TGFNoOFloF/1DLpdE5BquGSgipBCLwAVgFRqAagipNCHtwb6Vc+g2xUAdNWSgZoEw8vAoKutn31NQKrhkoEqQgq9AFQAUqkFoIqQQh/eGhh0tfWzrwCgq5YM1CQYXgb6OepXPStt97MfcLtkoCZgASgANQloDo9+DfSrnpW2a4KodrhM4WrJZcdFn4F+AfhVYb/+EbVLBmqCF4ACUJOA5nBz10C/KqwZMPdwmcKaRAWgANQkoDncyDXw1ZsPhOvb9Iwb3to1DbR92xb30oyXfbhRAPFYav+jlzT26cuCQCcmpwnX23efqbtrh1FPghoF0IPXsGo57d3dSpub1rkgP45/pSfPRlyw6NOzv3MB4CjfGFNEMGWReYB39Mg+Smzd6GYanrDEPdqgQx/0NUWMAggoyLxldUuL+KANOogALMJD8wXDm7YlusxPaa+4lOoTdpsxGRh24FyfZwxAbFUgKBh+4um8vn79wmw3BiD2eRBU2z9zf4sYoA06iNe3qFMEDUYBbN60nmZ+/KYbNx9T0tnzYV+IC/dogw59TAJo1D4Qm2RvL/jg4YuifAI89DFJOAFOOYE1ImPyTseoKFaMwyYZ2xRcXrXl+ikH37ICX1mEDSDOpnLOY+nCCUE45EZHgvrdC98g7jlaOg7mjeVbA52DvZzHBtM4XmlwaNRdu/I+J9JbZB58gm/wEYeQcTlU8Kikntlzl++dtdL2efd4JT1TgYx24Zl6+JgX8WI7/s6LW/4KASEgBISAEBACQkAILC4C/wDBL1fytvgQdgAAAABJRU5ErkJggg==';
-var formatMessage = formatMessage$1;
-var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs';
-var BTSendRateMax = 40;
-var SpikePorts = ['A', 'B', 'C', 'D', 'E', 'F'];
-var SpikeMotorStopMode = {
-  float: 0,
-  brake: 1,
-  hold: 2
-};
-var SpikeOrientation = {
-  front: 1,
-  back: 2,
-  up: 3,
-  down: 4,
-  rightside: 5,
-  leftside: 6
-};
+(function (module, exports) {
+  var ArgumentType = argumentType;
+  var BlockType = blockType;
+  var Cast = cast;
+  var BT = bt;
+  var Base64Util = base64Util;
+  var MathUtil = mathUtil;
+  var RateLimiter = rateLimiter;
+  var Color = color;
+  var setupTranslations = setupTranslations_1;
+  var blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAAEUUlEQVR4Ae2cTWgTURDHZxORatUeFLUeqtaThSDFHopQ1HoQhB4LigjWq3pTEbUXK+LHUb2qICrYkwiCF7UUpYdq0UA9iFVbaFXqoWq1CMm6/022SZNsnsmb3X2kM7Dp5s17k5lf5r15KewjEhECQkAICAEhIASEgBBYjAQs7qB7r9zvoLR90rbtNsd2I7f9Ku1NWZY1TDHrat+pA4NV2ig5jBVg76W7Z2yyLpBts9ot6XkVjY5TabKot+/0wYtVDC85hC1QN/NS6efxeDzW2ZGg1kQzraivK/mhYTf+mp2jkeQYPR1MUiqVSlM8tosrE2NswWDaErnwOtpbjIGH+PBFwid8sfARSwxX3GwAs2uem3lcznHbwayAeL5y2F/CYSRrwy0YUU3b77NEt4aIkpMZbxIbiHraiVbX5yLM842tuHECzHka8h3gHe8n+jmX++CB90SvJ4iudS+EmOvBc8c2hXncqc4KMg/w2pqIbh/KXLhHG3RBSk0A9KbtsZ2ZbMO0xT3E02Xe8b/WBEB+LP9vsSYAomBArg8QYT3EhXuIp8u843+tiSKCaouCMTxOdPhODtJKZx8PXZBSEwCx5qHaqrYxQYCsCYAAA4gn9gSBqLzNmlgDy4cYrFYAavKNfgqPFvxDqMX5uV9OKu1fzhaDTjJQE6IAFICaBDSHR78Gqta8wgAr7V84nvm9TGFNoOFloF/1DLpdE5BquGSgipBCLwAVgFRqAagipNCHtwb6Vc+g2xUAdNWSgZoEw8vAoKutn31NQKrhkoEqQgq9AFQAUqkFoIqQQh/eGhh0tfWzrwCgq5YM1CQYXgb6OepXPStt97MfcLtkoCZgASgANQloDo9+DfSrnpW2a4KodrhM4WrJZcdFn4F+AfhVYb/+EbVLBmqCF4ACUJOA5nBz10C/KqwZMPdwmcKaRAWgANQkoDncyDXw1ZsPhOvb9Iwb3to1DbR92xb30oyXfbhRAPFYav+jlzT26cuCQCcmpwnX23efqbtrh1FPghoF0IPXsGo57d3dSpub1rkgP45/pSfPRlyw6NOzv3MB4CjfGFNEMGWReYB39Mg+Smzd6GYanrDEPdqgQx/0NUWMAggoyLxldUuL+KANOogALMJD8wXDm7YlusxPaa+4lOoTdpsxGRh24FyfZwxAbFUgKBh+4um8vn79wmw3BiD2eRBU2z9zf4sYoA06iNe3qFMEDUYBbN60nmZ+/KYbNx9T0tnzYV+IC/dogw59TAJo1D4Qm2RvL/jg4YuifAI89DFJOAFOOYE1ImPyTseoKFaMwyYZ2xRcXrXl+ikH37ICX1mEDSDOpnLOY+nCCUE45EZHgvrdC98g7jlaOg7mjeVbA52DvZzHBtM4XmlwaNRdu/I+J9JbZB58gm/wEYeQcTlU8Kikntlzl++dtdL2efd4JT1TgYx24Zl6+JgX8WI7/s6LW/4KASEgBISAEBACQkAILC4C/wDBL1fytvgQdgAAAABJRU5ErkJggg==';
+  var formatMessage$1 = formatMessage.exports;
+  var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs';
+  var BTSendRateMax = 40;
+  var SpikePorts = ['A', 'B', 'C', 'D', 'E', 'F'];
+  var SpikeMotorStopMode = {
+    float: 0,
+    brake: 1,
+    hold: 2
+  };
+  var SpikeOrientation = {
+    front: 1,
+    back: 2,
+    up: 3,
+    down: 4,
+    rightside: 5,
+    leftside: 6
+  };
 
-var SpikeMotorSetting = /*#__PURE__*/function () {
-  function SpikeMotorSetting() {
-    _classCallCheck(this, SpikeMotorSetting);
+  var SpikeMotorSetting = /*#__PURE__*/function () {
+    function SpikeMotorSetting() {
+      _classCallCheck(this, SpikeMotorSetting);
 
-    this._speed = 75;
-    this._stopMode = SpikeMotorStopMode.brake;
-    this._stallDetection = true;
-  }
-
-  _createClass(SpikeMotorSetting, [{
-    key: "speed",
-    get: function get() {
-      return this._speed;
-    },
-    set: function set(value) {
-      this._speed = mathUtil.clamp(value, -100, 100);
+      this._speed = 75;
+      this._stopMode = SpikeMotorStopMode.brake;
+      this._stallDetection = true;
     }
-  }, {
-    key: "stopMode",
-    get: function get() {
-      return this._stopMode;
-    },
-    set: function set(value) {
-      if (value < 0 || value > 2) {
-        return;
-      }
 
-      this._stopMode = value;
-    }
-  }, {
-    key: "stallDetection",
-    get: function get() {
-      return this._stallDetection;
-    },
-    set: function set(value) {
-      this._stallDetection = value;
-    }
-  }]);
-
-  return SpikeMotorSetting;
-}();
-
-var SpikePrime = /*#__PURE__*/function () {
-  function SpikePrime(runtime, extensionId) {
-    _classCallCheck(this, SpikePrime);
-
-    this._runtime = runtime;
-    this._extensionId = extensionId;
-    this._remainingText = '';
-    this._sensors = {
-      buttons: [0, 0, 0, 0],
-      angle: {
-        pitch: 0,
-        roll: 0,
-        yaw: 0
+    _createClass(SpikeMotorSetting, [{
+      key: "speed",
+      get: function get() {
+        return this._speed;
       },
-      orientation: SpikeOrientation.front
-    };
-    this._portValues = {};
-    this._pixelBrightness = 100;
-    this._motorSettings = {
-      A: new SpikeMotorSetting(),
-      B: new SpikeMotorSetting(),
-      C: new SpikeMotorSetting(),
-      D: new SpikeMotorSetting(),
-      E: new SpikeMotorSetting(),
-      F: new SpikeMotorSetting()
-    };
-    this._bt = null;
-
-    this._runtime.registerPeripheralExtension(extensionId, this);
-
-    this._runtime.on('PROJECT_STOP_ALL', this.stopAll.bind(this));
-
-    this._rateLimiter = new rateLimiter(BTSendRateMax);
-    this.reset = this.reset.bind(this);
-    this._onConnect = this._onConnect.bind(this);
-    this._onMessage = this._onMessage.bind(this);
-    this._openRequests = {};
-  }
-
-  _createClass(SpikePrime, [{
-    key: "angle",
-    get: function get() {
-      return this._sensors.angle;
-    }
-  }, {
-    key: "orientation",
-    get: function get() {
-      return this._sensors.orientation;
-    }
-  }, {
-    key: "portValues",
-    get: function get() {
-      return this._portValues;
-    }
-  }, {
-    key: "pixelBrightness",
-    get: function get() {
-      return this._pixelBrightness;
-    },
-    set: function set(value) {
-      this._pixelBrightness = value;
-    }
-  }, {
-    key: "motorSettings",
-    get: function get() {
-      return this._motorSettings;
-    }
-  }, {
-    key: "beep",
-    value: function beep(freq, time) {//console.log(`freq: ${freq}, time: ${time}`);
-    }
-  }, {
-    key: "stopAll",
-    value: function stopAll() {
-      this.stopAllMotors();
-      this.stopSound();
-    }
-  }, {
-    key: "stopSound",
-    value: function stopSound() {// this.send(cmd, false); // don't use rate limiter to ensure sound stops
-    }
-  }, {
-    key: "stopAllMotors",
-    value: function stopAllMotors() {}
-  }, {
-    key: "scan",
-    value: function scan() {
-      if (this._bt) {
-        this._bt.disconnect();
+      set: function set(value) {
+        this._speed = MathUtil.clamp(value, -100, 100);
       }
+    }, {
+      key: "stopMode",
+      get: function get() {
+        return this._stopMode;
+      },
+      set: function set(value) {
+        if (value < 0 || value > 2) {
+          return;
+        }
 
-      this._bt = new bt(this._runtime, this._extensionId, {
-        majorDeviceClass: 8,
-        minorDeviceClass: 1
-      }, this._onConnect, this.reset, this._onMessage);
-    }
-  }, {
-    key: "connect",
-    value: function connect(id) {
-      if (this._bt) {
-        this._bt.connectPeripheral(id);
+        this._stopMode = value;
       }
-    }
-  }, {
-    key: "disconnect",
-    value: function disconnect() {
-      if (this._bt) {
-        this._bt.disconnect();
+    }, {
+      key: "stallDetection",
+      get: function get() {
+        return this._stallDetection;
+      },
+      set: function set(value) {
+        this._stallDetection = value;
       }
+    }]);
 
-      this.reset();
-    }
-  }, {
-    key: "reset",
-    value: function reset() {
+    return SpikeMotorSetting;
+  }();
+
+  var SpikePrime = /*#__PURE__*/function () {
+    function SpikePrime(runtime, extensionId) {
+      _classCallCheck(this, SpikePrime);
+
+      this._runtime = runtime;
+      this._extensionId = extensionId;
       this._remainingText = '';
       this._sensors = {
         buttons: [0, 0, 0, 0],
@@ -14545,942 +14522,1051 @@ var SpikePrime = /*#__PURE__*/function () {
         orientation: SpikeOrientation.front
       };
       this._portValues = {};
+      this._pixelBrightness = 100;
+      this._motorSettings = {
+        A: new SpikeMotorSetting(),
+        B: new SpikeMotorSetting(),
+        C: new SpikeMotorSetting(),
+        D: new SpikeMotorSetting(),
+        E: new SpikeMotorSetting(),
+        F: new SpikeMotorSetting()
+      };
+      this._bt = null;
+
+      this._runtime.registerPeripheralExtension(extensionId, this);
+
+      this._runtime.on('PROJECT_STOP_ALL', this.stopAll.bind(this));
+
+      this._rateLimiter = new RateLimiter(BTSendRateMax);
+      this.reset = this.reset.bind(this);
+      this._onConnect = this._onConnect.bind(this);
+      this._onMessage = this._onMessage.bind(this);
+      this._openRequests = {};
     }
-  }, {
-    key: "isConnected",
-    value: function isConnected() {
-      var connected = false;
 
-      if (this._bt) {
-        connected = this._bt.isConnected();
+    _createClass(SpikePrime, [{
+      key: "angle",
+      get: function get() {
+        return this._sensors.angle;
       }
-
-      return connected;
-    }
-  }, {
-    key: "sendJSON",
-    value: function sendJSON(json) {
-      var _this = this;
-
-      var useLimiter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var jsonText = JSON.stringify(json); //console.log('> ' + jsonText);
-
-      if (!this.isConnected()) return Promise.resolve();
-
-      if (useLimiter) {
-        if (!this._rateLimiter.okayToSend()) return Promise.resolve();
+    }, {
+      key: "orientation",
+      get: function get() {
+        return this._sensors.orientation;
       }
+    }, {
+      key: "portValues",
+      get: function get() {
+        return this._portValues;
+      }
+    }, {
+      key: "pixelBrightness",
+      get: function get() {
+        return this._pixelBrightness;
+      },
+      set: function set(value) {
+        this._pixelBrightness = value;
+      }
+    }, {
+      key: "motorSettings",
+      get: function get() {
+        return this._motorSettings;
+      }
+    }, {
+      key: "beep",
+      value: function beep(freq, time) {//console.log(`freq: ${freq}, time: ${time}`);
+      }
+    }, {
+      key: "stopAll",
+      value: function stopAll() {
+        this.stopAllMotors();
+        this.stopSound();
+      }
+    }, {
+      key: "stopSound",
+      value: function stopSound() {// this.send(cmd, false); // don't use rate limiter to ensure sound stops
+      }
+    }, {
+      key: "stopAllMotors",
+      value: function stopAllMotors() {}
+    }, {
+      key: "scan",
+      value: function scan() {
+        if (this._bt) {
+          this._bt.disconnect();
+        }
 
-      if (!json.hasOwnProperty('i')) {
-        return this._bt.sendMessage({
+        this._bt = new BT(this._runtime, this._extensionId, {
+          majorDeviceClass: 8,
+          minorDeviceClass: 1
+        }, this._onConnect, this.reset, this._onMessage);
+      }
+    }, {
+      key: "connect",
+      value: function connect(id) {
+        if (this._bt) {
+          this._bt.connectPeripheral(id);
+        }
+      }
+    }, {
+      key: "disconnect",
+      value: function disconnect() {
+        if (this._bt) {
+          this._bt.disconnect();
+        }
+
+        this.reset();
+      }
+    }, {
+      key: "reset",
+      value: function reset() {
+        this._remainingText = '';
+        this._sensors = {
+          buttons: [0, 0, 0, 0],
+          angle: {
+            pitch: 0,
+            roll: 0,
+            yaw: 0
+          },
+          orientation: SpikeOrientation.front
+        };
+        this._portValues = {};
+      }
+    }, {
+      key: "isConnected",
+      value: function isConnected() {
+        var connected = false;
+
+        if (this._bt) {
+          connected = this._bt.isConnected();
+        }
+
+        return connected;
+      }
+    }, {
+      key: "sendJSON",
+      value: function sendJSON(json) {
+        var _this = this;
+
+        var useLimiter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        var jsonText = JSON.stringify(json); //console.log('> ' + jsonText);
+
+        if (!this.isConnected()) return Promise.resolve();
+
+        if (useLimiter) {
+          if (!this._rateLimiter.okayToSend()) return Promise.resolve();
+        }
+
+        if (!json.hasOwnProperty('i')) {
+          return this._bt.sendMessage({
+            message: "".concat(jsonText, "\r")
+          });
+        }
+
+        var promise = new Promise(function (resolve, reject) {
+          _this._openRequests[json.i] = {
+            resolve: resolve,
+            reject: reject
+          };
+        });
+
+        this._bt.sendMessage({
           message: "".concat(jsonText, "\r")
         });
+
+        return promise;
       }
+    }, {
+      key: "sendCommand",
+      value: function sendCommand(method, params) {
+        var needsResponse = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
-      var promise = new Promise(function (resolve, reject) {
-        _this._openRequests[json.i] = {
-          resolve: resolve,
-          reject: reject
-        };
-      });
+        if (needsResponse) {
+          var id = Math.random().toString(36).slice(-4);
+          return this.sendJSON({
+            i: id,
+            m: method,
+            p: params
+          });
+        }
 
-      this._bt.sendMessage({
-        message: "".concat(jsonText, "\r")
-      });
-
-      return promise;
-    }
-  }, {
-    key: "sendCommand",
-    value: function sendCommand(method, params) {
-      var needsResponse = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-      if (needsResponse) {
-        var id = Math.random().toString(36).slice(-4);
         return this.sendJSON({
-          i: id,
           m: method,
           p: params
         });
       }
-
-      return this.sendJSON({
-        m: method,
-        p: params
-      });
-    }
-  }, {
-    key: "_onConnect",
-    value: function _onConnect() {
-      this.sendCommand('trigger_current_state', {}, false);
-    }
-  }, {
-    key: "_onMessage",
-    value: function _onMessage(params) {
-      var message = params.message;
-      var data = base64Util.base64ToUint8Array(message);
-      var text = new TextDecoder().decode(data);
-      var responses = (this._remainingText + text).split('\r');
-      this._remainingText = responses.pop();
-
-      var _iterator = _createForOfIteratorHelper(responses),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var jsonText = _step.value;
-
-          try {
-            var json = JSON.parse(jsonText);
-
-            if (json.hasOwnProperty('i') || json.m !== 0) {//console.log('< ' + jsonText);
-            }
-
-            this._parseResponse(json);
-          } catch (error) {
-            console.log('invalid JSON:', jsonText);
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
+    }, {
+      key: "_onConnect",
+      value: function _onConnect() {
+        this.sendCommand('trigger_current_state', {}, false);
       }
-    }
-  }, {
-    key: "_parseResponse",
-    value: function _parseResponse(response) {
-      if (response.hasOwnProperty('m')) {
-        switch (response.m) {
-          case 0:
-            // Hub (Ports, Acceleration, Gyro Rate, Tilt Angle, LED Matrix, Timer)
-            {
-              // Ports
-              for (var i = 0; i < 6; i++) {
-                var port = SpikePorts[i];
-                var deviceId = response.p[i][0];
-                var values = response.p[i][1];
+    }, {
+      key: "_onMessage",
+      value: function _onMessage(params) {
+        var message = params.message;
+        var data = Base64Util.base64ToUint8Array(message);
+        var text = new TextDecoder().decode(data);
+        var responses = (this._remainingText + text).split('\r');
+        this._remainingText = responses.pop();
 
-                switch (deviceId) {
-                  case 48:
-                  case 49:
-                    this._portValues[port] = {
-                      speed: values[0],
-                      degreesCounted: values[1],
-                      position: (values[2] + 360) % 360,
-                      power: values[3]
-                    };
-                    break;
+        var _iterator = _createForOfIteratorHelper(responses),
+            _step;
 
-                  default:
-                    this._portValues[port] = {};
-                    break;
-                }
-              } // Tilt Angle
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var jsonText = _step.value;
 
+            try {
+              var json = JSON.parse(jsonText);
 
-              var angle = response.p[8];
-              this._sensors.angle.yaw = angle[0];
-              this._sensors.angle.pitch = angle[1];
-              this._sensors.angle.roll = angle[2];
+              if (json.hasOwnProperty('i') || json.m !== 0) {//console.log('< ' + jsonText);
+              }
+
+              this._parseResponse(json);
+            } catch (error) {
+              console.log('invalid JSON:', jsonText);
             }
-            break;
-
-          case 1:
-            // Strage
-            break;
-
-          case 2:
-            // Battery
-            // {"m":2,"p":[8.316, 100]}
-            break;
-
-          case 3:
-            // Button
-            // {"m":3,"p":["right", 0]}
-            break;
-
-          case 4:
-            // Event (Orientation, Gesture)
-            if (SpikeOrientation.hasOwnProperty(response.p)) {
-              this._sensors.orientation = SpikeOrientation[response.p];
-            }
-
-            break;
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
         }
       }
+    }, {
+      key: "_parseResponse",
+      value: function _parseResponse(response) {
+        if (response.hasOwnProperty('m')) {
+          switch (response.m) {
+            case 0:
+              // Hub (Ports, Acceleration, Gyro Rate, Tilt Angle, LED Matrix, Timer)
+              {
+                // Ports
+                for (var i = 0; i < 6; i++) {
+                  var port = SpikePorts[i];
+                  var deviceId = response.p[i][0];
+                  var values = response.p[i][1];
 
-      if (response.hasOwnProperty('i')) {
-        var openRequest = this._openRequests[response.i];
-        delete this._openRequests[response.i];
+                  switch (deviceId) {
+                    case 48:
+                    case 49:
+                      this._portValues[port] = {
+                        speed: values[0],
+                        degreesCounted: values[1],
+                        position: (values[2] + 360) % 360,
+                        power: values[3]
+                      };
+                      break;
 
-        if (openRequest) {
-          openRequest.resolve();
+                    default:
+                      this._portValues[port] = {};
+                      break;
+                  }
+                } // Tilt Angle
+
+
+                var angle = response.p[8];
+                this._sensors.angle.yaw = angle[0];
+                this._sensors.angle.pitch = angle[1];
+                this._sensors.angle.roll = angle[2];
+              }
+              break;
+
+            case 1:
+              // Strage
+              break;
+
+            case 2:
+              // Battery
+              // {"m":2,"p":[8.316, 100]}
+              break;
+
+            case 3:
+              // Button
+              // {"m":3,"p":["right", 0]}
+              break;
+
+            case 4:
+              // Event (Orientation, Gesture)
+              if (SpikeOrientation.hasOwnProperty(response.p)) {
+                this._sensors.orientation = SpikeOrientation[response.p];
+              }
+
+              break;
+          }
+        }
+
+        if (response.hasOwnProperty('i')) {
+          var openRequest = this._openRequests[response.i];
+          delete this._openRequests[response.i];
+
+          if (openRequest) {
+            openRequest.resolve();
+          }
         }
       }
+    }]);
+
+    return SpikePrime;
+  }();
+
+  var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
+    function Scratch3SpikePrimeBlocks(runtime) {
+      _classCallCheck(this, Scratch3SpikePrimeBlocks);
+
+      this.runtime = runtime;
+      this._peripheral = new SpikePrime(this.runtime, Scratch3SpikePrimeBlocks.EXTENSION_ID);
+      this._playNoteForPicker = this._playNoteForPicker.bind(this);
+      this.runtime.on('PLAY_NOTE', this._playNoteForPicker);
+
+      if (runtime.formatMessage) {
+        // Replace 'formatMessage' to a formatter which is used in the runtime.
+        formatMessage$1 = runtime.formatMessage;
+      }
     }
-  }]);
 
-  return SpikePrime;
-}();
-
-var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
-  function Scratch3SpikePrimeBlocks(runtime) {
-    _classCallCheck(this, Scratch3SpikePrimeBlocks);
-
-    this.runtime = runtime;
-    this._peripheral = new SpikePrime(this.runtime, Scratch3SpikePrimeBlocks.EXTENSION_ID);
-    this._playNoteForPicker = this._playNoteForPicker.bind(this);
-    this.runtime.on('PLAY_NOTE', this._playNoteForPicker);
-
-    if (runtime.formatMessage) {
-      // Replace 'formatMessage' to a formatter which is used in the runtime.
-      formatMessage = runtime.formatMessage;
-    }
-  }
-
-  _createClass(Scratch3SpikePrimeBlocks, [{
-    key: "getInfo",
-    value: function getInfo() {
-      setupTranslations_1(formatMessage);
-      return {
-        id: Scratch3SpikePrimeBlocks.EXTENSION_ID,
-        name: 'SPIKE Prime',
-        blockIconURI: blockIconURI,
-        showStatusButton: true,
-        blocks: [{
-          opcode: 'motorRunFor',
-          text: formatMessage({
-            id: 'legobluetooth.motorRunFor',
-            default: '[PORT] run [DIRECTION] for [VALUE] [UNIT]'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
+    _createClass(Scratch3SpikePrimeBlocks, [{
+      key: "getInfo",
+      value: function getInfo() {
+        setupTranslations(formatMessage$1);
+        return {
+          id: Scratch3SpikePrimeBlocks.EXTENSION_ID,
+          name: 'SPIKE Prime',
+          blockIconURI: blockIconURI,
+          showStatusButton: true,
+          blocks: [{
+            opcode: 'motorRunFor',
+            text: formatMessage$1({
+              id: 'legobluetooth.motorRunFor',
+              default: '[PORT] run [DIRECTION] for [VALUE] [UNIT]'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              PORT: {
+                type: ArgumentType.STRING,
+                menu: 'MULTIPLE_PORT',
+                defaultValue: 'A'
+              },
+              DIRECTION: {
+                type: ArgumentType.NUMBER,
+                menu: 'DIRECTION',
+                defaultValue: 1
+              },
+              VALUE: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 1
+              },
+              UNIT: {
+                type: ArgumentType.STRING,
+                menu: 'MOTOR_UNIT',
+                defaultValue: 'rotations'
+              }
+            }
+          }, {
+            opcode: 'motorGoDirectionToPosition',
+            text: formatMessage$1({
+              id: 'legobluetooth.motorGoDirectionToPosition',
+              default: '[PORT] go [DIRECTION] to position [POSITION]'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              PORT: {
+                type: ArgumentType.STRING,
+                menu: 'MULTIPLE_PORT',
+                defaultValue: 'A'
+              },
+              DIRECTION: {
+                type: ArgumentType.STRING,
+                menu: 'POSITION_DIRECTION',
+                defaultValue: 'shortest'
+              },
+              POSITION: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 0
+              }
+            }
+          }, {
+            opcode: 'motorStart',
+            text: formatMessage$1({
+              id: 'legobluetooth.motorStart',
+              default: '[PORT] start motor [DIRECTION]'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              PORT: {
+                type: ArgumentType.STRING,
+                menu: 'MULTIPLE_PORT',
+                defaultValue: 'A'
+              },
+              DIRECTION: {
+                type: ArgumentType.NUMBER,
+                menu: 'DIRECTION',
+                defaultValue: 1
+              }
+            }
+          }, {
+            opcode: 'motorStop',
+            text: formatMessage$1({
+              id: 'legobluetooth.motorStop',
+              default: '[PORT] stop motor'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              PORT: {
+                type: ArgumentType.STRING,
+                menu: 'MULTIPLE_PORT',
+                defaultValue: 'A'
+              }
+            }
+          }, {
+            opcode: 'motorSetSpeed',
+            text: formatMessage$1({
+              id: 'legobluetooth.motorSetSpeed',
+              default: '[PORT] set speed to [SPEED] %'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              PORT: {
+                type: ArgumentType.STRING,
+                menu: 'MULTIPLE_PORT',
+                defaultValue: 'A'
+              },
+              SPEED: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 75
+              }
+            }
+          }, {
+            opcode: 'getPosition',
+            text: formatMessage$1({
+              id: 'legobluetooth.getPosition',
+              default: '[PORT] position'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+              PORT: {
+                type: ArgumentType.STRING,
+                menu: 'PORT',
+                defaultValue: 'A'
+              }
+            }
+          }, '---', {
+            opcode: 'displayImageFor',
+            text: formatMessage$1({
+              id: 'legobluetooth.displayImageFor',
+              default: 'turn on [MATRIX] for [DURATION] seconds'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              MATRIX: {
+                type: ArgumentType.MATRIX,
+                defaultValue: '1101111011000001000101110'
+              },
+              DURATION: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 2
+              }
+            }
+          }, {
+            opcode: 'displayImage',
+            text: formatMessage$1({
+              id: 'legobluetooth.displayImage',
+              default: 'turn on [MATRIX]'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              MATRIX: {
+                type: ArgumentType.MATRIX,
+                defaultValue: '1101111011000001000101110'
+              }
+            }
+          }, {
+            opcode: 'displayText',
+            text: formatMessage$1({
+              id: 'legobluetooth.displayText',
+              default: 'write [TEXT]'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              TEXT: {
+                type: ArgumentType.STRING,
+                defaultValue: 'Hello'
+              }
+            }
+          }, {
+            opcode: 'displayClear',
+            text: formatMessage$1({
+              id: 'legobluetooth.displayClear',
+              default: 'turn off pixels'
+            }),
+            blockType: BlockType.COMMAND
+          }, {
+            opcode: 'displaySetBrightness',
+            text: formatMessage$1({
+              id: 'legobluetooth.displaySetBrightness',
+              default: 'set pixel brightness to [BRIGHTNESS] %'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              BRIGHTNESS: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 75
+              }
+            }
+          }, {
+            opcode: 'displaySetPixel',
+            text: formatMessage$1({
+              id: 'legobluetooth.displaySetPixel',
+              default: 'set pixel at [X] , [Y] to [BRIGHTNESS] %'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              X: {
+                type: ArgumentType.STRING,
+                menu: 'COORDINATE',
+                defaultValue: '1'
+              },
+              Y: {
+                type: ArgumentType.STRING,
+                menu: 'COORDINATE',
+                defaultValue: '1'
+              },
+              BRIGHTNESS: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 100
+              }
+            }
+          }, {
+            opcode: 'centerButtonLights',
+            text: formatMessage$1({
+              id: 'legobluetooth.centerButtonLights',
+              default: 'set center button light to [COLOR]'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              COLOR: {
+                type: ArgumentType.STRING,
+                menu: 'LED_COLOR',
+                defaultValue: 9
+              }
+            }
+          }, {
+            opcode: 'ultrasonicLightUp',
+            text: formatMessage$1({
+              id: 'legobluetooth.ultrasonicLightUp',
+              default: '[PORT] light up [LIGHT0] [LIGHT1] [LIGHT2] [LIGHT3]'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+              PORT: {
+                type: ArgumentType.STRING,
+                menu: 'PORT',
+                defaultValue: 'A'
+              },
+              LIGHT0: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 100
+              },
+              LIGHT1: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 100
+              },
+              LIGHT2: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 100
+              },
+              LIGHT3: {
+                type: ArgumentType.NUMBER,
+                defaultValue: 100
+              }
+            }
+          }, '---', // {
+          //     opcode: 'getOrientation',
+          //     text: formatMessage({
+          //         id: 'legobluetooth.getOrientation',
+          //         default: 'orientation'
+          //     }),
+          //     blockType: BlockType.REPORTER
+          // },
+          {
+            opcode: 'getAngle',
+            text: formatMessage$1({
+              id: 'legobluetooth.getAngle',
+              default: '[AXIS] angle'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+              AXIS: {
+                type: ArgumentType.STRING,
+                menu: 'AXIS',
+                defaultValue: 'pitch'
+              }
+            }
+          }],
+          menus: {
             PORT: {
-              type: argumentType.STRING,
-              menu: 'MULTIPLE_PORT',
-              defaultValue: 'A'
+              acceptReporters: true,
+              items: SpikePorts
             },
-            DIRECTION: {
-              type: argumentType.NUMBER,
-              menu: 'DIRECTION',
-              defaultValue: 1
+            MULTIPLE_PORT: {
+              acceptReporters: true,
+              items: ['A', 'B', 'C', 'D', 'E', 'F', 'A+B', 'C+D', 'E+F', 'A+B+C+D+E+F']
             },
-            VALUE: {
-              type: argumentType.NUMBER,
-              defaultValue: 1
+            MOTOR_UNIT: {
+              acceptReporters: false,
+              items: [{
+                text: formatMessage$1({
+                  id: 'legobluetooth.rotations',
+                  default: 'rotations'
+                }),
+                value: 'rotations'
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.degrees',
+                  default: 'degrees'
+                }),
+                value: 'degrees'
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.seconds',
+                  default: 'seconds'
+                }),
+                value: 'seconds'
+              }]
             },
-            UNIT: {
-              type: argumentType.STRING,
-              menu: 'MOTOR_UNIT',
-              defaultValue: 'rotations'
-            }
-          }
-        }, {
-          opcode: 'motorGoDirectionToPosition',
-          text: formatMessage({
-            id: 'legobluetooth.motorGoDirectionToPosition',
-            default: '[PORT] go [DIRECTION] to position [POSITION]'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            PORT: {
-              type: argumentType.STRING,
-              menu: 'MULTIPLE_PORT',
-              defaultValue: 'A'
+            POSITION_DIRECTION: {
+              acceptReporters: false,
+              items: [{
+                text: formatMessage$1({
+                  id: 'legobluetooth.shortestPath',
+                  default: 'shortest path'
+                }),
+                value: 'shortest'
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.clockwise',
+                  default: 'clockwise'
+                }),
+                value: 'clockwise'
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.counterclockwise',
+                  default: 'counterclockwise'
+                }),
+                value: 'counterclockwise'
+              }]
             },
-            DIRECTION: {
-              type: argumentType.STRING,
-              menu: 'POSITION_DIRECTION',
-              defaultValue: 'shortest'
+            COORDINATE: {
+              acceptReporters: true,
+              items: ['1', '2', '3', '4', '5']
             },
-            POSITION: {
-              type: argumentType.NUMBER,
-              defaultValue: 0
-            }
-          }
-        }, {
-          opcode: 'motorStart',
-          text: formatMessage({
-            id: 'legobluetooth.motorStart',
-            default: '[PORT] start motor [DIRECTION]'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            PORT: {
-              type: argumentType.STRING,
-              menu: 'MULTIPLE_PORT',
-              defaultValue: 'A'
+            LED_COLOR: {
+              acceptReporters: true,
+              items: [{
+                text: formatMessage$1({
+                  id: 'legobluetooth.black',
+                  default: '(0) Black'
+                }),
+                value: String(Color.BLACK)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.pink',
+                  default: '(1) Pink'
+                }),
+                value: String(Color.PINK)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.purple',
+                  default: '(2) Purple'
+                }),
+                value: String(Color.PURPLE)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.blue',
+                  default: '(3) Blue'
+                }),
+                value: String(Color.BLUE)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.lightBlue',
+                  default: '(4) Light blue'
+                }),
+                value: String(Color.LIGHT_BLUE)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.lightGreen',
+                  default: '(5) Light green'
+                }),
+                value: String(Color.LIGHT_GREEN)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.green',
+                  default: '(6) Green'
+                }),
+                value: String(Color.GREEN)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.yellow',
+                  default: '(7) Yellow'
+                }),
+                value: String(Color.YELLOW)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.orange',
+                  default: '(8) Orange'
+                }),
+                value: String(Color.ORANGE)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.red',
+                  default: '(9) Red'
+                }),
+                value: String(Color.RED)
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.white',
+                  default: '(10) White'
+                }),
+                value: String(Color.WHITE)
+              }]
             },
-            DIRECTION: {
-              type: argumentType.NUMBER,
-              menu: 'DIRECTION',
-              defaultValue: 1
-            }
-          }
-        }, {
-          opcode: 'motorStop',
-          text: formatMessage({
-            id: 'legobluetooth.motorStop',
-            default: '[PORT] stop motor'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            PORT: {
-              type: argumentType.STRING,
-              menu: 'MULTIPLE_PORT',
-              defaultValue: 'A'
-            }
-          }
-        }, {
-          opcode: 'motorSetSpeed',
-          text: formatMessage({
-            id: 'legobluetooth.motorSetSpeed',
-            default: '[PORT] set speed to [SPEED] %'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            PORT: {
-              type: argumentType.STRING,
-              menu: 'MULTIPLE_PORT',
-              defaultValue: 'A'
-            },
-            SPEED: {
-              type: argumentType.NUMBER,
-              defaultValue: 75
-            }
-          }
-        }, {
-          opcode: 'getPosition',
-          text: formatMessage({
-            id: 'legobluetooth.getPosition',
-            default: '[PORT] position'
-          }),
-          blockType: blockType.REPORTER,
-          arguments: {
-            PORT: {
-              type: argumentType.STRING,
-              menu: 'PORT',
-              defaultValue: 'A'
-            }
-          }
-        }, '---', {
-          opcode: 'displayImageFor',
-          text: formatMessage({
-            id: 'legobluetooth.displayImageFor',
-            default: 'turn on [MATRIX] for [DURATION] seconds'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            MATRIX: {
-              type: argumentType.MATRIX,
-              defaultValue: '1101111011000001000101110'
-            },
-            DURATION: {
-              type: argumentType.NUMBER,
-              defaultValue: 2
-            }
-          }
-        }, {
-          opcode: 'displayImage',
-          text: formatMessage({
-            id: 'legobluetooth.displayImage',
-            default: 'turn on [MATRIX]'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            MATRIX: {
-              type: argumentType.MATRIX,
-              defaultValue: '1101111011000001000101110'
-            }
-          }
-        }, {
-          opcode: 'displayText',
-          text: formatMessage({
-            id: 'legobluetooth.displayText',
-            default: 'write [TEXT]'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            TEXT: {
-              type: argumentType.STRING,
-              defaultValue: 'Hello'
-            }
-          }
-        }, {
-          opcode: 'displayClear',
-          text: formatMessage({
-            id: 'legobluetooth.displayClear',
-            default: 'turn off pixels'
-          }),
-          blockType: blockType.COMMAND
-        }, {
-          opcode: 'displaySetBrightness',
-          text: formatMessage({
-            id: 'legobluetooth.displaySetBrightness',
-            default: 'set pixel brightness to [BRIGHTNESS] %'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            BRIGHTNESS: {
-              type: argumentType.NUMBER,
-              defaultValue: 75
-            }
-          }
-        }, {
-          opcode: 'displaySetPixel',
-          text: formatMessage({
-            id: 'legobluetooth.displaySetPixel',
-            default: 'set pixel at [X] , [Y] to [BRIGHTNESS] %'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            X: {
-              type: argumentType.STRING,
-              menu: 'COORDINATE',
-              defaultValue: '1'
-            },
-            Y: {
-              type: argumentType.STRING,
-              menu: 'COORDINATE',
-              defaultValue: '1'
-            },
-            BRIGHTNESS: {
-              type: argumentType.NUMBER,
-              defaultValue: 100
-            }
-          }
-        }, {
-          opcode: 'centerButtonLights',
-          text: formatMessage({
-            id: 'legobluetooth.centerButtonLights',
-            default: 'set center button light to [COLOR]'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            COLOR: {
-              type: argumentType.STRING,
-              menu: 'LED_COLOR',
-              defaultValue: 9
-            }
-          }
-        }, {
-          opcode: 'ultrasonicLightUp',
-          text: formatMessage({
-            id: 'legobluetooth.ultrasonicLightUp',
-            default: '[PORT] light up [LIGHT0] [LIGHT1] [LIGHT2] [LIGHT3]'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            PORT: {
-              type: argumentType.STRING,
-              menu: 'PORT',
-              defaultValue: 'A'
-            },
-            LIGHT0: {
-              type: argumentType.NUMBER,
-              defaultValue: 100
-            },
-            LIGHT1: {
-              type: argumentType.NUMBER,
-              defaultValue: 100
-            },
-            LIGHT2: {
-              type: argumentType.NUMBER,
-              defaultValue: 100
-            },
-            LIGHT3: {
-              type: argumentType.NUMBER,
-              defaultValue: 100
-            }
-          }
-        }, '---', // {
-        //     opcode: 'getOrientation',
-        //     text: formatMessage({
-        //         id: 'legobluetooth.getOrientation',
-        //         default: 'orientation'
-        //     }),
-        //     blockType: BlockType.REPORTER
-        // },
-        {
-          opcode: 'getAngle',
-          text: formatMessage({
-            id: 'legobluetooth.getAngle',
-            default: '[AXIS] angle'
-          }),
-          blockType: blockType.REPORTER,
-          arguments: {
             AXIS: {
-              type: argumentType.STRING,
-              menu: 'AXIS',
-              defaultValue: 'pitch'
+              acceptReporters: false,
+              items: [{
+                text: formatMessage$1({
+                  id: 'legobluetooth.pitch',
+                  default: 'pitch'
+                }),
+                value: 'pitch'
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.roll',
+                  default: 'roll'
+                }),
+                value: 'roll'
+              }, {
+                text: formatMessage$1({
+                  id: 'legobluetooth.yaw',
+                  default: 'yaw'
+                }),
+                value: 'yaw'
+              }]
+            },
+            DIRECTION: {
+              acceptReporters: false,
+              items: [{
+                text: '⬆︎',
+                value: '1'
+              }, {
+                text: '⬇',
+                value: '-1'
+              }]
             }
           }
-        }],
-        menus: {
-          PORT: {
-            acceptReporters: true,
-            items: SpikePorts
-          },
-          MULTIPLE_PORT: {
-            acceptReporters: true,
-            items: ['A', 'B', 'C', 'D', 'E', 'F', 'A+B', 'C+D', 'E+F', 'A+B+C+D+E+F']
-          },
-          MOTOR_UNIT: {
-            acceptReporters: false,
-            items: [{
-              text: formatMessage({
-                id: 'legobluetooth.rotations',
-                default: 'rotations'
-              }),
-              value: 'rotations'
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.degrees',
-                default: 'degrees'
-              }),
-              value: 'degrees'
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.seconds',
-                default: 'seconds'
-              }),
-              value: 'seconds'
-            }]
-          },
-          POSITION_DIRECTION: {
-            acceptReporters: false,
-            items: [{
-              text: formatMessage({
-                id: 'legobluetooth.shortestPath',
-                default: 'shortest path'
-              }),
-              value: 'shortest'
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.clockwise',
-                default: 'clockwise'
-              }),
-              value: 'clockwise'
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.counterclockwise',
-                default: 'counterclockwise'
-              }),
-              value: 'counterclockwise'
-            }]
-          },
-          COORDINATE: {
-            acceptReporters: true,
-            items: ['1', '2', '3', '4', '5']
-          },
-          LED_COLOR: {
-            acceptReporters: true,
-            items: [{
-              text: formatMessage({
-                id: 'legobluetooth.black',
-                default: '(0) Black'
-              }),
-              value: String(color.BLACK)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.pink',
-                default: '(1) Pink'
-              }),
-              value: String(color.PINK)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.purple',
-                default: '(2) Purple'
-              }),
-              value: String(color.PURPLE)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.blue',
-                default: '(3) Blue'
-              }),
-              value: String(color.BLUE)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.lightBlue',
-                default: '(4) Light blue'
-              }),
-              value: String(color.LIGHT_BLUE)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.lightGreen',
-                default: '(5) Light green'
-              }),
-              value: String(color.LIGHT_GREEN)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.green',
-                default: '(6) Green'
-              }),
-              value: String(color.GREEN)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.yellow',
-                default: '(7) Yellow'
-              }),
-              value: String(color.YELLOW)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.orange',
-                default: '(8) Orange'
-              }),
-              value: String(color.ORANGE)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.red',
-                default: '(9) Red'
-              }),
-              value: String(color.RED)
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.white',
-                default: '(10) White'
-              }),
-              value: String(color.WHITE)
-            }]
-          },
-          AXIS: {
-            acceptReporters: false,
-            items: [{
-              text: formatMessage({
-                id: 'legobluetooth.pitch',
-                default: 'pitch'
-              }),
-              value: 'pitch'
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.roll',
-                default: 'roll'
-              }),
-              value: 'roll'
-            }, {
-              text: formatMessage({
-                id: 'legobluetooth.yaw',
-                default: 'yaw'
-              }),
-              value: 'yaw'
-            }]
-          },
-          DIRECTION: {
-            acceptReporters: false,
-            items: [{
-              text: '⬆︎',
-              value: '1'
-            }, {
-              text: '⬇',
-              value: '-1'
-            }]
-          }
+        };
+      }
+    }, {
+      key: "motorRunFor",
+      value: function motorRunFor(args) {
+        var direction = args.DIRECTION;
+        var value = Cast.toNumber(args.VALUE);
+        var unit = args.UNIT;
+
+        var ports = this._validatePorts(Cast.toString(args.PORT));
+
+        switch (unit) {
+          case 'rotations':
+            return this._motorRunForDegrees(ports, direction, value * 360);
+
+          case 'degrees':
+            return this._motorRunForDegrees(ports, direction, value);
+
+          case 'seconds':
+            return this._motorRunTimed(ports, direction, value);
+
+          default:
+            return Promise.resolve();
         }
-      };
-    }
-  }, {
-    key: "motorRunFor",
-    value: function motorRunFor(args) {
-      var direction = args.DIRECTION;
-      var value = cast.toNumber(args.VALUE);
-      var unit = args.UNIT;
+      }
+    }, {
+      key: "_motorRunForDegrees",
+      value: function _motorRunForDegrees(ports, direction, degrees) {
+        var _this2 = this;
 
-      var ports = this._validatePorts(cast.toString(args.PORT));
+        var promises = ports.map(function (port) {
+          var setting = _this2._peripheral.motorSettings[port];
+          return _this2._peripheral.sendCommand('scratch.motor_run_for_degrees', {
+            port: port,
+            speed: setting.speed * direction,
+            degrees: Math.floor(degrees),
+            stop: setting.stopMode,
+            stall: setting.stallDetection
+          });
+        });
+        return Promise.all(promises).then(function () {});
+      }
+    }, {
+      key: "_motorRunTimed",
+      value: function _motorRunTimed(ports, direction, seconds) {
+        var _this3 = this;
 
-      switch (unit) {
-        case 'rotations':
-          return this._motorRunForDegrees(ports, direction, value * 360);
+        var promises = ports.map(function (port) {
+          var setting = _this3._peripheral.motorSettings[port];
+          return _this3._peripheral.sendCommand('scratch.motor_run_timed', {
+            port: port,
+            speed: setting.speed * direction,
+            time: Math.floor(seconds * 1000),
+            stop: setting.stopMode,
+            stall: setting.stallDetection
+          });
+        });
+        return Promise.all(promises).then(function () {});
+      }
+    }, {
+      key: "motorGoDirectionToPosition",
+      value: function motorGoDirectionToPosition(args) {
+        var _this4 = this;
 
-        case 'degrees':
-          return this._motorRunForDegrees(ports, direction, value);
+        var direction = args.DIRECTION;
+        var position = Math.round(Cast.toNumber(args.POSITION));
 
-        case 'seconds':
-          return this._motorRunTimed(ports, direction, value);
+        var ports = this._validatePorts(Cast.toString(args.PORT));
 
-        default:
+        var settings = this._peripheral.motorSettings;
+        var promises = ports.map(function (port) {
+          var setting = settings[port];
+          return _this4._peripheral.sendCommand('scratch.motor_go_direction_to_position', {
+            port: port,
+            direction: direction,
+            position: position,
+            speed: setting.speed,
+            stop: setting.stopMode,
+            stall: setting.stallDetection
+          });
+        });
+        return Promise.all(promises).then(function () {});
+      }
+    }, {
+      key: "motorStart",
+      value: function motorStart(args) {
+        var _this5 = this;
+
+        var direction = args.DIRECTION;
+
+        var ports = this._validatePorts(Cast.toString(args.PORT));
+
+        var settings = this._peripheral.motorSettings;
+        var promises = ports.map(function (port) {
+          var setting = settings[port];
+          return _this5._peripheral.sendCommand('scratch.motor_start', {
+            port: port,
+            speed: setting.speed * direction,
+            stall: setting.stallDetection
+          });
+        });
+        return Promise.all(promises).then(function () {});
+      }
+    }, {
+      key: "motorStop",
+      value: function motorStop(args) {
+        var _this6 = this;
+
+        var ports = this._validatePorts(Cast.toString(args.PORT));
+
+        var settings = this._peripheral.motorSettings;
+        var promises = ports.map(function (port) {
+          var setting = settings[port];
+          return _this6._peripheral.sendCommand('scratch.motor_stop', {
+            port: port,
+            stop: setting.stopMode
+          });
+        });
+        return Promise.all(promises).then(function () {});
+      }
+    }, {
+      key: "motorSetSpeed",
+      value: function motorSetSpeed(args) {
+        var speed = Cast.toNumber(args.SPEED);
+
+        var ports = this._validatePorts(Cast.toString(args.PORT));
+
+        var settings = this._peripheral.motorSettings;
+        ports.forEach(function (port) {
+          settings[port].speed = speed;
+        });
+      }
+    }, {
+      key: "getPosition",
+      value: function getPosition(args) {
+        var _this$_peripheral$por, _this$_peripheral$por2;
+
+        var port = Cast.toString(args.PORT).trim().toUpperCase();
+        return (_this$_peripheral$por = (_this$_peripheral$por2 = this._peripheral.portValues[port]) === null || _this$_peripheral$por2 === void 0 ? void 0 : _this$_peripheral$por2.position) !== null && _this$_peripheral$por !== void 0 ? _this$_peripheral$por : 0;
+      }
+    }, {
+      key: "displayImageFor",
+      value: function displayImageFor(args) {
+        var brightness = Math.round(9 * this._peripheral.pixelBrightness / 100);
+        var symbol = (Cast.toString(args.MATRIX).replace(/\D/g, '') + '0'.repeat(25)).slice(0, 25);
+        var image = symbol.replace(/1/g, brightness).match(/.{5}/g).join(':');
+        var duration = Cast.toNumber(args.DURATION) * 1000;
+        duration = MathUtil.clamp(duration, 0, 60000);
+        return this._peripheral.sendCommand('scratch.display_image_for', {
+          image: image,
+          duration: duration
+        });
+      }
+    }, {
+      key: "displayImage",
+      value: function displayImage(args) {
+        var brightness = Math.round(9 * this._peripheral.pixelBrightness / 100);
+        var symbol = (Cast.toString(args.MATRIX).replace(/\D/g, '') + '0'.repeat(25)).slice(0, 25);
+        var image = symbol.replace(/1/g, brightness).match(/.{5}/g).join(':');
+        return this._peripheral.sendCommand('scratch.display_image', {
+          image: image
+        });
+      }
+    }, {
+      key: "displayText",
+      value: function displayText(args) {
+        var text = Cast.toString(args.TEXT);
+        return this._peripheral.sendCommand('scratch.display_text', {
+          text: text
+        });
+      }
+    }, {
+      key: "displayClear",
+      value: function displayClear() {
+        return this._peripheral.sendCommand('scratch.display_clear', {});
+      }
+    }, {
+      key: "displaySetBrightness",
+      value: function displaySetBrightness(args) {
+        var brightness = MathUtil.clamp(Cast.toNumber(args.BRIGHTNESS), 0, 100);
+        this._peripheral.pixelBrightness = brightness;
+      }
+    }, {
+      key: "displaySetPixel",
+      value: function displaySetPixel(args) {
+        var x = Cast.toNumber(args.X);
+
+        if (x < 1 || x > 5) {
           return Promise.resolve();
-      }
-    }
-  }, {
-    key: "_motorRunForDegrees",
-    value: function _motorRunForDegrees(ports, direction, degrees) {
-      var _this2 = this;
+        }
 
-      var promises = ports.map(function (port) {
-        var setting = _this2._peripheral.motorSettings[port];
-        return _this2._peripheral.sendCommand('scratch.motor_run_for_degrees', {
-          port: port,
-          speed: setting.speed * direction,
-          degrees: Math.floor(degrees),
-          stop: setting.stopMode,
-          stall: setting.stallDetection
+        var y = Cast.toNumber(args.Y);
+
+        if (y < 1 || y > 5) {
+          return Promise.resolve();
+        }
+
+        var brightness = MathUtil.clamp(Cast.toNumber(args.BRIGHTNESS), 0, 100);
+        brightness = Math.round(9 * brightness / 100);
+        return this._peripheral.sendCommand('scratch.display_set_pixel', {
+          x: x - 1,
+          y: y - 1,
+          brightness: brightness
         });
-      });
-      return Promise.all(promises).then(function () {});
-    }
-  }, {
-    key: "_motorRunTimed",
-    value: function _motorRunTimed(ports, direction, seconds) {
-      var _this3 = this;
-
-      var promises = ports.map(function (port) {
-        var setting = _this3._peripheral.motorSettings[port];
-        return _this3._peripheral.sendCommand('scratch.motor_run_timed', {
-          port: port,
-          speed: setting.speed * direction,
-          time: Math.floor(seconds * 1000),
-          stop: setting.stopMode,
-          stall: setting.stallDetection
+      }
+    }, {
+      key: "centerButtonLights",
+      value: function centerButtonLights(args) {
+        var color = Cast.toNumber(args.COLOR);
+        return this._peripheral.sendCommand('scratch.center_button_lights', {
+          color: color
         });
-      });
-      return Promise.all(promises).then(function () {});
-    }
-  }, {
-    key: "motorGoDirectionToPosition",
-    value: function motorGoDirectionToPosition(args) {
-      var _this4 = this;
+      }
+    }, {
+      key: "ultrasonicLightUp",
+      value: function ultrasonicLightUp(args) {
+        var port = Cast.toString(args.PORT).trim().toUpperCase();
 
-      var direction = args.DIRECTION;
-      var position = Math.round(cast.toNumber(args.POSITION));
+        if (!SpikePorts.includes(port)) {
+          return Promise.resolve();
+        }
 
-      var ports = this._validatePorts(cast.toString(args.PORT));
+        var lights = [];
 
-      var settings = this._peripheral.motorSettings;
-      var promises = ports.map(function (port) {
-        var setting = settings[port];
-        return _this4._peripheral.sendCommand('scratch.motor_go_direction_to_position', {
+        for (var i = 0; i < 4; i++) {
+          lights.push(MathUtil.clamp(Cast.toNumber(args["LIGHT".concat(i)]), 0, 100));
+        }
+
+        return this._peripheral.sendCommand('scratch.ultrasonic_light_up', {
           port: port,
-          direction: direction,
-          position: position,
-          speed: setting.speed,
-          stop: setting.stopMode,
-          stall: setting.stallDetection
+          lights: lights
         });
-      });
-      return Promise.all(promises).then(function () {});
-    }
-  }, {
-    key: "motorStart",
-    value: function motorStart(args) {
-      var _this5 = this;
-
-      var direction = args.DIRECTION;
-
-      var ports = this._validatePorts(cast.toString(args.PORT));
-
-      var settings = this._peripheral.motorSettings;
-      var promises = ports.map(function (port) {
-        var setting = settings[port];
-        return _this5._peripheral.sendCommand('scratch.motor_start', {
-          port: port,
-          speed: setting.speed * direction,
-          stall: setting.stallDetection
+      }
+    }, {
+      key: "getOrientation",
+      value: function getOrientation() {
+        return this._peripheral.orientation;
+      }
+    }, {
+      key: "getAngle",
+      value: function getAngle(args) {
+        var axis = Cast.toString(args.AXIS);
+        return this._peripheral.angle[axis];
+      }
+    }, {
+      key: "_playNoteForPicker",
+      value: function _playNoteForPicker(note, category) {
+        if (category !== this.getInfo().name) return;
+        this.beep({
+          NOTE: note,
+          TIME: 0.25
         });
-      });
-      return Promise.all(promises).then(function () {});
-    }
-  }, {
-    key: "motorStop",
-    value: function motorStop(args) {
-      var _this6 = this;
+      }
+    }, {
+      key: "beep",
+      value: function beep(args) {
+        var _this7 = this;
 
-      var ports = this._validatePorts(cast.toString(args.PORT));
+        var note = MathUtil.clamp(Cast.toNumber(args.NOTE), 47, 99); // valid EV3 sounds
 
-      var settings = this._peripheral.motorSettings;
-      var promises = ports.map(function (port) {
-        var setting = settings[port];
-        return _this6._peripheral.sendCommand('scratch.motor_stop', {
-          port: port,
-          stop: setting.stopMode
+        var time = Cast.toNumber(args.TIME) * 1000;
+        time = MathUtil.clamp(time, 0, 3000);
+
+        if (time === 0) {
+          return; // don't send a beep time of 0
+        }
+
+        return new Promise(function (resolve) {
+          // https://en.wikipedia.org/wiki/MIDI_tuning_standard#Frequency_values
+          var freq = Math.pow(2, (note - 69 + 12) / 12) * 440;
+
+          _this7._peripheral.beep(freq, time); // Run for some time even when no piezo is connected.
+
+
+          setTimeout(resolve, time);
         });
-      });
-      return Promise.all(promises).then(function () {});
-    }
-  }, {
-    key: "motorSetSpeed",
-    value: function motorSetSpeed(args) {
-      var speed = cast.toNumber(args.SPEED);
-
-      var ports = this._validatePorts(cast.toString(args.PORT));
-
-      var settings = this._peripheral.motorSettings;
-      ports.forEach(function (port) {
-        settings[port].speed = speed;
-      });
-    }
-  }, {
-    key: "getPosition",
-    value: function getPosition(args) {
-      var _this$_peripheral$por, _this$_peripheral$por2;
-
-      var port = cast.toString(args.PORT).trim().toUpperCase();
-      return (_this$_peripheral$por = (_this$_peripheral$por2 = this._peripheral.portValues[port]) === null || _this$_peripheral$por2 === void 0 ? void 0 : _this$_peripheral$por2.position) !== null && _this$_peripheral$por !== void 0 ? _this$_peripheral$por : 0;
-    }
-  }, {
-    key: "displayImageFor",
-    value: function displayImageFor(args) {
-      var brightness = Math.round(9 * this._peripheral.pixelBrightness / 100);
-      var symbol = (cast.toString(args.MATRIX).replace(/\D/g, '') + '0'.repeat(25)).slice(0, 25);
-      var image = symbol.replace(/1/g, brightness).match(/.{5}/g).join(':');
-      var duration = cast.toNumber(args.DURATION) * 1000;
-      duration = mathUtil.clamp(duration, 0, 60000);
-      return this._peripheral.sendCommand('scratch.display_image_for', {
-        image: image,
-        duration: duration
-      });
-    }
-  }, {
-    key: "displayImage",
-    value: function displayImage(args) {
-      var brightness = Math.round(9 * this._peripheral.pixelBrightness / 100);
-      var symbol = (cast.toString(args.MATRIX).replace(/\D/g, '') + '0'.repeat(25)).slice(0, 25);
-      var image = symbol.replace(/1/g, brightness).match(/.{5}/g).join(':');
-      return this._peripheral.sendCommand('scratch.display_image', {
-        image: image
-      });
-    }
-  }, {
-    key: "displayText",
-    value: function displayText(args) {
-      var text = cast.toString(args.TEXT);
-      return this._peripheral.sendCommand('scratch.display_text', {
-        text: text
-      });
-    }
-  }, {
-    key: "displayClear",
-    value: function displayClear() {
-      return this._peripheral.sendCommand('scratch.display_clear', {});
-    }
-  }, {
-    key: "displaySetBrightness",
-    value: function displaySetBrightness(args) {
-      var brightness = mathUtil.clamp(cast.toNumber(args.BRIGHTNESS), 0, 100);
-      this._peripheral.pixelBrightness = brightness;
-    }
-  }, {
-    key: "displaySetPixel",
-    value: function displaySetPixel(args) {
-      var x = cast.toNumber(args.X);
-
-      if (x < 1 || x > 5) {
-        return Promise.resolve();
       }
-
-      var y = cast.toNumber(args.Y);
-
-      if (y < 1 || y > 5) {
-        return Promise.resolve();
+    }, {
+      key: "_validatePorts",
+      value: function _validatePorts(text) {
+        return text.toUpperCase().replace(/[^ABCDEF]/g, '').split('').filter(function (x, i, self) {
+          return self.indexOf(x) === i;
+        }).sort();
       }
-
-      var brightness = mathUtil.clamp(cast.toNumber(args.BRIGHTNESS), 0, 100);
-      brightness = Math.round(9 * brightness / 100);
-      return this._peripheral.sendCommand('scratch.display_set_pixel', {
-        x: x - 1,
-        y: y - 1,
-        brightness: brightness
-      });
-    }
-  }, {
-    key: "centerButtonLights",
-    value: function centerButtonLights(args) {
-      var color = cast.toNumber(args.COLOR);
-      return this._peripheral.sendCommand('scratch.center_button_lights', {
-        color: color
-      });
-    }
-  }, {
-    key: "ultrasonicLightUp",
-    value: function ultrasonicLightUp(args) {
-      var port = cast.toString(args.PORT).trim().toUpperCase();
-
-      if (!SpikePorts.includes(port)) {
-        return Promise.resolve();
+    }], [{
+      key: "EXTENSION_ID",
+      get: function get() {
+        return 'spikeprime';
       }
-
-      var lights = [];
-
-      for (var i = 0; i < 4; i++) {
-        lights.push(mathUtil.clamp(cast.toNumber(args["LIGHT".concat(i)]), 0, 100));
+    }, {
+      key: "extensionURL",
+      get: function get() {
+        return extensionURL;
+      },
+      set: function set(url) {
+        extensionURL = url;
       }
+    }]);
 
-      return this._peripheral.sendCommand('scratch.ultrasonic_light_up', {
-        port: port,
-        lights: lights
-      });
-    }
-  }, {
-    key: "getOrientation",
-    value: function getOrientation() {
-      return this._peripheral.orientation;
-    }
-  }, {
-    key: "getAngle",
-    value: function getAngle(args) {
-      var axis = cast.toString(args.AXIS);
-      return this._peripheral.angle[axis];
-    }
-  }, {
-    key: "_playNoteForPicker",
-    value: function _playNoteForPicker(note, category) {
-      if (category !== this.getInfo().name) return;
-      this.beep({
-        NOTE: note,
-        TIME: 0.25
-      });
-    }
-  }, {
-    key: "beep",
-    value: function beep(args) {
-      var _this7 = this;
+    return Scratch3SpikePrimeBlocks;
+  }();
 
-      var note = mathUtil.clamp(cast.toNumber(args.NOTE), 47, 99); // valid EV3 sounds
+  exports.blockClass = Scratch3SpikePrimeBlocks;
+  module.exports = Scratch3SpikePrimeBlocks;
+})(_spikeprime, _spikeprime.exports);
 
-      var time = cast.toNumber(args.TIME) * 1000;
-      time = mathUtil.clamp(time, 0, 3000);
-
-      if (time === 0) {
-        return; // don't send a beep time of 0
-      }
-
-      return new Promise(function (resolve) {
-        // https://en.wikipedia.org/wiki/MIDI_tuning_standard#Frequency_values
-        var freq = Math.pow(2, (note - 69 + 12) / 12) * 440;
-
-        _this7._peripheral.beep(freq, time); // Run for some time even when no piezo is connected.
-
-
-        setTimeout(resolve, time);
-      });
-    }
-  }, {
-    key: "_validatePorts",
-    value: function _validatePorts(text) {
-      return text.toUpperCase().replace(/[^ABCDEF]/g, '').split('').filter(function (x, i, self) {
-        return self.indexOf(x) === i;
-      }).sort();
-    }
-  }], [{
-    key: "EXTENSION_ID",
-    get: function get() {
-      return 'spikeprime';
-    }
-  }, {
-    key: "extensionURL",
-    get: function get() {
-      return extensionURL;
-    },
-    set: function set(url) {
-      extensionURL = url;
-    }
-  }]);
-
-  return Scratch3SpikePrimeBlocks;
-}();
-
-var blockClass = Scratch3SpikePrimeBlocks;
-var _spikeprime = Scratch3SpikePrimeBlocks;
-_spikeprime.blockClass = blockClass;
-
-export { _spikeprime as __moduleExports, blockClass, entry };
+export { entry };
