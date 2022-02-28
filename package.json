@@ -63,6 +63,5 @@
     "rollup": "^2.26.11",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0"
-  },
-  "dependencies": {}
+  }
 }
