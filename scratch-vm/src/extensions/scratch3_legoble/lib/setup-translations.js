@@ -126,6 +126,6 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
         }
         Object.assign(localeSetup.translations[locale], translations[locale]);
     }
-}
+};
 
 module.exports = setupTranslations;
