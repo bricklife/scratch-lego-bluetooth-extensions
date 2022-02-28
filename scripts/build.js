@@ -5,8 +5,8 @@ const rollup = require('rollup');
 const babel = require('@rollup/plugin-babel').default;
 const commonjs = require('@rollup/plugin-commonjs');
 const nodeResolve = require('@rollup/plugin-node-resolve').default;
-const nodeBuiltins = require('rollup-plugin-node-builtins');
 const nodeGlobals = require('rollup-plugin-node-globals');
+const nodePolifills = require('rollup-plugin-polyfill-node');
 const importImage = require('@rollup/plugin-image');
 const multi = require('@rollup/plugin-multi-entry');
 
@@ -76,7 +76,7 @@ const rollupOptions = {
             nodeResolve({ browser: true, preferBuiltins: true }),
             commonjs({
             }),
-            nodeBuiltins(),
+            nodePolifills(),
             nodeGlobals(),
             babel({
                 babelrc: false,
