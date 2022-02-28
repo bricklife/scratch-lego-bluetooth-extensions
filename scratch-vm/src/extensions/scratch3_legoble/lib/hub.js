@@ -130,7 +130,7 @@ class Hub {
             hubTypeFilter = {
                 dataPrefix: [0x00, this._hubType],
                 mask: [0x00, 0xff]
-            }
+            };
         }
 
         this._ble = new BLE(this._runtime, this._extensionId, {
@@ -225,7 +225,7 @@ class Hub {
                 const ioType = data[5];
                 switch (event) {
                     case 0x00: // Detached I/O
-                        this._dettachDevice(portId)
+                        this._dettachDevice(portId);
                         break;
                     case 0x01: // Attached I/O
                         this._attachDevice(portId, ioType);
