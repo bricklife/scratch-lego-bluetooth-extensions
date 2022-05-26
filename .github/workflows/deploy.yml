@@ -15,14 +15,14 @@ jobs:
           repository: bricklife/scratch-gui
           ref: lego-bluetooth-extensions
           path: ./scratch-gui
-      - run: npm install
+      - run: npm ci
         working-directory: ./scratch-gui
       - uses: actions/checkout@v2
         with:
           repository: bricklife/scratch-lego-bluetooth-extensions
           ref: master
           path: ./scratch-lego-bluetooth-extensions
-      - run: npm install
+      - run: npm ci
         working-directory: ./scratch-lego-bluetooth-extensions
       - run: npm run register
         working-directory: ./scratch-lego-bluetooth-extensions
