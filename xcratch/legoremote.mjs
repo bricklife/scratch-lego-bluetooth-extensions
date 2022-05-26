@@ -1,6 +1,4 @@
-var global$1 = (typeof global !== "undefined" ? global :
-  typeof self !== "undefined" ? self :
-  typeof window !== "undefined" ? window : {});
+var global$1 = typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};
 
 // based off https://github.com/defunctzombie/node-process/blob/master/browser.js
 
@@ -256,190 +254,6 @@ function _typeof$1(obj) {
   }, _typeof$1(obj);
 }
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.defineProperty(subClass, "prototype", {
-    writable: false
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-
-  var _s, _e;
-
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
 /*
 object-assign
 (c) Sindre Sorhus
@@ -538,7 +352,7 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
 
 var emptyObject = {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   Object.freeze(emptyObject);
 }
 
@@ -566,22 +380,22 @@ function makeEmptyFunction(arg) {
  */
 
 
-var emptyFunction$1 = function emptyFunction() {};
+var emptyFunction$2 = function emptyFunction() {};
 
-emptyFunction$1.thatReturns = makeEmptyFunction;
-emptyFunction$1.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction$1.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction$1.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction$2.thatReturns = makeEmptyFunction;
+emptyFunction$2.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction$2.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction$2.thatReturnsNull = makeEmptyFunction(null);
 
-emptyFunction$1.thatReturnsThis = function () {
+emptyFunction$2.thatReturnsThis = function () {
   return this;
 };
 
-emptyFunction$1.thatReturnsArgument = function (arg) {
+emptyFunction$2.thatReturnsArgument = function (arg) {
   return arg;
 };
 
-var emptyFunction_1 = emptyFunction$1;
+var emptyFunction_1 = emptyFunction$2;
 
 var m$1 = objectAssign,
     n$1 = emptyObject_1,
@@ -896,7 +710,7 @@ var U = {
   default: U
 }),
     W = V && U || V;
-W["default"] ? W["default"] : W;
+var react_production_min = W["default"] ? W["default"] : W;
 
 var react_development = {exports: {}};
 
@@ -914,7 +728,7 @@ var react_development = {exports: {}};
 
 var validateFormat = function validateFormat(format) {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   validateFormat = function validateFormat(format) {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
@@ -947,7 +761,7 @@ function invariant$1(condition, format, a, b, c, d, e, f) {
 
 var invariant_1 = invariant$1;
 
-var emptyFunction = emptyFunction_1;
+var emptyFunction$1 = emptyFunction_1;
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
  * This can be used to log issues in development environments in critical
@@ -955,9 +769,9 @@ var emptyFunction = emptyFunction_1;
  * same logic and follow the same code paths.
  */
 
-var warning = emptyFunction;
+var warning = emptyFunction$1;
 
-{
+if (process.env.NODE_ENV !== 'production') {
   var printWarning$2 = function printWarning(format) {
     for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -1008,13 +822,13 @@ var warning_1 = warning;
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$2;
+var ReactPropTypesSecret$3 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;
 
 var printWarning$1 = function printWarning() {};
 
-{
-  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+if (process.env.NODE_ENV !== 'production') {
+  var ReactPropTypesSecret$2 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
   var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -1047,7 +861,7 @@ var printWarning$1 = function printWarning() {};
 
 
 function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     for (var typeSpecName in typeSpecs) {
       if (has$1(typeSpecs, typeSpecName)) {
         var error; // Prop type validation may throw. In case they do, we don't want to
@@ -1063,7 +877,7 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
             throw err;
           }
 
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$2);
         } catch (ex) {
           error = ex;
         }
@@ -1091,14 +905,14 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
 
 
 checkPropTypes$1.resetWarningCache = function () {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     loggedTypeFailures = {};
   }
 };
 
 var checkPropTypes_1 = checkPropTypes$1;
 
-{
+if (process.env.NODE_ENV !== "production") {
   (function () {
 
     var _assign = objectAssign;
@@ -2487,7 +2301,9 @@ var checkPropTypes_1 = checkPropTypes$1;
   })();
 }
 
-{
+if (process.env.NODE_ENV === 'production') {
+  react.exports = react_production_min;
+} else {
   react.exports = react_development.exports;
 }
 
@@ -5687,7 +5503,7 @@ var reactIs_development = {};
 
 (function (exports) {
 
-  {
+  if (process.env.NODE_ENV !== "production") {
     (function () {
 
       Object.defineProperty(exports, '__esModule', {
@@ -5924,19 +5740,21 @@ var reactIs_development = {};
   }
 })(reactIs_development);
 
-{
+if (process.env.NODE_ENV === 'production') {
+  reactIs.exports = reactIs_production_min;
+} else {
   reactIs.exports = reactIs_development;
 }
 
 var ReactIs$2 = reactIs.exports;
 var assign = objectAssign;
-var ReactPropTypesSecret = ReactPropTypesSecret_1;
+var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
 var checkPropTypes = checkPropTypes_1;
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
 var printWarning = function printWarning() {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   printWarning = function printWarning(text) {
     var message = 'Warning: ' + text;
 
@@ -6093,7 +5911,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   PropTypeError.prototype = Error.prototype;
 
   function createChainableTypeChecker(validate) {
-    {
+    if (process.env.NODE_ENV !== 'production') {
       var manualPropTypeCallCache = {};
       var manualPropTypeWarningCount = 0;
     }
@@ -6102,13 +5920,13 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       componentName = componentName || ANONYMOUS;
       propFullName = propFullName || propName;
 
-      if (secret !== ReactPropTypesSecret) {
+      if (secret !== ReactPropTypesSecret$1) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
           var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
           err.name = 'Invariant Violation';
           throw err;
-        } else if (typeof console !== 'undefined') {
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
 
@@ -6178,7 +5996,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       }
 
       for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret$1);
 
         if (error instanceof Error) {
           return error;
@@ -6237,7 +6055,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      {
+      if (process.env.NODE_ENV !== 'production') {
         if (arguments.length > 1) {
           printWarning('Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' + 'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).');
         } else {
@@ -6287,7 +6105,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
       for (var key in propValue) {
         if (has(propValue, key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
           if (error instanceof Error) {
             return error;
@@ -6303,7 +6121,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') ;
+      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunctionThatReturnsNull;
     }
 
@@ -6320,7 +6138,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
 
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret$1) == null) {
           return null;
         }
       }
@@ -6359,7 +6177,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           continue;
         }
 
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
         if (error) {
           return error;
@@ -6392,7 +6210,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
         }
 
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
         if (error) {
           return error;
@@ -6560,12 +6378,75 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   return ReactPropTypes;
 };
 
-{
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret = ReactPropTypesSecret_1;
+
+function emptyFunction() {}
+
+function emptyFunctionWithReset() {}
+
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+var factoryWithThrowingShims = function factoryWithThrowingShims() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+
+    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+    err.name = 'Invariant Violation';
+    throw err;
+  }
+  shim.isRequired = shim;
+
+  function getShim() {
+    return shim;
+  }
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+  ReactPropTypes.PropTypes = ReactPropTypes;
+  return ReactPropTypes;
+};
+
+if (process.env.NODE_ENV !== 'production') {
   var ReactIs$1 = reactIs.exports; // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
 
   var throwOnDirectAccess = true;
   propTypes.exports = factoryWithTypeCheckers(ReactIs$1.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  propTypes.exports = factoryWithThrowingShims();
 }
 
 var PropTypes = propTypes.exports;
@@ -6600,7 +6481,7 @@ TYPE_STATICS[ReactIs.ForwardRef] = FORWARD_REF_STATICS;
 
 
 var invariant = function invariant(condition, format, a, b, c, d, e, f) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
     }
@@ -7193,7 +7074,7 @@ function createError(message, exception) {
 }
 
 function defaultErrorHandler(error) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     console.error(error);
   }
 }
@@ -7390,7 +7271,7 @@ function formatPlural(config, state, value) {
   return 'other';
 }
 
-function formatMessage$1(config, state) {
+function formatMessage$2(config, state) {
   var messageDescriptor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   var values = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   var locale = config.locale,
@@ -7401,7 +7282,7 @@ function formatMessage$1(config, state) {
   var id = messageDescriptor.id,
       defaultMessage = messageDescriptor.defaultMessage; // Produce a better error if the user calls `intl.formatMessage(element)`
 
-  {
+  if (process.env.NODE_ENV !== 'production') {
     browser(! /*#__PURE__*/react.exports.isValidElement(config), '[React Intl] Don\'t pass React elements to ' + 'formatMessage(), pass `.props`.');
   } // `id` is a required field of a Message Descriptor.
 
@@ -7461,7 +7342,7 @@ function formatHTMLMessage(config, state, messageDescriptor) {
     escaped[name] = typeof value === 'string' ? escape(value) : value;
     return escaped;
   }, {});
-  return formatMessage$1(config, state, messageDescriptor, escapedValues);
+  return formatMessage$2(config, state, messageDescriptor, escapedValues);
 }
 
 var format = Object.freeze({
@@ -7470,7 +7351,7 @@ var format = Object.freeze({
   formatRelative: formatRelative,
   formatNumber: formatNumber,
   formatPlural: formatPlural,
-  formatMessage: formatMessage$1,
+  formatMessage: formatMessage$2,
   formatHTMLMessage: formatHTMLMessage
 });
 /*
@@ -7631,10 +7512,10 @@ IntlProvider.contextTypes = {
 IntlProvider.childContextTypes = {
   intl: intlShape.isRequired
 };
-IntlProvider.propTypes = _extends({}, intlConfigPropTypes, {
+process.env.NODE_ENV !== "production" ? IntlProvider.propTypes = _extends({}, intlConfigPropTypes, {
   children: PropTypes.element.isRequired,
   initialNow: PropTypes.any
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7687,11 +7568,11 @@ FormattedDate.displayName = 'FormattedDate';
 FormattedDate.contextTypes = {
   intl: intlShape
 };
-FormattedDate.propTypes = _extends({}, dateTimeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedDate.propTypes = _extends({}, dateTimeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7744,11 +7625,11 @@ FormattedTime.displayName = 'FormattedTime';
 FormattedTime.contextTypes = {
   intl: intlShape
 };
-FormattedTime.propTypes = _extends({}, dateTimeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedTime.propTypes = _extends({}, dateTimeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7926,13 +7807,13 @@ FormattedRelative.contextTypes = {
 FormattedRelative.defaultProps = {
   updateInterval: 1000 * 10
 };
-FormattedRelative.propTypes = _extends({}, relativeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedRelative.propTypes = _extends({}, relativeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   updateInterval: PropTypes.number,
   initialNow: PropTypes.any,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7985,11 +7866,11 @@ FormattedNumber.displayName = 'FormattedNumber';
 FormattedNumber.contextTypes = {
   intl: intlShape
 };
-FormattedNumber.propTypes = _extends({}, numberFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedNumber.propTypes = _extends({}, numberFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8047,7 +7928,7 @@ FormattedPlural.contextTypes = {
 FormattedPlural.defaultProps = {
   style: 'cardinal'
 };
-FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
   value: PropTypes.any.isRequired,
   other: PropTypes.node.isRequired,
   zero: PropTypes.node,
@@ -8056,7 +7937,7 @@ FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
   few: PropTypes.node,
   many: PropTypes.node,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8064,11 +7945,11 @@ FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
  */
 
 var defaultFormatMessage = function defaultFormatMessage(descriptor, values) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     console.error('[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry. Using default message as fallback.');
   }
 
-  return formatMessage$1({}, {
+  return formatMessage$2({}, {
     getMessageFormat: memoizeFormatConstructor(IntlMessageFormat)
   }, descriptor, values);
 };
@@ -8211,11 +8092,11 @@ FormattedMessage.contextTypes = {
 FormattedMessage.defaultProps = {
   values: {}
 };
-FormattedMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
   values: PropTypes.object,
   tagName: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8308,11 +8189,11 @@ FormattedHTMLMessage.contextTypes = {
 FormattedHTMLMessage.defaultProps = {
   values: {}
 };
-FormattedHTMLMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedHTMLMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
   values: PropTypes.object,
   tagName: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8362,13 +8243,36 @@ var entry = {
   helpLink: 'https://scratch.mit.edu/boost'
 };
 
-var _legoremote = {exports: {}};
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
 
 /**
  * Block argument types
  * @enum {string}
  */
-var ArgumentType = {
+var ArgumentType$1 = {
   /**
    * Numeric value with angle picker
    */
@@ -8409,13 +8313,13 @@ var ArgumentType = {
    */
   IMAGE: 'image'
 };
-var argumentType = ArgumentType;
+var argumentType = ArgumentType$1;
 
 /**
  * Types of block
  * @enum {string}
  */
-var BlockType = {
+var BlockType$1 = {
   /**
    * Boolean reporter with hexagonal shape
    */
@@ -8459,9 +8363,9 @@ var BlockType = {
    */
   REPORTER: 'reporter'
 };
-var blockType = BlockType;
+var blockType = BlockType$1;
 
-var Color$2 = /*#__PURE__*/function () {
+var Color$3 = /*#__PURE__*/function () {
   function Color() {
     _classCallCheck(this, Color);
   }
@@ -8717,9 +8621,9 @@ var Color$2 = /*#__PURE__*/function () {
   return Color;
 }();
 
-var color$1 = Color$2;
+var color$1 = Color$3;
 
-var Color$1 = color$1;
+var Color$2 = color$1;
 /**
  * @fileoverview
  * Utilities for casting and comparing Scratch data-types.
@@ -8731,7 +8635,7 @@ var Color$1 = color$1;
  * Use when coercing a value before computation.
  */
 
-var Cast = /*#__PURE__*/function () {
+var Cast$1 = /*#__PURE__*/function () {
   function Cast() {
     _classCallCheck(this, Cast);
   }
@@ -8833,7 +8737,7 @@ var Cast = /*#__PURE__*/function () {
       var color;
 
       if (typeof value === 'string' && value.substring(0, 1) === '#') {
-        color = Color$1.hexToRgb(value); // If the color wasn't *actually* a hex color, cast to black
+        color = Color$2.hexToRgb(value); // If the color wasn't *actually* a hex color, cast to black
 
         if (!color) color = {
           r: 0,
@@ -8842,7 +8746,7 @@ var Cast = /*#__PURE__*/function () {
           a: 255
         };
       } else {
-        color = Color$1.decimalToRgb(Cast.toNumber(value));
+        color = Color$2.decimalToRgb(Cast.toNumber(value));
       }
 
       return color;
@@ -8986,7 +8890,135 @@ var Cast = /*#__PURE__*/function () {
   return Cast;
 }();
 
-var cast = Cast;
+var cast = Cast$1;
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+
+  var _s, _e;
+
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+  return _setPrototypeOf(o, p);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof$1(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
 
 var JSONRPC$1 = /*#__PURE__*/function () {
   function JSONRPC() {
@@ -9137,12 +9169,15 @@ var JSONRPC$1 = /*#__PURE__*/function () {
 
 var jsonrpc = JSONRPC$1;
 
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var JSONRPC = jsonrpc;
 
 var BLE$1 = /*#__PURE__*/function (_JSONRPC) {
   _inherits(BLE, _JSONRPC);
 
-  var _super = _createSuper(BLE);
+  var _super = _createSuper$1(BLE);
 
   /**
    * A BLE peripheral socket object.  It handles connecting, over web sockets, to
@@ -9696,6 +9731,11 @@ var INSPECT_MAX_BYTES = 50;
  */
 
 Buffer.TYPED_ARRAY_SUPPORT = global$1.TYPED_ARRAY_SUPPORT !== undefined ? global$1.TYPED_ARRAY_SUPPORT : true;
+/*
+ * Export kMaxLength after typed array support is determined.
+ */
+
+kMaxLength();
 
 function kMaxLength() {
   return Buffer.TYPED_ARRAY_SUPPORT ? 0x7fffffff : 0x3fffffff;
@@ -9788,6 +9828,8 @@ Buffer.from = function (value, encodingOrOffset, length) {
 if (Buffer.TYPED_ARRAY_SUPPORT) {
   Buffer.prototype.__proto__ = Uint8Array.prototype;
   Buffer.__proto__ = Uint8Array;
+
+  if (typeof Symbol !== 'undefined' && Symbol.species && Buffer[Symbol.species] === Buffer) ;
 }
 
 function assertSize(size) {
@@ -12015,6 +12057,9 @@ var ioType = IOType$2;
 
 var device = {};
 
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var MathUtil$1 = mathUtil;
 var IOType$1 = ioType;
 
@@ -12387,7 +12432,7 @@ var numberToInt16Array = function numberToInt16Array(number) {
   return [dataview.getUint8(1), dataview.getUint8(0)];
 };
 
-var Hub = /*#__PURE__*/function () {
+var Hub$1 = /*#__PURE__*/function () {
   function Hub(runtime, extensionId) {
     var hubType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
@@ -12901,9 +12946,9 @@ var Hub = /*#__PURE__*/function () {
   return Hub;
 }();
 
-var hub = Hub;
+var hub = Hub$1;
 
-var Color = {
+var Color$1 = {
   BLACK: 0,
   PINK: 1,
   PURPLE: 2,
@@ -12917,9 +12962,9 @@ var Color = {
   WHITE: 10,
   NONE: -1
 };
-var color = Color;
+var color = Color$1;
 
-var setupTranslations = function setupTranslations(formatMessage) {
+var setupTranslations$1 = function setupTranslations(formatMessage) {
   var extTranslations = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var localeSetup = formatMessage.setup();
   var translations = {
@@ -13038,9 +13083,9 @@ var setupTranslations = function setupTranslations(formatMessage) {
   }
 };
 
-var setupTranslations_1 = setupTranslations;
+var setupTranslations_1 = setupTranslations$1;
 
-var formatMessage = {exports: {}};
+var formatMessage$1 = {exports: {}};
 
 var formatMessageParse = {exports: {}};
 
@@ -15433,333 +15478,331 @@ var plurals = {
   }
 
   module.exports = namespace();
-})(formatMessage);
+})(formatMessage$1);
 
-(function (module, exports) {
-  var ArgumentType = argumentType;
-  var BlockType = blockType;
-  var Cast = cast;
-  var Hub = hub;
-  var Color = color;
-  var setupTranslations = setupTranslations_1;
-  var blockIconURI = 'data:image/png;base64,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';
-  var BLESendInterval = 100;
+var ArgumentType = argumentType;
+var BlockType = blockType;
+var Cast = cast;
+var Hub = hub;
+var Color = color;
+var setupTranslations = setupTranslations_1;
+var blockIconURI = 'data:image/png;base64,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';
+var BLESendInterval = 100;
 
-  var waitPromise = function waitPromise() {
-    return new Promise(function (resolve) {
-      return window.setTimeout(resolve, BLESendInterval);
-    });
-  };
+var waitPromise = function waitPromise() {
+  return new Promise(function (resolve) {
+    return window.setTimeout(resolve, BLESendInterval);
+  });
+};
 
-  var formatMessage$1 = formatMessage.exports;
-  var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/legoremote.mjs';
-  var PortId = {
-    BUTTON_A: 0x00,
-    BUTTON_B: 0x01
-  };
-  var Button = {
-    NONE: 0,
-    PLUS: 1,
-    MINUS: -1,
-    STOP: 127,
-    ANY: 255
-  };
+var formatMessage = formatMessage$1.exports;
+var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/legoremote.mjs';
+var PortId = {
+  BUTTON_A: 0x00,
+  BUTTON_B: 0x01
+};
+var Button = {
+  NONE: 0,
+  PLUS: 1,
+  MINUS: -1,
+  STOP: 127,
+  ANY: 255
+};
 
-  var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
-    function Scratch3LegoRemoteBlocks(runtime) {
-      _classCallCheck(this, Scratch3LegoRemoteBlocks);
+var Scratch3LegoRemoteBlocks = /*#__PURE__*/function () {
+  function Scratch3LegoRemoteBlocks(runtime) {
+    _classCallCheck(this, Scratch3LegoRemoteBlocks);
 
-      this._peripheral = new Hub(runtime, Scratch3LegoRemoteBlocks.EXTENSION_ID, 0x42);
+    this._peripheral = new Hub(runtime, Scratch3LegoRemoteBlocks.EXTENSION_ID, 0x42);
 
-      if (runtime.formatMessage) {
-        // Replace 'formatMessage' to a formatter which is used in the runtime.
-        formatMessage$1 = runtime.formatMessage;
-      }
+    if (runtime.formatMessage) {
+      // Replace 'formatMessage' to a formatter which is used in the runtime.
+      formatMessage = runtime.formatMessage;
     }
+  }
 
-    _createClass(Scratch3LegoRemoteBlocks, [{
-      key: "getInfo",
-      value: function getInfo() {
-        this._setupTranslations();
+  _createClass(Scratch3LegoRemoteBlocks, [{
+    key: "getInfo",
+    value: function getInfo() {
+      this._setupTranslations();
 
-        return {
-          id: Scratch3LegoRemoteBlocks.EXTENSION_ID,
-          name: 'LEGO Remote',
-          extensionURL: Scratch3LegoRemoteBlocks.extensionURL,
-          blockIconURI: blockIconURI,
-          showStatusButton: true,
-          blocks: [{
-            opcode: 'whenButton',
-            text: formatMessage$1({
-              id: 'legoremote.whenButton',
-              default: '[PORT] when [BUTTON] button pressed'
-            }),
-            blockType: BlockType.HAT,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'PORT',
-                defaultValue: 'A'
-              },
-              BUTTON: {
-                type: ArgumentType.NUMBER,
-                menu: 'BUTTON',
-                defaultValue: Button.PLUS
-              }
-            }
-          }, {
-            opcode: 'isButton',
-            text: formatMessage$1({
-              id: 'legoremote.isButton',
-              default: '[PORT] [BUTTON] button pressed?'
-            }),
-            blockType: BlockType.BOOLEAN,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'PORT',
-                defaultValue: 'A'
-              },
-              BUTTON: {
-                type: ArgumentType.NUMBER,
-                menu: 'BUTTON',
-                defaultValue: Button.PLUS
-              }
-            }
-          }, '---', {
-            opcode: 'getButtonA',
-            text: formatMessage$1({
-              id: 'legoremote.getButtonA',
-              default: 'button A'
-            }),
-            blockType: BlockType.REPORTER
-          }, {
-            opcode: 'getButtonB',
-            text: formatMessage$1({
-              id: 'legoremote.getButtonB',
-              default: 'button B'
-            }),
-            blockType: BlockType.REPORTER
-          }, '---', {
-            opcode: 'setHubLEDColor',
-            text: formatMessage$1({
-              id: 'legoremote.setHubLEDColor',
-              default: 'set LED color to [COLOR]'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              COLOR: {
-                type: ArgumentType.NUMBER,
-                menu: 'LED_COLOR',
-                defaultValue: Color.BLUE
-              }
-            }
-          }],
-          menus: {
+      return {
+        id: Scratch3LegoRemoteBlocks.EXTENSION_ID,
+        name: 'LEGO Remote',
+        extensionURL: Scratch3LegoRemoteBlocks.extensionURL,
+        blockIconURI: blockIconURI,
+        showStatusButton: true,
+        blocks: [{
+          opcode: 'whenButton',
+          text: formatMessage({
+            id: 'legoremote.whenButton',
+            default: '[PORT] when [BUTTON] button pressed'
+          }),
+          blockType: BlockType.HAT,
+          arguments: {
             PORT: {
-              acceptReporters: true,
-              items: ['A', 'B']
-            },
-            LED_COLOR: {
-              acceptReporters: true,
-              items: [{
-                text: formatMessage$1({
-                  id: 'legobluetooth.black',
-                  default: '(0) Black'
-                }),
-                value: String(Color.BLACK)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.pink',
-                  default: '(1) Pink'
-                }),
-                value: String(Color.PINK)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.purple',
-                  default: '(2) Purple'
-                }),
-                value: String(Color.PURPLE)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.blue',
-                  default: '(3) Blue'
-                }),
-                value: String(Color.BLUE)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.lightBlue',
-                  default: '(4) Light blue'
-                }),
-                value: String(Color.LIGHT_BLUE)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.lightGreen',
-                  default: '(5) Light green'
-                }),
-                value: String(Color.LIGHT_GREEN)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.green',
-                  default: '(6) Green'
-                }),
-                value: String(Color.GREEN)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.yellow',
-                  default: '(7) Yellow'
-                }),
-                value: String(Color.YELLOW)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.orange',
-                  default: '(8) Orange'
-                }),
-                value: String(Color.ORANGE)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.red',
-                  default: '(9) Red'
-                }),
-                value: String(Color.RED)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.white',
-                  default: '(10) White'
-                }),
-                value: String(Color.WHITE)
-              }]
+              type: ArgumentType.STRING,
+              menu: 'PORT',
+              defaultValue: 'A'
             },
             BUTTON: {
-              acceptReporters: false,
-              items: [{
-                text: formatMessage$1({
-                  id: 'legoremote.button.plus',
-                  default: 'plus'
-                }),
-                value: String(Button.PLUS)
-              }, {
-                text: formatMessage$1({
-                  id: 'legoremote.button.minus',
-                  default: 'minus'
-                }),
-                value: String(Button.MINUS)
-              }, {
-                text: formatMessage$1({
-                  id: 'legoremote.button.stop',
-                  default: 'red'
-                }),
-                value: String(Button.STOP)
-              }, {
-                text: formatMessage$1({
-                  id: 'legoremote.button.any',
-                  default: 'any'
-                }),
-                value: String(Button.ANY)
-              }]
+              type: ArgumentType.NUMBER,
+              menu: 'BUTTON',
+              defaultValue: Button.PLUS
             }
           }
-        };
-      }
-    }, {
-      key: "_validatePorts",
-      value: function _validatePorts(text) {
-        return text.toUpperCase().replace(/[^AB]/g, '').split('').filter(function (x, i, self) {
-          return self.indexOf(x) === i;
-        }).sort();
-      }
-    }, {
-      key: "setHubLEDColor",
-      value: function setHubLEDColor(args) {
-        var color = Cast.toNumber(args.COLOR);
-        return this._peripheral.setLEDColor(color).then(waitPromise);
-      }
-    }, {
-      key: "whenButton",
-      value: function whenButton(args) {
-        return this.isButton(args);
-      }
-    }, {
-      key: "isButton",
-      value: function isButton(args) {
-        var port = this._validatePorts(Cast.toString(args.PORT)).shift();
-
-        var portId = ['A', 'B'].indexOf(port);
-        var button = Cast.toNumber(args.BUTTON);
-
-        var value = this._getSensorValue(portId, 'button', Button.NONE);
-
-        if (button == Button.ANY) {
-          return value != Button.NONE;
-        } else {
-          return value == button;
-        }
-      }
-    }, {
-      key: "getButtonA",
-      value: function getButtonA() {
-        return this._getSensorValue(PortId.BUTTON_A, 'button', Button.NONE);
-      }
-    }, {
-      key: "getButtonB",
-      value: function getButtonB() {
-        return this._getSensorValue(PortId.BUTTON_B, 'button', Button.NONE);
-      }
-    }, {
-      key: "_getSensorValue",
-      value: function _getSensorValue(portId, key, defaultValue) {
-        var value = this._peripheral.inputValue(portId, key);
-
-        return value != null ? value : defaultValue;
-      }
-    }, {
-      key: "_setupTranslations",
-      value: function _setupTranslations() {
-        setupTranslations(formatMessage$1, {
-          'ja': {
-            'legoremote.whenButton': '[PORT] [BUTTON] ボタンが押されたとき',
-            'legoremote.isButton': '[PORT] [BUTTON] ボタンが押された',
-            'legoremote.getButtonA': 'ボタン A',
-            'legoremote.getButtonB': 'ボタン B',
-            'legoremote.setHubLEDColor': 'LEDの色を [COLOR] にする',
-            'legoremote.button.plus': 'プラス',
-            'legoremote.button.minus': 'マイナス',
-            'legoremote.button.stop': '赤い',
-            'legoremote.button.any': 'どれかの'
-          },
-          'ja-Hira': {
-            'legoremote.whenButton': '[PORT] [BUTTON] ボタンがおされたとき',
-            'legoremote.isButton': '[PORT] [BUTTON] ボタンがおされた',
-            'legoremote.getButtonA': 'ボタン A',
-            'legoremote.getButtonB': 'ボタン B',
-            'legoremote.setHubLEDColor': 'LEDのいろを [COLOR] にする',
-            'legoremote.button.plus': 'プラス',
-            'legoremote.button.minus': 'マイナス',
-            'legoremote.button.stop': 'あかい',
-            'legoremote.button.any': 'どれかの'
+        }, {
+          opcode: 'isButton',
+          text: formatMessage({
+            id: 'legoremote.isButton',
+            default: '[PORT] [BUTTON] button pressed?'
+          }),
+          blockType: BlockType.BOOLEAN,
+          arguments: {
+            PORT: {
+              type: ArgumentType.STRING,
+              menu: 'PORT',
+              defaultValue: 'A'
+            },
+            BUTTON: {
+              type: ArgumentType.NUMBER,
+              menu: 'BUTTON',
+              defaultValue: Button.PLUS
+            }
           }
-        });
-      }
-    }], [{
-      key: "EXTENSION_ID",
-      get: function get() {
-        return 'legoremote';
-      }
-    }, {
-      key: "extensionURL",
-      get: function get() {
-        return extensionURL;
-      },
-      set: function set(url) {
-        extensionURL = url;
-      }
-    }]);
+        }, '---', {
+          opcode: 'getButtonA',
+          text: formatMessage({
+            id: 'legoremote.getButtonA',
+            default: 'button A'
+          }),
+          blockType: BlockType.REPORTER
+        }, {
+          opcode: 'getButtonB',
+          text: formatMessage({
+            id: 'legoremote.getButtonB',
+            default: 'button B'
+          }),
+          blockType: BlockType.REPORTER
+        }, '---', {
+          opcode: 'setHubLEDColor',
+          text: formatMessage({
+            id: 'legoremote.setHubLEDColor',
+            default: 'set LED color to [COLOR]'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            COLOR: {
+              type: ArgumentType.NUMBER,
+              menu: 'LED_COLOR',
+              defaultValue: Color.BLUE
+            }
+          }
+        }],
+        menus: {
+          PORT: {
+            acceptReporters: true,
+            items: ['A', 'B']
+          },
+          LED_COLOR: {
+            acceptReporters: true,
+            items: [{
+              text: formatMessage({
+                id: 'legobluetooth.black',
+                default: '(0) Black'
+              }),
+              value: String(Color.BLACK)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.pink',
+                default: '(1) Pink'
+              }),
+              value: String(Color.PINK)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.purple',
+                default: '(2) Purple'
+              }),
+              value: String(Color.PURPLE)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.blue',
+                default: '(3) Blue'
+              }),
+              value: String(Color.BLUE)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.lightBlue',
+                default: '(4) Light blue'
+              }),
+              value: String(Color.LIGHT_BLUE)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.lightGreen',
+                default: '(5) Light green'
+              }),
+              value: String(Color.LIGHT_GREEN)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.green',
+                default: '(6) Green'
+              }),
+              value: String(Color.GREEN)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.yellow',
+                default: '(7) Yellow'
+              }),
+              value: String(Color.YELLOW)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.orange',
+                default: '(8) Orange'
+              }),
+              value: String(Color.ORANGE)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.red',
+                default: '(9) Red'
+              }),
+              value: String(Color.RED)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.white',
+                default: '(10) White'
+              }),
+              value: String(Color.WHITE)
+            }]
+          },
+          BUTTON: {
+            acceptReporters: false,
+            items: [{
+              text: formatMessage({
+                id: 'legoremote.button.plus',
+                default: 'plus'
+              }),
+              value: String(Button.PLUS)
+            }, {
+              text: formatMessage({
+                id: 'legoremote.button.minus',
+                default: 'minus'
+              }),
+              value: String(Button.MINUS)
+            }, {
+              text: formatMessage({
+                id: 'legoremote.button.stop',
+                default: 'red'
+              }),
+              value: String(Button.STOP)
+            }, {
+              text: formatMessage({
+                id: 'legoremote.button.any',
+                default: 'any'
+              }),
+              value: String(Button.ANY)
+            }]
+          }
+        }
+      };
+    }
+  }, {
+    key: "_validatePorts",
+    value: function _validatePorts(text) {
+      return text.toUpperCase().replace(/[^AB]/g, '').split('').filter(function (x, i, self) {
+        return self.indexOf(x) === i;
+      }).sort();
+    }
+  }, {
+    key: "setHubLEDColor",
+    value: function setHubLEDColor(args) {
+      var color = Cast.toNumber(args.COLOR);
+      return this._peripheral.setLEDColor(color).then(waitPromise);
+    }
+  }, {
+    key: "whenButton",
+    value: function whenButton(args) {
+      return this.isButton(args);
+    }
+  }, {
+    key: "isButton",
+    value: function isButton(args) {
+      var port = this._validatePorts(Cast.toString(args.PORT)).shift();
 
-    return Scratch3LegoRemoteBlocks;
-  }();
+      var portId = ['A', 'B'].indexOf(port);
+      var button = Cast.toNumber(args.BUTTON);
 
-  exports.blockClass = Scratch3LegoRemoteBlocks;
-  module.exports = Scratch3LegoRemoteBlocks;
-})(_legoremote, _legoremote.exports);
+      var value = this._getSensorValue(portId, 'button', Button.NONE);
 
-export { entry };
+      if (button == Button.ANY) {
+        return value != Button.NONE;
+      } else {
+        return value == button;
+      }
+    }
+  }, {
+    key: "getButtonA",
+    value: function getButtonA() {
+      return this._getSensorValue(PortId.BUTTON_A, 'button', Button.NONE);
+    }
+  }, {
+    key: "getButtonB",
+    value: function getButtonB() {
+      return this._getSensorValue(PortId.BUTTON_B, 'button', Button.NONE);
+    }
+  }, {
+    key: "_getSensorValue",
+    value: function _getSensorValue(portId, key, defaultValue) {
+      var value = this._peripheral.inputValue(portId, key);
+
+      return value != null ? value : defaultValue;
+    }
+  }, {
+    key: "_setupTranslations",
+    value: function _setupTranslations() {
+      setupTranslations(formatMessage, {
+        'ja': {
+          'legoremote.whenButton': '[PORT] [BUTTON] ボタンが押されたとき',
+          'legoremote.isButton': '[PORT] [BUTTON] ボタンが押された',
+          'legoremote.getButtonA': 'ボタン A',
+          'legoremote.getButtonB': 'ボタン B',
+          'legoremote.setHubLEDColor': 'LEDの色を [COLOR] にする',
+          'legoremote.button.plus': 'プラス',
+          'legoremote.button.minus': 'マイナス',
+          'legoremote.button.stop': '赤い',
+          'legoremote.button.any': 'どれかの'
+        },
+        'ja-Hira': {
+          'legoremote.whenButton': '[PORT] [BUTTON] ボタンがおされたとき',
+          'legoremote.isButton': '[PORT] [BUTTON] ボタンがおされた',
+          'legoremote.getButtonA': 'ボタン A',
+          'legoremote.getButtonB': 'ボタン B',
+          'legoremote.setHubLEDColor': 'LEDのいろを [COLOR] にする',
+          'legoremote.button.plus': 'プラス',
+          'legoremote.button.minus': 'マイナス',
+          'legoremote.button.stop': 'あかい',
+          'legoremote.button.any': 'どれかの'
+        }
+      });
+    }
+  }], [{
+    key: "EXTENSION_ID",
+    get: function get() {
+      return 'legoremote';
+    }
+  }, {
+    key: "extensionURL",
+    get: function get() {
+      return extensionURL;
+    },
+    set: function set(url) {
+      extensionURL = url;
+    }
+  }]);
+
+  return Scratch3LegoRemoteBlocks;
+}();
+
+var blockClass = Scratch3LegoRemoteBlocks;
+blockClass = Scratch3LegoRemoteBlocks;
+
+export { blockClass, entry };

@@ -1,6 +1,4 @@
-var global$1 = (typeof global !== "undefined" ? global :
-  typeof self !== "undefined" ? self :
-  typeof window !== "undefined" ? window : {});
+var global$1 = typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};
 
 // based off https://github.com/defunctzombie/node-process/blob/master/browser.js
 
@@ -256,190 +254,6 @@ function _typeof$1(obj) {
   }, _typeof$1(obj);
 }
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.defineProperty(subClass, "prototype", {
-    writable: false
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-
-  var _s, _e;
-
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
 /*
 object-assign
 (c) Sindre Sorhus
@@ -538,7 +352,7 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
 
 var emptyObject = {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   Object.freeze(emptyObject);
 }
 
@@ -566,22 +380,22 @@ function makeEmptyFunction(arg) {
  */
 
 
-var emptyFunction$1 = function emptyFunction() {};
+var emptyFunction$2 = function emptyFunction() {};
 
-emptyFunction$1.thatReturns = makeEmptyFunction;
-emptyFunction$1.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction$1.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction$1.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction$2.thatReturns = makeEmptyFunction;
+emptyFunction$2.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction$2.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction$2.thatReturnsNull = makeEmptyFunction(null);
 
-emptyFunction$1.thatReturnsThis = function () {
+emptyFunction$2.thatReturnsThis = function () {
   return this;
 };
 
-emptyFunction$1.thatReturnsArgument = function (arg) {
+emptyFunction$2.thatReturnsArgument = function (arg) {
   return arg;
 };
 
-var emptyFunction_1 = emptyFunction$1;
+var emptyFunction_1 = emptyFunction$2;
 
 var m$1 = objectAssign,
     n$1 = emptyObject_1,
@@ -896,7 +710,7 @@ var U = {
   default: U
 }),
     W = V && U || V;
-W["default"] ? W["default"] : W;
+var react_production_min = W["default"] ? W["default"] : W;
 
 var react_development = {exports: {}};
 
@@ -914,7 +728,7 @@ var react_development = {exports: {}};
 
 var validateFormat = function validateFormat(format) {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   validateFormat = function validateFormat(format) {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
@@ -947,7 +761,7 @@ function invariant$1(condition, format, a, b, c, d, e, f) {
 
 var invariant_1 = invariant$1;
 
-var emptyFunction = emptyFunction_1;
+var emptyFunction$1 = emptyFunction_1;
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
  * This can be used to log issues in development environments in critical
@@ -955,9 +769,9 @@ var emptyFunction = emptyFunction_1;
  * same logic and follow the same code paths.
  */
 
-var warning = emptyFunction;
+var warning = emptyFunction$1;
 
-{
+if (process.env.NODE_ENV !== 'production') {
   var printWarning$2 = function printWarning(format) {
     for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -1008,13 +822,13 @@ var warning_1 = warning;
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$2;
+var ReactPropTypesSecret$3 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;
 
 var printWarning$1 = function printWarning() {};
 
-{
-  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+if (process.env.NODE_ENV !== 'production') {
+  var ReactPropTypesSecret$2 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
   var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -1047,7 +861,7 @@ var printWarning$1 = function printWarning() {};
 
 
 function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     for (var typeSpecName in typeSpecs) {
       if (has$1(typeSpecs, typeSpecName)) {
         var error; // Prop type validation may throw. In case they do, we don't want to
@@ -1063,7 +877,7 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
             throw err;
           }
 
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$2);
         } catch (ex) {
           error = ex;
         }
@@ -1091,14 +905,14 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
 
 
 checkPropTypes$1.resetWarningCache = function () {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     loggedTypeFailures = {};
   }
 };
 
 var checkPropTypes_1 = checkPropTypes$1;
 
-{
+if (process.env.NODE_ENV !== "production") {
   (function () {
 
     var _assign = objectAssign;
@@ -2487,7 +2301,9 @@ var checkPropTypes_1 = checkPropTypes$1;
   })();
 }
 
-{
+if (process.env.NODE_ENV === 'production') {
+  react.exports = react_production_min;
+} else {
   react.exports = react_development.exports;
 }
 
@@ -5687,7 +5503,7 @@ var reactIs_development = {};
 
 (function (exports) {
 
-  {
+  if (process.env.NODE_ENV !== "production") {
     (function () {
 
       Object.defineProperty(exports, '__esModule', {
@@ -5924,19 +5740,21 @@ var reactIs_development = {};
   }
 })(reactIs_development);
 
-{
+if (process.env.NODE_ENV === 'production') {
+  reactIs.exports = reactIs_production_min;
+} else {
   reactIs.exports = reactIs_development;
 }
 
 var ReactIs$2 = reactIs.exports;
 var assign = objectAssign;
-var ReactPropTypesSecret = ReactPropTypesSecret_1;
+var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
 var checkPropTypes = checkPropTypes_1;
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
 var printWarning = function printWarning() {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   printWarning = function printWarning(text) {
     var message = 'Warning: ' + text;
 
@@ -6093,7 +5911,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   PropTypeError.prototype = Error.prototype;
 
   function createChainableTypeChecker(validate) {
-    {
+    if (process.env.NODE_ENV !== 'production') {
       var manualPropTypeCallCache = {};
       var manualPropTypeWarningCount = 0;
     }
@@ -6102,13 +5920,13 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       componentName = componentName || ANONYMOUS;
       propFullName = propFullName || propName;
 
-      if (secret !== ReactPropTypesSecret) {
+      if (secret !== ReactPropTypesSecret$1) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
           var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
           err.name = 'Invariant Violation';
           throw err;
-        } else if (typeof console !== 'undefined') {
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
 
@@ -6178,7 +5996,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       }
 
       for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret$1);
 
         if (error instanceof Error) {
           return error;
@@ -6237,7 +6055,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      {
+      if (process.env.NODE_ENV !== 'production') {
         if (arguments.length > 1) {
           printWarning('Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' + 'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).');
         } else {
@@ -6287,7 +6105,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
       for (var key in propValue) {
         if (has(propValue, key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
           if (error instanceof Error) {
             return error;
@@ -6303,7 +6121,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') ;
+      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunctionThatReturnsNull;
     }
 
@@ -6320,7 +6138,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
 
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret$1) == null) {
           return null;
         }
       }
@@ -6359,7 +6177,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           continue;
         }
 
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
         if (error) {
           return error;
@@ -6392,7 +6210,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
         }
 
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
         if (error) {
           return error;
@@ -6560,12 +6378,75 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   return ReactPropTypes;
 };
 
-{
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret = ReactPropTypesSecret_1;
+
+function emptyFunction() {}
+
+function emptyFunctionWithReset() {}
+
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+var factoryWithThrowingShims = function factoryWithThrowingShims() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+
+    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+    err.name = 'Invariant Violation';
+    throw err;
+  }
+  shim.isRequired = shim;
+
+  function getShim() {
+    return shim;
+  }
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+  ReactPropTypes.PropTypes = ReactPropTypes;
+  return ReactPropTypes;
+};
+
+if (process.env.NODE_ENV !== 'production') {
   var ReactIs$1 = reactIs.exports; // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
 
   var throwOnDirectAccess = true;
   propTypes.exports = factoryWithTypeCheckers(ReactIs$1.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  propTypes.exports = factoryWithThrowingShims();
 }
 
 var PropTypes = propTypes.exports;
@@ -6600,7 +6481,7 @@ TYPE_STATICS[ReactIs.ForwardRef] = FORWARD_REF_STATICS;
 
 
 var invariant = function invariant(condition, format, a, b, c, d, e, f) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
     }
@@ -7193,7 +7074,7 @@ function createError(message, exception) {
 }
 
 function defaultErrorHandler(error) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     console.error(error);
   }
 }
@@ -7390,7 +7271,7 @@ function formatPlural(config, state, value) {
   return 'other';
 }
 
-function formatMessage$1(config, state) {
+function formatMessage$2(config, state) {
   var messageDescriptor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   var values = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   var locale = config.locale,
@@ -7401,7 +7282,7 @@ function formatMessage$1(config, state) {
   var id = messageDescriptor.id,
       defaultMessage = messageDescriptor.defaultMessage; // Produce a better error if the user calls `intl.formatMessage(element)`
 
-  {
+  if (process.env.NODE_ENV !== 'production') {
     browser(! /*#__PURE__*/react.exports.isValidElement(config), '[React Intl] Don\'t pass React elements to ' + 'formatMessage(), pass `.props`.');
   } // `id` is a required field of a Message Descriptor.
 
@@ -7461,7 +7342,7 @@ function formatHTMLMessage(config, state, messageDescriptor) {
     escaped[name] = typeof value === 'string' ? escape(value) : value;
     return escaped;
   }, {});
-  return formatMessage$1(config, state, messageDescriptor, escapedValues);
+  return formatMessage$2(config, state, messageDescriptor, escapedValues);
 }
 
 var format = Object.freeze({
@@ -7470,7 +7351,7 @@ var format = Object.freeze({
   formatRelative: formatRelative,
   formatNumber: formatNumber,
   formatPlural: formatPlural,
-  formatMessage: formatMessage$1,
+  formatMessage: formatMessage$2,
   formatHTMLMessage: formatHTMLMessage
 });
 /*
@@ -7631,10 +7512,10 @@ IntlProvider.contextTypes = {
 IntlProvider.childContextTypes = {
   intl: intlShape.isRequired
 };
-IntlProvider.propTypes = _extends({}, intlConfigPropTypes, {
+process.env.NODE_ENV !== "production" ? IntlProvider.propTypes = _extends({}, intlConfigPropTypes, {
   children: PropTypes.element.isRequired,
   initialNow: PropTypes.any
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7687,11 +7568,11 @@ FormattedDate.displayName = 'FormattedDate';
 FormattedDate.contextTypes = {
   intl: intlShape
 };
-FormattedDate.propTypes = _extends({}, dateTimeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedDate.propTypes = _extends({}, dateTimeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7744,11 +7625,11 @@ FormattedTime.displayName = 'FormattedTime';
 FormattedTime.contextTypes = {
   intl: intlShape
 };
-FormattedTime.propTypes = _extends({}, dateTimeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedTime.propTypes = _extends({}, dateTimeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7926,13 +7807,13 @@ FormattedRelative.contextTypes = {
 FormattedRelative.defaultProps = {
   updateInterval: 1000 * 10
 };
-FormattedRelative.propTypes = _extends({}, relativeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedRelative.propTypes = _extends({}, relativeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   updateInterval: PropTypes.number,
   initialNow: PropTypes.any,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7985,11 +7866,11 @@ FormattedNumber.displayName = 'FormattedNumber';
 FormattedNumber.contextTypes = {
   intl: intlShape
 };
-FormattedNumber.propTypes = _extends({}, numberFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedNumber.propTypes = _extends({}, numberFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8047,7 +7928,7 @@ FormattedPlural.contextTypes = {
 FormattedPlural.defaultProps = {
   style: 'cardinal'
 };
-FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
   value: PropTypes.any.isRequired,
   other: PropTypes.node.isRequired,
   zero: PropTypes.node,
@@ -8056,7 +7937,7 @@ FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
   few: PropTypes.node,
   many: PropTypes.node,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8064,11 +7945,11 @@ FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
  */
 
 var defaultFormatMessage = function defaultFormatMessage(descriptor, values) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     console.error('[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry. Using default message as fallback.');
   }
 
-  return formatMessage$1({}, {
+  return formatMessage$2({}, {
     getMessageFormat: memoizeFormatConstructor(IntlMessageFormat)
   }, descriptor, values);
 };
@@ -8211,11 +8092,11 @@ FormattedMessage.contextTypes = {
 FormattedMessage.defaultProps = {
   values: {}
 };
-FormattedMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
   values: PropTypes.object,
   tagName: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8308,11 +8189,11 @@ FormattedHTMLMessage.contextTypes = {
 FormattedHTMLMessage.defaultProps = {
   values: {}
 };
-FormattedHTMLMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedHTMLMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
   values: PropTypes.object,
   tagName: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8362,7 +8243,81 @@ var entry = {
   helpLink: 'https://scratch.mit.edu/boost'
 };
 
-var _poweredup = {exports: {}};
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+  return _setPrototypeOf(o, p);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof$1(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
 
 /**
  * Block argument types
@@ -9138,7 +9093,7 @@ var waitPromise = function waitPromise() {
   });
 };
 
-var BleBaseBlocks = /*#__PURE__*/function () {
+var BleBaseBlocks$1 = /*#__PURE__*/function () {
   function BleBaseBlocks(peripheral) {
     _classCallCheck(this, BleBaseBlocks);
 
@@ -9758,7 +9713,84 @@ var BleBaseBlocks = /*#__PURE__*/function () {
   return BleBaseBlocks;
 }();
 
-var bleBaseBlocks = BleBaseBlocks;
+var bleBaseBlocks = BleBaseBlocks$1;
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+
+  var _s, _e;
+
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
 
 var JSONRPC$1 = /*#__PURE__*/function () {
   function JSONRPC() {
@@ -9909,12 +9941,15 @@ var JSONRPC$1 = /*#__PURE__*/function () {
 
 var jsonrpc = JSONRPC$1;
 
+function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var JSONRPC = jsonrpc;
 
 var BLE$1 = /*#__PURE__*/function (_JSONRPC) {
   _inherits(BLE, _JSONRPC);
 
-  var _super = _createSuper(BLE);
+  var _super = _createSuper$2(BLE);
 
   /**
    * A BLE peripheral socket object.  It handles connecting, over web sockets, to
@@ -10468,6 +10503,11 @@ var INSPECT_MAX_BYTES = 50;
  */
 
 Buffer.TYPED_ARRAY_SUPPORT = global$1.TYPED_ARRAY_SUPPORT !== undefined ? global$1.TYPED_ARRAY_SUPPORT : true;
+/*
+ * Export kMaxLength after typed array support is determined.
+ */
+
+kMaxLength();
 
 function kMaxLength() {
   return Buffer.TYPED_ARRAY_SUPPORT ? 0x7fffffff : 0x3fffffff;
@@ -10560,6 +10600,8 @@ Buffer.from = function (value, encodingOrOffset, length) {
 if (Buffer.TYPED_ARRAY_SUPPORT) {
   Buffer.prototype.__proto__ = Uint8Array.prototype;
   Buffer.__proto__ = Uint8Array;
+
+  if (typeof Symbol !== 'undefined' && Symbol.species && Buffer[Symbol.species] === Buffer) ;
 }
 
 function assertSize(size) {
@@ -12787,6 +12829,9 @@ var ioType = IOType$2;
 
 var device = {};
 
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var MathUtil$1 = mathUtil;
 var IOType$1 = ioType;
 
@@ -13006,7 +13051,7 @@ var GenericDevice = /*#__PURE__*/function () {
 var Motor = /*#__PURE__*/function (_GenericDevice) {
   _inherits(Motor, _GenericDevice);
 
-  var _super = _createSuper(Motor);
+  var _super = _createSuper$1(Motor);
 
   function Motor(ioType) {
     var _this;
@@ -13159,7 +13204,7 @@ var numberToInt16Array = function numberToInt16Array(number) {
   return [dataview.getUint8(1), dataview.getUint8(0)];
 };
 
-var Hub = /*#__PURE__*/function () {
+var Hub$1 = /*#__PURE__*/function () {
   function Hub(runtime, extensionId) {
     var hubType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
@@ -13673,9 +13718,9 @@ var Hub = /*#__PURE__*/function () {
   return Hub;
 }();
 
-var hub = Hub;
+var hub = Hub$1;
 
-var formatMessage = {exports: {}};
+var formatMessage$1 = {exports: {}};
 
 var formatMessageParse = {exports: {}};
 
@@ -16068,84 +16113,85 @@ var plurals = {
   }
 
   module.exports = namespace();
-})(formatMessage);
+})(formatMessage$1);
 
-(function (module, exports) {
-  var BleBaseBlocks = bleBaseBlocks;
-  var Hub = hub;
-  var blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAAByElEQVR4Ae3YP07DMBiG8QS4ACdBYmQtlwCmzhwAkICFSvzZmZkoCxyBlZ2TcIOEtJKrqlL6fGlqCdonS9y88WfnV0eWUhQeCiiggAIKKKCAAgoooIACCiiggAIKKKCAAgoooIACCiiQV6DsUv728W1QVfWwLIvduiw/Rhcn75P+m3o9YrMXuSndU9XVU9M+rOuiaOSPm/YUcFOvp+dedsYVeH3/2nBt7zG6OltqtLO9NOt58vArfHd5up4RF6rcPIynV3LVXxgu/DPNizqEASeFIkUTRJd7aZJ/OfcV7vnvdFqBaayjg/3UnJ2/vn9m7flGl3vn+/2X9tIdZvIQ7sLuwlkXc/gVPh8Oskzk+eVzWjdX/VUnneZF/d1ESAhyAQGIYgFJCHIBAYhiAUkIcgEBiGIBSQhyAQGIYgFJCHIBAYhiAUkIcgEBiGIBSQhyAQGIYgFJCPLw98Do9zEYrzXOXb914J6BK7AnYHgF5vpinFZervqr+qR5UX9XIAlBLiAAUSwgCUEuIABRLCAJQR7ehaO7EozXGueu3zpwz8AV2BPQ7goooIACCiiggAIKKKCAAgoooIACCiiggAIKKKCAAgookFvgF1zdypav+pVRAAAAAElFTkSuQmCC';
-  var formatMessage$1 = formatMessage.exports;
-  var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/poweredup.mjs';
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  var Scratch3PoweredUpBlocks = /*#__PURE__*/function (_BleBaseBlocks) {
-    _inherits(Scratch3PoweredUpBlocks, _BleBaseBlocks);
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var BleBaseBlocks = bleBaseBlocks;
+var Hub = hub;
+var blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAAByElEQVR4Ae3YP07DMBiG8QS4ACdBYmQtlwCmzhwAkICFSvzZmZkoCxyBlZ2TcIOEtJKrqlL6fGlqCdonS9y88WfnV0eWUhQeCiiggAIKKKCAAgoooIACCiiggAIKKKCAAgoooIACCiiQV6DsUv728W1QVfWwLIvduiw/Rhcn75P+m3o9YrMXuSndU9XVU9M+rOuiaOSPm/YUcFOvp+dedsYVeH3/2nBt7zG6OltqtLO9NOt58vArfHd5up4RF6rcPIynV3LVXxgu/DPNizqEASeFIkUTRJd7aZJ/OfcV7vnvdFqBaayjg/3UnJ2/vn9m7flGl3vn+/2X9tIdZvIQ7sLuwlkXc/gVPh8Oskzk+eVzWjdX/VUnneZF/d1ESAhyAQGIYgFJCHIBAYhiAUkIcgEBiGIBSQhyAQGIYgFJCHIBAYhiAUkIcgEBiGIBSQhyAQGIYgFJCPLw98Do9zEYrzXOXb914J6BK7AnYHgF5vpinFZervqr+qR5UX9XIAlBLiAAUSwgCUEuIABRLCAJQR7ehaO7EozXGueu3zpwz8AV2BPQ7goooIACCiiggAIKKKCAAgoooIACCiiggAIKKKCAAgookFvgF1zdypav+pVRAAAAAElFTkSuQmCC';
+var formatMessage = formatMessage$1.exports;
+var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/poweredup.mjs';
 
-    var _super = _createSuper(Scratch3PoweredUpBlocks);
+var Scratch3PoweredUpBlocks = /*#__PURE__*/function (_BleBaseBlocks) {
+  _inherits(Scratch3PoweredUpBlocks, _BleBaseBlocks);
 
-    function Scratch3PoweredUpBlocks(runtime) {
-      var _this;
+  var _super = _createSuper(Scratch3PoweredUpBlocks);
 
-      _classCallCheck(this, Scratch3PoweredUpBlocks);
+  function Scratch3PoweredUpBlocks(runtime) {
+    var _this;
 
-      _this = _super.call(this, new Hub(runtime, Scratch3PoweredUpBlocks.EXTENSION_ID, 0x41));
+    _classCallCheck(this, Scratch3PoweredUpBlocks);
 
-      if (runtime.formatMessage) {
-        // Replace 'formatMessage' to a formatter which is used in the runtime.
-        formatMessage$1 = runtime.formatMessage;
-      }
+    _this = _super.call(this, new Hub(runtime, Scratch3PoweredUpBlocks.EXTENSION_ID, 0x41));
 
-      return _this;
+    if (runtime.formatMessage) {
+      // Replace 'formatMessage' to a formatter which is used in the runtime.
+      formatMessage = runtime.formatMessage;
     }
 
-    _createClass(Scratch3PoweredUpBlocks, [{
-      key: "externalPorts",
-      get: function get() {
-        return ['A', 'B'];
-      }
-    }, {
-      key: "multipleExternalPorts",
-      get: function get() {
-        return ['A', 'B', 'A+B'];
-      }
-    }, {
-      key: "hasInternalTiltSensorBlocks",
-      get: function get() {
-        return false;
-      }
-    }, {
-      key: "getInfo",
-      value: function getInfo() {
-        this.setupTranslations(formatMessage$1);
-        return {
-          id: Scratch3PoweredUpBlocks.EXTENSION_ID,
-          name: 'Powered UP',
-          extensionURL: Scratch3PoweredUpBlocks.extensionURL,
-          blockIconURI: blockIconURI,
-          showStatusButton: true,
-          blocks: this.getBlocks(formatMessage$1),
-          menus: this.getMenus(formatMessage$1)
-        };
-      }
-    }], [{
-      key: "EXTENSION_ID",
-      get: function get() {
-        return 'poweredup';
-      }
-    }, {
-      key: "extensionURL",
-      get: function get() {
-        return extensionURL;
-      },
-      set: function set(url) {
-        extensionURL = url;
-      }
-    }]);
+    return _this;
+  }
 
-    return Scratch3PoweredUpBlocks;
-  }(BleBaseBlocks);
+  _createClass(Scratch3PoweredUpBlocks, [{
+    key: "externalPorts",
+    get: function get() {
+      return ['A', 'B'];
+    }
+  }, {
+    key: "multipleExternalPorts",
+    get: function get() {
+      return ['A', 'B', 'A+B'];
+    }
+  }, {
+    key: "hasInternalTiltSensorBlocks",
+    get: function get() {
+      return false;
+    }
+  }, {
+    key: "getInfo",
+    value: function getInfo() {
+      this.setupTranslations(formatMessage);
+      return {
+        id: Scratch3PoweredUpBlocks.EXTENSION_ID,
+        name: 'Powered UP',
+        extensionURL: Scratch3PoweredUpBlocks.extensionURL,
+        blockIconURI: blockIconURI,
+        showStatusButton: true,
+        blocks: this.getBlocks(formatMessage),
+        menus: this.getMenus(formatMessage)
+      };
+    }
+  }], [{
+    key: "EXTENSION_ID",
+    get: function get() {
+      return 'poweredup';
+    }
+  }, {
+    key: "extensionURL",
+    get: function get() {
+      return extensionURL;
+    },
+    set: function set(url) {
+      extensionURL = url;
+    }
+  }]);
 
-  exports.blockClass = Scratch3PoweredUpBlocks;
-  module.exports = Scratch3PoweredUpBlocks;
-})(_poweredup, _poweredup.exports);
+  return Scratch3PoweredUpBlocks;
+}(BleBaseBlocks);
 
-export { entry };
+var blockClass = Scratch3PoweredUpBlocks;
+blockClass = Scratch3PoweredUpBlocks;
+
+export { blockClass, entry };

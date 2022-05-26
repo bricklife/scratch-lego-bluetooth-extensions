@@ -1,6 +1,4 @@
-var global$1 = (typeof global !== "undefined" ? global :
-  typeof self !== "undefined" ? self :
-  typeof window !== "undefined" ? window : {});
+var global$1 = typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};
 
 // based off https://github.com/defunctzombie/node-process/blob/master/browser.js
 
@@ -256,189 +254,6 @@ function _typeof$1(obj) {
   }, _typeof$1(obj);
 }
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.defineProperty(subClass, "prototype", {
-    writable: false
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-
-  if (!it) {
-    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-      if (it) o = it;
-      var i = 0;
-
-      var F = function () {};
-
-      return {
-        s: F,
-        n: function () {
-          if (i >= o.length) return {
-            done: true
-          };
-          return {
-            done: false,
-            value: o[i++]
-          };
-        },
-        e: function (e) {
-          throw e;
-        },
-        f: F
-      };
-    }
-
-    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-
-  var normalCompletion = true,
-      didErr = false,
-      err;
-  return {
-    s: function () {
-      it = it.call(o);
-    },
-    n: function () {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function (e) {
-      didErr = true;
-      err = e;
-    },
-    f: function () {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    }
-  };
-}
-
 /*
 object-assign
 (c) Sindre Sorhus
@@ -537,7 +352,7 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
 
 var emptyObject = {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   Object.freeze(emptyObject);
 }
 
@@ -565,22 +380,22 @@ function makeEmptyFunction(arg) {
  */
 
 
-var emptyFunction$1 = function emptyFunction() {};
+var emptyFunction$2 = function emptyFunction() {};
 
-emptyFunction$1.thatReturns = makeEmptyFunction;
-emptyFunction$1.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction$1.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction$1.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction$2.thatReturns = makeEmptyFunction;
+emptyFunction$2.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction$2.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction$2.thatReturnsNull = makeEmptyFunction(null);
 
-emptyFunction$1.thatReturnsThis = function () {
+emptyFunction$2.thatReturnsThis = function () {
   return this;
 };
 
-emptyFunction$1.thatReturnsArgument = function (arg) {
+emptyFunction$2.thatReturnsArgument = function (arg) {
   return arg;
 };
 
-var emptyFunction_1 = emptyFunction$1;
+var emptyFunction_1 = emptyFunction$2;
 
 var m$1 = objectAssign,
     n$1 = emptyObject_1,
@@ -895,7 +710,7 @@ var U = {
   default: U
 }),
     W = V && U || V;
-W["default"] ? W["default"] : W;
+var react_production_min = W["default"] ? W["default"] : W;
 
 var react_development = {exports: {}};
 
@@ -913,7 +728,7 @@ var react_development = {exports: {}};
 
 var validateFormat = function validateFormat(format) {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   validateFormat = function validateFormat(format) {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
@@ -946,7 +761,7 @@ function invariant$1(condition, format, a, b, c, d, e, f) {
 
 var invariant_1 = invariant$1;
 
-var emptyFunction = emptyFunction_1;
+var emptyFunction$1 = emptyFunction_1;
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
  * This can be used to log issues in development environments in critical
@@ -954,9 +769,9 @@ var emptyFunction = emptyFunction_1;
  * same logic and follow the same code paths.
  */
 
-var warning = emptyFunction;
+var warning = emptyFunction$1;
 
-{
+if (process.env.NODE_ENV !== 'production') {
   var printWarning$2 = function printWarning(format) {
     for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -1007,13 +822,13 @@ var warning_1 = warning;
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$2;
+var ReactPropTypesSecret$3 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;
 
 var printWarning$1 = function printWarning() {};
 
-{
-  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+if (process.env.NODE_ENV !== 'production') {
+  var ReactPropTypesSecret$2 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
   var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -1046,7 +861,7 @@ var printWarning$1 = function printWarning() {};
 
 
 function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     for (var typeSpecName in typeSpecs) {
       if (has$1(typeSpecs, typeSpecName)) {
         var error; // Prop type validation may throw. In case they do, we don't want to
@@ -1062,7 +877,7 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
             throw err;
           }
 
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$2);
         } catch (ex) {
           error = ex;
         }
@@ -1090,14 +905,14 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
 
 
 checkPropTypes$1.resetWarningCache = function () {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     loggedTypeFailures = {};
   }
 };
 
 var checkPropTypes_1 = checkPropTypes$1;
 
-{
+if (process.env.NODE_ENV !== "production") {
   (function () {
 
     var _assign = objectAssign;
@@ -2486,7 +2301,9 @@ var checkPropTypes_1 = checkPropTypes$1;
   })();
 }
 
-{
+if (process.env.NODE_ENV === 'production') {
+  react.exports = react_production_min;
+} else {
   react.exports = react_development.exports;
 }
 
@@ -5686,7 +5503,7 @@ var reactIs_development = {};
 
 (function (exports) {
 
-  {
+  if (process.env.NODE_ENV !== "production") {
     (function () {
 
       Object.defineProperty(exports, '__esModule', {
@@ -5923,19 +5740,21 @@ var reactIs_development = {};
   }
 })(reactIs_development);
 
-{
+if (process.env.NODE_ENV === 'production') {
+  reactIs.exports = reactIs_production_min;
+} else {
   reactIs.exports = reactIs_development;
 }
 
 var ReactIs$2 = reactIs.exports;
 var assign = objectAssign;
-var ReactPropTypesSecret = ReactPropTypesSecret_1;
+var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
 var checkPropTypes = checkPropTypes_1;
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
 var printWarning = function printWarning() {};
 
-{
+if (process.env.NODE_ENV !== 'production') {
   printWarning = function printWarning(text) {
     var message = 'Warning: ' + text;
 
@@ -6092,7 +5911,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   PropTypeError.prototype = Error.prototype;
 
   function createChainableTypeChecker(validate) {
-    {
+    if (process.env.NODE_ENV !== 'production') {
       var manualPropTypeCallCache = {};
       var manualPropTypeWarningCount = 0;
     }
@@ -6101,13 +5920,13 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       componentName = componentName || ANONYMOUS;
       propFullName = propFullName || propName;
 
-      if (secret !== ReactPropTypesSecret) {
+      if (secret !== ReactPropTypesSecret$1) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
           var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
           err.name = 'Invariant Violation';
           throw err;
-        } else if (typeof console !== 'undefined') {
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
 
@@ -6177,7 +5996,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       }
 
       for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret$1);
 
         if (error instanceof Error) {
           return error;
@@ -6236,7 +6055,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      {
+      if (process.env.NODE_ENV !== 'production') {
         if (arguments.length > 1) {
           printWarning('Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' + 'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).');
         } else {
@@ -6286,7 +6105,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
       for (var key in propValue) {
         if (has(propValue, key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
           if (error instanceof Error) {
             return error;
@@ -6302,7 +6121,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') ;
+      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunctionThatReturnsNull;
     }
 
@@ -6319,7 +6138,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
 
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret$1) == null) {
           return null;
         }
       }
@@ -6358,7 +6177,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           continue;
         }
 
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
         if (error) {
           return error;
@@ -6391,7 +6210,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
         }
 
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
 
         if (error) {
           return error;
@@ -6559,12 +6378,75 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   return ReactPropTypes;
 };
 
-{
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret = ReactPropTypesSecret_1;
+
+function emptyFunction() {}
+
+function emptyFunctionWithReset() {}
+
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+var factoryWithThrowingShims = function factoryWithThrowingShims() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+
+    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+    err.name = 'Invariant Violation';
+    throw err;
+  }
+  shim.isRequired = shim;
+
+  function getShim() {
+    return shim;
+  }
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+  ReactPropTypes.PropTypes = ReactPropTypes;
+  return ReactPropTypes;
+};
+
+if (process.env.NODE_ENV !== 'production') {
   var ReactIs$1 = reactIs.exports; // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
 
   var throwOnDirectAccess = true;
   propTypes.exports = factoryWithTypeCheckers(ReactIs$1.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  propTypes.exports = factoryWithThrowingShims();
 }
 
 var PropTypes = propTypes.exports;
@@ -6599,7 +6481,7 @@ TYPE_STATICS[ReactIs.ForwardRef] = FORWARD_REF_STATICS;
 
 
 var invariant = function invariant(condition, format, a, b, c, d, e, f) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
     }
@@ -7192,7 +7074,7 @@ function createError(message, exception) {
 }
 
 function defaultErrorHandler(error) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     console.error(error);
   }
 }
@@ -7389,7 +7271,7 @@ function formatPlural(config, state, value) {
   return 'other';
 }
 
-function formatMessage$1(config, state) {
+function formatMessage$2(config, state) {
   var messageDescriptor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   var values = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   var locale = config.locale,
@@ -7400,7 +7282,7 @@ function formatMessage$1(config, state) {
   var id = messageDescriptor.id,
       defaultMessage = messageDescriptor.defaultMessage; // Produce a better error if the user calls `intl.formatMessage(element)`
 
-  {
+  if (process.env.NODE_ENV !== 'production') {
     browser(! /*#__PURE__*/react.exports.isValidElement(config), '[React Intl] Don\'t pass React elements to ' + 'formatMessage(), pass `.props`.');
   } // `id` is a required field of a Message Descriptor.
 
@@ -7460,7 +7342,7 @@ function formatHTMLMessage(config, state, messageDescriptor) {
     escaped[name] = typeof value === 'string' ? escape(value) : value;
     return escaped;
   }, {});
-  return formatMessage$1(config, state, messageDescriptor, escapedValues);
+  return formatMessage$2(config, state, messageDescriptor, escapedValues);
 }
 
 var format = Object.freeze({
@@ -7469,7 +7351,7 @@ var format = Object.freeze({
   formatRelative: formatRelative,
   formatNumber: formatNumber,
   formatPlural: formatPlural,
-  formatMessage: formatMessage$1,
+  formatMessage: formatMessage$2,
   formatHTMLMessage: formatHTMLMessage
 });
 /*
@@ -7630,10 +7512,10 @@ IntlProvider.contextTypes = {
 IntlProvider.childContextTypes = {
   intl: intlShape.isRequired
 };
-IntlProvider.propTypes = _extends({}, intlConfigPropTypes, {
+process.env.NODE_ENV !== "production" ? IntlProvider.propTypes = _extends({}, intlConfigPropTypes, {
   children: PropTypes.element.isRequired,
   initialNow: PropTypes.any
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7686,11 +7568,11 @@ FormattedDate.displayName = 'FormattedDate';
 FormattedDate.contextTypes = {
   intl: intlShape
 };
-FormattedDate.propTypes = _extends({}, dateTimeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedDate.propTypes = _extends({}, dateTimeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7743,11 +7625,11 @@ FormattedTime.displayName = 'FormattedTime';
 FormattedTime.contextTypes = {
   intl: intlShape
 };
-FormattedTime.propTypes = _extends({}, dateTimeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedTime.propTypes = _extends({}, dateTimeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7925,13 +7807,13 @@ FormattedRelative.contextTypes = {
 FormattedRelative.defaultProps = {
   updateInterval: 1000 * 10
 };
-FormattedRelative.propTypes = _extends({}, relativeFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedRelative.propTypes = _extends({}, relativeFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   updateInterval: PropTypes.number,
   initialNow: PropTypes.any,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -7984,11 +7866,11 @@ FormattedNumber.displayName = 'FormattedNumber';
 FormattedNumber.contextTypes = {
   intl: intlShape
 };
-FormattedNumber.propTypes = _extends({}, numberFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedNumber.propTypes = _extends({}, numberFormatPropTypes, {
   value: PropTypes.any.isRequired,
   format: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8046,7 +7928,7 @@ FormattedPlural.contextTypes = {
 FormattedPlural.defaultProps = {
   style: 'cardinal'
 };
-FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
   value: PropTypes.any.isRequired,
   other: PropTypes.node.isRequired,
   zero: PropTypes.node,
@@ -8055,7 +7937,7 @@ FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
   few: PropTypes.node,
   many: PropTypes.node,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8063,11 +7945,11 @@ FormattedPlural.propTypes = _extends({}, pluralFormatPropTypes, {
  */
 
 var defaultFormatMessage = function defaultFormatMessage(descriptor, values) {
-  {
+  if (process.env.NODE_ENV !== 'production') {
     console.error('[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry. Using default message as fallback.');
   }
 
-  return formatMessage$1({}, {
+  return formatMessage$2({}, {
     getMessageFormat: memoizeFormatConstructor(IntlMessageFormat)
   }, descriptor, values);
 };
@@ -8210,11 +8092,11 @@ FormattedMessage.contextTypes = {
 FormattedMessage.defaultProps = {
   values: {}
 };
-FormattedMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
   values: PropTypes.object,
   tagName: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8307,11 +8189,11 @@ FormattedHTMLMessage.contextTypes = {
 FormattedHTMLMessage.defaultProps = {
   values: {}
 };
-FormattedHTMLMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
+process.env.NODE_ENV !== "production" ? FormattedHTMLMessage.propTypes = _extends({}, messageDescriptorPropTypes, {
   values: PropTypes.object,
   tagName: PropTypes.string,
   children: PropTypes.func
-}) ;
+}) : void 0;
 /*
  * Copyright 2015, Yahoo Inc.
  * Copyrights licensed under the New BSD License.
@@ -8358,13 +8240,36 @@ var entry = {
   helpLink: 'https://scratch.mit.edu/boost'
 };
 
-var _spikeprime = {exports: {}};
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
 
 /**
  * Block argument types
  * @enum {string}
  */
-var ArgumentType = {
+var ArgumentType$1 = {
   /**
    * Numeric value with angle picker
    */
@@ -8405,13 +8310,13 @@ var ArgumentType = {
    */
   IMAGE: 'image'
 };
-var argumentType = ArgumentType;
+var argumentType = ArgumentType$1;
 
 /**
  * Types of block
  * @enum {string}
  */
-var BlockType = {
+var BlockType$1 = {
   /**
    * Boolean reporter with hexagonal shape
    */
@@ -8455,9 +8360,9 @@ var BlockType = {
    */
   REPORTER: 'reporter'
 };
-var blockType = BlockType;
+var blockType = BlockType$1;
 
-var Color$2 = /*#__PURE__*/function () {
+var Color$3 = /*#__PURE__*/function () {
   function Color() {
     _classCallCheck(this, Color);
   }
@@ -8713,9 +8618,9 @@ var Color$2 = /*#__PURE__*/function () {
   return Color;
 }();
 
-var color$1 = Color$2;
+var color$1 = Color$3;
 
-var Color$1 = color$1;
+var Color$2 = color$1;
 /**
  * @fileoverview
  * Utilities for casting and comparing Scratch data-types.
@@ -8727,7 +8632,7 @@ var Color$1 = color$1;
  * Use when coercing a value before computation.
  */
 
-var Cast = /*#__PURE__*/function () {
+var Cast$1 = /*#__PURE__*/function () {
   function Cast() {
     _classCallCheck(this, Cast);
   }
@@ -8829,7 +8734,7 @@ var Cast = /*#__PURE__*/function () {
       var color;
 
       if (typeof value === 'string' && value.substring(0, 1) === '#') {
-        color = Color$1.hexToRgb(value); // If the color wasn't *actually* a hex color, cast to black
+        color = Color$2.hexToRgb(value); // If the color wasn't *actually* a hex color, cast to black
 
         if (!color) color = {
           r: 0,
@@ -8838,7 +8743,7 @@ var Cast = /*#__PURE__*/function () {
           a: 255
         };
       } else {
-        color = Color$1.decimalToRgb(Cast.toNumber(value));
+        color = Color$2.decimalToRgb(Cast.toNumber(value));
       }
 
       return color;
@@ -8982,7 +8887,58 @@ var Cast = /*#__PURE__*/function () {
   return Cast;
 }();
 
-var cast = Cast;
+var cast = Cast$1;
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+  return _setPrototypeOf(o, p);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof$1(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
 
 var JSONRPC$1 = /*#__PURE__*/function () {
   function JSONRPC() {
@@ -9133,9 +9089,12 @@ var JSONRPC$1 = /*#__PURE__*/function () {
 
 var jsonrpc = JSONRPC$1;
 
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var JSONRPC = jsonrpc;
 
-var BT = /*#__PURE__*/function (_JSONRPC) {
+var BT$1 = /*#__PURE__*/function (_JSONRPC) {
   _inherits(BT, _JSONRPC);
 
   var _super = _createSuper(BT);
@@ -9386,7 +9345,7 @@ var BT = /*#__PURE__*/function (_JSONRPC) {
   return BT;
 }(JSONRPC);
 
-var bt = BT;
+var bt = BT$1;
 
 var lookup = [];
 var revLookup = [];
@@ -9621,6 +9580,11 @@ var INSPECT_MAX_BYTES = 50;
  */
 
 Buffer.TYPED_ARRAY_SUPPORT = global$1.TYPED_ARRAY_SUPPORT !== undefined ? global$1.TYPED_ARRAY_SUPPORT : true;
+/*
+ * Export kMaxLength after typed array support is determined.
+ */
+
+kMaxLength();
 
 function kMaxLength() {
   return Buffer.TYPED_ARRAY_SUPPORT ? 0x7fffffff : 0x3fffffff;
@@ -9713,6 +9677,8 @@ Buffer.from = function (value, encodingOrOffset, length) {
 if (Buffer.TYPED_ARRAY_SUPPORT) {
   Buffer.prototype.__proto__ = Uint8Array.prototype;
   Buffer.__proto__ = Uint8Array;
+
+  if (typeof Symbol !== 'undefined' && Symbol.species && Buffer[Symbol.species] === Buffer) ;
 }
 
 function assertSize(size) {
@@ -11477,7 +11443,7 @@ var btoa$1 = {exports: {}};
 var atob = browserAtob.exports;
 var btoa = btoa$1.exports;
 
-var Base64Util = /*#__PURE__*/function () {
+var Base64Util$1 = /*#__PURE__*/function () {
   function Base64Util() {
     _classCallCheck(this, Base64Util);
   }
@@ -11537,9 +11503,9 @@ var Base64Util = /*#__PURE__*/function () {
   return Base64Util;
 }();
 
-var base64Util = Base64Util;
+var base64Util = Base64Util$1;
 
-var MathUtil = /*#__PURE__*/function () {
+var MathUtil$1 = /*#__PURE__*/function () {
   function MathUtil() {
     _classCallCheck(this, MathUtil);
   }
@@ -11690,7 +11656,7 @@ var MathUtil = /*#__PURE__*/function () {
   return MathUtil;
 }();
 
-var mathUtil = MathUtil;
+var mathUtil = MathUtil$1;
 
 var Timer$1 = /*#__PURE__*/function () {
   function Timer() {
@@ -11821,7 +11787,7 @@ var timer = Timer$1;
 
 var Timer = timer;
 
-var RateLimiter = /*#__PURE__*/function () {
+var RateLimiter$1 = /*#__PURE__*/function () {
   /**
    * A utility for limiting the rate of repetitive send operations, such as
    * bluetooth messages being sent to hardware devices. It uses the token bucket
@@ -11900,9 +11866,9 @@ var RateLimiter = /*#__PURE__*/function () {
   return RateLimiter;
 }();
 
-var rateLimiter = RateLimiter;
+var rateLimiter = RateLimiter$1;
 
-var Color = {
+var Color$1 = {
   BLACK: 0,
   PINK: 1,
   PURPLE: 2,
@@ -11916,9 +11882,9 @@ var Color = {
   WHITE: 10,
   NONE: -1
 };
-var color = Color;
+var color = Color$1;
 
-var setupTranslations = function setupTranslations(formatMessage) {
+var setupTranslations$1 = function setupTranslations(formatMessage) {
   var extTranslations = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var localeSetup = formatMessage.setup();
   var translations = {
@@ -12037,9 +12003,9 @@ var setupTranslations = function setupTranslations(formatMessage) {
   }
 };
 
-var setupTranslations_1 = setupTranslations;
+var setupTranslations_1 = setupTranslations$1;
 
-var formatMessage = {exports: {}};
+var formatMessage$1 = {exports: {}};
 
 var formatMessageParse = {exports: {}};
 
@@ -14432,85 +14398,198 @@ var plurals = {
   }
 
   module.exports = namespace();
-})(formatMessage);
+})(formatMessage$1);
 
-(function (module, exports) {
-  var ArgumentType = argumentType;
-  var BlockType = blockType;
-  var Cast = cast;
-  var BT = bt;
-  var Base64Util = base64Util;
-  var MathUtil = mathUtil;
-  var RateLimiter = rateLimiter;
-  var Color = color;
-  var setupTranslations = setupTranslations_1;
-  var blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAAEUUlEQVR4Ae2cTWgTURDHZxORatUeFLUeqtaThSDFHopQ1HoQhB4LigjWq3pTEbUXK+LHUb2qICrYkwiCF7UUpYdq0UA9iFVbaFXqoWq1CMm6/022SZNsnsmb3X2kM7Dp5s17k5lf5r15KewjEhECQkAICAEhIASEgBBYjAQs7qB7r9zvoLR90rbtNsd2I7f9Ku1NWZY1TDHrat+pA4NV2ig5jBVg76W7Z2yyLpBts9ot6XkVjY5TabKot+/0wYtVDC85hC1QN/NS6efxeDzW2ZGg1kQzraivK/mhYTf+mp2jkeQYPR1MUiqVSlM8tosrE2NswWDaErnwOtpbjIGH+PBFwid8sfARSwxX3GwAs2uem3lcznHbwayAeL5y2F/CYSRrwy0YUU3b77NEt4aIkpMZbxIbiHraiVbX5yLM842tuHECzHka8h3gHe8n+jmX++CB90SvJ4iudS+EmOvBc8c2hXncqc4KMg/w2pqIbh/KXLhHG3RBSk0A9KbtsZ2ZbMO0xT3E02Xe8b/WBEB+LP9vsSYAomBArg8QYT3EhXuIp8u843+tiSKCaouCMTxOdPhODtJKZx8PXZBSEwCx5qHaqrYxQYCsCYAAA4gn9gSBqLzNmlgDy4cYrFYAavKNfgqPFvxDqMX5uV9OKu1fzhaDTjJQE6IAFICaBDSHR78Gqta8wgAr7V84nvm9TGFNoOFloF/1DLpdE5BquGSgipBCLwAVgFRqAagipNCHtwb6Vc+g2xUAdNWSgZoEw8vAoKutn31NQKrhkoEqQgq9AFQAUqkFoIqQQh/eGhh0tfWzrwCgq5YM1CQYXgb6OepXPStt97MfcLtkoCZgASgANQloDo9+DfSrnpW2a4KodrhM4WrJZcdFn4F+AfhVYb/+EbVLBmqCF4ACUJOA5nBz10C/KqwZMPdwmcKaRAWgANQkoDncyDXw1ZsPhOvb9Iwb3to1DbR92xb30oyXfbhRAPFYav+jlzT26cuCQCcmpwnX23efqbtrh1FPghoF0IPXsGo57d3dSpub1rkgP45/pSfPRlyw6NOzv3MB4CjfGFNEMGWReYB39Mg+Smzd6GYanrDEPdqgQx/0NUWMAggoyLxldUuL+KANOogALMJD8wXDm7YlusxPaa+4lOoTdpsxGRh24FyfZwxAbFUgKBh+4um8vn79wmw3BiD2eRBU2z9zf4sYoA06iNe3qFMEDUYBbN60nmZ+/KYbNx9T0tnzYV+IC/dogw59TAJo1D4Qm2RvL/jg4YuifAI89DFJOAFOOYE1ImPyTseoKFaMwyYZ2xRcXrXl+ikH37ICX1mEDSDOpnLOY+nCCUE45EZHgvrdC98g7jlaOg7mjeVbA52DvZzHBtM4XmlwaNRdu/I+J9JbZB58gm/wEYeQcTlU8Kikntlzl++dtdL2efd4JT1TgYx24Zl6+JgX8WI7/s6LW/4KASEgBISAEBACQkAILC4C/wDBL1fytvgQdgAAAABJRU5ErkJggg==';
-  var formatMessage$1 = formatMessage.exports;
-  var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs';
-  var BTSendRateMax = 40;
-  var SpikePorts = ['A', 'B', 'C', 'D', 'E', 'F'];
-  var SpikeMotorStopMode = {
-    float: 0,
-    brake: 1,
-    hold: 2
-  };
-  var SpikeOrientation = {
-    front: 1,
-    back: 2,
-    up: 3,
-    down: 4,
-    rightside: 5,
-    leftside: 6
-  };
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
-  var SpikeMotorSetting = /*#__PURE__*/function () {
-    function SpikeMotorSetting() {
-      _classCallCheck(this, SpikeMotorSetting);
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-      this._speed = 75;
-      this._stopMode = SpikeMotorStopMode.brake;
-      this._stallDetection = true;
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+var ArgumentType = argumentType;
+var BlockType = blockType;
+var Cast = cast;
+var BT = bt;
+var Base64Util = base64Util;
+var MathUtil = mathUtil;
+var RateLimiter = rateLimiter;
+var Color = color;
+var setupTranslations = setupTranslations_1;
+var blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAUKADAAQAAAABAAAAUAAAAAASKG51AAAEUUlEQVR4Ae2cTWgTURDHZxORatUeFLUeqtaThSDFHopQ1HoQhB4LigjWq3pTEbUXK+LHUb2qICrYkwiCF7UUpYdq0UA9iFVbaFXqoWq1CMm6/022SZNsnsmb3X2kM7Dp5s17k5lf5r15KewjEhECQkAICAEhIASEgBBYjAQs7qB7r9zvoLR90rbtNsd2I7f9Ku1NWZY1TDHrat+pA4NV2ig5jBVg76W7Z2yyLpBts9ot6XkVjY5TabKot+/0wYtVDC85hC1QN/NS6efxeDzW2ZGg1kQzraivK/mhYTf+mp2jkeQYPR1MUiqVSlM8tosrE2NswWDaErnwOtpbjIGH+PBFwid8sfARSwxX3GwAs2uem3lcznHbwayAeL5y2F/CYSRrwy0YUU3b77NEt4aIkpMZbxIbiHraiVbX5yLM842tuHECzHka8h3gHe8n+jmX++CB90SvJ4iudS+EmOvBc8c2hXncqc4KMg/w2pqIbh/KXLhHG3RBSk0A9KbtsZ2ZbMO0xT3E02Xe8b/WBEB+LP9vsSYAomBArg8QYT3EhXuIp8u843+tiSKCaouCMTxOdPhODtJKZx8PXZBSEwCx5qHaqrYxQYCsCYAAA4gn9gSBqLzNmlgDy4cYrFYAavKNfgqPFvxDqMX5uV9OKu1fzhaDTjJQE6IAFICaBDSHR78Gqta8wgAr7V84nvm9TGFNoOFloF/1DLpdE5BquGSgipBCLwAVgFRqAagipNCHtwb6Vc+g2xUAdNWSgZoEw8vAoKutn31NQKrhkoEqQgq9AFQAUqkFoIqQQh/eGhh0tfWzrwCgq5YM1CQYXgb6OepXPStt97MfcLtkoCZgASgANQloDo9+DfSrnpW2a4KodrhM4WrJZcdFn4F+AfhVYb/+EbVLBmqCF4ACUJOA5nBz10C/KqwZMPdwmcKaRAWgANQkoDncyDXw1ZsPhOvb9Iwb3to1DbR92xb30oyXfbhRAPFYav+jlzT26cuCQCcmpwnX23efqbtrh1FPghoF0IPXsGo57d3dSpub1rkgP45/pSfPRlyw6NOzv3MB4CjfGFNEMGWReYB39Mg+Smzd6GYanrDEPdqgQx/0NUWMAggoyLxldUuL+KANOogALMJD8wXDm7YlusxPaa+4lOoTdpsxGRh24FyfZwxAbFUgKBh+4um8vn79wmw3BiD2eRBU2z9zf4sYoA06iNe3qFMEDUYBbN60nmZ+/KYbNx9T0tnzYV+IC/dogw59TAJo1D4Qm2RvL/jg4YuifAI89DFJOAFOOYE1ImPyTseoKFaMwyYZ2xRcXrXl+ikH37ICX1mEDSDOpnLOY+nCCUE45EZHgvrdC98g7jlaOg7mjeVbA52DvZzHBtM4XmlwaNRdu/I+J9JbZB58gm/wEYeQcTlU8Kikntlzl++dtdL2efd4JT1TgYx24Zl6+JgX8WI7/s6LW/4KASEgBISAEBACQkAILC4C/wDBL1fytvgQdgAAAABJRU5ErkJggg==';
+var formatMessage = formatMessage$1.exports;
+var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs';
+var BTSendRateMax = 40;
+var SpikePorts = ['A', 'B', 'C', 'D', 'E', 'F'];
+var SpikeMotorStopMode = {
+  float: 0,
+  brake: 1,
+  hold: 2
+};
+var SpikeOrientation = {
+  front: 1,
+  back: 2,
+  up: 3,
+  down: 4,
+  rightside: 5,
+  leftside: 6
+};
+
+var SpikeMotorSetting = /*#__PURE__*/function () {
+  function SpikeMotorSetting() {
+    _classCallCheck(this, SpikeMotorSetting);
+
+    this._speed = 75;
+    this._stopMode = SpikeMotorStopMode.brake;
+    this._stallDetection = true;
+  }
+
+  _createClass(SpikeMotorSetting, [{
+    key: "speed",
+    get: function get() {
+      return this._speed;
+    },
+    set: function set(value) {
+      this._speed = MathUtil.clamp(value, -100, 100);
     }
-
-    _createClass(SpikeMotorSetting, [{
-      key: "speed",
-      get: function get() {
-        return this._speed;
-      },
-      set: function set(value) {
-        this._speed = MathUtil.clamp(value, -100, 100);
+  }, {
+    key: "stopMode",
+    get: function get() {
+      return this._stopMode;
+    },
+    set: function set(value) {
+      if (value < 0 || value > 2) {
+        return;
       }
-    }, {
-      key: "stopMode",
-      get: function get() {
-        return this._stopMode;
+
+      this._stopMode = value;
+    }
+  }, {
+    key: "stallDetection",
+    get: function get() {
+      return this._stallDetection;
+    },
+    set: function set(value) {
+      this._stallDetection = value;
+    }
+  }]);
+
+  return SpikeMotorSetting;
+}();
+
+var SpikePrime = /*#__PURE__*/function () {
+  function SpikePrime(runtime, extensionId) {
+    _classCallCheck(this, SpikePrime);
+
+    this._runtime = runtime;
+    this._extensionId = extensionId;
+    this._remainingText = '';
+    this._sensors = {
+      buttons: [0, 0, 0, 0],
+      angle: {
+        pitch: 0,
+        roll: 0,
+        yaw: 0
       },
-      set: function set(value) {
-        if (value < 0 || value > 2) {
-          return;
-        }
+      orientation: SpikeOrientation.front
+    };
+    this._portValues = {};
+    this._pixelBrightness = 100;
+    this._motorSettings = {
+      A: new SpikeMotorSetting(),
+      B: new SpikeMotorSetting(),
+      C: new SpikeMotorSetting(),
+      D: new SpikeMotorSetting(),
+      E: new SpikeMotorSetting(),
+      F: new SpikeMotorSetting()
+    };
+    this._bt = null;
 
-        this._stopMode = value;
+    this._runtime.registerPeripheralExtension(extensionId, this);
+
+    this._runtime.on('PROJECT_STOP_ALL', this.stopAll.bind(this));
+
+    this._rateLimiter = new RateLimiter(BTSendRateMax);
+    this.reset = this.reset.bind(this);
+    this._onConnect = this._onConnect.bind(this);
+    this._onMessage = this._onMessage.bind(this);
+    this._openRequests = {};
+  }
+
+  _createClass(SpikePrime, [{
+    key: "angle",
+    get: function get() {
+      return this._sensors.angle;
+    }
+  }, {
+    key: "orientation",
+    get: function get() {
+      return this._sensors.orientation;
+    }
+  }, {
+    key: "portValues",
+    get: function get() {
+      return this._portValues;
+    }
+  }, {
+    key: "pixelBrightness",
+    get: function get() {
+      return this._pixelBrightness;
+    },
+    set: function set(value) {
+      this._pixelBrightness = value;
+    }
+  }, {
+    key: "motorSettings",
+    get: function get() {
+      return this._motorSettings;
+    }
+  }, {
+    key: "beep",
+    value: function beep(freq, time) {//console.log(`freq: ${freq}, time: ${time}`);
+    }
+  }, {
+    key: "stopAll",
+    value: function stopAll() {
+      this.stopAllMotors();
+      this.stopSound();
+    }
+  }, {
+    key: "stopSound",
+    value: function stopSound() {// this.send(cmd, false); // don't use rate limiter to ensure sound stops
+    }
+  }, {
+    key: "stopAllMotors",
+    value: function stopAllMotors() {}
+  }, {
+    key: "scan",
+    value: function scan() {
+      if (this._bt) {
+        this._bt.disconnect();
       }
-    }, {
-      key: "stallDetection",
-      get: function get() {
-        return this._stallDetection;
-      },
-      set: function set(value) {
-        this._stallDetection = value;
+
+      this._bt = new BT(this._runtime, this._extensionId, {
+        majorDeviceClass: 8,
+        minorDeviceClass: 1
+      }, this._onConnect, this.reset, this._onMessage);
+    }
+  }, {
+    key: "connect",
+    value: function connect(id) {
+      if (this._bt) {
+        this._bt.connectPeripheral(id);
       }
-    }]);
+    }
+  }, {
+    key: "disconnect",
+    value: function disconnect() {
+      if (this._bt) {
+        this._bt.disconnect();
+      }
 
-    return SpikeMotorSetting;
-  }();
-
-  var SpikePrime = /*#__PURE__*/function () {
-    function SpikePrime(runtime, extensionId) {
-      _classCallCheck(this, SpikePrime);
-
-      this._runtime = runtime;
-      this._extensionId = extensionId;
+      this.reset();
+    }
+  }, {
+    key: "reset",
+    value: function reset() {
       this._remainingText = '';
       this._sensors = {
         buttons: [0, 0, 0, 0],
@@ -14522,1051 +14601,941 @@ var plurals = {
         orientation: SpikeOrientation.front
       };
       this._portValues = {};
-      this._pixelBrightness = 100;
-      this._motorSettings = {
-        A: new SpikeMotorSetting(),
-        B: new SpikeMotorSetting(),
-        C: new SpikeMotorSetting(),
-        D: new SpikeMotorSetting(),
-        E: new SpikeMotorSetting(),
-        F: new SpikeMotorSetting()
-      };
-      this._bt = null;
-
-      this._runtime.registerPeripheralExtension(extensionId, this);
-
-      this._runtime.on('PROJECT_STOP_ALL', this.stopAll.bind(this));
-
-      this._rateLimiter = new RateLimiter(BTSendRateMax);
-      this.reset = this.reset.bind(this);
-      this._onConnect = this._onConnect.bind(this);
-      this._onMessage = this._onMessage.bind(this);
-      this._openRequests = {};
     }
+  }, {
+    key: "isConnected",
+    value: function isConnected() {
+      var connected = false;
 
-    _createClass(SpikePrime, [{
-      key: "angle",
-      get: function get() {
-        return this._sensors.angle;
+      if (this._bt) {
+        connected = this._bt.isConnected();
       }
-    }, {
-      key: "orientation",
-      get: function get() {
-        return this._sensors.orientation;
-      }
-    }, {
-      key: "portValues",
-      get: function get() {
-        return this._portValues;
-      }
-    }, {
-      key: "pixelBrightness",
-      get: function get() {
-        return this._pixelBrightness;
-      },
-      set: function set(value) {
-        this._pixelBrightness = value;
-      }
-    }, {
-      key: "motorSettings",
-      get: function get() {
-        return this._motorSettings;
-      }
-    }, {
-      key: "beep",
-      value: function beep(freq, time) {//console.log(`freq: ${freq}, time: ${time}`);
-      }
-    }, {
-      key: "stopAll",
-      value: function stopAll() {
-        this.stopAllMotors();
-        this.stopSound();
-      }
-    }, {
-      key: "stopSound",
-      value: function stopSound() {// this.send(cmd, false); // don't use rate limiter to ensure sound stops
-      }
-    }, {
-      key: "stopAllMotors",
-      value: function stopAllMotors() {}
-    }, {
-      key: "scan",
-      value: function scan() {
-        if (this._bt) {
-          this._bt.disconnect();
-        }
 
-        this._bt = new BT(this._runtime, this._extensionId, {
-          majorDeviceClass: 8,
-          minorDeviceClass: 1
-        }, this._onConnect, this.reset, this._onMessage);
+      return connected;
+    }
+  }, {
+    key: "sendJSON",
+    value: function sendJSON(json) {
+      var _this = this;
+
+      var useLimiter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var jsonText = JSON.stringify(json); //console.log('> ' + jsonText);
+
+      if (!this.isConnected()) return Promise.resolve();
+
+      if (useLimiter) {
+        if (!this._rateLimiter.okayToSend()) return Promise.resolve();
       }
-    }, {
-      key: "connect",
-      value: function connect(id) {
-        if (this._bt) {
-          this._bt.connectPeripheral(id);
-        }
-      }
-    }, {
-      key: "disconnect",
-      value: function disconnect() {
-        if (this._bt) {
-          this._bt.disconnect();
-        }
 
-        this.reset();
-      }
-    }, {
-      key: "reset",
-      value: function reset() {
-        this._remainingText = '';
-        this._sensors = {
-          buttons: [0, 0, 0, 0],
-          angle: {
-            pitch: 0,
-            roll: 0,
-            yaw: 0
-          },
-          orientation: SpikeOrientation.front
-        };
-        this._portValues = {};
-      }
-    }, {
-      key: "isConnected",
-      value: function isConnected() {
-        var connected = false;
-
-        if (this._bt) {
-          connected = this._bt.isConnected();
-        }
-
-        return connected;
-      }
-    }, {
-      key: "sendJSON",
-      value: function sendJSON(json) {
-        var _this = this;
-
-        var useLimiter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-        var jsonText = JSON.stringify(json); //console.log('> ' + jsonText);
-
-        if (!this.isConnected()) return Promise.resolve();
-
-        if (useLimiter) {
-          if (!this._rateLimiter.okayToSend()) return Promise.resolve();
-        }
-
-        if (!json.hasOwnProperty('i')) {
-          return this._bt.sendMessage({
-            message: "".concat(jsonText, "\r")
-          });
-        }
-
-        var promise = new Promise(function (resolve, reject) {
-          _this._openRequests[json.i] = {
-            resolve: resolve,
-            reject: reject
-          };
-        });
-
-        this._bt.sendMessage({
+      if (!json.hasOwnProperty('i')) {
+        return this._bt.sendMessage({
           message: "".concat(jsonText, "\r")
         });
-
-        return promise;
       }
-    }, {
-      key: "sendCommand",
-      value: function sendCommand(method, params) {
-        var needsResponse = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
-        if (needsResponse) {
-          var id = Math.random().toString(36).slice(-4);
-          return this.sendJSON({
-            i: id,
-            m: method,
-            p: params
-          });
-        }
+      var promise = new Promise(function (resolve, reject) {
+        _this._openRequests[json.i] = {
+          resolve: resolve,
+          reject: reject
+        };
+      });
 
+      this._bt.sendMessage({
+        message: "".concat(jsonText, "\r")
+      });
+
+      return promise;
+    }
+  }, {
+    key: "sendCommand",
+    value: function sendCommand(method, params) {
+      var needsResponse = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+      if (needsResponse) {
+        var id = Math.random().toString(36).slice(-4);
         return this.sendJSON({
+          i: id,
           m: method,
           p: params
         });
       }
-    }, {
-      key: "_onConnect",
-      value: function _onConnect() {
-        this.sendCommand('trigger_current_state', {}, false);
-      }
-    }, {
-      key: "_onMessage",
-      value: function _onMessage(params) {
-        var message = params.message;
-        var data = Base64Util.base64ToUint8Array(message);
-        var text = new TextDecoder().decode(data);
-        var responses = (this._remainingText + text).split('\r');
-        this._remainingText = responses.pop();
 
-        var _iterator = _createForOfIteratorHelper(responses),
-            _step;
+      return this.sendJSON({
+        m: method,
+        p: params
+      });
+    }
+  }, {
+    key: "_onConnect",
+    value: function _onConnect() {
+      this.sendCommand('trigger_current_state', {}, false);
+    }
+  }, {
+    key: "_onMessage",
+    value: function _onMessage(params) {
+      var message = params.message;
+      var data = Base64Util.base64ToUint8Array(message);
+      var text = new TextDecoder().decode(data);
+      var responses = (this._remainingText + text).split('\r');
+      this._remainingText = responses.pop();
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var jsonText = _step.value;
+      var _iterator = _createForOfIteratorHelper(responses),
+          _step;
 
-            try {
-              var json = JSON.parse(jsonText);
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var jsonText = _step.value;
 
-              if (json.hasOwnProperty('i') || json.m !== 0) {//console.log('< ' + jsonText);
-              }
+          try {
+            var json = JSON.parse(jsonText);
 
-              this._parseResponse(json);
-            } catch (error) {
-              console.log('invalid JSON:', jsonText);
+            if (json.hasOwnProperty('i') || json.m !== 0) {//console.log('< ' + jsonText);
             }
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
-      }
-    }, {
-      key: "_parseResponse",
-      value: function _parseResponse(response) {
-        if (response.hasOwnProperty('m')) {
-          switch (response.m) {
-            case 0:
-              // Hub (Ports, Acceleration, Gyro Rate, Tilt Angle, LED Matrix, Timer)
-              {
-                // Ports
-                for (var i = 0; i < 6; i++) {
-                  var port = SpikePorts[i];
-                  var deviceId = response.p[i][0];
-                  var values = response.p[i][1];
 
-                  switch (deviceId) {
-                    case 48:
-                    case 49:
-                      this._portValues[port] = {
-                        speed: values[0],
-                        degreesCounted: values[1],
-                        position: (values[2] + 360) % 360,
-                        power: values[3]
-                      };
-                      break;
-
-                    default:
-                      this._portValues[port] = {};
-                      break;
-                  }
-                } // Tilt Angle
-
-
-                var angle = response.p[8];
-                this._sensors.angle.yaw = angle[0];
-                this._sensors.angle.pitch = angle[1];
-                this._sensors.angle.roll = angle[2];
-              }
-              break;
-
-            case 1:
-              // Strage
-              break;
-
-            case 2:
-              // Battery
-              // {"m":2,"p":[8.316, 100]}
-              break;
-
-            case 3:
-              // Button
-              // {"m":3,"p":["right", 0]}
-              break;
-
-            case 4:
-              // Event (Orientation, Gesture)
-              if (SpikeOrientation.hasOwnProperty(response.p)) {
-                this._sensors.orientation = SpikeOrientation[response.p];
-              }
-
-              break;
+            this._parseResponse(json);
+          } catch (error) {
+            console.log('invalid JSON:', jsonText);
           }
         }
-
-        if (response.hasOwnProperty('i')) {
-          var openRequest = this._openRequests[response.i];
-          delete this._openRequests[response.i];
-
-          if (openRequest) {
-            openRequest.resolve();
-          }
-        }
-      }
-    }]);
-
-    return SpikePrime;
-  }();
-
-  var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
-    function Scratch3SpikePrimeBlocks(runtime) {
-      _classCallCheck(this, Scratch3SpikePrimeBlocks);
-
-      this.runtime = runtime;
-      this._peripheral = new SpikePrime(this.runtime, Scratch3SpikePrimeBlocks.EXTENSION_ID);
-      this._playNoteForPicker = this._playNoteForPicker.bind(this);
-      this.runtime.on('PLAY_NOTE', this._playNoteForPicker);
-
-      if (runtime.formatMessage) {
-        // Replace 'formatMessage' to a formatter which is used in the runtime.
-        formatMessage$1 = runtime.formatMessage;
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
       }
     }
+  }, {
+    key: "_parseResponse",
+    value: function _parseResponse(response) {
+      if (response.hasOwnProperty('m')) {
+        switch (response.m) {
+          case 0:
+            // Hub (Ports, Acceleration, Gyro Rate, Tilt Angle, LED Matrix, Timer)
+            {
+              // Ports
+              for (var i = 0; i < 6; i++) {
+                var port = SpikePorts[i];
+                var deviceId = response.p[i][0];
+                var values = response.p[i][1];
 
-    _createClass(Scratch3SpikePrimeBlocks, [{
-      key: "getInfo",
-      value: function getInfo() {
-        setupTranslations(formatMessage$1);
-        return {
-          id: Scratch3SpikePrimeBlocks.EXTENSION_ID,
-          name: 'SPIKE Prime',
-          blockIconURI: blockIconURI,
-          showStatusButton: true,
-          blocks: [{
-            opcode: 'motorRunFor',
-            text: formatMessage$1({
-              id: 'legobluetooth.motorRunFor',
-              default: '[PORT] run [DIRECTION] for [VALUE] [UNIT]'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'MULTIPLE_PORT',
-                defaultValue: 'A'
-              },
-              DIRECTION: {
-                type: ArgumentType.NUMBER,
-                menu: 'DIRECTION',
-                defaultValue: 1
-              },
-              VALUE: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 1
-              },
-              UNIT: {
-                type: ArgumentType.STRING,
-                menu: 'MOTOR_UNIT',
-                defaultValue: 'rotations'
-              }
+                switch (deviceId) {
+                  case 48:
+                  case 49:
+                    this._portValues[port] = {
+                      speed: values[0],
+                      degreesCounted: values[1],
+                      position: (values[2] + 360) % 360,
+                      power: values[3]
+                    };
+                    break;
+
+                  default:
+                    this._portValues[port] = {};
+                    break;
+                }
+              } // Tilt Angle
+
+
+              var angle = response.p[8];
+              this._sensors.angle.yaw = angle[0];
+              this._sensors.angle.pitch = angle[1];
+              this._sensors.angle.roll = angle[2];
             }
-          }, {
-            opcode: 'motorGoDirectionToPosition',
-            text: formatMessage$1({
-              id: 'legobluetooth.motorGoDirectionToPosition',
-              default: '[PORT] go [DIRECTION] to position [POSITION]'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'MULTIPLE_PORT',
-                defaultValue: 'A'
-              },
-              DIRECTION: {
-                type: ArgumentType.STRING,
-                menu: 'POSITION_DIRECTION',
-                defaultValue: 'shortest'
-              },
-              POSITION: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 0
-              }
+            break;
+
+          case 1:
+            // Strage
+            break;
+
+          case 2:
+            // Battery
+            // {"m":2,"p":[8.316, 100]}
+            break;
+
+          case 3:
+            // Button
+            // {"m":3,"p":["right", 0]}
+            break;
+
+          case 4:
+            // Event (Orientation, Gesture)
+            if (SpikeOrientation.hasOwnProperty(response.p)) {
+              this._sensors.orientation = SpikeOrientation[response.p];
             }
-          }, {
-            opcode: 'motorStart',
-            text: formatMessage$1({
-              id: 'legobluetooth.motorStart',
-              default: '[PORT] start motor [DIRECTION]'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'MULTIPLE_PORT',
-                defaultValue: 'A'
-              },
-              DIRECTION: {
-                type: ArgumentType.NUMBER,
-                menu: 'DIRECTION',
-                defaultValue: 1
-              }
-            }
-          }, {
-            opcode: 'motorStop',
-            text: formatMessage$1({
-              id: 'legobluetooth.motorStop',
-              default: '[PORT] stop motor'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'MULTIPLE_PORT',
-                defaultValue: 'A'
-              }
-            }
-          }, {
-            opcode: 'motorSetSpeed',
-            text: formatMessage$1({
-              id: 'legobluetooth.motorSetSpeed',
-              default: '[PORT] set speed to [SPEED] %'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'MULTIPLE_PORT',
-                defaultValue: 'A'
-              },
-              SPEED: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 75
-              }
-            }
-          }, {
-            opcode: 'getPosition',
-            text: formatMessage$1({
-              id: 'legobluetooth.getPosition',
-              default: '[PORT] position'
-            }),
-            blockType: BlockType.REPORTER,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'PORT',
-                defaultValue: 'A'
-              }
-            }
-          }, '---', {
-            opcode: 'displayImageFor',
-            text: formatMessage$1({
-              id: 'legobluetooth.displayImageFor',
-              default: 'turn on [MATRIX] for [DURATION] seconds'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              MATRIX: {
-                type: ArgumentType.MATRIX,
-                defaultValue: '1101111011000001000101110'
-              },
-              DURATION: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 2
-              }
-            }
-          }, {
-            opcode: 'displayImage',
-            text: formatMessage$1({
-              id: 'legobluetooth.displayImage',
-              default: 'turn on [MATRIX]'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              MATRIX: {
-                type: ArgumentType.MATRIX,
-                defaultValue: '1101111011000001000101110'
-              }
-            }
-          }, {
-            opcode: 'displayText',
-            text: formatMessage$1({
-              id: 'legobluetooth.displayText',
-              default: 'write [TEXT]'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              TEXT: {
-                type: ArgumentType.STRING,
-                defaultValue: 'Hello'
-              }
-            }
-          }, {
-            opcode: 'displayClear',
-            text: formatMessage$1({
-              id: 'legobluetooth.displayClear',
-              default: 'turn off pixels'
-            }),
-            blockType: BlockType.COMMAND
-          }, {
-            opcode: 'displaySetBrightness',
-            text: formatMessage$1({
-              id: 'legobluetooth.displaySetBrightness',
-              default: 'set pixel brightness to [BRIGHTNESS] %'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              BRIGHTNESS: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 75
-              }
-            }
-          }, {
-            opcode: 'displaySetPixel',
-            text: formatMessage$1({
-              id: 'legobluetooth.displaySetPixel',
-              default: 'set pixel at [X] , [Y] to [BRIGHTNESS] %'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              X: {
-                type: ArgumentType.STRING,
-                menu: 'COORDINATE',
-                defaultValue: '1'
-              },
-              Y: {
-                type: ArgumentType.STRING,
-                menu: 'COORDINATE',
-                defaultValue: '1'
-              },
-              BRIGHTNESS: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 100
-              }
-            }
-          }, {
-            opcode: 'centerButtonLights',
-            text: formatMessage$1({
-              id: 'legobluetooth.centerButtonLights',
-              default: 'set center button light to [COLOR]'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              COLOR: {
-                type: ArgumentType.STRING,
-                menu: 'LED_COLOR',
-                defaultValue: 9
-              }
-            }
-          }, {
-            opcode: 'ultrasonicLightUp',
-            text: formatMessage$1({
-              id: 'legobluetooth.ultrasonicLightUp',
-              default: '[PORT] light up [LIGHT0] [LIGHT1] [LIGHT2] [LIGHT3]'
-            }),
-            blockType: BlockType.COMMAND,
-            arguments: {
-              PORT: {
-                type: ArgumentType.STRING,
-                menu: 'PORT',
-                defaultValue: 'A'
-              },
-              LIGHT0: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 100
-              },
-              LIGHT1: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 100
-              },
-              LIGHT2: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 100
-              },
-              LIGHT3: {
-                type: ArgumentType.NUMBER,
-                defaultValue: 100
-              }
-            }
-          }, '---', // {
-          //     opcode: 'getOrientation',
-          //     text: formatMessage({
-          //         id: 'legobluetooth.getOrientation',
-          //         default: 'orientation'
-          //     }),
-          //     blockType: BlockType.REPORTER
-          // },
-          {
-            opcode: 'getAngle',
-            text: formatMessage$1({
-              id: 'legobluetooth.getAngle',
-              default: '[AXIS] angle'
-            }),
-            blockType: BlockType.REPORTER,
-            arguments: {
-              AXIS: {
-                type: ArgumentType.STRING,
-                menu: 'AXIS',
-                defaultValue: 'pitch'
-              }
-            }
-          }],
-          menus: {
+
+            break;
+        }
+      }
+
+      if (response.hasOwnProperty('i')) {
+        var openRequest = this._openRequests[response.i];
+        delete this._openRequests[response.i];
+
+        if (openRequest) {
+          openRequest.resolve();
+        }
+      }
+    }
+  }]);
+
+  return SpikePrime;
+}();
+
+var Scratch3SpikePrimeBlocks = /*#__PURE__*/function () {
+  function Scratch3SpikePrimeBlocks(runtime) {
+    _classCallCheck(this, Scratch3SpikePrimeBlocks);
+
+    this.runtime = runtime;
+    this._peripheral = new SpikePrime(this.runtime, Scratch3SpikePrimeBlocks.EXTENSION_ID);
+    this._playNoteForPicker = this._playNoteForPicker.bind(this);
+    this.runtime.on('PLAY_NOTE', this._playNoteForPicker);
+
+    if (runtime.formatMessage) {
+      // Replace 'formatMessage' to a formatter which is used in the runtime.
+      formatMessage = runtime.formatMessage;
+    }
+  }
+
+  _createClass(Scratch3SpikePrimeBlocks, [{
+    key: "getInfo",
+    value: function getInfo() {
+      setupTranslations(formatMessage);
+      return {
+        id: Scratch3SpikePrimeBlocks.EXTENSION_ID,
+        name: 'SPIKE Prime',
+        blockIconURI: blockIconURI,
+        showStatusButton: true,
+        blocks: [{
+          opcode: 'motorRunFor',
+          text: formatMessage({
+            id: 'legobluetooth.motorRunFor',
+            default: '[PORT] run [DIRECTION] for [VALUE] [UNIT]'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
             PORT: {
-              acceptReporters: true,
-              items: SpikePorts
-            },
-            MULTIPLE_PORT: {
-              acceptReporters: true,
-              items: ['A', 'B', 'C', 'D', 'E', 'F', 'A+B', 'C+D', 'E+F', 'A+B+C+D+E+F']
-            },
-            MOTOR_UNIT: {
-              acceptReporters: false,
-              items: [{
-                text: formatMessage$1({
-                  id: 'legobluetooth.rotations',
-                  default: 'rotations'
-                }),
-                value: 'rotations'
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.degrees',
-                  default: 'degrees'
-                }),
-                value: 'degrees'
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.seconds',
-                  default: 'seconds'
-                }),
-                value: 'seconds'
-              }]
-            },
-            POSITION_DIRECTION: {
-              acceptReporters: false,
-              items: [{
-                text: formatMessage$1({
-                  id: 'legobluetooth.shortestPath',
-                  default: 'shortest path'
-                }),
-                value: 'shortest'
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.clockwise',
-                  default: 'clockwise'
-                }),
-                value: 'clockwise'
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.counterclockwise',
-                  default: 'counterclockwise'
-                }),
-                value: 'counterclockwise'
-              }]
-            },
-            COORDINATE: {
-              acceptReporters: true,
-              items: ['1', '2', '3', '4', '5']
-            },
-            LED_COLOR: {
-              acceptReporters: true,
-              items: [{
-                text: formatMessage$1({
-                  id: 'legobluetooth.black',
-                  default: '(0) Black'
-                }),
-                value: String(Color.BLACK)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.pink',
-                  default: '(1) Pink'
-                }),
-                value: String(Color.PINK)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.purple',
-                  default: '(2) Purple'
-                }),
-                value: String(Color.PURPLE)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.blue',
-                  default: '(3) Blue'
-                }),
-                value: String(Color.BLUE)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.lightBlue',
-                  default: '(4) Light blue'
-                }),
-                value: String(Color.LIGHT_BLUE)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.lightGreen',
-                  default: '(5) Light green'
-                }),
-                value: String(Color.LIGHT_GREEN)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.green',
-                  default: '(6) Green'
-                }),
-                value: String(Color.GREEN)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.yellow',
-                  default: '(7) Yellow'
-                }),
-                value: String(Color.YELLOW)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.orange',
-                  default: '(8) Orange'
-                }),
-                value: String(Color.ORANGE)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.red',
-                  default: '(9) Red'
-                }),
-                value: String(Color.RED)
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.white',
-                  default: '(10) White'
-                }),
-                value: String(Color.WHITE)
-              }]
-            },
-            AXIS: {
-              acceptReporters: false,
-              items: [{
-                text: formatMessage$1({
-                  id: 'legobluetooth.pitch',
-                  default: 'pitch'
-                }),
-                value: 'pitch'
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.roll',
-                  default: 'roll'
-                }),
-                value: 'roll'
-              }, {
-                text: formatMessage$1({
-                  id: 'legobluetooth.yaw',
-                  default: 'yaw'
-                }),
-                value: 'yaw'
-              }]
+              type: ArgumentType.STRING,
+              menu: 'MULTIPLE_PORT',
+              defaultValue: 'A'
             },
             DIRECTION: {
-              acceptReporters: false,
-              items: [{
-                text: '⬆︎',
-                value: '1'
-              }, {
-                text: '⬇',
-                value: '-1'
-              }]
+              type: ArgumentType.NUMBER,
+              menu: 'DIRECTION',
+              defaultValue: 1
+            },
+            VALUE: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 1
+            },
+            UNIT: {
+              type: ArgumentType.STRING,
+              menu: 'MOTOR_UNIT',
+              defaultValue: 'rotations'
             }
           }
-        };
-      }
-    }, {
-      key: "motorRunFor",
-      value: function motorRunFor(args) {
-        var direction = args.DIRECTION;
-        var value = Cast.toNumber(args.VALUE);
-        var unit = args.UNIT;
-
-        var ports = this._validatePorts(Cast.toString(args.PORT));
-
-        switch (unit) {
-          case 'rotations':
-            return this._motorRunForDegrees(ports, direction, value * 360);
-
-          case 'degrees':
-            return this._motorRunForDegrees(ports, direction, value);
-
-          case 'seconds':
-            return this._motorRunTimed(ports, direction, value);
-
-          default:
-            return Promise.resolve();
+        }, {
+          opcode: 'motorGoDirectionToPosition',
+          text: formatMessage({
+            id: 'legobluetooth.motorGoDirectionToPosition',
+            default: '[PORT] go [DIRECTION] to position [POSITION]'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            PORT: {
+              type: ArgumentType.STRING,
+              menu: 'MULTIPLE_PORT',
+              defaultValue: 'A'
+            },
+            DIRECTION: {
+              type: ArgumentType.STRING,
+              menu: 'POSITION_DIRECTION',
+              defaultValue: 'shortest'
+            },
+            POSITION: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            }
+          }
+        }, {
+          opcode: 'motorStart',
+          text: formatMessage({
+            id: 'legobluetooth.motorStart',
+            default: '[PORT] start motor [DIRECTION]'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            PORT: {
+              type: ArgumentType.STRING,
+              menu: 'MULTIPLE_PORT',
+              defaultValue: 'A'
+            },
+            DIRECTION: {
+              type: ArgumentType.NUMBER,
+              menu: 'DIRECTION',
+              defaultValue: 1
+            }
+          }
+        }, {
+          opcode: 'motorStop',
+          text: formatMessage({
+            id: 'legobluetooth.motorStop',
+            default: '[PORT] stop motor'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            PORT: {
+              type: ArgumentType.STRING,
+              menu: 'MULTIPLE_PORT',
+              defaultValue: 'A'
+            }
+          }
+        }, {
+          opcode: 'motorSetSpeed',
+          text: formatMessage({
+            id: 'legobluetooth.motorSetSpeed',
+            default: '[PORT] set speed to [SPEED] %'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            PORT: {
+              type: ArgumentType.STRING,
+              menu: 'MULTIPLE_PORT',
+              defaultValue: 'A'
+            },
+            SPEED: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 75
+            }
+          }
+        }, {
+          opcode: 'getPosition',
+          text: formatMessage({
+            id: 'legobluetooth.getPosition',
+            default: '[PORT] position'
+          }),
+          blockType: BlockType.REPORTER,
+          arguments: {
+            PORT: {
+              type: ArgumentType.STRING,
+              menu: 'PORT',
+              defaultValue: 'A'
+            }
+          }
+        }, '---', {
+          opcode: 'displayImageFor',
+          text: formatMessage({
+            id: 'legobluetooth.displayImageFor',
+            default: 'turn on [MATRIX] for [DURATION] seconds'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            MATRIX: {
+              type: ArgumentType.MATRIX,
+              defaultValue: '1101111011000001000101110'
+            },
+            DURATION: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 2
+            }
+          }
+        }, {
+          opcode: 'displayImage',
+          text: formatMessage({
+            id: 'legobluetooth.displayImage',
+            default: 'turn on [MATRIX]'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            MATRIX: {
+              type: ArgumentType.MATRIX,
+              defaultValue: '1101111011000001000101110'
+            }
+          }
+        }, {
+          opcode: 'displayText',
+          text: formatMessage({
+            id: 'legobluetooth.displayText',
+            default: 'write [TEXT]'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            TEXT: {
+              type: ArgumentType.STRING,
+              defaultValue: 'Hello'
+            }
+          }
+        }, {
+          opcode: 'displayClear',
+          text: formatMessage({
+            id: 'legobluetooth.displayClear',
+            default: 'turn off pixels'
+          }),
+          blockType: BlockType.COMMAND
+        }, {
+          opcode: 'displaySetBrightness',
+          text: formatMessage({
+            id: 'legobluetooth.displaySetBrightness',
+            default: 'set pixel brightness to [BRIGHTNESS] %'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            BRIGHTNESS: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 75
+            }
+          }
+        }, {
+          opcode: 'displaySetPixel',
+          text: formatMessage({
+            id: 'legobluetooth.displaySetPixel',
+            default: 'set pixel at [X] , [Y] to [BRIGHTNESS] %'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            X: {
+              type: ArgumentType.STRING,
+              menu: 'COORDINATE',
+              defaultValue: '1'
+            },
+            Y: {
+              type: ArgumentType.STRING,
+              menu: 'COORDINATE',
+              defaultValue: '1'
+            },
+            BRIGHTNESS: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 100
+            }
+          }
+        }, {
+          opcode: 'centerButtonLights',
+          text: formatMessage({
+            id: 'legobluetooth.centerButtonLights',
+            default: 'set center button light to [COLOR]'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            COLOR: {
+              type: ArgumentType.STRING,
+              menu: 'LED_COLOR',
+              defaultValue: 9
+            }
+          }
+        }, {
+          opcode: 'ultrasonicLightUp',
+          text: formatMessage({
+            id: 'legobluetooth.ultrasonicLightUp',
+            default: '[PORT] light up [LIGHT0] [LIGHT1] [LIGHT2] [LIGHT3]'
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            PORT: {
+              type: ArgumentType.STRING,
+              menu: 'PORT',
+              defaultValue: 'A'
+            },
+            LIGHT0: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 100
+            },
+            LIGHT1: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 100
+            },
+            LIGHT2: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 100
+            },
+            LIGHT3: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 100
+            }
+          }
+        }, '---', // {
+        //     opcode: 'getOrientation',
+        //     text: formatMessage({
+        //         id: 'legobluetooth.getOrientation',
+        //         default: 'orientation'
+        //     }),
+        //     blockType: BlockType.REPORTER
+        // },
+        {
+          opcode: 'getAngle',
+          text: formatMessage({
+            id: 'legobluetooth.getAngle',
+            default: '[AXIS] angle'
+          }),
+          blockType: BlockType.REPORTER,
+          arguments: {
+            AXIS: {
+              type: ArgumentType.STRING,
+              menu: 'AXIS',
+              defaultValue: 'pitch'
+            }
+          }
+        }],
+        menus: {
+          PORT: {
+            acceptReporters: true,
+            items: SpikePorts
+          },
+          MULTIPLE_PORT: {
+            acceptReporters: true,
+            items: ['A', 'B', 'C', 'D', 'E', 'F', 'A+B', 'C+D', 'E+F', 'A+B+C+D+E+F']
+          },
+          MOTOR_UNIT: {
+            acceptReporters: false,
+            items: [{
+              text: formatMessage({
+                id: 'legobluetooth.rotations',
+                default: 'rotations'
+              }),
+              value: 'rotations'
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.degrees',
+                default: 'degrees'
+              }),
+              value: 'degrees'
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.seconds',
+                default: 'seconds'
+              }),
+              value: 'seconds'
+            }]
+          },
+          POSITION_DIRECTION: {
+            acceptReporters: false,
+            items: [{
+              text: formatMessage({
+                id: 'legobluetooth.shortestPath',
+                default: 'shortest path'
+              }),
+              value: 'shortest'
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.clockwise',
+                default: 'clockwise'
+              }),
+              value: 'clockwise'
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.counterclockwise',
+                default: 'counterclockwise'
+              }),
+              value: 'counterclockwise'
+            }]
+          },
+          COORDINATE: {
+            acceptReporters: true,
+            items: ['1', '2', '3', '4', '5']
+          },
+          LED_COLOR: {
+            acceptReporters: true,
+            items: [{
+              text: formatMessage({
+                id: 'legobluetooth.black',
+                default: '(0) Black'
+              }),
+              value: String(Color.BLACK)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.pink',
+                default: '(1) Pink'
+              }),
+              value: String(Color.PINK)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.purple',
+                default: '(2) Purple'
+              }),
+              value: String(Color.PURPLE)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.blue',
+                default: '(3) Blue'
+              }),
+              value: String(Color.BLUE)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.lightBlue',
+                default: '(4) Light blue'
+              }),
+              value: String(Color.LIGHT_BLUE)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.lightGreen',
+                default: '(5) Light green'
+              }),
+              value: String(Color.LIGHT_GREEN)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.green',
+                default: '(6) Green'
+              }),
+              value: String(Color.GREEN)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.yellow',
+                default: '(7) Yellow'
+              }),
+              value: String(Color.YELLOW)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.orange',
+                default: '(8) Orange'
+              }),
+              value: String(Color.ORANGE)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.red',
+                default: '(9) Red'
+              }),
+              value: String(Color.RED)
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.white',
+                default: '(10) White'
+              }),
+              value: String(Color.WHITE)
+            }]
+          },
+          AXIS: {
+            acceptReporters: false,
+            items: [{
+              text: formatMessage({
+                id: 'legobluetooth.pitch',
+                default: 'pitch'
+              }),
+              value: 'pitch'
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.roll',
+                default: 'roll'
+              }),
+              value: 'roll'
+            }, {
+              text: formatMessage({
+                id: 'legobluetooth.yaw',
+                default: 'yaw'
+              }),
+              value: 'yaw'
+            }]
+          },
+          DIRECTION: {
+            acceptReporters: false,
+            items: [{
+              text: '⬆︎',
+              value: '1'
+            }, {
+              text: '⬇',
+              value: '-1'
+            }]
+          }
         }
-      }
-    }, {
-      key: "_motorRunForDegrees",
-      value: function _motorRunForDegrees(ports, direction, degrees) {
-        var _this2 = this;
+      };
+    }
+  }, {
+    key: "motorRunFor",
+    value: function motorRunFor(args) {
+      var direction = args.DIRECTION;
+      var value = Cast.toNumber(args.VALUE);
+      var unit = args.UNIT;
 
-        var promises = ports.map(function (port) {
-          var setting = _this2._peripheral.motorSettings[port];
-          return _this2._peripheral.sendCommand('scratch.motor_run_for_degrees', {
-            port: port,
-            speed: setting.speed * direction,
-            degrees: Math.floor(degrees),
-            stop: setting.stopMode,
-            stall: setting.stallDetection
-          });
-        });
-        return Promise.all(promises).then(function () {});
-      }
-    }, {
-      key: "_motorRunTimed",
-      value: function _motorRunTimed(ports, direction, seconds) {
-        var _this3 = this;
+      var ports = this._validatePorts(Cast.toString(args.PORT));
 
-        var promises = ports.map(function (port) {
-          var setting = _this3._peripheral.motorSettings[port];
-          return _this3._peripheral.sendCommand('scratch.motor_run_timed', {
-            port: port,
-            speed: setting.speed * direction,
-            time: Math.floor(seconds * 1000),
-            stop: setting.stopMode,
-            stall: setting.stallDetection
-          });
-        });
-        return Promise.all(promises).then(function () {});
-      }
-    }, {
-      key: "motorGoDirectionToPosition",
-      value: function motorGoDirectionToPosition(args) {
-        var _this4 = this;
+      switch (unit) {
+        case 'rotations':
+          return this._motorRunForDegrees(ports, direction, value * 360);
 
-        var direction = args.DIRECTION;
-        var position = Math.round(Cast.toNumber(args.POSITION));
+        case 'degrees':
+          return this._motorRunForDegrees(ports, direction, value);
 
-        var ports = this._validatePorts(Cast.toString(args.PORT));
+        case 'seconds':
+          return this._motorRunTimed(ports, direction, value);
 
-        var settings = this._peripheral.motorSettings;
-        var promises = ports.map(function (port) {
-          var setting = settings[port];
-          return _this4._peripheral.sendCommand('scratch.motor_go_direction_to_position', {
-            port: port,
-            direction: direction,
-            position: position,
-            speed: setting.speed,
-            stop: setting.stopMode,
-            stall: setting.stallDetection
-          });
-        });
-        return Promise.all(promises).then(function () {});
-      }
-    }, {
-      key: "motorStart",
-      value: function motorStart(args) {
-        var _this5 = this;
-
-        var direction = args.DIRECTION;
-
-        var ports = this._validatePorts(Cast.toString(args.PORT));
-
-        var settings = this._peripheral.motorSettings;
-        var promises = ports.map(function (port) {
-          var setting = settings[port];
-          return _this5._peripheral.sendCommand('scratch.motor_start', {
-            port: port,
-            speed: setting.speed * direction,
-            stall: setting.stallDetection
-          });
-        });
-        return Promise.all(promises).then(function () {});
-      }
-    }, {
-      key: "motorStop",
-      value: function motorStop(args) {
-        var _this6 = this;
-
-        var ports = this._validatePorts(Cast.toString(args.PORT));
-
-        var settings = this._peripheral.motorSettings;
-        var promises = ports.map(function (port) {
-          var setting = settings[port];
-          return _this6._peripheral.sendCommand('scratch.motor_stop', {
-            port: port,
-            stop: setting.stopMode
-          });
-        });
-        return Promise.all(promises).then(function () {});
-      }
-    }, {
-      key: "motorSetSpeed",
-      value: function motorSetSpeed(args) {
-        var speed = Cast.toNumber(args.SPEED);
-
-        var ports = this._validatePorts(Cast.toString(args.PORT));
-
-        var settings = this._peripheral.motorSettings;
-        ports.forEach(function (port) {
-          settings[port].speed = speed;
-        });
-      }
-    }, {
-      key: "getPosition",
-      value: function getPosition(args) {
-        var _this$_peripheral$por, _this$_peripheral$por2;
-
-        var port = Cast.toString(args.PORT).trim().toUpperCase();
-        return (_this$_peripheral$por = (_this$_peripheral$por2 = this._peripheral.portValues[port]) === null || _this$_peripheral$por2 === void 0 ? void 0 : _this$_peripheral$por2.position) !== null && _this$_peripheral$por !== void 0 ? _this$_peripheral$por : 0;
-      }
-    }, {
-      key: "displayImageFor",
-      value: function displayImageFor(args) {
-        var brightness = Math.round(9 * this._peripheral.pixelBrightness / 100);
-        var symbol = (Cast.toString(args.MATRIX).replace(/\D/g, '') + '0'.repeat(25)).slice(0, 25);
-        var image = symbol.replace(/1/g, brightness).match(/.{5}/g).join(':');
-        var duration = Cast.toNumber(args.DURATION) * 1000;
-        duration = MathUtil.clamp(duration, 0, 60000);
-        return this._peripheral.sendCommand('scratch.display_image_for', {
-          image: image,
-          duration: duration
-        });
-      }
-    }, {
-      key: "displayImage",
-      value: function displayImage(args) {
-        var brightness = Math.round(9 * this._peripheral.pixelBrightness / 100);
-        var symbol = (Cast.toString(args.MATRIX).replace(/\D/g, '') + '0'.repeat(25)).slice(0, 25);
-        var image = symbol.replace(/1/g, brightness).match(/.{5}/g).join(':');
-        return this._peripheral.sendCommand('scratch.display_image', {
-          image: image
-        });
-      }
-    }, {
-      key: "displayText",
-      value: function displayText(args) {
-        var text = Cast.toString(args.TEXT);
-        return this._peripheral.sendCommand('scratch.display_text', {
-          text: text
-        });
-      }
-    }, {
-      key: "displayClear",
-      value: function displayClear() {
-        return this._peripheral.sendCommand('scratch.display_clear', {});
-      }
-    }, {
-      key: "displaySetBrightness",
-      value: function displaySetBrightness(args) {
-        var brightness = MathUtil.clamp(Cast.toNumber(args.BRIGHTNESS), 0, 100);
-        this._peripheral.pixelBrightness = brightness;
-      }
-    }, {
-      key: "displaySetPixel",
-      value: function displaySetPixel(args) {
-        var x = Cast.toNumber(args.X);
-
-        if (x < 1 || x > 5) {
+        default:
           return Promise.resolve();
-        }
-
-        var y = Cast.toNumber(args.Y);
-
-        if (y < 1 || y > 5) {
-          return Promise.resolve();
-        }
-
-        var brightness = MathUtil.clamp(Cast.toNumber(args.BRIGHTNESS), 0, 100);
-        brightness = Math.round(9 * brightness / 100);
-        return this._peripheral.sendCommand('scratch.display_set_pixel', {
-          x: x - 1,
-          y: y - 1,
-          brightness: brightness
-        });
       }
-    }, {
-      key: "centerButtonLights",
-      value: function centerButtonLights(args) {
-        var color = Cast.toNumber(args.COLOR);
-        return this._peripheral.sendCommand('scratch.center_button_lights', {
-          color: color
-        });
-      }
-    }, {
-      key: "ultrasonicLightUp",
-      value: function ultrasonicLightUp(args) {
-        var port = Cast.toString(args.PORT).trim().toUpperCase();
+    }
+  }, {
+    key: "_motorRunForDegrees",
+    value: function _motorRunForDegrees(ports, direction, degrees) {
+      var _this2 = this;
 
-        if (!SpikePorts.includes(port)) {
-          return Promise.resolve();
-        }
-
-        var lights = [];
-
-        for (var i = 0; i < 4; i++) {
-          lights.push(MathUtil.clamp(Cast.toNumber(args["LIGHT".concat(i)]), 0, 100));
-        }
-
-        return this._peripheral.sendCommand('scratch.ultrasonic_light_up', {
+      var promises = ports.map(function (port) {
+        var setting = _this2._peripheral.motorSettings[port];
+        return _this2._peripheral.sendCommand('scratch.motor_run_for_degrees', {
           port: port,
-          lights: lights
+          speed: setting.speed * direction,
+          degrees: Math.floor(degrees),
+          stop: setting.stopMode,
+          stall: setting.stallDetection
         });
-      }
-    }, {
-      key: "getOrientation",
-      value: function getOrientation() {
-        return this._peripheral.orientation;
-      }
-    }, {
-      key: "getAngle",
-      value: function getAngle(args) {
-        var axis = Cast.toString(args.AXIS);
-        return this._peripheral.angle[axis];
-      }
-    }, {
-      key: "_playNoteForPicker",
-      value: function _playNoteForPicker(note, category) {
-        if (category !== this.getInfo().name) return;
-        this.beep({
-          NOTE: note,
-          TIME: 0.25
+      });
+      return Promise.all(promises).then(function () {});
+    }
+  }, {
+    key: "_motorRunTimed",
+    value: function _motorRunTimed(ports, direction, seconds) {
+      var _this3 = this;
+
+      var promises = ports.map(function (port) {
+        var setting = _this3._peripheral.motorSettings[port];
+        return _this3._peripheral.sendCommand('scratch.motor_run_timed', {
+          port: port,
+          speed: setting.speed * direction,
+          time: Math.floor(seconds * 1000),
+          stop: setting.stopMode,
+          stall: setting.stallDetection
         });
-      }
-    }, {
-      key: "beep",
-      value: function beep(args) {
-        var _this7 = this;
+      });
+      return Promise.all(promises).then(function () {});
+    }
+  }, {
+    key: "motorGoDirectionToPosition",
+    value: function motorGoDirectionToPosition(args) {
+      var _this4 = this;
 
-        var note = MathUtil.clamp(Cast.toNumber(args.NOTE), 47, 99); // valid EV3 sounds
+      var direction = args.DIRECTION;
+      var position = Math.round(Cast.toNumber(args.POSITION));
 
-        var time = Cast.toNumber(args.TIME) * 1000;
-        time = MathUtil.clamp(time, 0, 3000);
+      var ports = this._validatePorts(Cast.toString(args.PORT));
 
-        if (time === 0) {
-          return; // don't send a beep time of 0
-        }
-
-        return new Promise(function (resolve) {
-          // https://en.wikipedia.org/wiki/MIDI_tuning_standard#Frequency_values
-          var freq = Math.pow(2, (note - 69 + 12) / 12) * 440;
-
-          _this7._peripheral.beep(freq, time); // Run for some time even when no piezo is connected.
-
-
-          setTimeout(resolve, time);
+      var settings = this._peripheral.motorSettings;
+      var promises = ports.map(function (port) {
+        var setting = settings[port];
+        return _this4._peripheral.sendCommand('scratch.motor_go_direction_to_position', {
+          port: port,
+          direction: direction,
+          position: position,
+          speed: setting.speed,
+          stop: setting.stopMode,
+          stall: setting.stallDetection
         });
-      }
-    }, {
-      key: "_validatePorts",
-      value: function _validatePorts(text) {
-        return text.toUpperCase().replace(/[^ABCDEF]/g, '').split('').filter(function (x, i, self) {
-          return self.indexOf(x) === i;
-        }).sort();
-      }
-    }], [{
-      key: "EXTENSION_ID",
-      get: function get() {
-        return 'spikeprime';
-      }
-    }, {
-      key: "extensionURL",
-      get: function get() {
-        return extensionURL;
-      },
-      set: function set(url) {
-        extensionURL = url;
-      }
-    }]);
+      });
+      return Promise.all(promises).then(function () {});
+    }
+  }, {
+    key: "motorStart",
+    value: function motorStart(args) {
+      var _this5 = this;
 
-    return Scratch3SpikePrimeBlocks;
-  }();
+      var direction = args.DIRECTION;
 
-  exports.blockClass = Scratch3SpikePrimeBlocks;
-  module.exports = Scratch3SpikePrimeBlocks;
-})(_spikeprime, _spikeprime.exports);
+      var ports = this._validatePorts(Cast.toString(args.PORT));
 
-export { entry };
+      var settings = this._peripheral.motorSettings;
+      var promises = ports.map(function (port) {
+        var setting = settings[port];
+        return _this5._peripheral.sendCommand('scratch.motor_start', {
+          port: port,
+          speed: setting.speed * direction,
+          stall: setting.stallDetection
+        });
+      });
+      return Promise.all(promises).then(function () {});
+    }
+  }, {
+    key: "motorStop",
+    value: function motorStop(args) {
+      var _this6 = this;
+
+      var ports = this._validatePorts(Cast.toString(args.PORT));
+
+      var settings = this._peripheral.motorSettings;
+      var promises = ports.map(function (port) {
+        var setting = settings[port];
+        return _this6._peripheral.sendCommand('scratch.motor_stop', {
+          port: port,
+          stop: setting.stopMode
+        });
+      });
+      return Promise.all(promises).then(function () {});
+    }
+  }, {
+    key: "motorSetSpeed",
+    value: function motorSetSpeed(args) {
+      var speed = Cast.toNumber(args.SPEED);
+
+      var ports = this._validatePorts(Cast.toString(args.PORT));
+
+      var settings = this._peripheral.motorSettings;
+      ports.forEach(function (port) {
+        settings[port].speed = speed;
+      });
+    }
+  }, {
+    key: "getPosition",
+    value: function getPosition(args) {
+      var _this$_peripheral$por, _this$_peripheral$por2;
+
+      var port = Cast.toString(args.PORT).trim().toUpperCase();
+      return (_this$_peripheral$por = (_this$_peripheral$por2 = this._peripheral.portValues[port]) === null || _this$_peripheral$por2 === void 0 ? void 0 : _this$_peripheral$por2.position) !== null && _this$_peripheral$por !== void 0 ? _this$_peripheral$por : 0;
+    }
+  }, {
+    key: "displayImageFor",
+    value: function displayImageFor(args) {
+      var brightness = Math.round(9 * this._peripheral.pixelBrightness / 100);
+      var symbol = (Cast.toString(args.MATRIX).replace(/\D/g, '') + '0'.repeat(25)).slice(0, 25);
+      var image = symbol.replace(/1/g, brightness).match(/.{5}/g).join(':');
+      var duration = Cast.toNumber(args.DURATION) * 1000;
+      duration = MathUtil.clamp(duration, 0, 60000);
+      return this._peripheral.sendCommand('scratch.display_image_for', {
+        image: image,
+        duration: duration
+      });
+    }
+  }, {
+    key: "displayImage",
+    value: function displayImage(args) {
+      var brightness = Math.round(9 * this._peripheral.pixelBrightness / 100);
+      var symbol = (Cast.toString(args.MATRIX).replace(/\D/g, '') + '0'.repeat(25)).slice(0, 25);
+      var image = symbol.replace(/1/g, brightness).match(/.{5}/g).join(':');
+      return this._peripheral.sendCommand('scratch.display_image', {
+        image: image
+      });
+    }
+  }, {
+    key: "displayText",
+    value: function displayText(args) {
+      var text = Cast.toString(args.TEXT);
+      return this._peripheral.sendCommand('scratch.display_text', {
+        text: text
+      });
+    }
+  }, {
+    key: "displayClear",
+    value: function displayClear() {
+      return this._peripheral.sendCommand('scratch.display_clear', {});
+    }
+  }, {
+    key: "displaySetBrightness",
+    value: function displaySetBrightness(args) {
+      var brightness = MathUtil.clamp(Cast.toNumber(args.BRIGHTNESS), 0, 100);
+      this._peripheral.pixelBrightness = brightness;
+    }
+  }, {
+    key: "displaySetPixel",
+    value: function displaySetPixel(args) {
+      var x = Cast.toNumber(args.X);
+
+      if (x < 1 || x > 5) {
+        return Promise.resolve();
+      }
+
+      var y = Cast.toNumber(args.Y);
+
+      if (y < 1 || y > 5) {
+        return Promise.resolve();
+      }
+
+      var brightness = MathUtil.clamp(Cast.toNumber(args.BRIGHTNESS), 0, 100);
+      brightness = Math.round(9 * brightness / 100);
+      return this._peripheral.sendCommand('scratch.display_set_pixel', {
+        x: x - 1,
+        y: y - 1,
+        brightness: brightness
+      });
+    }
+  }, {
+    key: "centerButtonLights",
+    value: function centerButtonLights(args) {
+      var color = Cast.toNumber(args.COLOR);
+      return this._peripheral.sendCommand('scratch.center_button_lights', {
+        color: color
+      });
+    }
+  }, {
+    key: "ultrasonicLightUp",
+    value: function ultrasonicLightUp(args) {
+      var port = Cast.toString(args.PORT).trim().toUpperCase();
+
+      if (!SpikePorts.includes(port)) {
+        return Promise.resolve();
+      }
+
+      var lights = [];
+
+      for (var i = 0; i < 4; i++) {
+        lights.push(MathUtil.clamp(Cast.toNumber(args["LIGHT".concat(i)]), 0, 100));
+      }
+
+      return this._peripheral.sendCommand('scratch.ultrasonic_light_up', {
+        port: port,
+        lights: lights
+      });
+    }
+  }, {
+    key: "getOrientation",
+    value: function getOrientation() {
+      return this._peripheral.orientation;
+    }
+  }, {
+    key: "getAngle",
+    value: function getAngle(args) {
+      var axis = Cast.toString(args.AXIS);
+      return this._peripheral.angle[axis];
+    }
+  }, {
+    key: "_playNoteForPicker",
+    value: function _playNoteForPicker(note, category) {
+      if (category !== this.getInfo().name) return;
+      this.beep({
+        NOTE: note,
+        TIME: 0.25
+      });
+    }
+  }, {
+    key: "beep",
+    value: function beep(args) {
+      var _this7 = this;
+
+      var note = MathUtil.clamp(Cast.toNumber(args.NOTE), 47, 99); // valid EV3 sounds
+
+      var time = Cast.toNumber(args.TIME) * 1000;
+      time = MathUtil.clamp(time, 0, 3000);
+
+      if (time === 0) {
+        return; // don't send a beep time of 0
+      }
+
+      return new Promise(function (resolve) {
+        // https://en.wikipedia.org/wiki/MIDI_tuning_standard#Frequency_values
+        var freq = Math.pow(2, (note - 69 + 12) / 12) * 440;
+
+        _this7._peripheral.beep(freq, time); // Run for some time even when no piezo is connected.
+
+
+        setTimeout(resolve, time);
+      });
+    }
+  }, {
+    key: "_validatePorts",
+    value: function _validatePorts(text) {
+      return text.toUpperCase().replace(/[^ABCDEF]/g, '').split('').filter(function (x, i, self) {
+        return self.indexOf(x) === i;
+      }).sort();
+    }
+  }], [{
+    key: "EXTENSION_ID",
+    get: function get() {
+      return 'spikeprime';
+    }
+  }, {
+    key: "extensionURL",
+    get: function get() {
+      return extensionURL;
+    },
+    set: function set(url) {
+      extensionURL = url;
+    }
+  }]);
+
+  return Scratch3SpikePrimeBlocks;
+}();
+
+var blockClass = Scratch3SpikePrimeBlocks;
+blockClass = Scratch3SpikePrimeBlocks;
+
+export { blockClass, entry };
