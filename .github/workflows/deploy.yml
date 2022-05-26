@@ -30,7 +30,7 @@ jobs:
         working-directory: ./scratch-gui
       - run: npm run build
         working-directory: ./scratch-lego-bluetooth-extensions
-      - run: cp -r ./scratch-lego-bluetooth-extensions/build ./scratch-gui/build/xcratch
+      - run: cp -r ./scratch-lego-bluetooth-extensions/dist ./scratch-gui/build/xcratch
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
