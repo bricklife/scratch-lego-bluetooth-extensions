@@ -10,6 +10,7 @@ Bluetooth LE (BLE)
 - [x] LEGO Mario
 - [x] LEGO Luigi
 - [x] LEGO Education SPIKE Essential Hub
+- [ ] LEGO Peach
 - [x] General LEGO BLE Device
 
 Bluetooth Classic (SPP)
