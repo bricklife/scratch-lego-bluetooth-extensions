@@ -8240,7 +8240,18 @@ var entry = {
     defaultMessage: "Connecting",
     id: "gui.extension.boost.connectingMessage"
   }),
-  helpLink: 'https://scratch.mit.edu/boost'
+  helpLink: 'https://scratch.mit.edu/boost',
+  translationMap: {
+    'en': {
+      'gui.extension.duplotrain.description': 'Build and control your train.'
+    },
+    'ja': {
+      'gui.extension.duplotrain.description': 'レゴ デュプロの機関車を動かそう。'
+    },
+    'ja-Hira': {
+      'gui.extension.duplotrain.description': 'レゴ デュプロのできかんしゃをうごかそう。'
+    }
+  }
 };
 
 function _classCallCheck(instance, Constructor) {
