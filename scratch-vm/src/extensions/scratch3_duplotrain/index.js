@@ -78,7 +78,7 @@ class Scratch3DuploTrainBlocks {
                         },
                         POWER: {
                             type: ArgumentType.NUMBER,
-                            defaultValue: 100
+                            defaultValue: 50
                         }
                     }
                 },
