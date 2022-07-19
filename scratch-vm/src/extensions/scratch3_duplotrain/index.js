@@ -137,6 +137,7 @@ class Scratch3DuploTrainBlocks {
                         }
                     }
                 },
+                /*
                 {
                     opcode: 'isColor',
                     text: formatMessage({
@@ -160,6 +161,7 @@ class Scratch3DuploTrainBlocks {
                     }),
                     blockType: BlockType.REPORTER
                 },
+                */
                 {
                     opcode: 'getDrivingDistance',
                     text: formatMessage({
