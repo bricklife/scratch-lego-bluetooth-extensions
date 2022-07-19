@@ -78,7 +78,7 @@ class Scratch3DuploTrainBlocks {
                         },
                         POWER: {
                             type: ArgumentType.NUMBER,
-                            defaultValue: 100
+                            defaultValue: 50
                         }
                     }
                 },
@@ -126,7 +126,7 @@ class Scratch3DuploTrainBlocks {
                     opcode: 'whenColor',
                     text: formatMessage({
                         id: 'duplotrain.whenColor',
-                        default: 'when ground color is [SENSOR_COLOR]'
+                        default: 'when passing over [SENSOR_COLOR] action block'
                     }),
                     blockType: BlockType.HAT,
                     arguments: {
@@ -137,6 +137,7 @@ class Scratch3DuploTrainBlocks {
                         }
                     }
                 },
+                /*
                 {
                     opcode: 'isColor',
                     text: formatMessage({
@@ -160,6 +161,7 @@ class Scratch3DuploTrainBlocks {
                     }),
                     blockType: BlockType.REPORTER
                 },
+                */
                 {
                     opcode: 'getDrivingDistance',
                     text: formatMessage({
@@ -310,52 +312,38 @@ class Scratch3DuploTrainBlocks {
                     items: [
                         {
                             text: formatMessage({
-                                id: 'legobluetooth.black',
-                                default: '(0) Black'
-                            }),
-                            value: String(Color.BLACK)
-                        },
-                        {
-                            text: formatMessage({
-                                id: 'legobluetooth.blue',
-                                default: '(3) Blue'
+                                id: 'duplotrain.blue',
+                                default: 'Blue'
                             }),
                             value: String(Color.BLUE)
                         },
                         {
                             text: formatMessage({
-                                id: 'legobluetooth.lightGreen',
-                                default: '(5) Light green'
+                                id: 'duplotrain.lightGreen',
+                                default: 'Green'
                             }),
                             value: String(Color.LIGHT_GREEN)
                         },
                         {
                             text: formatMessage({
-                                id: 'legobluetooth.yellow',
-                                default: '(7) Yellow'
+                                id: 'duplotrain.yellow',
+                                default: 'Yellow'
                             }),
                             value: String(Color.YELLOW)
                         },
                         {
                             text: formatMessage({
-                                id: 'legobluetooth.red',
-                                default: '(9) Red'
+                                id: 'duplotrain.red',
+                                default: 'Red'
                             }),
                             value: String(Color.RED)
                         },
                         {
                             text: formatMessage({
-                                id: 'legobluetooth.white',
-                                default: '(10) White'
+                                id: 'duplotrain.white',
+                                default: 'White'
                             }),
                             value: String(Color.WHITE)
-                        },
-                        {
-                            text: formatMessage({
-                                id: 'legobluetooth.noColor',
-                                default: '(-1) No color'
-                            }),
-                            value: String(Color.NONE)
                         },
                     ]
                 },
@@ -412,7 +400,7 @@ class Scratch3DuploTrainBlocks {
                 'duplotrain.motorStop': '止まる',
                 'duplotrain.playSound': '[SOUND] の音を鳴らす',
                 'duplotrain.setHubLEDColor': 'ライトの色を [COLOR] にする',
-                'duplotrain.whenColor': '地面の色が [SENSOR_COLOR] のとき',
+                'duplotrain.whenColor': '[SENSOR_COLOR] のアクションブロックを通ったら',
                 'duplotrain.isColor': '地面の色が [SENSOR_COLOR]',
                 'duplotrain.getColor': '地面の色',
                 'duplotrain.getDrivingDistance': '走行距離',
@@ -422,13 +410,19 @@ class Scratch3DuploTrainBlocks {
                 'duplotrain.refill': '給水',
                 'duplotrain.horn': '汽笛',
                 'duplotrain.steam': '蒸気',
+
+                'duplotrain.blue': '青',
+                'duplotrain.lightGreen': '緑',
+                'duplotrain.yellow': '黄色',
+                'duplotrain.red': '赤',
+                'duplotrain.white': '白',
             },
             'ja-Hira': {
                 'duplotrain.motorPWM': '[DIRECTION] ほうこうに [POWER] %のパワーではしる',
                 'duplotrain.motorStop': 'とまる',
                 'duplotrain.playSound': '[SOUND] のおとをならす',
                 'duplotrain.setHubLEDColor': 'ライトのいろを [COLOR] にする',
-                'duplotrain.whenColor': 'じめんのいろが [SENSOR_COLOR] のとき',
+                'duplotrain.whenColor': '[SENSOR_COLOR] のアクションブロックをとおったら',
                 'duplotrain.isColor': 'じめんのいろが [SENSOR_COLOR]',
                 'duplotrain.getColor': 'じめんのいろ',
                 'duplotrain.getDrivingDistance': 'そうこうきょり',
@@ -438,6 +432,12 @@ class Scratch3DuploTrainBlocks {
                 'duplotrain.refill': 'きゅうすい',
                 'duplotrain.horn': 'きてき',
                 'duplotrain.steam': 'じょうき',
+
+                'duplotrain.blue': 'あお',
+                'duplotrain.lightGreen': 'みどり',
+                'duplotrain.yellow': 'きいろ',
+                'duplotrain.red': 'あか',
+                'duplotrain.white': 'しろ',
             }
         });
     }
