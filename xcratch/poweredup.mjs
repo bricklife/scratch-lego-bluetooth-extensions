@@ -12885,7 +12885,7 @@ var GenericDevice = /*#__PURE__*/function () {
         // Sound
 
         case IOType$1.DUPLO_TRAIN_BASE_COLOR_SENSOR:
-          return 0;
+          return 1;
         // Color
 
         case IOType$1.DUPLO_TRAIN_BASE_SPEEDOMETER:
