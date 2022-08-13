@@ -34,6 +34,8 @@ class Scratch3IFTTTWebhooks {
     }
 
     getInfo () {
+        this._setupTranslations();
+
         return {
             id: 'iftttWebhooks',
             name: formatMessage({
@@ -47,11 +49,17 @@ class Scratch3IFTTTWebhooks {
                 {
                     opcode: 'setIftttKey',
                     blockType: BlockType.COMMAND,
-                    text: 'IFTTT key:[KEY]',
+                    text: formatMessage({
+                        id: 'iftttWebhooks.setIftttKey',
+                        default: 'IFTTT key:[KEY]'
+                    }),
                     arguments: {
                         KEY: {
                             type: ArgumentType.STRING,
-                            defaultValue: "key"
+                            defaultValue: formatMessage({
+                                id: 'iftttwebhooks.Key',
+                                default: 'Key'
+                            })
                         }
                     }
                 },
@@ -230,6 +238,34 @@ class Scratch3IFTTTWebhooks {
     setIftttKey (args) {
         this.key = Cast.toString(args.KEY);
     }
+
+    _setupTranslations() {
+        const localeSetup = formatMessage.setup();
+    
+        const translations = {
+            'pl': {
+                'iftttWebhooks.setIftttKey': 'Ustaw klucz IFTTT:[KEY]',
+                'iftttwebhooks.Key': 'klucz',
+                'iftttwebhooks.getIfttt': 'Wyślij zdarzenie [EVENT]',
+                'iftttwebhooks.defaultEvent': 'zdarzenie',
+                'iftttwebhooks.getIfttt1': 'Wyślij zdarzenie [EVENT] z parametrem [VALUE1]',
+                'iftttwebhooks.getIfttt2': 'Wyślij zdarzenie [EVENT] z parametrami [VALUE1] i [VALUE2]',
+                'iftttwebhooks.getIfttt3': 'Wyślij zdarzenie [EVENT] z parametrem [VALUE1], [VALUE2] i [VALUE3]',
+                'iftttwebhooks.defaultValue1': 'wartość 1',
+                'iftttwebhooks.defaultValue2': 'wartość 2',
+                'iftttwebhooks.defaultValue3': 'wartość 3',
+                'iftttWebhooks.categoryName': 'IFTTT Webhooks',
+                'iftttWebhooks.categoryName': 'IFTTT Webhooks',
+            }
+        };
+    
+        for (const locale in translations) {   
+            if (!localeSetup.translations[locale]) {
+                localeSetup.translations[locale] = {};
+            }
+            Object.assign(localeSetup.translations[locale], translations[locale]);
+        }
+    };
 }
 
 module.exports = Scratch3IFTTTWebhooks;
