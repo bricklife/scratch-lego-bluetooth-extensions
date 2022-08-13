@@ -325,6 +325,18 @@ class Scratch3LegoRemoteBlocks {
                 'legoremote.button.minus': 'マイナス',
                 'legoremote.button.stop': 'あかい',
                 'legoremote.button.any': 'どれかの',
+            },
+            'pl': {
+                'legoremote.whenButton': '[PORT] kiedy kliknięto [BUTTON]',
+                'legoremote.isButton': '[PORT] przycisk [BUTTON] kliknięty?',
+                'legoremote.getButtonA': 'przycisk A',
+                'legoremote.getButtonB': 'przycisk B',
+                'legoremote.setHubLEDColor': 'ustaw kolor LED na [COLOR]',
+
+                'legoremote.button.plus': 'plus',
+                'legoremote.button.minus': 'minus',
+                'legoremote.button.stop': 'stop',
+                'legoremote.button.any': 'dowolny',
             }
         });
     }

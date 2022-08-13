@@ -113,6 +113,20 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.pitch': 'ピッチ',
             'legobluetooth.roll': 'ロール',
             'legobluetooth.yaw': 'ヨー',
+        },
+        'pl': {
+            'legobluetooth.black': '(0) czarny',
+            'legobluetooth.pink': '(1) różowy',
+            'legobluetooth.purple': '(2) fioletowy',
+            'legobluetooth.blue': '(3) niebieski',
+            'legobluetooth.lightBlue': '(4) jasnoniebieski',
+            'legobluetooth.lightGreen': '(5) jasnozielony',
+            'legobluetooth.green': '(6) zielony',
+            'legobluetooth.yellow': '(7) żółty',
+            'legobluetooth.orange': '(8) pomarańczowy',
+            'legobluetooth.red': '(9) czerwony',
+            'legobluetooth.white': '(10) biały',
+            'legobluetooth.noColor': '(-1) brak koloru',            
         }
     };
 
