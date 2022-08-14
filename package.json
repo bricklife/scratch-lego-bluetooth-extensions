@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Scratch 3.0 extensions for LEGO Bluetooth and BLE devices",
   "scripts": {
-    "register": "npm run register:spikeprime && npm run register:legoble && npm run register:spikeessential && npm run register:legoremote && npm run register:controlplus && npm run register:poweredup && npm run register:duplotrain && npm run register:legoluigi && npm run register:legomario && npm run register:iftttWebhooks && npm run register:speechChrome && npm run register:boostextra && npm run register:tmpose2scratch",
+    "register": "npm run register:spikeprime && npm run register:legoble && npm run register:spikeessential && npm run register:legoremote && npm run register:controlplus && npm run register:poweredup && npm run register:duplotrain && npm run register:legoluigi && npm run register:legomario && npm run register:iftttWebhooks && npm run register:speechChrome && npm run register:boostextra && npm run register:tmpose2scratch && npm run register:tm2scratch",
     "register:spikeprime": "node ./scripts/register.js --link --id=\"spikeprime\" --block=\"./scratch-vm/src/extensions/scratch3_spikeprime\" --entry=\"./scratch-gui/src/lib/libraries/extensions/spikeprime\" --gui=\"../scratch-gui\"",
     "register:legoble": "node ./scripts/register.js --link --id=\"legoble\" --block=\"./scratch-vm/src/extensions/scratch3_legoble\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legoble\" --gui=\"../scratch-gui\"",
     "register:spikeessential": "node ./scripts/register.js --link --id=\"spikeessential\" --block=\"./scratch-vm/src/extensions/scratch3_spikeessential\" --entry=\"./scratch-gui/src/lib/libraries/extensions/spikeessential\" --gui=\"../scratch-gui\"",
@@ -17,7 +17,8 @@
     "register:speechChrome": "node ./scripts/register.js --link --id=\"speechChrome\" --block=\"./scratch-vm/src/extensions/scratch3_speechChrome\" --entry=\"./scratch-gui/src/lib/libraries/extensions/speechChrome\" --gui=\"../scratch-gui\"",
     "register:boostextra": "node ./scripts/register.js --link --id=\"boostextra\" --block=\"./scratch-vm/src/extensions/scratch3_boostextra\" --entry=\"./scratch-gui/src/lib/libraries/extensions/boostextra\" --gui=\"../scratch-gui\"",
     "register:tmpose2scratch": "node ./scripts/register.js --link --id=\"tmpose2scratch\" --block=\"./scratch-vm/src/extensions/scratch3_tmpose2scratch\" --entry=\"./scratch-gui/src/lib/libraries/extensions/tmpose2scratch\" --gui=\"../scratch-gui\"",
-    "build": "npm run build:spikeprime && npm run build:legoble && npm run build:spikeessential && npm run build:legoremote && npm run build:controlplus && npm run build:poweredup && npm run build:duplotrain && npm run build:legoluigi && npm run build:legomario && npm run build:iftttWebhooks && npm run build:speechChrome && npm run build:boostextra && npm run build:tmpose2scratch",
+    "register:tm2scratch": "node ./scripts/register.js --link --id=\"tm2scratch\" --block=\"./scratch-vm/src/extensions/scratch3_tm2scratch\" --entry=\"./scratch-gui/src/lib/libraries/extensions/tm2scratch\" --gui=\"../scratch-gui\"",
+    "build": "npm run build:spikeprime && npm run build:legoble && npm run build:spikeessential && npm run build:legoremote && npm run build:controlplus && npm run build:poweredup && npm run build:duplotrain && npm run build:legoluigi && npm run build:legomario && npm run build:iftttWebhooks && npm run build:speechChrome && npm run build:boostextra && npm run build:tmpose2scratch && npm run build:tm2scratch",
     "build:spikeprime": "npx xcratch-build --module=\"spikeprime\" --block=\"scratch-vm/src/extensions/scratch3_spikeprime\" --entry=\"scratch-gui/src/lib/libraries/extensions/spikeprime\" --gui=\"../scratch-gui\"",
     "build:legoble": "npx xcratch-build --module=\"legoble\" --block=\"scratch-vm/src/extensions/scratch3_legoble\" --entry=\"scratch-gui/src/lib/libraries/extensions/legoble\" --gui=\"../scratch-gui\"",
     "build:spikeessential": "npx xcratch-build --module=\"spikeessential\" --block=\"scratch-vm/src/extensions/scratch3_spikeessential\" --entry=\"scratch-gui/src/lib/libraries/extensions/spikeessential\" --gui=\"../scratch-gui\"",
@@ -31,7 +32,9 @@
     "build:speechChrome": "npx xcratch-build --module=\"speechChrome\" --block=\"scratch-vm/src/extensions/scratch3_speechChrome\" --entry=\"scratch-gui/src/lib/libraries/extensions/speechChrome\" --gui=\"../scratch-gui\"",
     "build:boostextra": "npx xcratch-build --module=\"boostextra\" --block=\"scratch-vm/src/extensions/scratch3_boostextra\" --entry=\"scratch-gui/src/lib/libraries/extensions/boostextra\" --gui=\"../scratch-gui\"",
     "build:tmpose2scratch": "npx xcratch-build --module=\"tmpose2scratch\" --block=\"scratch-vm/src/extensions/scratch3_tmpose2scratch\" --entry=\"scratch-gui/src/lib/libraries/extensions/tmpose2scratch\" --gui=\"../scratch-gui\"",
-    "start": "cd ../scratch-gui && npm run start"
+    "build:tm2scratch": "npx xcratch-build --module=\"tm2scratch\" --block=\"scratch-vm/src/extensions/scratch3_tm2scratch\" --entry=\"scratch-gui/src/lib/libraries/extensions/tm2scratch\" --gui=\"../scratch-gui\"",
+    "start": "cd ../scratch-gui && npm run start",
+    "postinstall": "cd ../scratch-gui/node_modules/scratch-vm && npm install ml5"
   },
   "repository": {
     "type": "git",

@@ -18,6 +18,9 @@ jobs:
           path: ./scratch-gui
       - run: npm ci
         working-directory: ./scratch-gui
+      - run: npm install ml5
+        name: 'Install ml5'
+        working-directory: ./scratch-gui/node_modules/scratch-vm
       - uses: actions/checkout@v2
         with:
           repository: slupekdev/scratch-lego-bluetooth-extensions
