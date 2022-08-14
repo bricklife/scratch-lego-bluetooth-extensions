@@ -18,7 +18,6 @@ const entry = {
     ),
     featured: true,
     disabled: false,
-    bluetoothRequired: true,
     internetConnectionRequired: true,
     bluetoothRequired: false
 };
