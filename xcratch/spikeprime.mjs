@@ -8222,7 +8222,7 @@ var entry = {
   iconURL: img$2,
   insetIconURL: img$1,
   description: /*#__PURE__*/React.createElement(FormattedMessage, {
-    defaultMessage: "Build interactive robots and more.",
+    defaultMessage: "Build interactive robots and more. (doesn't work on Windows)",
     id: "gui.extension.spikeprime.description"
   }),
   featured: true,
