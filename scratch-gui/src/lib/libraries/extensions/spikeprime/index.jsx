@@ -14,7 +14,7 @@ const entry = {
     insetIconURL: spikeprimeInsetIconURL,
     description: (
         <FormattedMessage
-            defaultMessage="Build interactive robots and more."
+            defaultMessage="Build interactive robots and more. (doesn't work on Windows)"
             id="gui.extension.spikeprime.description"
         />
     ),
