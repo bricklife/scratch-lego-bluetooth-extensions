@@ -12727,6 +12727,8 @@ var GenericDevice = /*#__PURE__*/function () {
   }, {
     key: "updateInputValues",
     value: function updateInputValues(data) {
+      var _this = this;
+
       if (data.length == 0) {
         this._inputValues = {};
         return;
@@ -12777,9 +12779,19 @@ var GenericDevice = /*#__PURE__*/function () {
           break;
 
         case IOType$1.DUPLO_TRAIN_BASE_COLOR_SENSOR:
-          this._inputValues = {
-            color: buffer.readInt8(0)
-          };
+          var value = buffer.readInt8(0);
+
+          if (value > -1) {
+            this._inputValues = {
+              color: value
+            };
+            setTimeout(function () {
+              _this._inputValues = {
+                color: -1
+              };
+            }, 100);
+          }
+
           break;
 
         case IOType$1.DUPLO_TRAIN_BASE_SPEEDOMETER:
@@ -12851,18 +12863,18 @@ var Motor = /*#__PURE__*/function (_GenericDevice) {
   var _super = _createSuper$1(Motor);
 
   function Motor(ioType) {
-    var _this;
+    var _this2;
 
     _classCallCheck(this, Motor);
 
-    _this = _super.call(this, ioType);
+    _this2 = _super.call(this, ioType);
 
     switch (ioType) {
       case IOType$1.MEDIUM_LINEAR_MOTOR:
       case IOType$1.MOVE_HUB_MOTOR:
-        _this._canUseSpeed = true;
-        _this._canUsePosition = false;
-        _this._speed = 75;
+        _this2._canUseSpeed = true;
+        _this2._canUsePosition = false;
+        _this2._speed = 75;
         break;
 
       case IOType$1.TECHNIC_LARGE_MOTOR:
@@ -12872,18 +12884,18 @@ var Motor = /*#__PURE__*/function (_GenericDevice) {
       case IOType$1.TECHNIC_SMALL_ANGULAR_MOTOR:
       case IOType$1.TECHNIC_MEDIUM_ANGULAR_MOTOR_GRAY:
       case IOType$1.TECHNIC_LARGE_ANGULAR_MOTOR_GRAY:
-        _this._canUseSpeed = true;
-        _this._canUsePosition = true;
-        _this._speed = 75;
+        _this2._canUseSpeed = true;
+        _this2._canUsePosition = true;
+        _this2._speed = 75;
         break;
 
       default:
-        _this._canUseSpeed = false;
-        _this._canUsePosition = false;
-        _this._speed = 0;
+        _this2._canUseSpeed = false;
+        _this2._canUsePosition = false;
+        _this2._speed = 0;
     }
 
-    return _this;
+    return _this2;
   }
 
   _createClass(Motor, [{
