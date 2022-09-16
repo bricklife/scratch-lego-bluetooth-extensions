@@ -9099,6 +9099,7 @@ var Pants = {
   CAT: 0x11,
   FIRE: 0x12,
   PENGUIN: 0x14,
+  PEACH: 0x18,
   MARIO: 0x21,
   BUILDER: 0x22
 };
@@ -9361,6 +9362,12 @@ var MarioBaseBlocks$1 = /*#__PURE__*/function () {
             value: String(Pants.PENGUIN)
           }, {
             text: formatMessage({
+              id: 'legomario.pants.peach',
+              default: '(24) Peach'
+            }),
+            value: String(Pants.PEACH)
+          }, {
+            text: formatMessage({
               id: 'legomario.pants.mario',
               default: '(33) Mario'
             }),
@@ -9467,6 +9474,7 @@ var MarioBaseBlocks$1 = /*#__PURE__*/function () {
           'legomario.pants.cat': '(17) ネコ',
           'legomario.pants.fire': '(18) ファイア',
           'legomario.pants.penguin': '(20) ペンギン',
+          'legomario.pants.peach': '(24) ピーチ',
           'legomario.pants.mario': '(33) マリオ',
           'legomario.pants.builder': '(34) ビルダー'
         },
@@ -9500,6 +9508,7 @@ var MarioBaseBlocks$1 = /*#__PURE__*/function () {
           'legomario.pants.cat': '(17) ネコ',
           'legomario.pants.fire': '(18) ファイア',
           'legomario.pants.penguin': '(20) ペンギン',
+          'legomario.pants.peach': '(24) ピーチ',
           'legomario.pants.mario': '(33) マリオ',
           'legomario.pants.builder': '(34) ビルダー'
         }
@@ -9723,7 +9732,7 @@ var JSONRPC$1 = /*#__PURE__*/function () {
           id = json.id;
       var rawResult = this.didReceiveCall(method, params);
 
-      if (id) {
+      if (id !== null && typeof id !== 'undefined') {
         Promise.resolve(rawResult).then(function (result) {
           _this2._sendResponse(id, result);
         }, function (error) {

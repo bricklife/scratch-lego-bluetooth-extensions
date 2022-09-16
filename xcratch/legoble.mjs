@@ -9923,7 +9923,7 @@ var JSONRPC$1 = /*#__PURE__*/function () {
           id = json.id;
       var rawResult = this.didReceiveCall(method, params);
 
-      if (id) {
+      if (id !== null && typeof id !== 'undefined') {
         Promise.resolve(rawResult).then(function (result) {
           _this2._sendResponse(id, result);
         }, function (error) {
