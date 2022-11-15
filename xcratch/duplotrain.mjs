@@ -12566,9 +12566,9 @@ var Hub$1 = /*#__PURE__*/function () {
         _this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.ADVERTISING_NAME, HubPropertyOperation.ENABLE_UPDATES], false);
 
         _this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.FW_VERSION, HubPropertyOperation.REQUEST_UPDATE]);
-
-        _this._startPollingBatteryLevel();
       };
+
+      this._startPollingBatteryLevel();
     }
   }, {
     key: "_onMessage",
