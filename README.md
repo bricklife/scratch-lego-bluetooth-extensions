@@ -9,8 +9,8 @@ Bluetooth LE (BLE)
 - [x] LEGO DUPLO Train
 - [x] LEGO Mario
 - [x] LEGO Luigi
+- [x] LEGO Peach
 - [x] LEGO Education SPIKE Essential Hub
-- [ ] LEGO Peach
 - [x] General LEGO BLE Device
 
 Bluetooth Classic (SPP)
@@ -29,6 +29,7 @@ Bluetooth Classic (SPP)
 - LEGO DUPLO Train https://bricklife.com/scratch-gui/xcratch/duplotrain.mjs
 - LEGO Mario https://bricklife.com/scratch-gui/xcratch/legomario.mjs
 - LEGO Luigi https://bricklife.com/scratch-gui/xcratch/legoluigi.mjs
+- LEGO Peach https://bricklife.com/scratch-gui/xcratch/legopeach.mjs
 - LEGO Education SPIKE Essential Hub https://bricklife.com/scratch-gui/xcratch/spikeessential.mjs
 - General LEGO BLE Device https://bricklife.com/scratch-gui/xcratch/legoble.mjs
 - LEGO Education SPIKE Prime Hub https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs
