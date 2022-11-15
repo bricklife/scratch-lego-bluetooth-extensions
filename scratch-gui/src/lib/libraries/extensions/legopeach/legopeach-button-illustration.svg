@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="125px" viewBox="0 0 90 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <style type="text/css">
+        <![CDATA[
+        @-webkit-keyframes wiggle {
+            0% { transform: translate(8.5px, 30px); }
+            100% { transform: translate(8.5px, 40px); }
+        }
+        @keyframes wiggle {
+            0% { transform: translate(8.5px, 30px); }
+            100% { transform: translate(8.5px, 40px); }
+        }
+        #arrow {
+            -webkit-animation: wiggle 0.5s infinite ease-in-out alternate;
+            animation: wiggle 0.5s infinite ease-in-out alternate;
+        }
+        ]]>
+    </style>
+    <title>legomario-button-illustration</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M36.4863865,32 C35.8359214,32 35.2288206,31.7593361 34.7778315,31.3255814 L25.7002299,22.5385506 C24.9977276,21.8165589 24.8098155,20.8035318 25.2000945,19.933224 C25.5874826,19.0629161 26.4432056,18.52562 27.4348035,18.52562 L30.877932,18.52562 L32.6327422,6.29653575 C32.8842554,4.42439448 34.5667917,3 36.5470965,3 C36.7176629,3 36.8911203,3.01119367 37.0616867,3.03078259 C38.8482975,3.30222908 40.2272834,4.65106629 40.4441051,6.31052784 L42.2451707,18.52562 L45.5379695,18.52562 C46.5411312,18.52562 47.4344366,19.0964972 47.8131518,19.9779986 C48.191867,20.865097 47.9866092,21.8473415 47.272543,22.5385506 L38.1949414,31.3255814 C37.7439523,31.7593361 37.1368516,32 36.4863865,32 Z" id="path-1"></path>
+        <filter x="-15.2%" y="-12.1%" width="130.4%" height="124.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="SourceAlpha" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.298039216   0 0 0 0 0.592156863   0 0 0 0 1  0 0 0 0.25 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="legomario-button-illustration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#2B63BC" fill="#396DC2" stroke-linejoin="round" x="20" y="109" width="15" height="9"></rect>
+        <rect id="Rectangle" stroke="#2B63BC" fill="#396DC2" stroke-linejoin="round" transform="translate(62.500000, 113.500000) scale(-1, 1) translate(-62.500000, -113.500000) " x="55" y="109" width="15" height="9"></rect>
+        <path d="M20,118 L35,118 C36.1045695,118 37,118.895431 37,120 L37,124.5 L18,124.5 L18,120 C18,118.895431 18.8954305,118 20,118 Z" id="Rectangle-Copy-3" stroke="#6E392C" fill="#622612"></path>
+        <path d="M55,118 L70,118 C71.1045695,118 72,118.895431 72,120 L72,124.5 L53,124.5 L53,120 C53,118.895431 53.8954305,118 55,118 Z" id="Rectangle-Copy-4" stroke="#6E392C" fill="#622612"></path>
+        <g id="arm-R" transform="translate(4.500000, 73.773998)">
+            <path d="M13.9030084,0 C12.5311291,0 10.1213159,1.26849794 8.39622874,3.17212845 C6.03090337,5.78226072 4.5267597,9.78113005 3.85469509,15.8765471 L10.9379584,17.3383049 C11.2696623,15.9892789 11.9030084,10.5907542 13.9030084,8.72600219 L13.9030084,0 Z" id="Path-8" stroke="#DE2C2F" fill="#F3474A"></path>
+            <rect id="Rectangle" stroke="#9FAED6" fill="#FFFFFF" stroke-linejoin="round" transform="translate(6.986700, 18.623986) rotate(10.000000) translate(-6.986700, -18.623986) " x="2.48669987" y="16.1239859" width="9" height="5"></rect>
+            <path d="M6,20.2260022 C8.209139,20.2260022 10,22.0168632 10,24.2260022 C10,25.4099756 9.4856015,26.4738048 8.66810248,27.2061918 L8.37445611,25.4409406 C8.56126184,25.0765824 8.66666667,24.6636016 8.66666667,24.2260022 C8.66666667,22.7532429 7.47275933,21.5593355 6,21.5593355 C4.52724067,21.5593355 3.33333333,22.7532429 3.33333333,24.2260022 C3.33333333,24.6636016 3.43873816,25.0765824 3.62554389,25.4409406 L3.33290985,27.2070985 C2.51482318,26.4746829 2,25.4104642 2,24.2260022 C2,22.0168632 3.790861,20.2260022 6,20.2260022 Z" id="Combined-Shape" stroke="#BCC3D5" stroke-width="0.5" fill="#BEC3D2"></path>
+            <path d="M6,18.2260022 C9.3137085,18.2260022 12,20.9122937 12,24.2260022 C12,26.4336239 10.8077321,28.3627766 9.03197707,29.4046793 L8.66810248,27.2061918 C9.4856015,26.4738048 10,25.4099756 10,24.2260022 C10,22.0168632 8.209139,20.2260022 6,20.2260022 C3.790861,20.2260022 2,22.0168632 2,24.2260022 C2,25.4104642 2.51482318,26.4746829 3.33290985,27.2070985 L2.96802293,29.4046793 C1.19226791,28.3627766 0,26.4336239 0,24.2260022 C0,20.9122937 2.6862915,18.2260022 6,18.2260022 Z" id="Combined-Shape" stroke="#9FAED6" fill="#FFFFFF" stroke-linejoin="round"></path>
+        </g>
+        <rect id="ear.-R" stroke="#EDA77F" fill="#FACDAD" stroke-linejoin="round" x="13" y="43" width="5" height="13" rx="1"></rect>
+        <g id="arm-L" transform="translate(71.596992, 73.773998)">
+            <path d="M10.0483133,-3.55271368e-15 C8.676434,-3.55271368e-15 6.26662076,1.26849794 4.54153365,3.17212845 C2.17620828,5.78226072 0.67206461,9.78113005 -8.8817842e-16,15.8765471 L7.08326329,17.3383049 C7.41496719,15.9892789 8.04831329,10.5907542 10.0483133,8.72600219 L10.0483133,-3.55271368e-15 Z" id="Path-8" stroke="#DE2C2F" fill="#F3474A" transform="translate(5.024157, 8.669152) scale(-1, 1) translate(-5.024157, -8.669152) "></path>
+            <rect id="Rectangle" stroke="#9FAED6" fill="#FFFFFF" stroke-linejoin="round" transform="translate(6.916309, 18.623986) scale(-1, 1) rotate(10.000000) translate(-6.916309, -18.623986) " x="2.41630851" y="16.1239859" width="9" height="5"></rect>
+            <path d="M7.90300838,20.2260022 C10.1121474,20.2260022 11.9030084,22.0168632 11.9030084,24.2260022 C11.9030084,25.4099756 11.3886099,26.4738048 10.5711109,27.2061918 L10.2774645,25.4409406 C10.4642702,25.0765824 10.569675,24.6636016 10.569675,24.2260022 C10.569675,22.7532429 9.37576771,21.5593355 7.90300838,21.5593355 C6.43024905,21.5593355 5.23634171,22.7532429 5.23634171,24.2260022 C5.23634171,24.6636016 5.34174654,25.0765824 5.52855227,25.4409406 L5.23591823,27.2070985 C4.41783156,26.4746829 3.90300838,25.4104642 3.90300838,24.2260022 C3.90300838,22.0168632 5.69386938,20.2260022 7.90300838,20.2260022 Z" id="Combined-Shape" stroke="#BCC3D5" stroke-width="0.5" fill="#BEC3D2" transform="translate(7.903008, 23.716550) scale(-1, 1) translate(-7.903008, -23.716550) "></path>
+            <path d="M7.90300838,18.2260022 C11.2167169,18.2260022 13.9030084,20.9122937 13.9030084,24.2260022 C13.9030084,26.4336239 12.7107405,28.3627766 10.9349854,29.4046793 L10.5711109,27.2061918 C11.3886099,26.4738048 11.9030084,25.4099756 11.9030084,24.2260022 C11.9030084,22.0168632 10.1121474,20.2260022 7.90300838,20.2260022 C5.69386938,20.2260022 3.90300838,22.0168632 3.90300838,24.2260022 C3.90300838,25.4104642 4.41783156,26.4746829 5.23591823,27.2070985 L4.87103132,29.4046793 C3.0952763,28.3627766 1.90300838,26.4336239 1.90300838,24.2260022 C1.90300838,20.9122937 4.58929988,18.2260022 7.90300838,18.2260022 Z" id="Combined-Shape" stroke="#9FAED6" fill="#FFFFFF" stroke-linejoin="round" transform="translate(7.903008, 23.663011) scale(-1, 1) translate(-7.903008, -23.663011) "></path>
+        </g>
+        <rect id="ear-L" stroke="#EDA77F" fill="#FACDAD" stroke-linejoin="round" transform="translate(74.500000, 49.500000) scale(-1, 1) translate(-74.500000, -49.500000) " x="72" y="43" width="5" height="13" rx="1"></rect>
+        <path d="M22.5117797,21 C21.5371704,20.4707404 21.0332438,18.7928111 21,15.9662123 C21,6.38431607 38.105957,0.5 45,0.5 C51.894043,0.5 69.000061,6.38431607 69.000061,15.9662123 C68.9668172,18.7928111 68.4628906,20.4707404 67.4882812,21 L45,21 L22.5117797,21 Z" id="hat" stroke="#DE2C2F" fill="#F3474A"></path>
+        <rect id="screen" stroke="#DE2C2F" fill="#F3474A" x="36" y="70" width="19" height="29"></rect>
+        <rect id="screen-copy" stroke="#4B4B4B" fill="#000000" x="38.5" y="69.5" width="13" height="22" rx="1"></rect>
+        <path d="M72,65.1055808 L67.309082,70 L22.690918,70 L18,65.1055808 L18,23.4495422 L18,23.4495422 C18,22.2981195 18.671875,21 20,21 L70,21 L70,21 C71.328125,21 72,22.2981195 72,23.4495422 L72,65.1055808 Z" id="Combined-Shape" stroke="#6E392C" fill="#622612"></path>
+        <path d="M45,63.5 C45,67.0898509 42.0898509,70 38.5,70 C34.9101491,70 32,67.0898509 32,63.5 C32,67.0898509 29.0898509,70 25.5,70" id="Oval" stroke="#6E392C" fill="#622612"></path>
+        <path d="M64.5,63.5 C64.5,67.0898509 61.5898509,70 58,70 C54.4101491,70 51.5,67.0898509 51.5,63.5 C51.5,67.0898509 48.5898509,70 45,70" id="Oval-Copy" stroke="#6E392C" fill="#622612" transform="translate(54.750000, 66.750000) scale(-1, 1) translate(-54.750000, -66.750000) "></path>
+        <path d="M70,70 C71.1045695,70 72,70.8954305 72,72 L72,108.218 L53.521,117 L36.478,117 L18,108.218 L18,72 C18,70.8954305 18.8954305,70 20,70 L37,70 L37,91 C37,92.1045695 37.8954305,93 39,93 L39,93 L51,93 C52.1045695,93 53,92.1045695 53,91 L53,91 L53,70 L53,70 L70,70 Z" id="Combined-Shape" stroke="#2B63BC" fill="#396DC2" stroke-linejoin="round"></path>
+        <g id="Group" opacity="0.5" transform="translate(43.000000, 84.000000)" stroke="#FFFFFF" stroke-linecap="round">
+            <path d="M3.0010775,0.768188139 C3.59828461,1.11415066 4,1.7601625 4,2.5 C4,3.6045695 3.1045695,4.5 2,4.5 C0.8954305,4.5 0,3.6045695 0,2.5 C0,1.75974756 0.40216612,1.11342606 0.999927519,0.767606321" id="Path" stroke-width="0.75"></path>
+            <line x1="2" y1="2.84217094e-14" x2="2" y2="2.5" id="Line-2"></line>
+        </g>
+        <polyline id="Path-9" stroke="#FFFFFF" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" points="43.5 77.5 46.5 74.5 45 73 45 79 46.5 77.5 43.5 74.5"></polyline>
+        <polygon id="Path-2" fill="#4B4B4B" points="39 81.5 51 81.5 49.5 83 40.5 83"></polygon>
+        <polygon id="Path-2-Copy" fill="#525252" points="39 70.5 51 70.5 49.5 72 40.5 72"></polygon>
+    </g>
+    <g id="arrow">
+        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+        <use stroke="#4280D7" stroke-width="1" fill="#4C97FF" fill-rule="evenodd" xlink:href="#path-1"></use>
+    </g>
+</svg>

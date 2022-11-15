@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Scratch 3.0 extensions for LEGO Bluetooth and BLE devices",
   "scripts": {
-    "register": "npm run register:spikeprime && npm run register:legoble && npm run register:spikeessential && npm run register:legoremote && npm run register:controlplus && npm run register:poweredup && npm run register:duplotrain && npm run register:legoluigi && npm run register:legomario",
+    "register": "npm run register:spikeprime && npm run register:legoble && npm run register:spikeessential && npm run register:legoremote && npm run register:controlplus && npm run register:poweredup && npm run register:duplotrain && npm run register:legopeach && npm run register:legoluigi && npm run register:legomario",
     "register:spikeprime": "node ./scripts/register.js --link -C --id=\"spikeprime\" --block=\"./scratch-vm/src/extensions/scratch3_spikeprime\" --entry=\"./scratch-gui/src/lib/libraries/extensions/spikeprime\" --gui=\"../scratch-gui\"",
     "register:legoble": "node ./scripts/register.js --link -C --id=\"legoble\" --block=\"./scratch-vm/src/extensions/scratch3_legoble\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legoble\" --gui=\"../scratch-gui\"",
     "register:spikeessential": "node ./scripts/register.js --link -C --id=\"spikeessential\" --block=\"./scratch-vm/src/extensions/scratch3_spikeessential\" --entry=\"./scratch-gui/src/lib/libraries/extensions/spikeessential\" --gui=\"../scratch-gui\"",
@@ -13,7 +13,8 @@
     "register:duplotrain": "node ./scripts/register.js --link -C --id=\"duplotrain\" --block=\"./scratch-vm/src/extensions/scratch3_duplotrain\" --entry=\"./scratch-gui/src/lib/libraries/extensions/duplotrain\" --gui=\"../scratch-gui\"",
     "register:legomario": "node ./scripts/register.js --link -C --id=\"legomario\" --block=\"./scratch-vm/src/extensions/scratch3_legomario\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legomario\" --gui=\"../scratch-gui\"",
     "register:legoluigi": "node ./scripts/register.js --link -C --id=\"legoluigi\" --block=\"./scratch-vm/src/extensions/scratch3_legoluigi\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legoluigi\" --gui=\"../scratch-gui\"",
-    "build": "npm run build:spikeprime && npm run build:legoble && npm run build:spikeessential && npm run build:legoremote && npm run build:controlplus && npm run build:poweredup && npm run build:duplotrain && npm run build:legoluigi && npm run build:legomario",
+    "register:legopeach": "node ./scripts/register.js --link -C --id=\"legopeach\" --block=\"./scratch-vm/src/extensions/scratch3_legopeach\" --entry=\"./scratch-gui/src/lib/libraries/extensions/legopeach\" --gui=\"../scratch-gui\"",
+    "build": "npm run build:spikeprime && npm run build:legoble && npm run build:spikeessential && npm run build:legoremote && npm run build:controlplus && npm run build:poweredup && npm run build:duplotrain && npm run build:legopeach && npm run build:legoluigi && npm run build:legomario",
     "build:spikeprime": "npx xcratch-build --module=\"spikeprime\" --block=\"scratch-vm/src/extensions/scratch3_spikeprime\" --entry=\"scratch-gui/src/lib/libraries/extensions/spikeprime\" --gui=\"../scratch-gui\"",
     "build:legoble": "npx xcratch-build --module=\"legoble\" --block=\"scratch-vm/src/extensions/scratch3_legoble\" --entry=\"scratch-gui/src/lib/libraries/extensions/legoble\" --gui=\"../scratch-gui\"",
     "build:spikeessential": "npx xcratch-build --module=\"spikeessential\" --block=\"scratch-vm/src/extensions/scratch3_spikeessential\" --entry=\"scratch-gui/src/lib/libraries/extensions/spikeessential\" --gui=\"../scratch-gui\"",
@@ -23,6 +24,7 @@
     "build:duplotrain": "npx xcratch-build --module=\"duplotrain\" --block=\"scratch-vm/src/extensions/scratch3_duplotrain\" --entry=\"scratch-gui/src/lib/libraries/extensions/duplotrain\" --gui=\"../scratch-gui\"",
     "build:legomario": "npx xcratch-build --module=\"legomario\" --block=\"scratch-vm/src/extensions/scratch3_legomario\" --entry=\"scratch-gui/src/lib/libraries/extensions/legomario\" --gui=\"../scratch-gui\"",
     "build:legoluigi": "npx xcratch-build --module=\"legoluigi\" --block=\"scratch-vm/src/extensions/scratch3_legoluigi\" --entry=\"scratch-gui/src/lib/libraries/extensions/legoluigi\" --gui=\"../scratch-gui\"",
+    "build:legopeach": "npx xcratch-build --module=\"legopeach\" --block=\"scratch-vm/src/extensions/scratch3_legopeach\" --entry=\"scratch-gui/src/lib/libraries/extensions/legolegopeach\" --gui=\"../scratch-gui\"",
     "start": "cd ../scratch-gui && npm run start"
   },
   "repository": {
