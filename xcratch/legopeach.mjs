@@ -9101,7 +9101,8 @@ var Pants = {
   PENGUIN: 0x14,
   PEACH: 0x18,
   MARIO: 0x21,
-  BUILDER: 0x22
+  BUILDER: 0x22,
+  ICE: 0x23
 };
 var PortId = {
   COLOR_BARCODE: 0x01,
@@ -9378,6 +9379,12 @@ var MarioBaseBlocks$1 = /*#__PURE__*/function () {
               default: '(34) Builder'
             }),
             value: String(Pants.BUILDER)
+          }, {
+            text: formatMessage({
+              id: 'legomario.pants.ice',
+              default: '(35) Ice'
+            }),
+            value: String(Pants.ICE)
           }]
         }
       };
@@ -9476,7 +9483,8 @@ var MarioBaseBlocks$1 = /*#__PURE__*/function () {
           'legomario.pants.penguin': '(20) ペンギン',
           'legomario.pants.peach': '(24) ピーチ',
           'legomario.pants.mario': '(33) マリオ',
-          'legomario.pants.builder': '(34) ビルダー'
+          'legomario.pants.builder': '(34) ビルダー',
+          'legomario.pants.ice': '(35) アイス'
         },
         'ja-Hira': {
           'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
@@ -9510,7 +9518,8 @@ var MarioBaseBlocks$1 = /*#__PURE__*/function () {
           'legomario.pants.penguin': '(20) ペンギン',
           'legomario.pants.peach': '(24) ピーチ',
           'legomario.pants.mario': '(33) マリオ',
-          'legomario.pants.builder': '(34) ビルダー'
+          'legomario.pants.builder': '(34) ビルダー',
+          'legomario.pants.ice': '(35) アイス'
         }
       });
     }
