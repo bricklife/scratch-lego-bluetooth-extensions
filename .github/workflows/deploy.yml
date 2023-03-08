@@ -18,6 +18,11 @@ jobs:
           ref: lego-bluetooth-extensions
           path: ./scratch-gui
 
+      - name: Install Node.js 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
       - name: Run `npm ci` in scratch-gui
         run: npm ci
         working-directory: ./scratch-gui
