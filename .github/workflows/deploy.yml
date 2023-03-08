@@ -11,17 +11,17 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Node.js 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
       - name: Checkout bricklife/scratch-gui
         uses: actions/checkout@v2
         with:
           repository: bricklife/scratch-gui
           ref: lego-bluetooth-extensions
           path: ./scratch-gui
-
-      - name: Install Node.js 14
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
 
       - name: Run `npm ci` in scratch-gui
         run: npm ci
