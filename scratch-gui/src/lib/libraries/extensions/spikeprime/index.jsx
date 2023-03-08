@@ -7,7 +7,7 @@ import spikeprimeConnectionIconURL from './spikeprime-illustration.svg';
 import spikeprimeConnectionSmallIconURL from './spikeprime-small.svg';
 
 const entry = {
-    name: 'LEGO Education SPIKE Prime',
+    name: 'LEGO Education SPIKE Prime (Legacy)',
     extensionId: 'spikeprime',
     collaborator: 'bricklife',
     iconURL: spikeprimeIconURL,
