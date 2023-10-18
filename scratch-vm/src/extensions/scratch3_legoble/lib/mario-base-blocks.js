@@ -407,6 +407,43 @@ class MarioBaseBlocks {
 
     setupTranslations(formatMessage) {
         setupTranslations(formatMessage, {
+            'en': {
+                'legomario.whenBarcode': 'when barcode is [BARCODE]',
+                'legomario.whenAnyBarcode': 'when any barcode is found',
+                'legomario.getBarcode': 'barcode',
+                'legomario.whenColor': 'when color is [SENSOR_COLOR]',
+                'legomario.isColor': 'color is [SENSOR_COLOR] ?',
+                'legomario.getColor': 'color',
+                'legomario.whenPants': 'when pants is [PANTS]',
+                'legomario.isPants': 'pants is [PANTS] ?',
+                'legomario.getPants': 'pants',
+                'legomario.setVolume': 'set volume to [VOLUME] %',
+
+                'legomario.white': '(19) White',
+                'legomario.red': '(21) Red',
+                'legomario.blue': '(23) Blue',
+                'legomario.yellow': '(24) Yellow',
+                'legomario.black': '(26) Black',
+                'legomario.green': '(37) Green',
+                'legomario.brown': '(106) Brown',
+                'legomario.purple': '(268) Purple',
+                'legomario.nougatBrown': '(312) Nougat Brown',
+                'legomario.cyan': '(322) Cyan',
+
+                'legomario.pants.none': '(0) None',
+                'legomario.pants.bee': '(3) Bee',
+                'legomario.pants.luigi': '(5) Luigi',
+                'legomario.pants.frog': '(6) Frog',
+                'legomario.pants.tanooki': '(10) Tanooki',
+                'legomario.pants.propeller': '(12) Propeller',
+                'legomario.pants.cat': '(17) Cat',
+                'legomario.pants.fire': '(18) Fire',
+                'legomario.pants.penguin': '(20) Penguin',
+                'legomario.pants.peach': '(24) Peach',
+                'legomario.pants.mario': '(33) Mario',
+                'legomario.pants.builder': '(34) Builder',
+                'legomario.pants.ice': '(35) Ice',
+            },
             'ja': {
                 'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
                 'legomario.whenAnyBarcode': 'バーコードを見つけたとき',
