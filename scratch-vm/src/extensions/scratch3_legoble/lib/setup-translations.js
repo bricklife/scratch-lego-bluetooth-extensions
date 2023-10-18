@@ -58,6 +58,8 @@ const setupTranslations = function (formatMessage, extTranslations = {}) {
             'legobluetooth.roll': 'roll',
             'legobluetooth.yaw': 'yaw',
         },
+        'it': {
+        },
         'ja': {
             'legobluetooth.motorPWM': '[PORT] モーターを [POWER] %のパワーで回す',
             'legobluetooth.motorStop': '[PORT] モーターを止める',
