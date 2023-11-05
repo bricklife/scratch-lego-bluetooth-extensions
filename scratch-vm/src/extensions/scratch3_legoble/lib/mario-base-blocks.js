@@ -31,8 +31,10 @@ const Pants = {
     CAT: 0x11,
     FIRE: 0x12,
     PENGUIN: 0x14,
+    PEACH: 0x18,
     MARIO: 0x21,
     BUILDER: 0x22,
+    ICE: 0x23,
 };
 
 const PortId = {
@@ -326,6 +328,13 @@ class MarioBaseBlocks {
                     },
                     {
                         text: formatMessage({
+                            id: 'legomario.pants.peach',
+                            default: '(24) Peach'
+                        }),
+                        value: String(Pants.PEACH)
+                    },
+                    {
+                        text: formatMessage({
                             id: 'legomario.pants.mario',
                             default: '(33) Mario'
                         }),
@@ -337,6 +346,13 @@ class MarioBaseBlocks {
                             default: '(34) Builder'
                         }),
                         value: String(Pants.BUILDER)
+                    },
+                    {
+                        text: formatMessage({
+                            id: 'legomario.pants.ice',
+                            default: '(35) Ice'
+                        }),
+                        value: String(Pants.ICE)
                     },
                 ]
             },
@@ -423,8 +439,10 @@ class MarioBaseBlocks {
                 'legomario.pants.cat': '(17) ネコ',
                 'legomario.pants.fire': '(18) ファイア',
                 'legomario.pants.penguin': '(20) ペンギン',
+                'legomario.pants.peach': '(24) ピーチ',
                 'legomario.pants.mario': '(33) マリオ',
                 'legomario.pants.builder': '(34) ビルダー',
+                'legomario.pants.ice': '(35) アイス',
             },
             'ja-Hira': {
                 'legomario.whenBarcode': 'バーコードが [BARCODE] のとき',
@@ -458,8 +476,10 @@ class MarioBaseBlocks {
                 'legomario.pants.cat': '(17) ネコ',
                 'legomario.pants.fire': '(18) ファイア',
                 'legomario.pants.penguin': '(20) ペンギン',
+                'legomario.pants.peach': '(24) ピーチ',
                 'legomario.pants.mario': '(33) マリオ',
                 'legomario.pants.builder': '(34) ビルダー',
+                'legomario.pants.ice': '(35) アイス',
             },
         });
     }

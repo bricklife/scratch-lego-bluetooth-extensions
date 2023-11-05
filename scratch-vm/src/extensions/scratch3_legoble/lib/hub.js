@@ -175,8 +175,9 @@ class Hub {
         this._firstNotificationCallback = () => {
             this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.ADVERTISING_NAME, HubPropertyOperation.ENABLE_UPDATES], false);
             this.sendMessage(MessageType.HUB_PROPERTIES, [HubPropertyReference.FW_VERSION, HubPropertyOperation.REQUEST_UPDATE]);
-            this._startPollingBatteryLevel();
         };
+
+        this._startPollingBatteryLevel();
     }
 
     _onMessage(base64) {

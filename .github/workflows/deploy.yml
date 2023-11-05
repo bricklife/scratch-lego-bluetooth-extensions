@@ -6,36 +6,60 @@ on:
       - master
     tags:
       - "!*"
+  workflow_dispatch:
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Install Node.js 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Checkout LLK/scratch-gui
+        uses: actions/checkout@v2
         with:
           repository: LLK/scratch-gui
           ref: develop
           path: ./scratch-gui
-      - run: npm ci
+
+      - name: Run `npm ci` in scratch-gui
+        run: npm ci
         working-directory: ./scratch-gui
-      - run: npm install ml5
-        name: 'Install ml5'
+
+      - name: 'Install ml5'
+        run: npm install ml5
         working-directory: ./scratch-gui/node_modules/scratch-vm
-      - uses: actions/checkout@v2
+
+      - name: Checkout slupekdev/scratch-lego-bluetooth-extensions
+        uses: actions/checkout@v2
         with:
           repository: slupekdev/scratch-lego-bluetooth-extensions
           ref: master
           path: ./scratch-lego-bluetooth-extensions
-      - run: npm ci
+
+      - name: Run `npm ci` in scratch-lego-bluetooth-extensions
+        run: npm ci
         working-directory: ./scratch-lego-bluetooth-extensions
-      - run: npm run register
+
+      - name: Register all extensions
+        run: npm run register
         working-directory: ./scratch-lego-bluetooth-extensions
-      - run: npm run build
+
+      - name: Build scratch-gui
+        run: npm run build
         working-directory: ./scratch-gui
-      - run: npm run build
+
+      - name: Build all mjs files
+        run: npm run build
         working-directory: ./scratch-lego-bluetooth-extensions
-      - run: cp -r ./scratch-lego-bluetooth-extensions/dist ./scratch-gui/build/xcratch
-      - uses: peaceiris/actions-gh-pages@v3
+
+      - name: Copy all mjs files
+        run: cp -r ./scratch-lego-bluetooth-extensions/dist ./scratch-gui/build/xcratch
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./scratch-gui/build
