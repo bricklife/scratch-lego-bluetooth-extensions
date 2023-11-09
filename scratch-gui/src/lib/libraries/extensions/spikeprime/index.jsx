@@ -7,14 +7,14 @@ import spikeprimeConnectionIconURL from './spikeprime-illustration.svg';
 import spikeprimeConnectionSmallIconURL from './spikeprime-small.svg';
 
 const entry = {
-    name: 'LEGO Education SPIKE Prime',
+    name: 'LEGO Education SPIKE Prime (Legacy)',
     extensionId: 'spikeprime',
     collaborator: 'bricklife',
     iconURL: spikeprimeIconURL,
     insetIconURL: spikeprimeInsetIconURL,
     description: (
         <FormattedMessage
-            defaultMessage="Build interactive robots and more."
+            defaultMessage="Build interactive robots and more. (doesn't work on Windows)"
             id="gui.extension.spikeprime.description"
         />
     ),

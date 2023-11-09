@@ -113,9 +113,17 @@ class GenericDevice {
                 break;
 
             case IOType.DUPLO_TRAIN_BASE_COLOR_SENSOR:
-                this._inputValues = {
-                    color: buffer.readInt8(0)
-                };
+                const value = buffer.readInt8(0);
+                if (value > -1) {
+                    this._inputValues = {
+                        color: value
+                    };
+                    setTimeout(() => {
+                        this._inputValues = {
+                            color: -1
+                        };
+                    }, 100);
+                }
                 break;
 
             case IOType.DUPLO_TRAIN_BASE_SPEEDOMETER:

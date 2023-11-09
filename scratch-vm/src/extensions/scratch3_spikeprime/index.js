@@ -372,7 +372,7 @@ class Scratch3SpikePrimeBlocks {
 
         return {
             id: Scratch3SpikePrimeBlocks.EXTENSION_ID,
-            name: 'SPIKE Prime',
+            name: 'SPIKE Prime (Legacy)',
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [
