@@ -212,14 +212,14 @@ var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof win
 
 var react = {exports: {}};
 
-function _typeof$1(obj) {
+function _typeof$1(o) {
   "@babel/helpers - typeof";
 
-  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof$1(obj);
+  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof$1(o);
 }
 
 var react_production_min = {};
@@ -4620,7 +4620,6 @@ es5_1.defineProperty(RelativeFormat, 'thresholds', {
     'month-short': 11 // months to year
   }
 });
-
 RelativeFormat.prototype.resolvedOptions = function () {
   return {
     locale: this._locale,
@@ -7595,20 +7594,20 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-function _toPrimitive(input, hint) {
-  if (_typeof$1(input) !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (_typeof$1(res) !== "object") return res;
+function toPrimitive(t, r) {
+  if ("object" != _typeof$1(t) || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$1(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
-  return (hint === "string" ? String : Number)(input);
+  return ("string" === r ? String : Number)(t);
 }
 
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return _typeof$1(key) === "symbol" ? key : String(key);
+function toPropertyKey(t) {
+  var i = toPrimitive(t, "string");
+  return "symbol" == _typeof$1(i) ? i : String(i);
 }
 
 function _defineProperties(target, props) {
@@ -7617,7 +7616,7 @@ function _defineProperties(target, props) {
     descriptor.enumerable = descriptor.enumerable || false;
     descriptor.configurable = true;
     if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+    Object.defineProperty(target, toPropertyKey(descriptor.key), descriptor);
   }
 }
 function _createClass(Constructor, protoProps, staticProps) {
@@ -7627,6 +7626,29 @@ function _createClass(Constructor, protoProps, staticProps) {
     writable: false
   });
   return Constructor;
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof$1(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+  return _assertThisInitialized(self);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
 }
 
 function _setPrototypeOf(o, p) {
@@ -7652,29 +7674,6 @@ function _inherits(subClass, superClass) {
     writable: false
   });
   if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof$1(call) === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-  return _assertThisInitialized(self);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
 }
 
 /**
@@ -8950,31 +8949,31 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-function _iterableToArrayLimit(arr, i) {
-  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
-  if (null != _i) {
-    var _s,
-      _e,
-      _x,
-      _r,
-      _arr = [],
-      _n = !0,
-      _d = !1;
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
     try {
-      if (_x = (_i = _i.call(arr)).next, 0 === i) {
-        if (Object(_i) !== _i) return;
-        _n = !1;
-      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
-    } catch (err) {
-      _d = !0, _e = err;
+      if (i = (t = t.call(r)).next, 0 === l) {
+        if (Object(t) !== t) return;
+        f = !1;
+      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = !0, n = r;
     } finally {
       try {
-        if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return;
+        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
       } finally {
-        if (_d) throw _e;
+        if (o) throw n;
       }
     }
-    return _arr;
+    return a;
   }
 }
 
@@ -9149,12 +9148,11 @@ var JSONRPC$1 = /*#__PURE__*/function () {
 }();
 var jsonrpc = JSONRPC$1;
 
-function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _callSuper$2(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct$2() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct$2() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct$2 = function _isNativeReflectConstruct() { return !!t; })(); }
 var JSONRPC = jsonrpc;
 var BLE$1 = /*#__PURE__*/function (_JSONRPC) {
   _inherits(BLE, _JSONRPC);
-  var _super = _createSuper$2(BLE);
   /**
    * A BLE peripheral socket object.  It handles connecting, over web sockets, to
    * BLE peripherals, and reading and writing data to them.
@@ -9168,7 +9166,7 @@ var BLE$1 = /*#__PURE__*/function (_JSONRPC) {
     var _this;
     var resetCallback = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
     _classCallCheck(this, BLE);
-    _this = _super.call(this);
+    _this = _callSuper$2(this, BLE);
     _this._socket = runtime.getScratchLinkSocket('BLE');
     _this._socket.setOnOpen(_this.requestPeripheral.bind(_assertThisInitialized(_this)));
     _this._socket.setOnClose(_this.handleDisconnectError.bind(_assertThisInitialized(_this)));
@@ -9637,7 +9635,6 @@ Buffer.TYPED_ARRAY_SUPPORT = global$1.TYPED_ARRAY_SUPPORT !== undefined ? global
  * Export kMaxLength after typed array support is determined.
  */
 kMaxLength();
-
 function kMaxLength() {
   return Buffer.TYPED_ARRAY_SUPPORT ? 0x7fffffff : 0x3fffffff;
 }
@@ -11589,8 +11586,8 @@ var ioType = IOType$2;
 
 var device = {};
 
-function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _callSuper$1(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct$1() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct$1() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct$1 = function _isNativeReflectConstruct() { return !!t; })(); }
 var MathUtil$1 = mathUtil;
 var IOType$1 = ioType;
 var GenericDevice = /*#__PURE__*/function () {
@@ -11781,11 +11778,10 @@ var GenericDevice = /*#__PURE__*/function () {
 }();
 var Motor = /*#__PURE__*/function (_GenericDevice) {
   _inherits(Motor, _GenericDevice);
-  var _super = _createSuper$1(Motor);
   function Motor(ioType) {
     var _this2;
     _classCallCheck(this, Motor);
-    _this2 = _super.call(this, ioType);
+    _this2 = _callSuper$1(this, Motor, [ioType]);
     switch (ioType) {
       case IOType$1.MEDIUM_LINEAR_MOTOR:
       case IOType$1.MOVE_HUB_MOTOR:
@@ -12083,7 +12079,6 @@ var Hub$1 = /*#__PURE__*/function () {
               device.updateInputValues(data.slice(4));
               //log.debug(portId, device.inputValues);
             }
-
             break;
           }
         case MessageType.PORT_OUTPUT_COMMAND_FEEDBACK:
@@ -12375,7 +12370,6 @@ var Hub$1 = /*#__PURE__*/function () {
   }]);
   return Hub;
 }();
-
 var hub = Hub$1;
 
 var formatMessage$1 = {exports: {}};
@@ -14137,8 +14131,8 @@ var plurals = {
   module.exports = namespace();
 })(formatMessage$1);
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
 var MarioBaseBlocks = marioBaseBlocks;
 var Hub = hub;
 var blockIconURI = 'data:image/png;base64,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';
@@ -14146,11 +14140,10 @@ var formatMessage = formatMessage$1.exports;
 var extensionURL = 'https://bricklife.com/scratch-gui/xcratch/legoluigi.mjs';
 var Scratch3LegoLuigiBlocks = /*#__PURE__*/function (_MarioBaseBlocks) {
   _inherits(Scratch3LegoLuigiBlocks, _MarioBaseBlocks);
-  var _super = _createSuper(Scratch3LegoLuigiBlocks);
   function Scratch3LegoLuigiBlocks(runtime) {
     var _this;
     _classCallCheck(this, Scratch3LegoLuigiBlocks);
-    _this = _super.call(this, new Hub(runtime, Scratch3LegoLuigiBlocks.EXTENSION_ID, 0x44));
+    _this = _callSuper(this, Scratch3LegoLuigiBlocks, [new Hub(runtime, Scratch3LegoLuigiBlocks.EXTENSION_ID, 0x44)]);
     if (runtime.formatMessage) {
       // Replace 'formatMessage' to a formatter which is used in the runtime.
       formatMessage = runtime.formatMessage;
