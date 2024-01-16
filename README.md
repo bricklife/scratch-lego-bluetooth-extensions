@@ -14,7 +14,7 @@ Bluetooth LE (BLE)
 - [x] General LEGO BLE Device
 
 Bluetooth Classic (SPP)
-- [x] LEGO Education SPIKE Prime Hub (Legacy) <- Not working on Windows
+- [x] ~~LEGO Education SPIKE Prime Hub (Legacy) <- Not working on Windows~~
 - [ ] LEGO MINDSTORMS Robot Inventor Hub
 
 ## Scratch 3.0 installed LEGO Bluetooth extensions
@@ -32,4 +32,4 @@ Bluetooth Classic (SPP)
 - LEGO Peach https://bricklife.com/scratch-gui/xcratch/legopeach.mjs
 - LEGO Education SPIKE Essential Hub https://bricklife.com/scratch-gui/xcratch/spikeessential.mjs
 - General LEGO BLE Device https://bricklife.com/scratch-gui/xcratch/legoble.mjs
-- LEGO Education SPIKE Prime Hub (Legacy) https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs
+- ~~LEGO Education SPIKE Prime Hub (Legacy) https://bricklife.com/scratch-gui/xcratch/spikeprime.mjs~~
