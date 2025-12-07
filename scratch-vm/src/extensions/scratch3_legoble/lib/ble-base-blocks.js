@@ -1,6 +1,7 @@
 const ArgumentType = require('../../../extension-support/argument-type');
 const BlockType = require('../../../extension-support/block-type');
 const Cast = require('../../../util/cast');
+const UtilColor = require('../../../util/color');
 
 const Color = require('./color');
 
@@ -249,6 +250,50 @@ class BleBaseBlocks {
                         type: ArgumentType.NUMBER,
                         menu: 'LED_COLOR',
                         defaultValue: Color.BLUE
+                    }
+                }
+            },
+            {
+                opcode: 'setHubLEDColorRGB',
+                text: formatMessage({
+                    id: 'legobluetooth.setHubLEDColorRGB',
+                    default: 'set hub LED color to R[RED] G[GREEN] B[BLUE]',
+                }),
+                blockType: BlockType.COMMAND,
+                arguments: {
+                    RED: {
+                        type: ArgumentType.NUMBER,
+                        defaultValue: 255
+                    },
+                    GREEN: {
+                        type: ArgumentType.NUMBER,
+                        defaultValue: 255
+                    },
+                    BLUE: {
+                        type: ArgumentType.NUMBER,
+                        defaultValue: 255
+                    }
+                }
+            },
+            {
+                opcode: 'setHubLEDColorHSV',
+                text: formatMessage({
+                    id: 'legobluetooth.setHubLEDColorHSV',
+                    default: 'set hub LED color to H[HUE] S[SATURATION] V[VALUE]',
+                }),
+                blockType: BlockType.COMMAND,
+                arguments: {
+                    HUE: {
+                        type: ArgumentType.NUMBER,
+                        defaultValue: 360
+                    },
+                    SATURATION: {
+                        type: ArgumentType.NUMBER,
+                        defaultValue: 100
+                    },
+                    VALUE: {
+                        type: ArgumentType.NUMBER,
+                        defaultValue: 100
                     }
                 }
             }
@@ -596,6 +641,22 @@ class BleBaseBlocks {
     setHubLEDColor(args) {
         const color = Cast.toNumber(args.COLOR);
         return this._peripheral.setLEDColor(color).then(waitPromise);
+    }
+
+    setHubLEDColorRGB(args) {
+        const red = Cast.toNumber(args.RED);
+        const green = Cast.toNumber(args.GREEN);
+        const blue = Cast.toNumber(args.BLUE);
+        return this._peripheral.setLEDColorRGB(red, green, blue).then(waitPromise);
+    }
+
+    setHubLEDColorHSV(args) {
+        const rgb = UtilColor.hsvToRgb({
+            h: Cast.toNumber(args.HUE),
+            s: Cast.toNumber(args.SATURATION) / 100,
+            v: Cast.toNumber(args.VALUE) / 100
+        });
+        return this._peripheral.setLEDColorRGB(rgb.r, rgb.g, rgb.b).then(waitPromise);
     }
 
     getHubTilt(args) {

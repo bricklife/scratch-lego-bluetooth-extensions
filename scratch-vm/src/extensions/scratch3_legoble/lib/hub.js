@@ -510,7 +510,18 @@ class Hub {
 
         const portId = this._devices.findIndex(device => device && device.ioType == IOType.RGB_LIGHT);
         if (portId != -1) {
+            this.sendMessage(MessageType.PORT_INPUT_FORMAT_SETUP, [portId, 0x00], false);
             return this.sendOutputCommand(portId, 0x51, [0x00, color]);
+        } else {
+            return Promise.resolve();
+        }
+    }
+
+    setLEDColorRGB(red, green, blue) {
+        const portId = this._devices.findIndex(device => device && device.ioType == IOType.RGB_LIGHT);
+        if (portId != -1) {
+            this.sendMessage(MessageType.PORT_INPUT_FORMAT_SETUP, [portId, 0x01], false);
+            return this.sendOutputCommand(portId, 0x51, [0x01, MathUtil.clamp(red, 0, 255), MathUtil.clamp(green, 0, 255), MathUtil.clamp(blue, 0, 255)]);
         } else {
             return Promise.resolve();
         }
